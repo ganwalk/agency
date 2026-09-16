@@ -1,0 +1,59 @@
+name: Publicar no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Gerar o site estático
+        # O site vive num subcaminho do domínio do GitHub Pages.
+        # Com domínio próprio, é só remover NEXT_PUBLIC_BASE_PATH e trocar
+        # NEXT_PUBLIC_SITE_URL pelo domínio novo (usada em metadados que
+        # precisam de URL absoluta: sitemap, robots, Open Graph).
+        env:
+          NEXT_PUBLIC_BASE_PATH: /agency
+          NEXT_PUBLIC_SITE_URL: https://ganwalk.github.io/agency
+        run: npm run build
+
+      - name: Impedir que o Pages processe o build com Jekyll
+        run: touch out/.nojekyll
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
