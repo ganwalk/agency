@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Level, Design, engenharia, direito e gestão num time só</title>
+    <link rel="canonical" href="./pt/" />
+    <meta
+      name="description"
+      content="Redesenhamos sites, plataformas e fluxos desatualizados com design, engenharia, direito e gestão numa equipe só."
+    />
+    <noscript><meta http-equiv="refresh" content="0; url=./pt/" /></noscript>
+    <script>
+      // Porta de entrada do site. Sem servidor não existe middleware, então a
+      // escolha de idioma acontece aqui, no navegador, a partir da preferência
+      // da pessoa. Caminho relativo para funcionar com ou sem basePath.
+      (function () {
+        var suportados = ["pt", "en", "es", "zh"];
+        var preferidos = navigator.languages || [navigator.language || "pt"];
+        var escolhido = "pt";
+
+        for (var i = 0; i < preferidos.length; i++) {
+          var codigo = String(preferidos[i]).toLowerCase().slice(0, 2);
+          if (suportados.indexOf(codigo) !== -1) {
+            escolhido = codigo;
+            break;
+          }
+        }
+
+        window.location.replace("./" + escolhido + "/");
+      })();
+    </script>
+  </head>
+  <body>
+    <p>
+      <a href="./pt/">Português</a> · <a href="./en/">English</a> ·
+      <a href="./es/">Español</a> · <a href="./zh/">中文</a>
+    </p>
+  </body>
+</html>
