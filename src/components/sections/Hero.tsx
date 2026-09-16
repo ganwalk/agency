@@ -7,18 +7,36 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
+import { HeroGuides } from "@/components/sections/HeroGuides";
 
 const AUTO_DELAY_MS = 2400;
+const REVEAL_GUIDE_MS = 1400;
 
 export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const reduced = useReducedMotion();
   const [stage, setStage] = useState<0 | 1>(0);
+  const [revealing, setRevealing] = useState(false);
+  const [revealKey, setRevealKey] = useState(0);
 
   useEffect(() => {
     if (reduced) return;
     const timer = setTimeout(() => setStage(1), AUTO_DELAY_MS);
     return () => clearTimeout(timer);
   }, [reduced]);
+
+  // Cada vez que a fase rica entra em cena (pelo timer ou por clique manual
+  // nos pontos), as âncoras de design piscam de novo e o conteúdo reencena
+  // a entrada, como se estivesse sendo posicionado ali na hora.
+  useEffect(() => {
+    if (stage !== 1) return;
+    /* eslint-disable react-hooks/set-state-in-effect -- reage à entrada na
+       fase rica (timer ou clique manual), não deriva estado de render */
+    setRevealing(true);
+    setRevealKey((k) => k + 1);
+    /* eslint-enable react-hooks/set-state-in-effect */
+    const timer = setTimeout(() => setRevealing(false), REVEAL_GUIDE_MS);
+    return () => clearTimeout(timer);
+  }, [stage]);
 
   const s = dict.hero.simple;
   const r = dict.hero.rich;
@@ -29,7 +47,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     return (
       <section data-hero>
         <HeroSimplePanel locale={locale} s={s} minHeight="90dvh" />
-        <HeroRichPanel locale={locale} r={r} minHeight="90dvh" />
+        <HeroRichPanel locale={locale} r={r} minHeight="90dvh" reveal={false} revealKey={0} />
       </section>
     );
   }
@@ -46,7 +64,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <HeroSimplePanel locale={locale} s={s} minHeight="100%" />
         </div>
         <div className="h-full" style={{ width: "50%" }}>
-          <HeroRichPanel locale={locale} r={r} minHeight="100%" />
+          <HeroRichPanel locale={locale} r={r} minHeight="100%" reveal={revealing} revealKey={revealKey} />
         </div>
       </motion.div>
 
@@ -136,16 +154,20 @@ function HeroRichPanel({
   locale,
   r,
   minHeight,
+  reveal,
+  revealKey,
 }: {
   locale: Locale;
   r: Dictionary["hero"]["rich"];
   minHeight: string;
+  reveal: boolean;
+  revealKey: number;
 }) {
   return (
     <div className="relative flex items-end" style={{ minHeight }}>
       <Image
         src="/images/hero-rich.jpg"
-        alt=""
+        alt="Impression, Sunrise, Claude Monet"
         fill
         priority
         sizes="100vw"
@@ -155,13 +177,21 @@ function HeroRichPanel({
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(17,20,28,0.35) 0%, rgba(17,20,28,0.35) 40%, rgba(17,20,28,0.85) 100%)",
+            "linear-gradient(180deg, rgba(17,20,28,0.42) 0%, rgba(17,20,28,0.45) 40%, rgba(17,20,28,0.88) 100%)",
         }}
       />
 
+      <HeroGuides show={reveal} />
+
       <div className="container-level relative z-10 w-full pb-14 sm:pb-16 lg:pb-20">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
-          <div className="max-w-xl">
+          <motion.div
+            key={`headline-${revealKey}`}
+            className="max-w-xl"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          >
             <p
               className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
               style={{ color: "var(--accent-soft)" }}
@@ -182,11 +212,15 @@ function HeroRichPanel({
               {r.cta}
               <ArrowRight size={16} />
             </Link>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
+            key={`card-${revealKey}`}
             className="w-full lg:w-80 rounded-2xl p-6 shrink-0"
             style={{ background: "var(--chip-bg)" }}
+            initial={{ opacity: 0, y: 16, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.55, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
             <h3 className="type-display text-xl" style={{ color: "var(--navy)" }}>
               {r.card.title}
@@ -202,7 +236,7 @@ function HeroRichPanel({
               {r.card.cta}
               <ArrowRight size={14} />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

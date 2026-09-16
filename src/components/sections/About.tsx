@@ -1,10 +1,16 @@
 import Image from "next/image";
 import { Linkedin } from "lucide-react";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { team } from "@/data/team";
+import { team, type TeamMember } from "@/data/team";
 import type { Locale } from "@/i18n/config";
-import { Avatar } from "@/components/ui/Avatar";
 import { Reveal } from "@/components/ui/Reveal";
+
+const accentVar: Record<TeamMember["accent"], string> = {
+  amber: "var(--accent-amber)",
+  moss: "var(--accent-moss)",
+  terracotta: "var(--accent-terracotta)",
+  teal: "var(--accent-teal)",
+};
 
 export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
@@ -43,35 +49,53 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             {team.map((member, i) => (
               <Reveal key={member.slug} delay={i * 0.08}>
                 <article
-                  className="h-full rounded-2xl p-6 flex flex-col gap-4"
+                  className="h-full rounded-2xl overflow-hidden flex flex-col"
                   style={{ background: "var(--cream)" }}
                 >
-                  <div className="flex items-start justify-between gap-3">
-                    <Avatar member={member} size={64} />
-                    {member.linkedin && (
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={dict.about.linkedinLabel}
-                        className="p-1.5 rounded-full hover:opacity-60 transition-opacity"
-                        style={{ color: "var(--muted)" }}
-                      >
-                        <Linkedin size={18} />
-                      </a>
-                    )}
+                  <div className="relative aspect-4/5">
+                    <Image
+                      src={member.photo}
+                      alt={member.name}
+                      fill
+                      sizes="(min-width: 640px) 25vw, 50vw"
+                      className="object-cover"
+                    />
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: accentVar[member.accent], mixBlendMode: "multiply", opacity: 0.24 }}
+                      aria-hidden="true"
+                    />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-base" style={{ color: "var(--ink)" }}>
-                      {member.name}
-                    </h3>
-                    <p className="text-sm font-medium mt-0.5" style={{ color: "var(--accent)" }}>
-                      {member.role[locale]}
+                  <div className="p-6 flex flex-col gap-3 flex-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="font-semibold text-base" style={{ color: "var(--ink)" }}>
+                          {member.name}
+                        </h3>
+                        <p
+                          className="text-sm font-medium mt-0.5"
+                          style={{ color: accentVar[member.accent] }}
+                        >
+                          {member.role[locale]}
+                        </p>
+                      </div>
+                      {member.linkedin && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={dict.about.linkedinLabel}
+                          className="p-1.5 -m-1.5 rounded-full hover:opacity-60 transition-opacity shrink-0"
+                          style={{ color: "var(--muted)" }}
+                        >
+                          <Linkedin size={18} />
+                        </a>
+                      )}
+                    </div>
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+                      {member.bio[locale]}
                     </p>
                   </div>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                    {member.bio[locale]}
-                  </p>
                 </article>
               </Reveal>
             ))}

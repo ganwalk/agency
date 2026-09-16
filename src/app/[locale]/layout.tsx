@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "@fontsource-variable/archivo";
-import "@fontsource-variable/bricolage-grotesque";
+import "@fontsource-variable/fraunces/standard.css";
 import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";

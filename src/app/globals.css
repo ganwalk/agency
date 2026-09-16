@@ -47,7 +47,7 @@
   --accent-teal: #3e6e6a;
 
   --font-sans: "Archivo Variable", system-ui, sans-serif;
-  --font-headline: "Bricolage Grotesque Variable", var(--font-sans);
+  --font-headline: "Fraunces Variable", Georgia, serif;
 }
 
 :root.dark {
@@ -114,9 +114,9 @@ body {
 
 .type-display {
   font-family: var(--font-headline);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 0.98;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.04;
 }
 
 .container-level {
