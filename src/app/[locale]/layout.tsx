@@ -5,6 +5,7 @@ import "@fontsource-variable/bricolage-grotesque";
 import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { Providers } from "@/components/providers/Providers";
 import {
   locales,
   htmlLang,
@@ -67,11 +68,13 @@ export default async function LocaleLayout({
   const dict = getDictionary(locale);
 
   return (
-    <html lang={htmlLang[locale]}>
+    <html lang={htmlLang[locale]} suppressHydrationWarning>
       <body>
-        <Header locale={locale} dict={dict} />
-        <main>{children}</main>
-        <Footer locale={locale} dict={dict} />
+        <Providers>
+          <Header locale={locale} dict={dict} />
+          <main>{children}</main>
+          <Footer locale={locale} dict={dict} />
+        </Providers>
       </body>
     </html>
   );

@@ -25,7 +25,7 @@ export function LocaleSwitcher({ locale, dark = false }: { locale: Locale; dark?
     return () => document.removeEventListener("click", onClick);
   }, []);
 
-  const color = dark ? "var(--paper)" : "var(--navy)";
+  const color = dark ? "var(--on-dark)" : "var(--ink)";
 
   return (
     <div className="relative" ref={ref}>

@@ -59,7 +59,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               <a
                 href={contact.emailHref}
                 className="text-sm hover:opacity-70 transition-opacity"
-                style={{ color: "var(--cream)" }}
+                style={{ color: "var(--on-dark)" }}
               >
                 {contact.email}
               </a>
@@ -68,7 +68,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm hover:opacity-70 transition-opacity"
-                style={{ color: "var(--cream)" }}
+                style={{ color: "var(--on-dark)" }}
               >
                 WhatsApp
               </a>
@@ -78,13 +78,13 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: "var(--muted-on-navy)" }}>
                 Level
               </span>
-              <Link href={`/${locale}/#team`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--cream)" }}>
+              <Link href={`/${locale}/#team`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--on-dark)" }}>
                 {dict.nav.team}
               </Link>
-              <Link href={`/${locale}/#services`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--cream)" }}>
+              <Link href={`/${locale}/#services`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--on-dark)" }}>
                 {dict.nav.services}
               </Link>
-              <Link href={`/${locale}/#process`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--cream)" }}>
+              <Link href={`/${locale}/#process`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--on-dark)" }}>
                 {dict.nav.process}
               </Link>
             </div>
@@ -93,10 +93,10 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: "var(--muted-on-navy)" }}>
                 Legal
               </span>
-              <Link href={`/${locale}/legal/privacy/`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--cream)" }}>
+              <Link href={`/${locale}/legal/privacy/`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--on-dark)" }}>
                 {dict.footer.legal.privacy}
               </Link>
-              <Link href={`/${locale}/legal/terms/`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--cream)" }}>
+              <Link href={`/${locale}/legal/terms/`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--on-dark)" }}>
                 {dict.footer.legal.terms}
               </Link>
             </div>

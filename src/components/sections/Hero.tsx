@@ -107,7 +107,7 @@ function HeroSimplePanel({
             <Link
               href={`/${locale}/#contact`}
               className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-transform hover:scale-[1.02]"
-              style={{ background: "var(--navy)", color: "var(--paper)" }}
+              style={{ background: "var(--btn-primary-bg)", color: "var(--btn-primary-fg)" }}
             >
               {s.cta}
               <ArrowRight size={16} />
@@ -168,10 +168,10 @@ function HeroRichPanel({
             >
               {r.eyebrow}
             </p>
-            <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--paper)" }}>
+            <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--on-dark)" }}>
               {r.headline}
             </h2>
-            <p className="mt-5 text-base sm:text-lg leading-relaxed max-w-md" style={{ color: "var(--cream)" }}>
+            <p className="mt-5 text-base sm:text-lg leading-relaxed max-w-md" style={{ color: "var(--on-dark)" }}>
               {r.sub}
             </p>
             <Link
@@ -186,12 +186,12 @@ function HeroRichPanel({
 
           <div
             className="w-full lg:w-80 rounded-2xl p-6 shrink-0"
-            style={{ background: "var(--paper)" }}
+            style={{ background: "var(--chip-bg)" }}
           >
-            <h3 className="type-display text-xl" style={{ color: "var(--ink)" }}>
+            <h3 className="type-display text-xl" style={{ color: "var(--navy)" }}>
               {r.card.title}
             </h3>
-            <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+            <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--chip-muted)" }}>
               {r.card.body}
             </p>
             <Link

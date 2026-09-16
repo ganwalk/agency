@@ -25,10 +25,31 @@ export default async function Image() {
           color: "#faf6ee",
         }}
       >
-        <div style={{ display: "flex", alignItems: "flex-end", gap: 10, marginBottom: 36 }}>
-          <div style={{ width: 22, height: 34, background: "#faf6ee", borderRadius: 3, display: "flex" }} />
-          <div style={{ width: 22, height: 56, background: "#faf6ee", borderRadius: 3, display: "flex" }} />
-          <div style={{ width: 22, height: 82, background: "#faf6ee", borderRadius: 3, display: "flex" }} />
+        <div style={{ position: "relative", width: 90, height: 128, display: "flex", marginBottom: 30 }}>
+          <div
+            style={{
+              position: "absolute",
+              display: "flex",
+              left: 5,
+              top: 44,
+              width: 80,
+              height: 80,
+              borderRadius: "50%",
+              background: "#faf6ee",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              display: "flex",
+              left: 5,
+              top: 0,
+              width: 80,
+              height: 80,
+              borderRadius: "50%",
+              border: "11px solid #faf6ee",
+            }}
+          />
         </div>
         <div style={{ display: "flex", fontSize: 96, fontWeight: 700, letterSpacing: -2 }}>Level</div>
         <div style={{ display: "flex", fontSize: 32, color: "#d9b57c", marginTop: 20, maxWidth: 820 }}>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 type Props = {
   open: boolean;
@@ -36,7 +37,7 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
           aria-modal="true"
         >
           <div className="container-level flex items-center justify-between py-5">
-            <span className="type-display text-xl" style={{ color: "var(--paper)" }}>
+            <span className="type-display text-xl" style={{ color: "var(--on-dark)" }}>
               Level
             </span>
             <button
@@ -44,7 +45,7 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
               onClick={onClose}
               aria-label={dict.nav.menuClose}
               className="p-2 -mr-2 cursor-pointer"
-              style={{ color: "var(--paper)" }}
+              style={{ color: "var(--on-dark)" }}
             >
               <X size={26} />
             </button>
@@ -62,7 +63,7 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
                   href={link.href}
                   onClick={onClose}
                   className="type-display text-4xl sm:text-5xl text-center"
-                  style={{ color: "var(--cream)" }}
+                  style={{ color: "var(--on-dark)" }}
                 >
                   {link.label}
                 </Link>
@@ -74,7 +75,10 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
             <span className="text-sm" style={{ color: "var(--muted-on-navy)" }}>
               armandocustodio0@gmail.com
             </span>
-            <LocaleSwitcher locale={locale} dark />
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <LocaleSwitcher locale={locale} dark />
+            </div>
           </div>
         </motion.div>
       )}

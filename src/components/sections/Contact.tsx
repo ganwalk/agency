@@ -62,10 +62,10 @@ export function Contact({ dict }: { dict: Dictionary }) {
               >
                 {dict.contact.eyebrow}
               </p>
-              <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--paper)" }}>
+              <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--on-dark)" }}>
                 {dict.contact.title}
               </h2>
-              <p className="mt-6 text-base sm:text-lg leading-relaxed max-w-md" style={{ color: "var(--cream)" }}>
+              <p className="mt-6 text-base sm:text-lg leading-relaxed max-w-md" style={{ color: "var(--on-dark)" }}>
                 {dict.contact.intro}
               </p>
             </Reveal>
@@ -81,7 +81,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:scale-[1.02]"
-                    style={{ background: "var(--paper)", color: "var(--navy)" }}
+                    style={{ background: "var(--chip-bg)", color: "var(--navy)" }}
                   >
                     <MessageCircle size={16} />
                     {dict.contact.direct.whatsapp}
@@ -89,7 +89,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
                   <a
                     href={contact.emailHref}
                     className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold border transition-colors hover:bg-white/10"
-                    style={{ borderColor: "var(--navy-line)", color: "var(--paper)" }}
+                    style={{ borderColor: "var(--navy-line)", color: "var(--on-dark)" }}
                   >
                     <Mail size={16} />
                     {dict.contact.direct.email}
@@ -103,7 +103,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
             <form
               onSubmit={handleSubmit}
               className="rounded-2xl p-6 sm:p-8 flex flex-col gap-5"
-              style={{ background: "var(--paper)" }}
+              style={{ background: "var(--chip-bg)" }}
             >
               <div className="grid sm:grid-cols-2 gap-5">
                 <Field label={f.name}>
@@ -138,7 +138,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
                 />
               </Field>
 
-              <p className="text-xs" style={{ color: "var(--muted)" }}>
+              <p className="text-xs" style={{ color: "var(--chip-muted)" }}>
                 {f.budgetNote}
               </p>
 
@@ -146,7 +146,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
                 type="submit"
                 disabled={status === "sending"}
                 className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-transform hover:scale-[1.01] disabled:opacity-60"
-                style={{ background: "var(--navy)", color: "var(--paper)" }}
+                style={{ background: "var(--navy)", color: "var(--on-dark)" }}
               >
                 {status === "sending" ? f.sending : f.submit}
                 <Send size={15} />
@@ -173,7 +173,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label className="flex flex-col gap-1.5">
-      <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: "var(--muted)" }}>
+      <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: "var(--chip-muted)" }}>
         {label}
       </span>
       {children}

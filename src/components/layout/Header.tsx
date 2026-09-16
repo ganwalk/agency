@@ -8,6 +8,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import { Logo } from "@/components/layout/Logo";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const [open, setOpen] = useState(false);
@@ -63,7 +64,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 href={link.href}
                 className="text-sm font-medium tracking-wide transition-colors"
                 style={{ color: "var(--muted-on-navy)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--paper)")}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--on-dark)")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted-on-navy)")}
               >
                 {link.label}
@@ -72,6 +73,9 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-4">
+            <div className="hidden sm:block">
+              <ThemeToggle />
+            </div>
             <div className="hidden sm:block">
               <LocaleSwitcher locale={locale} dark />
             </div>
@@ -87,7 +91,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               onClick={() => setOpen(true)}
               aria-label={dict.nav.menuOpen}
               className="p-2 -mr-2 lg:hidden cursor-pointer"
-              style={{ color: "var(--paper)" }}
+              style={{ color: "var(--on-dark)" }}
             >
               <Menu size={22} />
             </button>

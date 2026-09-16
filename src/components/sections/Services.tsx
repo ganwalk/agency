@@ -47,7 +47,7 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
                     className="flex items-center justify-center w-11 h-11 rounded-xl"
                     style={{ background: "var(--navy)" }}
                   >
-                    <Icon size={20} style={{ color: "var(--paper)" }} />
+                    <Icon size={20} style={{ color: "var(--on-dark)" }} />
                   </div>
                   <h3 className="font-semibold text-base" style={{ color: "var(--ink)" }}>
                     {service.title[locale]}

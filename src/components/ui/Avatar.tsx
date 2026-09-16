@@ -16,7 +16,7 @@ export function Avatar({ member, size = 96 }: { member: TeamMember; size?: numbe
     >
       <span
         className="type-display"
-        style={{ color: "var(--paper)", fontSize: size * 0.34 }}
+        style={{ color: "var(--on-dark)", fontSize: size * 0.34 }}
       >
         {member.initials}
       </span>

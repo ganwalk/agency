@@ -8,16 +8,36 @@
    ========================================================================== */
 
 :root {
+  /* Conteúdo: acompanha o tema (claro por padrão, ver .dark abaixo). */
   --paper: #faf6ee;
   --cream: #f2ead9;
   --cream-soft: #e9dfc9;
+  --ink: #171a22;
+  --muted: #6b6455;
+  --line: rgba(23, 26, 34, 0.12);
+
+  /* Chrome fixo: header, footer, menu mobile e a seção de contato são
+     sempre escuros, em qualquer tema, então essas variáveis nunca mudam
+     dentro de .dark. */
   --navy: #11141c;
   --navy-soft: #1b2030;
   --navy-line: rgba(250, 246, 238, 0.14);
-  --ink: #171a22;
-  --muted: #6b6455;
   --muted-on-navy: #9aa0b4;
-  --line: rgba(23, 26, 34, 0.12);
+  --on-dark: #f2ead9;
+
+  /* "Chip" claro: cartões e botões que flutuam sobre o chrome escuro (o
+     card da hero rica, o formulário de contato) ficam sempre claros, para
+     não desaparecer contra o fundo escuro fixo quando o tema geral escurece. */
+  --chip-bg: #faf6ee;
+  --chip-muted: #6b6455;
+  --chip-line: rgba(23, 26, 34, 0.12);
+
+  /* Botão primário de conteúdo (fora do chrome fixo): escuro sobre claro no
+     tema claro, invertido no escuro, para continuar de alto contraste
+     com a página ao redor. */
+  --btn-primary-bg: #11141c;
+  --btn-primary-fg: #f2ead9;
+
   --accent: #b3813f;
   --accent-soft: #d9b57c;
 
@@ -30,6 +50,18 @@
   --font-headline: "Bricolage Grotesque Variable", var(--font-sans);
 }
 
+:root.dark {
+  --paper: #0e1017;
+  --cream: #171a22;
+  --cream-soft: #1f2330;
+  --ink: #f2ead9;
+  --muted: #9aa0b4;
+  --line: rgba(242, 234, 217, 0.12);
+
+  --btn-primary-bg: #f2ead9;
+  --btn-primary-fg: #11141c;
+}
+
 @theme inline {
   --color-paper: var(--paper);
   --color-cream: var(--cream);
@@ -39,6 +71,9 @@
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-muted-on-navy: var(--muted-on-navy);
+  --color-on-dark: var(--on-dark);
+  --color-chip-bg: var(--chip-bg);
+  --color-chip-muted: var(--chip-muted);
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
@@ -176,19 +211,23 @@ body {
   }
 }
 
+/* O cartão de contato é um "chip" claro fixo (ver tokens no topo): os
+   campos usam as mesmas cores fixas, não as que acompanham o tema, senão
+   viram texto escuro sobre fundo escuro quando o site troca para o modo
+   escuro. */
 .field-input {
   width: 100%;
   border-radius: 0.75rem;
-  border: 1px solid var(--line);
-  background: var(--paper);
+  border: 1px solid var(--chip-line);
+  background: var(--chip-bg);
   padding: 0.7rem 0.9rem;
   font-size: 0.9375rem;
-  color: var(--ink);
+  color: var(--navy);
   transition: border-color 0.2s ease;
 }
 
 .field-input::placeholder {
-  color: var(--muted);
+  color: var(--chip-muted);
   opacity: 0.7;
 }
 
