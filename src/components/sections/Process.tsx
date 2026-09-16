@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { Reveal } from "@/components/ui/Reveal";
+import { ProcessSteps } from "@/components/sections/ProcessSteps";
 
 export function Process({ dict }: { dict: Dictionary }) {
   return (
@@ -35,35 +36,7 @@ export function Process({ dict }: { dict: Dictionary }) {
             </Reveal>
           </div>
 
-          <ol className="flex flex-col">
-            {dict.process.steps.map((step, i) => (
-              <Reveal key={step.title} delay={i * 0.07}>
-                <li
-                  className="flex gap-5 py-6"
-                  style={{
-                    borderTop: "1px solid var(--line)",
-                    borderBottom:
-                      i === dict.process.steps.length - 1 ? "1px solid var(--line)" : undefined,
-                  }}
-                >
-                  <span
-                    className="type-display text-2xl shrink-0 w-10"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    0{i + 1}
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-base" style={{ color: "var(--ink)" }}>
-                      {step.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                      {step.description}
-                    </p>
-                  </div>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
+          <ProcessSteps steps={dict.process.steps} />
         </div>
       </div>
     </section>

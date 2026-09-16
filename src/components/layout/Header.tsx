@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import type { Locale } from "@/i18n/config";
@@ -11,15 +11,35 @@ import { MobileMenu } from "@/components/layout/MobileMenu";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [floating, setFloating] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > 8);
+    let scheduled = false;
+
+    function measure() {
+      const nav = navRef.current;
+      const hero = document.querySelector<HTMLElement>("[data-hero]");
+      const isFloating = hero
+        ? hero.getBoundingClientRect().bottom <= (nav?.offsetHeight ?? 0)
+        : window.scrollY > 80;
+      setFloating(isFloating);
+      scheduled = false;
     }
-    onScroll();
+
+    function onScroll() {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(measure);
+    }
+
+    measure();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   const links = [
@@ -30,24 +50,21 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
   return (
     <>
-      <header
-        className="sticky top-0 z-50 transition-colors duration-300"
-        style={{
-          background: scrolled ? "rgba(250, 246, 238, 0.88)" : "transparent",
-          backdropFilter: scrolled ? "blur(10px)" : "none",
-          borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
-        }}
-      >
-        <div className="container-level flex items-center justify-between py-4">
-          <Logo locale={locale} />
+      <header className="nav-shell" data-floating={floating} ref={navRef}>
+        <div className="nav-inner container-level py-2.5">
+          <div className="nav-surface" aria-hidden="true" />
+
+          <Logo locale={locale} dark />
 
           <nav className="hidden lg:flex items-center gap-8">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity"
-                style={{ color: "var(--ink)" }}
+                className="text-sm font-medium tracking-wide transition-colors"
+                style={{ color: "var(--muted-on-navy)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--paper)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted-on-navy)")}
               >
                 {link.label}
               </Link>
@@ -56,12 +73,12 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
           <div className="flex items-center gap-2 sm:gap-4">
             <div className="hidden sm:block">
-              <LocaleSwitcher locale={locale} />
+              <LocaleSwitcher locale={locale} dark />
             </div>
             <Link
               href={`/${locale}/#contact`}
-              className="hidden lg:inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold transition-opacity hover:opacity-85"
-              style={{ background: "var(--navy)", color: "var(--paper)" }}
+              className="hidden lg:inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold transition-transform hover:scale-[1.03]"
+              style={{ background: "var(--accent)", color: "var(--navy)" }}
             >
               {dict.nav.cta}
             </Link>
@@ -70,9 +87,9 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               onClick={() => setOpen(true)}
               aria-label={dict.nav.menuOpen}
               className="p-2 -mr-2 lg:hidden cursor-pointer"
-              style={{ color: "var(--ink)" }}
+              style={{ color: "var(--paper)" }}
             >
-              <Menu size={24} />
+              <Menu size={22} />
             </button>
           </div>
         </div>

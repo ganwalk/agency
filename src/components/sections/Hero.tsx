@@ -27,7 +27,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   // verticalmente, sem nenhuma transição automática de posição.
   if (reduced) {
     return (
-      <section>
+      <section data-hero>
         <HeroSimplePanel locale={locale} s={s} minHeight="90dvh" />
         <HeroRichPanel locale={locale} r={r} minHeight="90dvh" />
       </section>
@@ -35,7 +35,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }
 
   return (
-    <section className="relative h-dvh overflow-hidden" style={{ background: "var(--paper)" }}>
+    <section data-hero className="relative h-dvh overflow-hidden" style={{ background: "var(--paper)" }}>
       <motion.div
         className="flex h-full"
         style={{ width: "200%" }}
