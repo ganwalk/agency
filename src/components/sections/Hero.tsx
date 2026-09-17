@@ -8,6 +8,7 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { HeroGuides, HERO_TIMELINE } from "@/components/sections/HeroGuides";
+import { HeroMondrian } from "@/components/sections/HeroMondrian";
 import { withBasePath } from "@/lib/site";
 import { noOrphan } from "@/lib/text";
 import { team } from "@/data/team";
@@ -59,14 +60,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         animate={reduced ? undefined : { opacity: 1 }}
         transition={{ duration: CONSOLIDATE_DURATION, delay: HERO_TIMELINE.holdEnd, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Image
-          src={withBasePath("/images/hero-rich.jpg")}
-          alt="Impression, Sunrise, Claude Monet"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        <HeroMondrian />
       </motion.div>
 
       <div
