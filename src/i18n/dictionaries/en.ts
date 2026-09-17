@@ -23,7 +23,7 @@ export const en: Dictionary = {
     sub: "Level is the complete team that redesigns outdated websites, platforms and workflows, from design to signed contract, for companies with no time to lose.",
     cta: "Talk to the team",
     card: {
-      title: "The partners",
+      title: "Who makes it happen",
       body: "Four partners, a single point of contact: from the first draft to the signed contract.",
       cta: "Meet the team",
     },

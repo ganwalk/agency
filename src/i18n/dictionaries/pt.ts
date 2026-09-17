@@ -23,7 +23,7 @@ export const pt = {
     sub: "Level é o time completo que redesenha sites, plataformas e fluxos desatualizados, do design ao contrato assinado, para empresas que não têm tempo a perder.",
     cta: "Fale com o time",
     card: {
-      title: "Os sócios",
+      title: "Quem faz acontecer",
       body: "Quatro sócios, um único ponto de contato: do primeiro rascunho ao contrato assinado.",
       cta: "Conheça o time",
     },

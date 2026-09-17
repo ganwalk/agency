@@ -161,26 +161,40 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             animate={reduced ? undefined : { opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.55, delay: 2.0, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="flex -space-x-3" aria-hidden="true">
-              {team.map((member) => (
-                <div
-                  key={member.slug}
-                  className="relative w-10 h-10 rounded-full overflow-hidden"
-                  style={{ boxShadow: "0 0 0 2px var(--chip-bg)" }}
-                >
-                  <Image
-                    src={withBasePath(member.photo)}
-                    alt=""
-                    fill
-                    sizes="40px"
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+            <div className="flex items-start justify-between gap-4">
+              <h2 className="type-display text-xl" style={{ color: "var(--navy)" }}>
+                {noOrphan(h.card.title)}
+              </h2>
+              <div className="flex -space-x-1.5 shrink-0 pt-0.5">
+                {team.map((member) => (
+                  <div key={member.slug} className="group relative">
+                    <div
+                      className="relative w-9 h-9 rounded-full overflow-hidden transition-transform duration-200 group-hover:z-20 group-hover:-translate-y-0.5"
+                      style={{ boxShadow: "0 0 0 2px var(--chip-bg)" }}
+                    >
+                      <Image
+                        src={withBasePath(member.photo)}
+                        alt={member.name}
+                        fill
+                        sizes="36px"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div
+                      className="pointer-events-none absolute bottom-full right-0 z-30 mb-2 w-max max-w-[170px] origin-bottom-right scale-95 rounded-lg px-3 py-2 text-xs opacity-0 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100"
+                      style={{
+                        background: "var(--navy)",
+                        color: "var(--on-dark)",
+                        boxShadow: "0 8px 20px rgba(17,20,28,0.25)",
+                      }}
+                    >
+                      <p className="font-semibold whitespace-nowrap">{member.name}</p>
+                      <p style={{ color: "var(--muted-on-navy)" }}>{member.role[locale]}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <h2 className="type-display text-xl mt-4" style={{ color: "var(--navy)" }}>
-              {noOrphan(h.card.title)}
-            </h2>
             <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--chip-muted)" }}>
               {h.card.body}
             </p>

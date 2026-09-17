@@ -23,7 +23,7 @@ export const es: Dictionary = {
     sub: "Level es el equipo completo que rediseña sitios, plataformas y flujos desactualizados, desde el diseño hasta el contrato firmado, para empresas sin tiempo que perder.",
     cta: "Habla con el equipo",
     card: {
-      title: "Los socios",
+      title: "Quién lo hace pasar",
       body: "Cuatro socios, un único punto de contacto: desde el primer boceto hasta el contrato firmado.",
       cta: "Conoce al equipo",
     },
