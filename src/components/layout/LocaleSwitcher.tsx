@@ -13,7 +13,15 @@ function pathForLocale(pathname: string, target: Locale): string {
   return `/${segments.join("/")}/`;
 }
 
-export function LocaleSwitcher({ locale, dark = false }: { locale: Locale; dark?: boolean }) {
+export function LocaleSwitcher({
+  locale,
+  dark = false,
+  openUpward = false,
+}: {
+  locale: Locale;
+  dark?: boolean;
+  openUpward?: boolean;
+}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -48,7 +56,9 @@ export function LocaleSwitcher({ locale, dark = false }: { locale: Locale; dark?
       {open && (
         <ul
           role="listbox"
-          className="absolute right-0 mt-2 min-w-36 rounded-xl border py-1.5 shadow-lg z-50"
+          className={`absolute right-0 min-w-36 rounded-xl border py-1.5 shadow-lg z-50 ${
+            openUpward ? "bottom-full mb-2" : "mt-2"
+          }`}
           style={{
             background: "var(--paper)",
             borderColor: "var(--line)",

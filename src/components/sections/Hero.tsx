@@ -10,6 +10,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import { HeroGuides, HERO_TIMELINE } from "@/components/sections/HeroGuides";
 import { withBasePath } from "@/lib/site";
 import { noOrphan } from "@/lib/text";
+import { team } from "@/data/team";
 
 // Sem slide: o quadro só aparece depois que as âncoras de design terminam de
 // posicionar o conteúdo, nunca ao mesmo tempo. As três fases (montagem,
@@ -26,6 +27,22 @@ const CONSOLIDATE_DURATION = HERO_TIMELINE.end - HERO_TIMELINE.holdEnd;
 // nem para "transparent" (não tem canais de cor pra interpolar).
 const HEADLINE_FILL = "#ffffff";
 const HEADLINE_TRANSPARENT = "rgba(255, 255, 255, 0)";
+
+// Quebra antes da última palavra do título do card: um <br/> de verdade,
+// não só um espaço inseparável (noOrphan), porque aqui o ponto de quebra é
+// uma escolha de composição, não só evitar órfã. Cai pra o texto inteiro
+// se não achar espaço (ex.: zh, sem espaço entre palavras).
+function breakBeforeLastWord(text: string) {
+  const lastSpace = text.lastIndexOf(" ");
+  if (lastSpace === -1) return text;
+  return (
+    <>
+      {text.slice(0, lastSpace)}
+      <br />
+      {text.slice(lastSpace + 1)}
+    </>
+  );
+}
 
 export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const reduced = useReducedMotion();
@@ -65,23 +82,18 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <div className="container-level relative z-10 w-full pb-14 sm:pb-16 lg:pb-20">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
           <div className="max-w-xl">
-            <motion.p
-              className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
-              style={{ color: "var(--muted-on-navy)" }}
-              initial={reduced ? undefined : { opacity: 0, y: 12 }}
-              animate={reduced ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {h.eyebrow}
-            </motion.p>
             <motion.h1
-              className="type-display text-4xl sm:text-5xl lg:text-6xl"
+              className="type-display text-4xl sm:text-5xl lg:text-6xl leading-[1.22] sm:leading-[1.02]"
               style={
                 reduced
                   ? { color: "var(--on-dark)" }
                   : { WebkitTextStrokeWidth: "1.3px", WebkitTextStrokeColor: "var(--on-dark)" }
               }
-              initial={reduced ? undefined : { opacity: 0, color: HEADLINE_TRANSPARENT }}
+              initial={
+                reduced
+                  ? undefined
+                  : { opacity: 0, color: HEADLINE_TRANSPARENT, letterSpacing: "0.05em" }
+              }
               animate={
                 reduced
                   ? undefined
@@ -94,6 +106,15 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                         HEADLINE_TRANSPARENT,
                         HEADLINE_FILL,
                       ],
+                      // Letras mais espaçadas enquanto é só contorno: junto
+                      // do peso 800 do type-display, o traçado de cada letra
+                      // encosta no da vizinha e cria interseções (um "X"
+                      // onde as bordas se cruzam) que não existem depois,
+                      // preenchido. O espaçamento aperta pro valor final
+                      // (-0.03em, do type-display) bem na hora em que o
+                      // preenchimento chega, então a letra "assenta" no
+                      // lugar junto com o resto da consolidação.
+                      letterSpacing: ["0.05em", "0.05em", "0.05em", "0.05em", "-0.03em"],
                     }
               }
               transition={
@@ -147,9 +168,40 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             animate={reduced ? undefined : { opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.55, delay: 2.0, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="type-display text-xl" style={{ color: "var(--navy)" }}>
-              {noOrphan(h.card.title)}
-            </h2>
+            <div className="flex items-start justify-between gap-4">
+              <h2 className="type-display text-xl" style={{ color: "var(--navy)" }}>
+                {breakBeforeLastWord(h.card.title)}
+              </h2>
+              <div className="flex -space-x-1.5 shrink-0 pt-0.5">
+                {team.map((member) => (
+                  <div key={member.slug} className="group relative">
+                    <div
+                      className="relative w-9 h-9 rounded-full overflow-hidden transition-transform duration-200 group-hover:z-20 group-hover:-translate-y-0.5"
+                      style={{ boxShadow: "0 0 0 2px var(--chip-bg)" }}
+                    >
+                      <Image
+                        src={withBasePath(member.photo)}
+                        alt={member.name}
+                        fill
+                        sizes="36px"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div
+                      className="pointer-events-none absolute bottom-full right-0 z-30 mb-2 w-max max-w-[170px] origin-bottom-right scale-95 rounded-lg px-3 py-2 text-xs opacity-0 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100"
+                      style={{
+                        background: "var(--navy)",
+                        color: "var(--on-dark)",
+                        boxShadow: "0 8px 20px rgba(17,20,28,0.25)",
+                      }}
+                    >
+                      <p className="font-semibold whitespace-nowrap">{member.name}</p>
+                      <p style={{ color: "var(--muted-on-navy)" }}>{member.role[locale]}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
             <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--chip-muted)" }}>
               {h.card.body}
             </p>

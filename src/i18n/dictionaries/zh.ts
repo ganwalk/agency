@@ -23,7 +23,7 @@ export const zh: Dictionary = {
     sub: "Level 是一个完整的团队，为您重新设计过时的网站、平台与业务流程，从设计到合同签署，专为没有时间可以浪费的企业而生。",
     cta: "联系团队",
     card: {
-      title: "梦幻团队",
+      title: "让一切发生的人",
       body: "四位合伙人，一个联系窗口：从最初的草案到签署的合同。",
       cta: "认识团队",
     },
@@ -51,7 +51,7 @@ export const zh: Dictionary = {
   },
   about: {
     eyebrow: "关于我们",
-    title: "Level 背后的梦幻团队",
+    title: "Level 背后的合伙人",
     intro:
       "我们是四位合伙人，各自在所属领域都是佼佼者，共同致力于同一个项目：交付大型科技公司、律师事务所与管理咨询公司分别才能提供、且价格高昂的服务。",
     linkedinLabel: "领英",

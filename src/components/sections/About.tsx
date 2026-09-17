@@ -14,12 +14,6 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <div className="container-level">
         <Reveal>
           <div className="max-w-2xl">
-            <p
-              className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
-              style={{ color: "var(--ink)" }}
-            >
-              {dict.about.eyebrow}
-            </p>
             <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--ink)" }}>
               {noOrphan(dict.about.title)}
             </h2>
