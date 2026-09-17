@@ -89,11 +89,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                   ? { color: "var(--on-dark)" }
                   : { WebkitTextStrokeWidth: "1.3px", WebkitTextStrokeColor: "var(--on-dark)" }
               }
-              initial={
-                reduced
-                  ? undefined
-                  : { opacity: 0, color: HEADLINE_TRANSPARENT, letterSpacing: "0.05em" }
-              }
+              initial={reduced ? undefined : { opacity: 0, color: HEADLINE_TRANSPARENT }}
               animate={
                 reduced
                   ? undefined
@@ -106,15 +102,6 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                         HEADLINE_TRANSPARENT,
                         HEADLINE_FILL,
                       ],
-                      // Letras mais espaçadas enquanto é só contorno: junto
-                      // do peso 800 do type-display, o traçado de cada letra
-                      // encosta no da vizinha e cria interseções (um "X"
-                      // onde as bordas se cruzam) que não existem depois,
-                      // preenchido. O espaçamento aperta pro valor final
-                      // (-0.03em, do type-display) bem na hora em que o
-                      // preenchimento chega, então a letra "assenta" no
-                      // lugar junto com o resto da consolidação.
-                      letterSpacing: ["0.05em", "0.05em", "0.05em", "0.05em", "-0.03em"],
                     }
               }
               transition={
