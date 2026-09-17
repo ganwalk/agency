@@ -60,10 +60,19 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
             return (
               <Reveal key={service.slug} delay={i * 0.06} className={spanClass || undefined}>
                 <article
-                  className={`h-full rounded-2xl p-6 flex gap-4 ${wide ? "flex-col sm:flex-row sm:items-start" : "flex-col"}`}
+                  className={`relative h-full overflow-hidden rounded-2xl p-6 flex gap-4 ${wide ? "flex-col sm:flex-row sm:items-start" : "flex-col"}`}
                   style={{ background: "var(--paper)" }}
                 >
-                  <div className="flex items-center gap-3 sm:block">
+                  {(wide || tall) && (
+                    <HugeiconsIcon
+                      icon={icons[service.icon]}
+                      size={tall ? 190 : 130}
+                      color="var(--line)"
+                      className="absolute -right-6 -bottom-6 pointer-events-none hidden sm:block"
+                      aria-hidden="true"
+                    />
+                  )}
+                  <div className="relative z-10 flex items-center gap-3 sm:block">
                     <div
                       className="flex items-center justify-center w-11 h-11 rounded-xl shrink-0"
                       style={{ background: "var(--navy)" }}
@@ -78,7 +87,7 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
                       0{i + 1}
                     </span>
                   </div>
-                  <div className={`flex flex-col gap-2 ${tall ? "sm:justify-between sm:flex-1" : ""}`}>
+                  <div className={`relative z-10 flex flex-col gap-2 ${tall ? "sm:justify-between sm:flex-1" : ""}`}>
                     <span
                       className="hidden sm:block font-mono text-xs"
                       style={{ color: "var(--muted)" }}
