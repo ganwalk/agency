@@ -22,9 +22,9 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     function measure() {
       const nav = navRef.current;
       const hero = document.querySelector<HTMLElement>("[data-hero]");
-      const isFloating = hero
-        ? hero.getBoundingClientRect().bottom <= (nav?.offsetHeight ?? 0)
-        : window.scrollY > 80;
+      // Sem hero (páginas legais), não existe fase "sobre o quadro": o menu
+      // já nasce flutuante, com fundo, desde o primeiro pixel.
+      const isFloating = hero ? hero.getBoundingClientRect().bottom <= (nav?.offsetHeight ?? 0) : true;
       setFloating(isFloating);
       scheduled = false;
     }
@@ -45,9 +45,9 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }, []);
 
   const links = [
-    { href: `/${locale}/#team`, label: dict.nav.team },
     { href: `/${locale}/#services`, label: dict.nav.services },
     { href: `/${locale}/#process`, label: dict.nav.process },
+    { href: `/${locale}/#team`, label: dict.nav.team },
   ];
 
   return (
