@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Menu01Icon } from "@hugeicons/core-free-icons";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { Logo } from "@/components/layout/Logo";
@@ -82,7 +83,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <Link
               href={`/${locale}/#contact`}
               className="hidden lg:inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold transition-transform hover:scale-[1.03]"
-              style={{ background: "var(--accent)", color: "var(--navy)" }}
+              style={{ background: "var(--on-dark)", color: "var(--navy)" }}
             >
               {dict.nav.cta}
             </Link>
@@ -93,7 +94,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               className="p-2 -mr-2 lg:hidden cursor-pointer"
               style={{ color: "var(--on-dark)" }}
             >
-              <Menu size={22} />
+              <HugeiconsIcon icon={Menu01Icon} size={22} />
             </button>
           </div>
         </div>

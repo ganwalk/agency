@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Github, Linkedin, Instagram } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { GithubIcon, LinkedinIcon, InstagramIcon } from "@hugeicons/core-free-icons";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { Logo } from "@/components/layout/Logo";
@@ -26,7 +27,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 style={{ color: "var(--muted-on-navy)" }}
                 className="hover:opacity-70 transition-opacity"
               >
-                <Linkedin size={18} />
+                <HugeiconsIcon icon={LinkedinIcon} size={18} />
               </a>
               <a
                 href={contact.instagram}
@@ -36,7 +37,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 style={{ color: "var(--muted-on-navy)" }}
                 className="hover:opacity-70 transition-opacity"
               >
-                <Instagram size={18} />
+                <HugeiconsIcon icon={InstagramIcon} size={18} />
               </a>
               <a
                 href={contact.github}
@@ -46,7 +47,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 style={{ color: "var(--muted-on-navy)" }}
                 className="hover:opacity-70 transition-opacity"
               >
-                <Github size={18} />
+                <HugeiconsIcon icon={GithubIcon} size={18} />
               </a>
             </div>
           </div>

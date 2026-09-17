@@ -17,7 +17,7 @@ export function Positioning({ dict }: { dict: Dictionary }) {
           {dict.positioning.items.map((item, i) => (
             <Reveal key={item.title} delay={i * 0.06}>
               <div className="border-t pt-4" style={{ borderColor: "var(--line)" }}>
-                <span className="text-xs font-mono" style={{ color: "var(--accent)" }}>
+                <span className="text-xs font-mono" style={{ color: "var(--ink)" }}>
                   0{i + 1}
                 </span>
                 <h3 className="mt-2 font-semibold text-sm sm:text-base" style={{ color: "var(--ink)" }}>

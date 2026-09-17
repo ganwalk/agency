@@ -36,7 +36,7 @@ export function ProcessSteps({ steps }: { steps: readonly Step[] }) {
         style={{ color: "var(--muted)" }}
         aria-hidden="true"
       >
-        <span style={{ color: "var(--accent)" }}>{String(active + 1).padStart(2, "0")}</span>
+        <span style={{ color: "var(--ink)" }}>{String(active + 1).padStart(2, "0")}</span>
         <span>/ {String(steps.length).padStart(2, "0")}</span>
       </div>
       <ol className="flex flex-col">
@@ -56,7 +56,7 @@ export function ProcessSteps({ steps }: { steps: readonly Step[] }) {
               >
                 <span
                   className="type-display text-2xl shrink-0 w-10 transition-colors duration-300"
-                  style={{ color: isActive ? "var(--accent)" : "var(--line)" }}
+                  style={{ color: isActive ? "var(--ink)" : "var(--line)" }}
                 >
                   0{i + 1}
                 </span>

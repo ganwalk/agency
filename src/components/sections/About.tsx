@@ -1,105 +1,79 @@
 import Image from "next/image";
-import { Linkedin } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { LinkedinIcon } from "@hugeicons/core-free-icons";
 import type { Dictionary } from "@/i18n/dictionaries";
-import { team, type TeamMember } from "@/data/team";
+import { team } from "@/data/team";
 import type { Locale } from "@/i18n/config";
 import { Reveal } from "@/components/ui/Reveal";
-
-const accentVar: Record<TeamMember["accent"], string> = {
-  amber: "var(--accent-amber)",
-  moss: "var(--accent-moss)",
-  terracotta: "var(--accent-terracotta)",
-  teal: "var(--accent-teal)",
-};
+import { withBasePath } from "@/lib/site";
 
 export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
     <section id="team" className="section-pad" style={{ background: "var(--paper)" }}>
       <div className="container-level">
-        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-start">
-          <div className="lg:sticky lg:top-28">
-            <Reveal>
-              <p
-                className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
-                style={{ color: "var(--accent)" }}
-              >
-                {dict.about.eyebrow}
-              </p>
-              <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--ink)" }}>
-                {dict.about.title}
-              </h2>
-              <p className="mt-6 text-base sm:text-lg leading-relaxed max-w-md" style={{ color: "var(--muted)" }}>
-                {dict.about.intro}
-              </p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div className="mt-8 relative aspect-4/3 rounded-2xl overflow-hidden hidden lg:block">
-                <Image
-                  src="/images/about-office.jpg"
-                  alt=""
-                  fill
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            </Reveal>
+        <Reveal>
+          <div className="max-w-2xl">
+            <p
+              className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
+              style={{ color: "var(--ink)" }}
+            >
+              {dict.about.eyebrow}
+            </p>
+            <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--ink)" }}>
+              {dict.about.title}
+            </h2>
+            <p className="mt-6 text-base sm:text-lg leading-relaxed max-w-md" style={{ color: "var(--muted)" }}>
+              {dict.about.intro}
+            </p>
           </div>
+        </Reveal>
 
-          <div className="grid sm:grid-cols-2 gap-5">
-            {team.map((member, i) => (
-              <Reveal key={member.slug} delay={i * 0.08}>
-                <article
-                  className="h-full rounded-2xl overflow-hidden flex flex-col"
-                  style={{ background: "var(--cream)" }}
-                >
-                  <div className="relative aspect-4/5">
-                    <Image
-                      src={member.photo}
-                      alt={member.name}
-                      fill
-                      sizes="(min-width: 640px) 25vw, 50vw"
-                      className="object-cover"
-                    />
-                    <div
-                      className="absolute inset-0"
-                      style={{ background: accentVar[member.accent], mixBlendMode: "multiply", opacity: 0.24 }}
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <div className="p-6 flex flex-col gap-3 flex-1">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <h3 className="font-semibold text-base" style={{ color: "var(--ink)" }}>
-                          {member.name}
-                        </h3>
-                        <p
-                          className="text-sm font-medium mt-0.5"
-                          style={{ color: accentVar[member.accent] }}
-                        >
-                          {member.role[locale]}
-                        </p>
-                      </div>
-                      {member.linkedin && (
-                        <a
-                          href={member.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={dict.about.linkedinLabel}
-                          className="p-1.5 -m-1.5 rounded-full hover:opacity-60 transition-opacity shrink-0"
-                          style={{ color: "var(--muted)" }}
-                        >
-                          <Linkedin size={18} />
-                        </a>
-                      )}
+        <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-5">
+          {team.map((member, i) => (
+            <Reveal key={member.slug} delay={i * 0.08}>
+              <article
+                className="h-full rounded-2xl overflow-hidden flex flex-col"
+                style={{ background: "var(--cream)" }}
+              >
+                <div className="relative aspect-3/4">
+                  <Image
+                    src={withBasePath(member.photo)}
+                    alt={member.name}
+                    fill
+                    sizes="(min-width: 1024px) 22vw, 45vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4 sm:p-5 flex flex-col gap-2 flex-1">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <h3 className="font-semibold text-sm sm:text-base" style={{ color: "var(--ink)" }}>
+                        {member.name}
+                      </h3>
+                      <p className="text-xs sm:text-sm mt-0.5" style={{ color: "var(--muted)" }}>
+                        {member.role[locale]}
+                      </p>
                     </div>
-                    <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                      {member.bio[locale]}
-                    </p>
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={dict.about.linkedinLabel}
+                        className="p-1.5 -m-1.5 rounded-full hover:opacity-60 transition-opacity shrink-0"
+                        style={{ color: "var(--muted)" }}
+                      >
+                        <HugeiconsIcon icon={LinkedinIcon} size={16} />
+                      </a>
+                    )}
                   </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+                  <p className="hidden sm:block text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
+                    {member.bio[locale]}
+                  </p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

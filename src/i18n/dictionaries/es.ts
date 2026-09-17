@@ -16,25 +16,16 @@ export const es: Dictionary = {
     menuClose: "Cerrar menú",
   },
   hero: {
-    simple: {
-      eyebrow: "Diseño · Ingeniería · Derecho · Gestión",
-      headlinePre: "El próximo ",
-      headlineHighlight: "nivel",
-      headlinePost: " de tu negocio digital",
-      sub: "Level es el equipo completo que rediseña sitios, plataformas y flujos desactualizados, desde el diseño hasta el contrato firmado, para empresas sin tiempo que perder.",
-      cta: "Habla con el equipo",
-      scrollHint: "Desliza para ver más",
-    },
-    rich: {
-      eyebrow: "Un equipo, cuatro especialidades",
-      headline: "Diseño, ingeniería, derecho y gestión, en un solo equipo",
-      sub: "Entregamos plataformas hermosas, 100% funcionales y listas para escalar, sin dejar nada pendiente.",
-      card: {
-        title: "Dream team",
-        body: "Cuatro socios, un único punto de contacto: desde el primer boceto hasta el contrato firmado.",
-        cta: "Conoce al equipo",
-      },
-      cta: "Iniciar un proyecto",
+    eyebrow: "Diseño · Ingeniería · Derecho · Gestión",
+    headlinePre: "El próximo ",
+    headlineHighlight: "nivel",
+    headlinePost: " de tu negocio digital",
+    sub: "Level es el equipo completo que rediseña sitios, plataformas y flujos desactualizados, desde el diseño hasta el contrato firmado, para empresas sin tiempo que perder.",
+    cta: "Habla con el equipo",
+    card: {
+      title: "Dream team",
+      body: "Cuatro socios, un único punto de contacto: desde el primer boceto hasta el contrato firmado.",
+      cta: "Conoce al equipo",
     },
   },
   positioning: {

@@ -16,25 +16,16 @@ export const pt = {
     menuClose: "Fechar menu",
   },
   hero: {
-    simple: {
-      eyebrow: "Design · Engenharia · Direito · Gestão",
-      headlinePre: "O próximo ",
-      headlineHighlight: "nível",
-      headlinePost: " do seu negócio digital",
-      sub: "Level é o time completo que redesenha sites, plataformas e fluxos desatualizados, do design ao contrato assinado, para empresas que não têm tempo a perder.",
-      cta: "Fale com o time",
-      scrollHint: "Deslize para ver mais",
-    },
-    rich: {
-      eyebrow: "Um time, quatro especialidades",
-      headline: "Design, engenharia, direito e gestão, numa equipe só",
-      sub: "Entregamos plataformas bonitas, 100% funcionais e prontas para escalar, sem deixar nenhuma pendência para trás.",
-      card: {
-        title: "Dream team",
-        body: "Quatro sócios, um único ponto de contato: do primeiro rascunho ao contrato assinado.",
-        cta: "Conheça o time",
-      },
-      cta: "Iniciar um projeto",
+    eyebrow: "Design · Engenharia · Direito · Gestão",
+    headlinePre: "O próximo ",
+    headlineHighlight: "nível",
+    headlinePost: " do seu negócio digital",
+    sub: "Level é o time completo que redesenha sites, plataformas e fluxos desatualizados, do design ao contrato assinado, para empresas que não têm tempo a perder.",
+    cta: "Fale com o time",
+    card: {
+      title: "Dream team",
+      body: "Quatro sócios, um único ponto de contato: do primeiro rascunho ao contrato assinado.",
+      cta: "Conheça o time",
     },
   },
   positioning: {

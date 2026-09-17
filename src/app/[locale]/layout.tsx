@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import "@fontsource-variable/archivo";
-import "@fontsource-variable/fraunces/standard.css";
+import "@fontsource-variable/manrope";
 import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Providers } from "@/components/providers/Providers";
 import {
   locales,
@@ -74,6 +74,7 @@ export default async function LocaleLayout({
           <Header locale={locale} dict={dict} />
           <main>{children}</main>
           <Footer locale={locale} dict={dict} />
+          <FloatingWhatsApp label={dict.contact.direct.whatsapp} />
         </Providers>
       </body>
     </html>

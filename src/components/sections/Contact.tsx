@@ -2,10 +2,18 @@
 
 import { useState, type FormEvent, type ReactNode } from "react";
 import Image from "next/image";
-import { MessageCircle, Mail, Send } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import {
+  WhatsappIcon,
+  MailIcon,
+  SentIcon,
+  CheckmarkCircleIcon,
+  AlertCircleIcon,
+} from "@hugeicons/core-free-icons";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { Reveal } from "@/components/ui/Reveal";
 import { contact, web3FormsAccessKey } from "@/data/site";
+import { withBasePath } from "@/lib/site";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -41,7 +49,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
   return (
     <section id="contact" className="film-grain relative section-pad overflow-hidden" style={{ background: "var(--navy)" }}>
       <Image
-        src="/images/contact-skyline.jpg"
+        src={withBasePath("/images/contact-skyline.jpg")}
         alt=""
         fill
         sizes="100vw"
@@ -58,7 +66,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
             <Reveal>
               <p
                 className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
-                style={{ color: "var(--accent-soft)" }}
+                style={{ color: "var(--muted-on-navy)" }}
               >
                 {dict.contact.eyebrow}
               </p>
@@ -83,7 +91,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
                     className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:scale-[1.02]"
                     style={{ background: "var(--chip-bg)", color: "var(--navy)" }}
                   >
-                    <MessageCircle size={16} />
+                    <HugeiconsIcon icon={WhatsappIcon} size={16} />
                     {dict.contact.direct.whatsapp}
                   </a>
                   <a
@@ -91,7 +99,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
                     className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold border transition-colors hover:bg-white/10"
                     style={{ borderColor: "var(--navy-line)", color: "var(--on-dark)" }}
                   >
-                    <Mail size={16} />
+                    <HugeiconsIcon icon={MailIcon} size={16} />
                     {dict.contact.direct.email}
                   </a>
                 </div>
@@ -149,16 +157,24 @@ export function Contact({ dict }: { dict: Dictionary }) {
                 style={{ background: "var(--navy)", color: "var(--on-dark)" }}
               >
                 {status === "sending" ? f.sending : f.submit}
-                <Send size={15} />
+                <HugeiconsIcon icon={SentIcon} size={15} />
               </button>
 
               {status === "success" && (
-                <p className="text-sm font-medium" style={{ color: "var(--accent-moss)" }}>
+                <p
+                  className="flex items-center gap-1.5 text-sm font-medium"
+                  style={{ color: "var(--navy)" }}
+                >
+                  <HugeiconsIcon icon={CheckmarkCircleIcon} size={16} />
                   {f.success}
                 </p>
               )}
               {status === "error" && (
-                <p className="text-sm font-medium" style={{ color: "var(--accent-terracotta)" }}>
+                <p
+                  className="flex items-center gap-1.5 text-sm font-medium"
+                  style={{ color: "var(--navy)" }}
+                >
+                  <HugeiconsIcon icon={AlertCircleIcon} size={16} />
                   {f.error}
                 </p>
               )}
