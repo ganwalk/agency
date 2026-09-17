@@ -1,5 +1,6 @@
 import type { Dictionary } from "@/i18n/dictionaries";
 import { Reveal } from "@/components/ui/Reveal";
+import { noOrphan } from "@/lib/text";
 
 export function Positioning({ dict }: { dict: Dictionary }) {
   return (
@@ -10,7 +11,7 @@ export function Positioning({ dict }: { dict: Dictionary }) {
             className="text-xs sm:text-sm font-semibold tracking-[0.1em] uppercase mb-8"
             style={{ color: "var(--muted)" }}
           >
-            {dict.positioning.title}
+            {noOrphan(dict.positioning.title)}
           </p>
         </Reveal>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
@@ -21,7 +22,7 @@ export function Positioning({ dict }: { dict: Dictionary }) {
                   0{i + 1}
                 </span>
                 <h3 className="mt-2 font-semibold text-sm sm:text-base" style={{ color: "var(--ink)" }}>
-                  {item.title}
+                  {noOrphan(item.title)}
                 </h3>
                 <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
                   {item.description}

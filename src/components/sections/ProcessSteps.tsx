@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "@/components/ui/Reveal";
+import { noOrphan } from "@/lib/text";
 
 type Step = { readonly title: string; readonly description: string };
 
@@ -65,7 +66,7 @@ export function ProcessSteps({ steps }: { steps: readonly Step[] }) {
                     className="font-semibold text-base transition-colors duration-300"
                     style={{ color: isActive ? "var(--ink)" : "var(--muted)" }}
                   >
-                    {step.title}
+                    {noOrphan(step.title)}
                   </h3>
                   <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
                     {step.description}

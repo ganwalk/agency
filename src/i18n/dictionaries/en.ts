@@ -2,7 +2,7 @@ import type { Dictionary } from "./pt";
 
 export const en: Dictionary = {
   meta: {
-    title: "Level, Design, engineering, law and management in one team",
+    title: "Level: design, engineering, law and management, in one team",
     description:
       "We redesign outdated websites, platforms and workflows with design, engineering, law and management in a single team. High standard, from the brief to the signed contract.",
   },
@@ -29,7 +29,7 @@ export const en: Dictionary = {
     },
   },
   positioning: {
-    title: "Everything your company needs, in one team",
+    title: "The four fronts your company needs, without stacking vendors",
     items: [
       {
         title: "Product Design",

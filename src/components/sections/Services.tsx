@@ -11,6 +11,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/config";
 import { services, type Service } from "@/data/services";
 import { Reveal } from "@/components/ui/Reveal";
+import { noOrphan } from "@/lib/text";
 
 const icons: Record<Service["icon"], IconSvgElement> = {
   layout: LayoutIcon,
@@ -34,7 +35,7 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
               {dict.services.eyebrow}
             </p>
             <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--ink)" }}>
-              {dict.services.title}
+              {noOrphan(dict.services.title)}
             </h2>
             <p className="mt-6 text-base sm:text-lg leading-relaxed" style={{ color: "var(--muted)" }}>
               {dict.services.intro}
@@ -56,7 +57,7 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
                   <HugeiconsIcon icon={icons[service.icon]} size={20} color="var(--on-dark)" />
                 </div>
                 <h3 className="font-semibold text-base" style={{ color: "var(--ink)" }}>
-                  {service.title[locale]}
+                  {noOrphan(service.title[locale])}
                 </h3>
                 <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
                   {service.description[locale]}

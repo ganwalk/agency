@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { SunIcon, MoonIcon } from "@hugeicons/core-free-icons";
+import { SunIcon, Moon02Icon } from "@hugeicons/core-free-icons";
 
 // Cor sempre clara (var(--on-dark)): o botão vive no chrome escuro fixo
 // (header, menu mobile), que não muda com o tema do site.
@@ -33,7 +33,7 @@ export function ThemeToggle() {
       {mounted && isDark ? (
         <HugeiconsIcon icon={SunIcon} size={18} />
       ) : (
-        <HugeiconsIcon icon={MoonIcon} size={18} />
+        <HugeiconsIcon icon={Moon02Icon} size={18} />
       )}
     </button>
   );

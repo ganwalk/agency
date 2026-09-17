@@ -7,41 +7,42 @@
    ========================================================================== */
 
 :root {
-  /* Conteúdo: acompanha o tema (claro por padrão, ver .dark abaixo). */
-  --paper: #faf6ee;
-  --cream: #f2ead9;
-  --cream-soft: #e9dfc9;
-  --ink: #171a22;
-  --muted: #6b6455;
-  --line: rgba(23, 26, 34, 0.12);
+  /* Conteúdo: acompanha o tema (claro por padrão, ver .dark abaixo). Cinza
+     neutro em vez de bege: sem matiz quente em nenhum tom. */
+  --paper: #ffffff;
+  --cream: #f4f4f4;
+  --cream-soft: #e8e8e8;
+  --ink: #171a1f;
+  --muted: #66666b;
+  --line: rgba(23, 26, 31, 0.12);
 
   /* Chrome fixo: header, footer, menu mobile e a seção de contato são
      sempre escuros, em qualquer tema, então essas variáveis nunca mudam
      dentro de .dark. */
   --navy: #11141c;
   --navy-soft: #1b2030;
-  --navy-line: rgba(250, 246, 238, 0.14);
+  --navy-line: rgba(255, 255, 255, 0.14);
   --muted-on-navy: #9aa0b4;
-  --on-dark: #f2ead9;
+  --on-dark: #ffffff;
 
   /* "Chip" claro: cartões e botões que flutuam sobre o chrome escuro (o
      card da hero, o formulário de contato) ficam sempre claros, para não
      desaparecer contra o fundo escuro fixo quando o tema geral escurece. */
-  --chip-bg: #faf6ee;
-  --chip-muted: #6b6455;
-  --chip-line: rgba(23, 26, 34, 0.12);
+  --chip-bg: #ffffff;
+  --chip-muted: #66666b;
+  --chip-line: rgba(23, 26, 31, 0.12);
 
   --font-sans: "Manrope Variable", system-ui, sans-serif;
   --font-headline: "Manrope Variable", system-ui, sans-serif;
 }
 
 :root.dark {
-  --paper: #0e1017;
-  --cream: #171a22;
-  --cream-soft: #1f2330;
-  --ink: #f2ead9;
-  --muted: #9aa0b4;
-  --line: rgba(242, 234, 217, 0.12);
+  --paper: #0e0f13;
+  --cream: #17181f;
+  --cream-soft: #1f2028;
+  --ink: #ffffff;
+  --muted: #9a9aa2;
+  --line: rgba(255, 255, 255, 0.12);
 }
 
 @theme inline {
@@ -144,6 +145,31 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  transition: padding-inline 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Pílula flutuante: logo e botão ficam mais perto da borda arredondada,
+   acompanhando a curvatura, em vez do respiro amplo do modo cheio. */
+.nav-shell[data-floating="true"] .nav-inner {
+  padding-inline: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .nav-shell[data-floating="true"] .nav-inner {
+    padding-inline: 1.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-shell[data-floating="true"] .nav-inner {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-inner {
+    transition: none;
+  }
 }
 
 .nav-surface {
@@ -235,7 +261,7 @@ body {
 
 .design-canvas {
   background-color: var(--navy);
-  background-image: radial-gradient(rgba(242, 234, 217, 0.16) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 

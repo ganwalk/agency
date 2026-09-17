@@ -29,7 +29,7 @@ export const zh: Dictionary = {
     },
   },
   positioning: {
-    title: "您公司需要的一切，都在一个团队里",
+    title: "您企业所需的四大领域，无需拼凑多家供应商",
     items: [
       {
         title: "产品设计",

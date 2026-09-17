@@ -22,7 +22,7 @@ export default async function Image() {
           justifyContent: "center",
           padding: "90px",
           background: "#11141c",
-          color: "#faf6ee",
+          color: "#ffffff",
         }}
       >
         <div style={{ position: "relative", width: 90, height: 116, display: "flex", marginBottom: 30 }}>
@@ -35,7 +35,7 @@ export default async function Image() {
               width: 80,
               height: 80,
               borderRadius: "50%",
-              background: "#faf6ee",
+              background: "#ffffff",
             }}
           />
           <div
@@ -47,7 +47,7 @@ export default async function Image() {
               width: 80,
               height: 80,
               borderRadius: "50%",
-              border: "11px solid #faf6ee",
+              border: "11px solid #ffffff",
             }}
           />
         </div>

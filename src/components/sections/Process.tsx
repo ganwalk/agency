@@ -3,6 +3,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import { Reveal } from "@/components/ui/Reveal";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { withBasePath } from "@/lib/site";
+import { noOrphan } from "@/lib/text";
 
 export function Process({ dict }: { dict: Dictionary }) {
   return (
@@ -18,7 +19,7 @@ export function Process({ dict }: { dict: Dictionary }) {
                 {dict.process.eyebrow}
               </p>
               <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--ink)" }}>
-                {dict.process.title}
+                {noOrphan(dict.process.title)}
               </h2>
               <p className="mt-6 text-base sm:text-lg leading-relaxed max-w-md" style={{ color: "var(--muted)" }}>
                 {dict.process.intro}
