@@ -1,22 +1,47 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+} from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
 import { noOrphan } from "@/lib/text";
 
 type Step = { readonly title: string; readonly description: string };
 
-// Trilho vertical no mobile/tablet, horizontal a partir do desktop — a
-// mesma posição de rolagem decide o preenchimento do trilho e qual etapa
-// está "ativa" nas duas orientações, então não precisa de um mecanismo
-// separado por layout. Os nós ficam centralizados em colunas de largura
-// igual (sem gap, com padding em cada item) pra régua bater exatamente no
-// centro do primeiro ao último nó via um simples inset em porcentagem.
+const DESKTOP_QUERY = "(min-width: 1024px)";
+const DESKTOP_FILL_DURATION = 2.2;
+
+// Trilho vertical no mobile/tablet, horizontal a partir do desktop. No
+// mobile o trilho é alto o bastante pra vincular o preenchimento ao scroll
+// (scrubbing). No desktop o trilho é só uma fileira baixa, então a mesma
+// distância de scroll que preenche o trilho inteiro é curtinha e o
+// preenchimento "pula" em vez de animar — por isso lá a animação roda com
+// seu próprio tempo, uma vez, quando o trilho entra na tela. Os nós ficam
+// centralizados em colunas de largura igual (sem gap, com padding em cada
+// item) pra régua bater exatamente no centro do primeiro ao último nó via
+// um simples inset em porcentagem.
 export function ProcessSteps({ steps }: { steps: readonly Step[] }) {
-  const [active, setActive] = useState(0);
+  const [mobileActive, setMobileActive] = useState(0);
+  const [desktopActive, setDesktopActive] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== "undefined" && window.matchMedia(DESKTOP_QUERY).matches,
+  );
   const railRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+
+  useEffect(() => {
+    const mql = window.matchMedia(DESKTOP_QUERY);
+    const onChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: railRef,
@@ -25,9 +50,31 @@ export function ProcessSteps({ steps }: { steps: readonly Step[] }) {
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     const index = Math.min(steps.length - 1, Math.max(0, Math.floor(v * steps.length)));
-    setActive(index);
+    setMobileActive(index);
   });
 
+  const desktopProgress = useMotionValue(0);
+  const railInView = useInView(railRef, { once: true, amount: 0.6 });
+
+  useEffect(() => {
+    if (!railInView) return;
+    if (reduced) {
+      desktopProgress.set(1);
+      return;
+    }
+    const controls = animate(desktopProgress, 1, {
+      duration: DESKTOP_FILL_DURATION,
+      ease: [0.22, 1, 0.36, 1],
+    });
+    return () => controls.stop();
+  }, [railInView, reduced, desktopProgress]);
+
+  useMotionValueEvent(desktopProgress, "change", (v) => {
+    const index = Math.min(steps.length - 1, Math.max(0, Math.floor(v * steps.length)));
+    setDesktopActive(index);
+  });
+
+  const active = isDesktop ? desktopActive : mobileActive;
   const insetPercent = 100 / (steps.length * 2);
 
   return (
@@ -65,7 +112,7 @@ export function ProcessSteps({ steps }: { steps: readonly Step[] }) {
             left: `${insetPercent}%`,
             right: `${insetPercent}%`,
             background: "var(--ink)",
-            scaleX: reduced ? 1 : scrollYProgress,
+            scaleX: desktopProgress,
           }}
         />
 

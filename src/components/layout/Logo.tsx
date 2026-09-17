@@ -27,7 +27,7 @@ export function Logo({ locale, dark = false }: { locale: Locale; dark?: boolean 
         <Mark size={20} />
       </span>
       <span className="type-display text-xl tracking-tight" style={{ color }}>
-        Level
+        LeveL
       </span>
     </Link>
   );

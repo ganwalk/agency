@@ -40,7 +40,7 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
         >
           <div className="container-level flex items-center justify-between py-5">
             <span className="type-display text-xl" style={{ color: "var(--on-dark)" }}>
-              Level
+              LeveL
             </span>
             <button
               type="button"
