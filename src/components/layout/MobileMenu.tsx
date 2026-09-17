@@ -53,7 +53,7 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
             </button>
           </div>
 
-          <nav className="flex-1 flex flex-col items-center justify-center gap-3 px-6">
+          <nav className="flex-1 flex flex-col items-end justify-center gap-3 px-6">
             {links.map((link, i) => (
               <motion.div
                 key={link.href}
@@ -64,7 +64,7 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className="type-display text-4xl sm:text-5xl text-center"
+                  className="type-display text-4xl sm:text-5xl text-right"
                   style={{ color: "var(--on-dark)" }}
                 >
                   {link.label}
@@ -79,7 +79,7 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
             </span>
             <div className="flex items-center gap-3">
               <ThemeToggle />
-              <LocaleSwitcher locale={locale} dark />
+              <LocaleSwitcher locale={locale} dark openUpward />
             </div>
           </div>
         </motion.div>

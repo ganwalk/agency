@@ -82,15 +82,6 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <div className="container-level relative z-10 w-full pb-14 sm:pb-16 lg:pb-20">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
           <div className="max-w-xl">
-            <motion.p
-              className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
-              style={{ color: "var(--muted-on-navy)" }}
-              initial={reduced ? undefined : { opacity: 0, y: 12 }}
-              animate={reduced ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {h.eyebrow}
-            </motion.p>
             <motion.h1
               className="type-display text-4xl sm:text-5xl lg:text-6xl leading-[1.22] sm:leading-[1.02]"
               style={

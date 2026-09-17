@@ -65,12 +65,6 @@ export function Contact({ dict }: { dict: Dictionary }) {
         <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16">
           <div>
             <Reveal>
-              <p
-                className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
-                style={{ color: "var(--muted-on-navy)" }}
-              >
-                {dict.contact.eyebrow}
-              </p>
               <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--on-dark)" }}>
                 {noOrphan(dict.contact.title)}
               </h2>

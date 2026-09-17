@@ -91,7 +91,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               type="button"
               onClick={() => setOpen(true)}
               aria-label={dict.nav.menuOpen}
-              className="p-2 -mr-2 lg:hidden cursor-pointer"
+              className="p-2 lg:hidden cursor-pointer"
               style={{ color: "var(--on-dark)" }}
             >
               <HugeiconsIcon icon={Menu01Icon} size={22} />

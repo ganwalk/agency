@@ -12,12 +12,6 @@ export function Process({ dict }: { dict: Dictionary }) {
             ao lado. */}
         <div className="max-w-2xl">
           <Reveal>
-            <p
-              className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
-              style={{ color: "var(--ink)" }}
-            >
-              {dict.process.eyebrow}
-            </p>
             <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--ink)" }}>
               {noOrphan(dict.process.title)}
             </h2>

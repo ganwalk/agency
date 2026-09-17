@@ -1,29 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react";
-import {
-  LayoutIcon,
-  Layers01Icon,
-  ShoppingBag01Icon,
-  FlowIcon,
-  JusticeScale01Icon,
-  TradeUpIcon,
-} from "@hugeicons/core-free-icons";
 import type { Dictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/config";
-import { services, type Service } from "@/data/services";
+import { services } from "@/data/services";
 import { Reveal } from "@/components/ui/Reveal";
 import { noOrphan } from "@/lib/text";
-
-const icons: Record<Service["icon"], IconSvgElement> = {
-  layout: LayoutIcon,
-  layers: Layers01Icon,
-  "shopping-bag": ShoppingBag01Icon,
-  workflow: FlowIcon,
-  scale: JusticeScale01Icon,
-  "trending-up": TradeUpIcon,
-};
 
 // Coluna fixa com o argumento da dobra + lista numerada rolando ao lado,
 // no lugar da grade de cards: a versão em bento repetia o mesmo cartão seis
@@ -61,12 +43,6 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
         <div className="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-12 lg:gap-16 items-start">
           <div className="lg:sticky lg:top-28">
             <Reveal>
-              <p
-                className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
-                style={{ color: "var(--ink)" }}
-              >
-                {dict.services.eyebrow}
-              </p>
               <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--ink)" }}>
                 {noOrphan(dict.services.title)}
               </h2>
@@ -114,16 +90,6 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
                     </span>
 
                     <div className="flex flex-col gap-3">
-                      <div
-                        className="flex items-center justify-center w-9 h-9 rounded-lg shrink-0 transition-colors duration-300"
-                        style={{ background: isActive ? "var(--ink)" : "var(--line)" }}
-                      >
-                        <HugeiconsIcon
-                          icon={icons[service.icon]}
-                          size={17}
-                          color={isActive ? "var(--paper)" : "var(--muted)"}
-                        />
-                      </div>
                       <h3
                         className="font-semibold text-lg sm:text-xl transition-colors duration-300"
                         style={{ color: isActive ? "var(--ink)" : "var(--muted)" }}
