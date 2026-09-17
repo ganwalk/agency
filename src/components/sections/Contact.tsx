@@ -14,6 +14,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import { Reveal } from "@/components/ui/Reveal";
 import { contact, web3FormsAccessKey } from "@/data/site";
 import { withBasePath } from "@/lib/site";
+import { noOrphan } from "@/lib/text";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -71,7 +72,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
                 {dict.contact.eyebrow}
               </p>
               <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--on-dark)" }}>
-                {dict.contact.title}
+                {noOrphan(dict.contact.title)}
               </h2>
               <p className="mt-6 text-base sm:text-lg leading-relaxed max-w-md" style={{ color: "var(--on-dark)" }}>
                 {dict.contact.intro}

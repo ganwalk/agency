@@ -2,7 +2,7 @@
 // sozinho qualquer chave que falte nos outros três idiomas.
 export const pt = {
   meta: {
-    title: "Level, Design, engenharia, direito e gestão num time só",
+    title: "Level: design, engenharia, direito e gestão em uma equipe só",
     description:
       "Redesenhamos sites, plataformas e fluxos desatualizados com design, engenharia, direito e gestão numa equipe só. Alto padrão, do briefing ao contrato assinado.",
   },
@@ -11,7 +11,7 @@ export const pt = {
     services: "Serviços",
     process: "Como trabalhamos",
     contact: "Contato",
-    cta: "Fale com a gente",
+    cta: "Fale com o time",
     menuOpen: "Abrir menu",
     menuClose: "Fechar menu",
   },
@@ -29,7 +29,7 @@ export const pt = {
     },
   },
   positioning: {
-    title: "Tudo que sua empresa precisa, numa equipe só",
+    title: "As quatro frentes que sua empresa precisa, sem multiplicar fornecedores",
     items: [
       {
         title: "Design de Produto",

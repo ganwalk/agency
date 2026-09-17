@@ -3,6 +3,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowLeft01Icon } from "@hugeicons/core-free-icons";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
+import { noOrphan } from "@/lib/text";
 
 type LegalDoc = Dictionary["legal"]["privacy"] | Dictionary["legal"]["terms"];
 
@@ -35,7 +36,7 @@ export function LegalPage({
         </Link>
 
         <h1 className="type-display text-3xl sm:text-4xl" style={{ color: "var(--ink)" }}>
-          {doc.title}
+          {noOrphan(doc.title)}
         </h1>
         <p className="mt-3 text-sm" style={{ color: "var(--muted)" }}>
           {doc.updated}: {updatedAt[locale]}

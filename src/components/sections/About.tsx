@@ -6,6 +6,7 @@ import { team } from "@/data/team";
 import type { Locale } from "@/i18n/config";
 import { Reveal } from "@/components/ui/Reveal";
 import { withBasePath } from "@/lib/site";
+import { noOrphan } from "@/lib/text";
 
 export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
@@ -20,7 +21,7 @@ export function About({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {dict.about.eyebrow}
             </p>
             <h2 className="type-display text-3xl sm:text-4xl lg:text-5xl" style={{ color: "var(--ink)" }}>
-              {dict.about.title}
+              {noOrphan(dict.about.title)}
             </h2>
             <p className="mt-6 text-base sm:text-lg leading-relaxed max-w-md" style={{ color: "var(--muted)" }}>
               {dict.about.intro}

@@ -2,7 +2,7 @@ import type { Dictionary } from "./pt";
 
 export const es: Dictionary = {
   meta: {
-    title: "Level, Diseño, ingeniería, derecho y gestión en un solo equipo",
+    title: "Level: diseño, ingeniería, derecho y gestión en un solo equipo",
     description:
       "Rediseñamos sitios, plataformas y flujos desactualizados con diseño, ingeniería, derecho y gestión en un solo equipo. Alto estándar, desde el brief hasta el contrato firmado.",
   },
@@ -29,7 +29,7 @@ export const es: Dictionary = {
     },
   },
   positioning: {
-    title: "Todo lo que tu empresa necesita, en un solo equipo",
+    title: "Los cuatro frentes que tu empresa necesita, sin multiplicar proveedores",
     items: [
       {
         title: "Diseño de Producto",
