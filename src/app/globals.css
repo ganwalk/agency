@@ -154,16 +154,20 @@ body:not(:has([data-hero])) main {
 }
 
 /* Mesmo respiro da pílula flutuante o tempo todo, inclusive sobre a hero:
-   logo e botão já nascem perto da curvatura que a pílula vai assumir.
-   padding-inline igual ao py-2.5 (0.625rem) do nav-inner, pro botão da CTA
-   ficar equidistante do topo, da base e da borda direita da pílula. */
+   logo e botão já nascem perto da curvatura que a pílula vai assumir. À
+   direita, 0.625rem casa com o py-2.5 do nav-inner e deixa o botão da CTA
+   equidistante do topo, da base e da borda direita. À esquerda, a marca
+   (dois círculos, sem caixa de fundo) pede mais respiro que o botão
+   (que tem seu próprio fundo preenchido) pra ler como igualmente
+   equidistante — por isso o valor maior aqui. */
 .nav-inner {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding-inline: 0.625rem;
+  padding-left: 1rem;
+  padding-right: 0.625rem;
 }
 
 /* Sem fundo por padrão: sobre a hero, os itens do menu ficam direto por

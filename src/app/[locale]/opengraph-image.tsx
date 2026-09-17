@@ -25,13 +25,13 @@ export default async function Image() {
           color: "#ffffff",
         }}
       >
-        <div style={{ position: "relative", width: 90, height: 116, display: "flex", marginBottom: 30 }}>
+        <div style={{ position: "relative", width: 128, height: 128, display: "flex", marginBottom: 30 }}>
           <div
             style={{
               position: "absolute",
               display: "flex",
-              left: 5,
-              top: 36,
+              left: 36,
+              top: 12,
               width: 80,
               height: 80,
               borderRadius: "50%",
@@ -42,8 +42,8 @@ export default async function Image() {
             style={{
               position: "absolute",
               display: "flex",
-              left: 5,
-              top: 0,
+              left: 12,
+              top: 36,
               width: 80,
               height: 80,
               borderRadius: "50%",
