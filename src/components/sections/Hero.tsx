@@ -8,6 +8,7 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { HeroGuides, HERO_TIMELINE } from "@/components/sections/HeroGuides";
+import { HeroVideo } from "@/components/sections/HeroVideo";
 import { withBasePath } from "@/lib/site";
 import { noOrphan } from "@/lib/text";
 import { team } from "@/data/team";
@@ -59,14 +60,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         animate={reduced ? undefined : { opacity: 1 }}
         transition={{ duration: CONSOLIDATE_DURATION, delay: HERO_TIMELINE.holdEnd, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Image
-          src={withBasePath("/images/hero-rich.jpg")}
-          alt="Impression, Sunrise, Claude Monet"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        <HeroVideo />
       </motion.div>
 
       <div
@@ -194,14 +188,6 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--chip-muted)" }}>
               {h.card.body}
             </p>
-            <Link
-              href={`/${locale}/#team`}
-              className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold hover:opacity-70 transition-opacity"
-              style={{ color: "var(--navy)" }}
-            >
-              {h.card.cta}
-              <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
-            </Link>
           </motion.div>
         </div>
       </div>

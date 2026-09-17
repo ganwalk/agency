@@ -25,7 +25,6 @@ export const pt = {
     card: {
       title: "Quem faz acontecer",
       body: "Quatro especialistas, um único ponto de contato: do primeiro rascunho ao contrato assinado.",
-      cta: "Conheça o time",
     },
   },
   positioning: {
