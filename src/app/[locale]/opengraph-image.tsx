@@ -51,7 +51,7 @@ export default async function Image() {
             }}
           />
         </div>
-        <div style={{ display: "flex", fontSize: 96, fontWeight: 700, letterSpacing: -2 }}>Level</div>
+        <div style={{ display: "flex", fontSize: 96, fontWeight: 700, letterSpacing: -2 }}>LeveL</div>
         <div style={{ display: "flex", fontSize: 32, color: "#9aa0b4", marginTop: 20, maxWidth: 820 }}>
           Product design, engineering, law and business management, in one team
         </div>
