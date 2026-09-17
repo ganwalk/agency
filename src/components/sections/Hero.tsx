@@ -120,7 +120,9 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               }
             >
               {h.headlinePre}
-              <span className="underline decoration-2 underline-offset-8">{h.headlineHighlight}</span>
+              <span className="underline decoration-2 underline-offset-4 sm:underline-offset-8">
+                {h.headlineHighlight}
+              </span>
               {noOrphan(h.headlinePost)}
             </motion.h1>
             <motion.p
