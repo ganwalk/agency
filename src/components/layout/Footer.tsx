@@ -79,14 +79,14 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               <span className="text-xs font-semibold tracking-wide uppercase" style={{ color: "var(--muted-on-navy)" }}>
                 Level
               </span>
-              <Link href={`/${locale}/#team`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--on-dark)" }}>
-                {dict.nav.team}
-              </Link>
               <Link href={`/${locale}/#services`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--on-dark)" }}>
                 {dict.nav.services}
               </Link>
               <Link href={`/${locale}/#process`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--on-dark)" }}>
                 {dict.nav.process}
+              </Link>
+              <Link href={`/${locale}/#team`} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "var(--on-dark)" }}>
+                {dict.nav.team}
               </Link>
             </div>
 

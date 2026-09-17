@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import type { CSSProperties } from "react";
 
-// Marcas de "canvas de design" (cantos, mira, réguas, linha de varredura)
-// que montam a hero como se uma ferramenta de design estivesse posicionando
+// Marcas de "canvas de design" (cantos, mira, réguas) que montam a hero
+// como se uma ferramenta de design estivesse posicionando
 // o conteúdo, antes do quadro de fundo ser revelado. Toca uma vez, ao
 // montar, num relógio único (END) compartilhado com Hero.tsx: os elementos
 // somem exatamente na janela em que o quadro e o título consolidam (ver
@@ -185,29 +185,10 @@ function RulerTicks() {
   );
 }
 
-// Linha de varredura: passa uma vez pela hora inteira durante a fase de
-// espera, como um scanner medindo o layout, reforçando o dinamismo da
-// longa pausa antes do quadro consolidar.
-function ScanLine() {
-  const start = frac(1.3);
-  const end = frac(2.6);
-  return (
-    <motion.div
-      aria-hidden="true"
-      className="absolute left-0 right-0 h-px pointer-events-none"
-      style={{ background: GUIDE_COLOR, boxShadow: `0 0 12px 1px ${GUIDE_COLOR}` }}
-      initial={{ top: "4%", opacity: 0 }}
-      animate={{ top: ["4%", "4%", "92%", "92%"], opacity: [0, 0.7, 0.7, 0] }}
-      transition={{ duration: END, times: [0, start, end, end + 0.02] }}
-    />
-  );
-}
-
 export function HeroGuides() {
   return (
     <div className="hidden lg:block absolute inset-0 z-[15] pointer-events-none overflow-hidden" aria-hidden="true">
       <RulerTicks />
-      <ScanLine />
 
       <GuideLine orientation="h" style={{ top: "74%" }} inStart={0.5} inEnd={1.15} />
       <GuideLine orientation="v" style={{ left: "70.5%" }} inStart={0.65} inEnd={1.2} />

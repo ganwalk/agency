@@ -19,9 +19,9 @@ type Props = {
 
 export function MobileMenu({ open, onClose, locale, dict }: Props) {
   const links = [
-    { href: `/${locale}/#team`, label: dict.nav.team },
     { href: `/${locale}/#services`, label: dict.nav.services },
     { href: `/${locale}/#process`, label: dict.nav.process },
+    { href: `/${locale}/#team`, label: dict.nav.team },
     { href: `/${locale}/#contact`, label: dict.nav.contact },
   ];
 

@@ -125,6 +125,13 @@ body {
   }
 }
 
+/* O header é fixed e não reserva espaço (ver .nav-shell): a hero preenche
+   esse vão sozinha (h-dvh, começa em 0), mas uma página sem hero (legal/*)
+   precisa desse respiro pra não nascer atrás do menu flutuante. */
+body:not(:has([data-hero])) main {
+  padding-top: 4.5rem;
+}
+
 /* ==========================================================================
    NAV: faixa cheia sobre o hero que vira pílula flutuante depois dele.
    Inspirado em github.com/ProdutosAUVP/lp-recrutamento-consultoria: só a
@@ -132,9 +139,16 @@ body {
    transformação contínua, sem esmaecer.
    ========================================================================== */
 
+/* Fixo, não sticky: sticky reserva a própria altura no fluxo do documento,
+   empurrando a hero pra baixo e deixando uma tira em branco no lugar onde
+   devia estar o quadro. Fixo não reserva espaço, então a hero ocupa o
+   viewport inteiro (0 a 100dvh) e o menu flutua por cima dela desde o
+   primeiro pixel. */
 .nav-shell {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
   padding-block: 0.625rem;
 }
@@ -172,6 +186,12 @@ body {
   }
 }
 
+/* Sem fundo por padrão: sobre a hero, os itens do menu ficam direto por
+   cima do quadro (o overlay escuro da própria hero já garante contraste).
+   O vidro fosco só aparece depois que a hero sai de vista (ver
+   [data-floating]) — antes disso, um backdrop-filter aqui também acabava
+   borrando as guias de design da hero (réguas, mira) pra dentro da barra,
+   um artefato visual sem relação com o mouse.  */
 .nav-surface {
   position: absolute;
   z-index: 0;
@@ -179,18 +199,17 @@ body {
   bottom: -0.625rem;
   left: calc(-50vw + 50%);
   right: calc(-50vw + 50%);
-  background: rgba(17, 20, 28, 0.72);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  backdrop-filter: blur(18px) saturate(160%);
+  background: transparent;
   border-radius: 0;
-  box-shadow: 0 1px 0 var(--navy-line);
+  box-shadow: none;
   transition:
     top 0.5s cubic-bezier(0.32, 0.72, 0, 1),
     bottom 0.5s cubic-bezier(0.32, 0.72, 0, 1),
     left 0.5s cubic-bezier(0.32, 0.72, 0, 1),
     right 0.5s cubic-bezier(0.32, 0.72, 0, 1),
     border-radius 0.5s cubic-bezier(0.32, 0.72, 0, 1),
-    box-shadow 0.5s ease;
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .nav-shell[data-floating="true"] .nav-surface {
@@ -198,6 +217,9 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+  background: rgba(17, 20, 28, 0.72);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
   border-radius: 999px;
   box-shadow: 0 12px 32px rgba(17, 20, 28, 0.28);
 }

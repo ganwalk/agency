@@ -20,9 +20,9 @@ export default async function Home({
     <>
       <Hero locale={locale} dict={dict} />
       <Positioning dict={dict} />
-      <About locale={locale} dict={dict} />
       <Services locale={locale} dict={dict} />
       <Process dict={dict} />
+      <About locale={locale} dict={dict} />
       <Contact dict={dict} />
     </>
   );
