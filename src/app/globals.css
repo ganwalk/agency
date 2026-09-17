@@ -153,45 +153,23 @@ body:not(:has([data-hero])) main {
   padding-block: 0.625rem;
 }
 
+/* Mesmo respiro da pílula flutuante o tempo todo, inclusive sobre a hero:
+   logo e botão já nascem perto da curvatura que a pílula vai assumir.
+   padding-inline igual ao py-2.5 (0.625rem) do nav-inner, pro botão da CTA
+   ficar equidistante do topo, da base e da borda direita da pílula. */
 .nav-inner {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  transition: padding-inline 0.5s cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-/* Pílula flutuante: logo e botão ficam mais perto da borda arredondada,
-   acompanhando a curvatura, em vez do respiro amplo do modo cheio. */
-.nav-shell[data-floating="true"] .nav-inner {
-  padding-inline: 0.875rem;
-}
-
-@media (min-width: 640px) {
-  .nav-shell[data-floating="true"] .nav-inner {
-    padding-inline: 1.125rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .nav-shell[data-floating="true"] .nav-inner {
-    padding-inline: 1.5rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-inner {
-    transition: none;
-  }
+  padding-inline: 0.625rem;
 }
 
 /* Sem fundo por padrão: sobre a hero, os itens do menu ficam direto por
    cima do quadro (o overlay escuro da própria hero já garante contraste).
-   O vidro fosco só aparece depois que a hero sai de vista (ver
-   [data-floating]) — antes disso, um backdrop-filter aqui também acabava
-   borrando as guias de design da hero (réguas, mira) pra dentro da barra,
-   um artefato visual sem relação com o mouse.  */
+   O fundo da pílula só aparece depois que a hero sai de vista (ver
+   [data-floating]). */
 .nav-surface {
   position: absolute;
   z-index: 0;
@@ -212,14 +190,17 @@ body:not(:has([data-hero])) main {
     box-shadow 0.35s ease;
 }
 
+/* Fundo sólido, não vidro fosco: backdrop-filter num elemento fixed rasga
+   e listra durante o scroll (o navegador não consegue recompor o blur em
+   sincronia com o conteúdo passando por baixo a cada frame) — some quando
+   a rolagem para, mas fica visível o tempo todo rolando. Opaco o bastante
+   pra não precisar do blur pra dar contraste. */
 .nav-shell[data-floating="true"] .nav-surface {
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(17, 20, 28, 0.72);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  backdrop-filter: blur(18px) saturate(160%);
+  background: rgba(15, 18, 25, 0.96);
   border-radius: 999px;
   box-shadow: 0 12px 32px rgba(17, 20, 28, 0.28);
 }
