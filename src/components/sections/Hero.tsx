@@ -28,6 +28,22 @@ const CONSOLIDATE_DURATION = HERO_TIMELINE.end - HERO_TIMELINE.holdEnd;
 const HEADLINE_FILL = "#ffffff";
 const HEADLINE_TRANSPARENT = "rgba(255, 255, 255, 0)";
 
+// Quebra antes da última palavra do título do card: um <br/> de verdade,
+// não só um espaço inseparável (noOrphan), porque aqui o ponto de quebra é
+// uma escolha de composição, não só evitar órfã. Cai pra o texto inteiro
+// se não achar espaço (ex.: zh, sem espaço entre palavras).
+function breakBeforeLastWord(text: string) {
+  const lastSpace = text.lastIndexOf(" ");
+  if (lastSpace === -1) return text;
+  return (
+    <>
+      {text.slice(0, lastSpace)}
+      <br />
+      {text.slice(lastSpace + 1)}
+    </>
+  );
+}
+
 export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const reduced = useReducedMotion();
   const h = dict.hero;
@@ -163,7 +179,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           >
             <div className="flex items-start justify-between gap-4">
               <h2 className="type-display text-xl" style={{ color: "var(--navy)" }}>
-                {noOrphan(h.card.title)}
+                {breakBeforeLastWord(h.card.title)}
               </h2>
               <div className="flex -space-x-1.5 shrink-0 pt-0.5">
                 {team.map((member) => (
