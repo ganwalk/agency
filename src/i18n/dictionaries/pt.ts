@@ -20,11 +20,11 @@ export const pt = {
     headlinePre: "O próximo ",
     headlineHighlight: "nível",
     headlinePost: " do seu negócio digital",
-    sub: "Level é o time completo que redesenha sites, plataformas e fluxos desatualizados, do design ao contrato assinado, para empresas que não têm tempo a perder.",
+    sub: "Level é um time completo que cria e redesenha sites, plataformas e fluxos, do design ao contrato assinado, para empresas que não têm tempo a perder.",
     cta: "Fale com o time",
     card: {
       title: "Quem faz acontecer",
-      body: "Quatro sócios, um único ponto de contato: do primeiro rascunho ao contrato assinado.",
+      body: "Quatro especialistas, um único ponto de contato: do primeiro rascunho ao contrato assinado.",
       cta: "Conheça o time",
     },
   },
@@ -51,9 +51,9 @@ export const pt = {
   },
   about: {
     eyebrow: "Quem somos",
-    title: "Os sócios por trás da Level",
+    title: "Quem está por trás da Level",
     intro:
-      "Somos quatro sócios, cada um referência na própria área, trabalhando juntos num projeto só: entregar o que uma big tech, um escritório de advocacia e uma consultoria de gestão fariam separadamente, e caro.",
+      "Somos quatro especialistas, cada um referência na própria área, trabalhando juntos num projeto só: entregar o que uma big tech, um escritório de advocacia e uma consultoria de gestão fariam separadamente, e caro.",
     linkedinLabel: "LinkedIn",
   },
   services: {

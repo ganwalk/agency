@@ -20,11 +20,11 @@ export const es: Dictionary = {
     headlinePre: "El próximo ",
     headlineHighlight: "nivel",
     headlinePost: " de tu negocio digital",
-    sub: "Level es el equipo completo que rediseña sitios, plataformas y flujos desactualizados, desde el diseño hasta el contrato firmado, para empresas sin tiempo que perder.",
+    sub: "Level es un equipo completo que crea y rediseña sitios, plataformas y flujos, desde el diseño hasta el contrato firmado, para empresas sin tiempo que perder.",
     cta: "Habla con el equipo",
     card: {
       title: "Quién lo hace pasar",
-      body: "Cuatro socios, un único punto de contacto: desde el primer boceto hasta el contrato firmado.",
+      body: "Cuatro especialistas, un único punto de contacto: desde el primer boceto hasta el contrato firmado.",
       cta: "Conoce al equipo",
     },
   },
@@ -51,9 +51,9 @@ export const es: Dictionary = {
   },
   about: {
     eyebrow: "Quiénes somos",
-    title: "Los socios detrás de Level",
+    title: "Quiénes están detrás de Level",
     intro:
-      "Somos cuatro socios, cada uno referencia en su área, trabajando juntos en un solo proyecto: entregar lo que una big tech, un despacho de abogados y una consultora de gestión entregarían por separado, y caro.",
+      "Somos cuatro especialistas, cada uno referencia en su área, trabajando juntos en un solo proyecto: entregar lo que una big tech, un despacho de abogados y una consultora de gestión entregarían por separado, y caro.",
     linkedinLabel: "LinkedIn",
   },
   services: {

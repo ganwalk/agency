@@ -20,11 +20,11 @@ export const en: Dictionary = {
     headlinePre: "The next ",
     headlineHighlight: "level",
     headlinePost: " for your digital business",
-    sub: "Level is the complete team that redesigns outdated websites, platforms and workflows, from design to signed contract, for companies with no time to lose.",
+    sub: "Level is a complete team that builds and redesigns websites, platforms and workflows, from design to signed contract, for companies with no time to lose.",
     cta: "Talk to the team",
     card: {
       title: "Who makes it happen",
-      body: "Four partners, a single point of contact: from the first draft to the signed contract.",
+      body: "Four specialists, a single point of contact: from the first draft to the signed contract.",
       cta: "Meet the team",
     },
   },
@@ -51,9 +51,9 @@ export const en: Dictionary = {
   },
   about: {
     eyebrow: "About us",
-    title: "The partners behind Level",
+    title: "Who's behind Level",
     intro:
-      "We are four partners, each a reference in their own field, working together on a single project: delivering what a big tech company, a law firm and a management consultancy would deliver separately, and expensively.",
+      "We are four specialists, each a reference in their own field, working together on a single project: delivering what a big tech company, a law firm and a management consultancy would deliver separately, and expensively.",
     linkedinLabel: "LinkedIn",
   },
   services: {
