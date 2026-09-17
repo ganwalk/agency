@@ -25,13 +25,13 @@ export default async function Image() {
           color: "#faf6ee",
         }}
       >
-        <div style={{ position: "relative", width: 90, height: 128, display: "flex", marginBottom: 30 }}>
+        <div style={{ position: "relative", width: 90, height: 116, display: "flex", marginBottom: 30 }}>
           <div
             style={{
               position: "absolute",
               display: "flex",
               left: 5,
-              top: 44,
+              top: 36,
               width: 80,
               height: 80,
               borderRadius: "50%",
@@ -52,7 +52,7 @@ export default async function Image() {
           />
         </div>
         <div style={{ display: "flex", fontSize: 96, fontWeight: 700, letterSpacing: -2 }}>Level</div>
-        <div style={{ display: "flex", fontSize: 32, color: "#d9b57c", marginTop: 20, maxWidth: 820 }}>
+        <div style={{ display: "flex", fontSize: 32, color: "#9aa0b4", marginTop: 20, maxWidth: 820 }}>
           Product design, engineering, law and business management, in one team
         </div>
       </div>

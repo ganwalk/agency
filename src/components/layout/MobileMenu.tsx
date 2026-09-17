@@ -1,12 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { X } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Cancel01Icon } from "@hugeicons/core-free-icons";
 import Link from "next/link";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { contact } from "@/data/site";
 
 type Props = {
   open: boolean;
@@ -47,7 +49,7 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
               className="p-2 -mr-2 cursor-pointer"
               style={{ color: "var(--on-dark)" }}
             >
-              <X size={26} />
+              <HugeiconsIcon icon={Cancel01Icon} size={26} />
             </button>
           </div>
 
@@ -73,7 +75,7 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
 
           <div className="container-level flex items-center justify-between py-6">
             <span className="text-sm" style={{ color: "var(--muted-on-navy)" }}>
-              armandocustodio0@gmail.com
+              {contact.email}
             </span>
             <div className="flex items-center gap-3">
               <ThemeToggle />

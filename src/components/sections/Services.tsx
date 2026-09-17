@@ -1,16 +1,24 @@
-import { Layout, Layers, ShoppingBag, Workflow, Scale, TrendingUp } from "lucide-react";
+import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react";
+import {
+  LayoutIcon,
+  Layers01Icon,
+  ShoppingBag01Icon,
+  FlowIcon,
+  JusticeScale01Icon,
+  TradeUpIcon,
+} from "@hugeicons/core-free-icons";
 import type { Dictionary } from "@/i18n/dictionaries";
 import type { Locale } from "@/i18n/config";
 import { services, type Service } from "@/data/services";
 import { Reveal } from "@/components/ui/Reveal";
 
-const icons: Record<Service["icon"], typeof Layout> = {
-  layout: Layout,
-  layers: Layers,
-  "shopping-bag": ShoppingBag,
-  workflow: Workflow,
-  scale: Scale,
-  "trending-up": TrendingUp,
+const icons: Record<Service["icon"], IconSvgElement> = {
+  layout: LayoutIcon,
+  layers: Layers01Icon,
+  "shopping-bag": ShoppingBag01Icon,
+  workflow: FlowIcon,
+  scale: JusticeScale01Icon,
+  "trending-up": TradeUpIcon,
 };
 
 export function Services({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -21,7 +29,7 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
           <Reveal>
             <p
               className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
-              style={{ color: "var(--accent)" }}
+              style={{ color: "var(--ink)" }}
             >
               {dict.services.eyebrow}
             </p>
@@ -35,30 +43,27 @@ export function Services({ locale, dict }: { locale: Locale; dict: Dictionary })
         </div>
 
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service, i) => {
-            const Icon = icons[service.icon];
-            return (
-              <Reveal key={service.slug} delay={i * 0.06}>
-                <article
-                  className="h-full rounded-2xl p-6 flex flex-col gap-4"
-                  style={{ background: "var(--paper)" }}
+          {services.map((service, i) => (
+            <Reveal key={service.slug} delay={i * 0.06}>
+              <article
+                className="h-full rounded-2xl p-6 flex flex-col gap-4"
+                style={{ background: "var(--paper)" }}
+              >
+                <div
+                  className="flex items-center justify-center w-11 h-11 rounded-xl"
+                  style={{ background: "var(--navy)" }}
                 >
-                  <div
-                    className="flex items-center justify-center w-11 h-11 rounded-xl"
-                    style={{ background: "var(--navy)" }}
-                  >
-                    <Icon size={20} style={{ color: "var(--on-dark)" }} />
-                  </div>
-                  <h3 className="font-semibold text-base" style={{ color: "var(--ink)" }}>
-                    {service.title[locale]}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                    {service.description[locale]}
-                  </p>
-                </article>
-              </Reveal>
-            );
-          })}
+                  <HugeiconsIcon icon={icons[service.icon]} size={20} color="var(--on-dark)" />
+                </div>
+                <h3 className="font-semibold text-base" style={{ color: "var(--ink)" }}>
+                  {service.title[locale]}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+                  {service.description[locale]}
+                </p>
+              </article>
+            </Reveal>
+          ))}
         </div>
 
         <Reveal delay={0.2}>

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { Sun, Moon } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { SunIcon, MoonIcon } from "@hugeicons/core-free-icons";
 
 // Cor sempre clara (var(--on-dark)): o botão vive no chrome escuro fixo
 // (header, menu mobile), que não muda com o tema do site.
@@ -26,10 +27,14 @@ export function ThemeToggle() {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Ativar tema claro" : "Ativar tema escuro"}
       aria-pressed={mounted ? isDark : undefined}
-      className="p-2 -m-2 cursor-pointer"
+      className="flex items-center justify-center p-2 cursor-pointer"
       style={{ color: "var(--on-dark)" }}
     >
-      {mounted && isDark ? <Sun size={18} /> : <Moon size={18} />}
+      {mounted && isDark ? (
+        <HugeiconsIcon icon={SunIcon} size={18} />
+      ) : (
+        <HugeiconsIcon icon={MoonIcon} size={18} />
+      )}
     </button>
   );
 }

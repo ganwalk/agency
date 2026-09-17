@@ -2,9 +2,8 @@
 
 /* ==========================================================================
    TOKENS DE DESIGN
-   Bege/off-white editorial + azul-marinho quase preto, com um acento âmbar
-   reservado para chamadas de ação e destaques de "alto padrão". Cada sócio
-   ganha uma cor secundária só sua (âmbar, verde-musgo, terracota, verde-água).
+   Preto, branco e cinza: sem cor de acento. A hierarquia vem de peso,
+   tamanho e contraste, não de matiz. Manrope em tudo, texto e destaque.
    ========================================================================== */
 
 :root {
@@ -26,28 +25,14 @@
   --on-dark: #f2ead9;
 
   /* "Chip" claro: cartões e botões que flutuam sobre o chrome escuro (o
-     card da hero rica, o formulário de contato) ficam sempre claros, para
-     não desaparecer contra o fundo escuro fixo quando o tema geral escurece. */
+     card da hero, o formulário de contato) ficam sempre claros, para não
+     desaparecer contra o fundo escuro fixo quando o tema geral escurece. */
   --chip-bg: #faf6ee;
   --chip-muted: #6b6455;
   --chip-line: rgba(23, 26, 34, 0.12);
 
-  /* Botão primário de conteúdo (fora do chrome fixo): escuro sobre claro no
-     tema claro, invertido no escuro, para continuar de alto contraste
-     com a página ao redor. */
-  --btn-primary-bg: #11141c;
-  --btn-primary-fg: #f2ead9;
-
-  --accent: #b3813f;
-  --accent-soft: #d9b57c;
-
-  --accent-amber: #b3813f;
-  --accent-moss: #6f7a52;
-  --accent-terracotta: #b0613f;
-  --accent-teal: #3e6e6a;
-
-  --font-sans: "Archivo Variable", system-ui, sans-serif;
-  --font-headline: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Manrope Variable", system-ui, sans-serif;
+  --font-headline: "Manrope Variable", system-ui, sans-serif;
 }
 
 :root.dark {
@@ -57,9 +42,6 @@
   --ink: #f2ead9;
   --muted: #9aa0b4;
   --line: rgba(242, 234, 217, 0.12);
-
-  --btn-primary-bg: #f2ead9;
-  --btn-primary-fg: #11141c;
 }
 
 @theme inline {
@@ -75,12 +57,6 @@
   --color-chip-bg: var(--chip-bg);
   --color-chip-muted: var(--chip-muted);
   --color-line: var(--line);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-accent-amber: var(--accent-amber);
-  --color-accent-moss: var(--accent-moss);
-  --color-accent-terracotta: var(--accent-terracotta);
-  --color-accent-teal: var(--accent-teal);
   --font-sans: var(--font-sans);
   --font-headline: var(--font-headline);
 }
@@ -108,15 +84,15 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--ink);
   color: var(--paper);
 }
 
 .type-display {
   font-family: var(--font-headline);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
 }
 
 .container-level {
@@ -233,7 +209,7 @@ body {
 
 .field-input:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--navy);
 }
 
 /* Grão sutil, usado nas seções de fundo navy para tirar a chapada de cor. */
@@ -250,4 +226,28 @@ body {
   opacity: 0.05;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* ==========================================================================
+   CANVAS: fundo de grade de pontos da hero antes do quadro ser revelado,
+   como a tela infinita de uma ferramenta de design.
+   ========================================================================== */
+
+.design-canvas {
+  background-color: var(--navy);
+  background-image: radial-gradient(rgba(242, 234, 217, 0.16) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ==========================================================================
+   CURSOR: nas telas com mouse de verdade, o ponteiro nativo some para dar
+   lugar à mira que segue o cursor (MouseFollower), reforçando a ideia de
+   "você está no controle" no lugar de uma setinha genérica.
+   ========================================================================== */
+
+@media (pointer: fine) {
+  html.has-cursor-follower,
+  html.has-cursor-follower * {
+    cursor: none !important;
+  }
 }

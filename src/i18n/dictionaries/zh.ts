@@ -16,25 +16,16 @@ export const zh: Dictionary = {
     menuClose: "关闭菜单",
   },
   hero: {
-    simple: {
-      eyebrow: "设计 · 工程 · 法律 · 管理",
-      headlinePre: "您的数字业务，",
-      headlineHighlight: "更上一层",
-      headlinePost: "",
-      sub: "Level 是一个完整的团队，为您重新设计过时的网站、平台与业务流程，从设计到合同签署，专为没有时间可以浪费的企业而生。",
-      cta: "联系团队",
-      scrollHint: "滑动查看更多",
-    },
-    rich: {
-      eyebrow: "一个团队，四大专业",
-      headline: "设计、工程、法律与管理，融于一个团队",
-      sub: "我们交付美观、功能完善且可扩展的平台，不留任何未解决的问题。",
-      card: {
-        title: "梦幻团队",
-        body: "四位合伙人，一个联系窗口：从最初的草案到签署的合同。",
-        cta: "认识团队",
-      },
-      cta: "开始一个项目",
+    eyebrow: "设计 · 工程 · 法律 · 管理",
+    headlinePre: "您的数字业务，",
+    headlineHighlight: "更上一层",
+    headlinePost: "",
+    sub: "Level 是一个完整的团队，为您重新设计过时的网站、平台与业务流程，从设计到合同签署，专为没有时间可以浪费的企业而生。",
+    cta: "联系团队",
+    card: {
+      title: "梦幻团队",
+      body: "四位合伙人，一个联系窗口：从最初的草案到签署的合同。",
+      cta: "认识团队",
     },
   },
   positioning: {

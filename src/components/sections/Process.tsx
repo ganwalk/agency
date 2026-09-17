@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { Reveal } from "@/components/ui/Reveal";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
+import { withBasePath } from "@/lib/site";
 
 export function Process({ dict }: { dict: Dictionary }) {
   return (
@@ -12,7 +13,7 @@ export function Process({ dict }: { dict: Dictionary }) {
             <Reveal>
               <p
                 className="text-xs sm:text-sm font-semibold tracking-[0.14em] uppercase mb-5"
-                style={{ color: "var(--accent)" }}
+                style={{ color: "var(--ink)" }}
               >
                 {dict.process.eyebrow}
               </p>
@@ -26,7 +27,7 @@ export function Process({ dict }: { dict: Dictionary }) {
             <Reveal delay={0.1}>
               <div className="mt-8 relative aspect-4/3 rounded-2xl overflow-hidden hidden lg:block">
                 <Image
-                  src="/images/process-planning.jpg"
+                  src={withBasePath("/images/process-planning.jpg")}
                   alt=""
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"

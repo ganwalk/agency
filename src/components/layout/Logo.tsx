@@ -9,13 +9,13 @@ export function Mark({ size = 22 }: { size?: number }) {
   return (
     <svg
       width={size}
-      height={(size * 44) / 32}
-      viewBox="0 0 32 44"
+      height={(size * 40) / 32}
+      viewBox="0 0 32 40"
       aria-hidden="true"
       className="shrink-0"
     >
-      <circle cx="16" cy="30" r="10" fill="currentColor" />
-      <circle cx="16" cy="14" r="10" fill="none" stroke="currentColor" strokeWidth="3" />
+      <circle cx="16" cy="25" r="10" fill="currentColor" />
+      <circle cx="16" cy="16" r="10" fill="none" stroke="currentColor" strokeWidth="3" />
     </svg>
   );
 }

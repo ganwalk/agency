@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowLeft01Icon } from "@hugeicons/core-free-icons";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 
@@ -29,7 +30,7 @@ export function LegalPage({
           className="inline-flex items-center gap-2 text-sm font-medium hover:opacity-70 transition-opacity mb-10"
           style={{ color: "var(--muted)" }}
         >
-          <ArrowLeft size={15} />
+          <HugeiconsIcon icon={ArrowLeft01Icon} size={15} />
           {dict.legal.backHome}
         </Link>
 

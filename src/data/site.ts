@@ -1,11 +1,12 @@
 // Dados públicos de contato da Level. Placeholder até a agência decidir
-// canais próprios (email e WhatsApp dedicados, redes sociais da marca).
+// canais próprios definitivos (o domínio de email é fictício, ver README).
 const WHATSAPP_MESSAGE = "Oi! Vi o site da Level e queria conversar sobre um projeto.";
+const WHATSAPP_NUMBER = "556298506450";
 
 export const contact = {
-  email: "armandocustodio0@gmail.com",
-  emailHref: "mailto:armandocustodio0@gmail.com",
-  whatsapp: `https://wa.me/5562992174047?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
+  email: "contato@levelagencia.com.br",
+  emailHref: "mailto:contato@levelagencia.com.br",
+  whatsapp: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
   linkedin: "https://br.linkedin.com/in/armando-custodio-00080320a",
   instagram: "https://www.instagram.com/ganwalk",
   github: "https://github.com/ganwalk",

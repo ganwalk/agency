@@ -11,9 +11,7 @@ export type Localized = {
 export type TeamMember = {
   slug: string;
   name: string;
-  initials: string;
   photo: string;
-  accent: "amber" | "teal" | "terracotta" | "moss";
   role: Localized;
   bio: Localized;
   linkedin?: string;
@@ -23,9 +21,7 @@ export const team: TeamMember[] = [
   {
     slug: "armando-custodio",
     name: "Armando Custodio",
-    initials: "AC",
     photo: "/images/team/armando-custodio.jpg",
-    accent: "amber",
     role: {
       pt: "Design Engineer",
       en: "Design Engineer",
@@ -43,9 +39,7 @@ export const team: TeamMember[] = [
   {
     slug: "diogo-siqueira",
     name: "Diogo Siqueira",
-    initials: "DS",
     photo: "/images/team/diogo-siqueira.jpg",
-    accent: "moss",
     role: {
       pt: "Gestão & Escala",
       en: "Operations & Scale",
@@ -62,9 +56,7 @@ export const team: TeamMember[] = [
   {
     slug: "joao-pedro-carneiro",
     name: "João Pedro Carneiro",
-    initials: "JC",
     photo: "/images/team/joao-pedro-carneiro.jpg",
-    accent: "terracotta",
     role: {
       pt: "Direito & Compliance",
       en: "Law & Compliance",
@@ -81,9 +73,7 @@ export const team: TeamMember[] = [
   {
     slug: "vitor-ribeiro",
     name: "Vitor Ribeiro",
-    initials: "VR",
     photo: "/images/team/vitor-ribeiro.jpg",
-    accent: "teal",
     role: {
       pt: "Engenharia de Software",
       en: "Software Engineering",

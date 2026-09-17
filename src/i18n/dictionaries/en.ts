@@ -16,25 +16,16 @@ export const en: Dictionary = {
     menuClose: "Close menu",
   },
   hero: {
-    simple: {
-      eyebrow: "Design · Engineering · Law · Management",
-      headlinePre: "The next ",
-      headlineHighlight: "level",
-      headlinePost: " for your digital business",
-      sub: "Level is the complete team that redesigns outdated websites, platforms and workflows, from design to signed contract, for companies with no time to lose.",
-      cta: "Talk to the team",
-      scrollHint: "Swipe to see more",
-    },
-    rich: {
-      eyebrow: "One team, four disciplines",
-      headline: "Design, engineering, law and management, in one team",
-      sub: "We deliver beautiful, fully functional platforms ready to scale, without leaving anything unresolved.",
-      card: {
-        title: "Dream team",
-        body: "Four partners, a single point of contact: from the first draft to the signed contract.",
-        cta: "Meet the team",
-      },
-      cta: "Start a project",
+    eyebrow: "Design · Engineering · Law · Management",
+    headlinePre: "The next ",
+    headlineHighlight: "level",
+    headlinePost: " for your digital business",
+    sub: "Level is the complete team that redesigns outdated websites, platforms and workflows, from design to signed contract, for companies with no time to lose.",
+    cta: "Talk to the team",
+    card: {
+      title: "Dream team",
+      body: "Four partners, a single point of contact: from the first draft to the signed contract.",
+      cta: "Meet the team",
     },
   },
   positioning: {

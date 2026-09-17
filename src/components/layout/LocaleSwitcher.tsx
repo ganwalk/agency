@@ -3,7 +3,8 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowDown01Icon } from "@hugeicons/core-free-icons";
 import { locales, localeCodes, localeNames, type Locale } from "@/i18n/config";
 
 function pathForLocale(pathname: string, target: Locale): string {
@@ -38,7 +39,11 @@ export function LocaleSwitcher({ locale, dark = false }: { locale: Locale; dark?
         style={{ color }}
       >
         {localeCodes[locale]}
-        <ChevronDown size={14} className={`transition-transform ${open ? "rotate-180" : ""}`} />
+        <HugeiconsIcon
+          icon={ArrowDown01Icon}
+          size={14}
+          className={`transition-transform ${open ? "rotate-180" : ""}`}
+        />
       </button>
       {open && (
         <ul
