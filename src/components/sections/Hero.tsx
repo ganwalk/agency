@@ -194,14 +194,6 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--chip-muted)" }}>
               {h.card.body}
             </p>
-            <Link
-              href={`/${locale}/#team`}
-              className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold hover:opacity-70 transition-opacity"
-              style={{ color: "var(--navy)" }}
-            >
-              {h.card.cta}
-              <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
-            </Link>
           </motion.div>
         </div>
       </div>

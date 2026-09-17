@@ -25,7 +25,6 @@ export const zh: Dictionary = {
     card: {
       title: "让一切发生的人",
       body: "四位专家，一个联系窗口：从最初的草案到签署的合同。",
-      cta: "认识团队",
     },
   },
   positioning: {

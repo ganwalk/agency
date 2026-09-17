@@ -25,7 +25,6 @@ export const en: Dictionary = {
     card: {
       title: "Who makes it happen",
       body: "Four specialists, a single point of contact: from the first draft to the signed contract.",
-      cta: "Meet the team",
     },
   },
   positioning: {

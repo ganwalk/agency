@@ -25,7 +25,6 @@ export const es: Dictionary = {
     card: {
       title: "Quién lo hace pasar",
       body: "Cuatro especialistas, un único punto de contacto: desde el primer boceto hasta el contrato firmado.",
-      cta: "Conoce al equipo",
     },
   },
   positioning: {
