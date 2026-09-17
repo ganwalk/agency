@@ -83,7 +83,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
           <div className="max-w-xl">
             <motion.h1
-              className="type-display text-4xl sm:text-5xl lg:text-6xl leading-[1.22] sm:leading-[1.02]"
+              className="type-display text-4xl sm:text-5xl lg:text-6xl leading-[1.4] sm:leading-[1.08]"
               style={
                 reduced
                   ? { color: "var(--on-dark)" }
