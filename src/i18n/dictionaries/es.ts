@@ -23,7 +23,7 @@ export const es: Dictionary = {
     sub: "Level es el equipo completo que rediseña sitios, plataformas y flujos desactualizados, desde el diseño hasta el contrato firmado, para empresas sin tiempo que perder.",
     cta: "Habla con el equipo",
     card: {
-      title: "Dream team",
+      title: "Los socios",
       body: "Cuatro socios, un único punto de contacto: desde el primer boceto hasta el contrato firmado.",
       cta: "Conoce al equipo",
     },
@@ -51,7 +51,7 @@ export const es: Dictionary = {
   },
   about: {
     eyebrow: "Quiénes somos",
-    title: "El dream team detrás de Level",
+    title: "Los socios detrás de Level",
     intro:
       "Somos cuatro socios, cada uno referencia en su área, trabajando juntos en un solo proyecto: entregar lo que una big tech, un despacho de abogados y una consultora de gestión entregarían por separado, y caro.",
     linkedinLabel: "LinkedIn",

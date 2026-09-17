@@ -23,7 +23,7 @@ export const pt = {
     sub: "Level é o time completo que redesenha sites, plataformas e fluxos desatualizados, do design ao contrato assinado, para empresas que não têm tempo a perder.",
     cta: "Fale com o time",
     card: {
-      title: "Dream team",
+      title: "Os sócios",
       body: "Quatro sócios, um único ponto de contato: do primeiro rascunho ao contrato assinado.",
       cta: "Conheça o time",
     },
@@ -51,7 +51,7 @@ export const pt = {
   },
   about: {
     eyebrow: "Quem somos",
-    title: "O dream team por trás da Level",
+    title: "Os sócios por trás da Level",
     intro:
       "Somos quatro sócios, cada um referência na própria área, trabalhando juntos num projeto só: entregar o que uma big tech, um escritório de advocacia e uma consultoria de gestão fariam separadamente, e caro.",
     linkedinLabel: "LinkedIn",

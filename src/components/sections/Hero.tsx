@@ -10,6 +10,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import { HeroGuides, HERO_TIMELINE } from "@/components/sections/HeroGuides";
 import { withBasePath } from "@/lib/site";
 import { noOrphan } from "@/lib/text";
+import { team } from "@/data/team";
 
 // Sem slide: o quadro só aparece depois que as âncoras de design terminam de
 // posicionar o conteúdo, nunca ao mesmo tempo. As três fases (montagem,
@@ -75,13 +76,17 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
               {h.eyebrow}
             </motion.p>
             <motion.h1
-              className="type-display text-4xl sm:text-5xl lg:text-6xl"
+              className="type-display text-4xl sm:text-5xl lg:text-6xl leading-[1.22] sm:leading-[1.02]"
               style={
                 reduced
                   ? { color: "var(--on-dark)" }
                   : { WebkitTextStrokeWidth: "1.3px", WebkitTextStrokeColor: "var(--on-dark)" }
               }
-              initial={reduced ? undefined : { opacity: 0, color: HEADLINE_TRANSPARENT }}
+              initial={
+                reduced
+                  ? undefined
+                  : { opacity: 0, color: HEADLINE_TRANSPARENT, letterSpacing: "0.05em" }
+              }
               animate={
                 reduced
                   ? undefined
@@ -94,6 +99,15 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                         HEADLINE_TRANSPARENT,
                         HEADLINE_FILL,
                       ],
+                      // Letras mais espaçadas enquanto é só contorno: junto
+                      // do peso 800 do type-display, o traçado de cada letra
+                      // encosta no da vizinha e cria interseções (um "X"
+                      // onde as bordas se cruzam) que não existem depois,
+                      // preenchido. O espaçamento aperta pro valor final
+                      // (-0.03em, do type-display) bem na hora em que o
+                      // preenchimento chega, então a letra "assenta" no
+                      // lugar junto com o resto da consolidação.
+                      letterSpacing: ["0.05em", "0.05em", "0.05em", "0.05em", "-0.03em"],
                     }
               }
               transition={
@@ -147,7 +161,24 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             animate={reduced ? undefined : { opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.55, delay: 2.0, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="type-display text-xl" style={{ color: "var(--navy)" }}>
+            <div className="flex -space-x-3" aria-hidden="true">
+              {team.map((member) => (
+                <div
+                  key={member.slug}
+                  className="relative w-10 h-10 rounded-full overflow-hidden"
+                  style={{ boxShadow: "0 0 0 2px var(--chip-bg)" }}
+                >
+                  <Image
+                    src={withBasePath(member.photo)}
+                    alt=""
+                    fill
+                    sizes="40px"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            <h2 className="type-display text-xl mt-4" style={{ color: "var(--navy)" }}>
               {noOrphan(h.card.title)}
             </h2>
             <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--chip-muted)" }}>
