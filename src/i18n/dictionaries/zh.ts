@@ -36,7 +36,7 @@ export const zh: Dictionary = {
       },
       {
         title: "软件工程",
-        description: "稳健、可扩展的代码，达到大厂工程标准。",
+        description: "经过测试、可扩展的代码，达到大厂工程标准。",
       },
       {
         title: "法律与合规",
@@ -58,7 +58,7 @@ export const zh: Dictionary = {
   services: {
     eyebrow: "服务",
     title: "我们做什么",
-    intro: "每个项目都会经过 Level 的四大板块：设计、工程、法律与管理。您只需对接一个团队，而不是四家供应商。",
+    intro: "每个项目都会经过 Level 的四大板块：设计、工程、法律与管理，全程由同一个团队负责到底。",
     note: "所有项目均需咨询后报价，我们会先了解您业务的真实规模。",
   },
   process: {

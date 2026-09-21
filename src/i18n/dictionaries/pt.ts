@@ -36,7 +36,7 @@ export const pt = {
       },
       {
         title: "Engenharia de Software",
-        description: "Código robusto e escalável, com padrão de big tech.",
+        description: "Código testado e escalável, com padrão de big tech.",
       },
       {
         title: "Direito & Compliance",
@@ -59,7 +59,7 @@ export const pt = {
     eyebrow: "Serviços",
     title: "O que fazemos",
     intro:
-      "Cada projeto passa pelas quatro frentes da Level: design, engenharia, direito e gestão. Você fala com um time só, não com quatro fornecedores.",
+      "Cada projeto passa pelas quatro frentes da Level: design, engenharia, direito e gestão, com um único time responsável do início ao fim.",
     note: "Todo projeto é orçado sob consulta, depois de entendermos o escopo real do seu negócio.",
   },
   process: {
