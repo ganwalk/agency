@@ -36,7 +36,7 @@ export const en: Dictionary = {
       },
       {
         title: "Software Engineering",
-        description: "Robust, scalable code, built to big tech standards.",
+        description: "Tested, scalable code, built to big tech standards.",
       },
       {
         title: "Law & Compliance",
@@ -59,7 +59,7 @@ export const en: Dictionary = {
     eyebrow: "Services",
     title: "What we do",
     intro:
-      "Every project goes through Level's four fronts: design, engineering, law and management. You talk to one team, not four vendors.",
+      "Every project goes through Level's four fronts: design, engineering, law and management, with a single team responsible from start to finish.",
     note: "Every project is quoted on request, once we understand the real scope of your business.",
   },
   process: {

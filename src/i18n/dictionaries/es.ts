@@ -36,7 +36,7 @@ export const es: Dictionary = {
       },
       {
         title: "Ingeniería de Software",
-        description: "Código robusto y escalable, con estándar de big tech.",
+        description: "Código probado y escalable, con estándar de big tech.",
       },
       {
         title: "Derecho & Compliance",
@@ -59,7 +59,7 @@ export const es: Dictionary = {
     eyebrow: "Servicios",
     title: "Qué hacemos",
     intro:
-      "Cada proyecto pasa por los cuatro frentes de Level: diseño, ingeniería, derecho y gestión. Hablas con un solo equipo, no con cuatro proveedores.",
+      "Cada proyecto pasa por los cuatro frentes de Level: diseño, ingeniería, derecho y gestión, con un único equipo responsable de principio a fin.",
     note: "Todo proyecto se cotiza bajo consulta, después de entender el alcance real de tu negocio.",
   },
   process: {
