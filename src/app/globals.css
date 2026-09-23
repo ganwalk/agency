@@ -284,3 +284,51 @@ body:not(:has([data-hero])) main {
     cursor: none !important;
   }
 }
+
+/* ==========================================================================
+   POSITIONING CARDS: cantos de instrumento de medição (mesmo vocabulário da
+   hero) em vez de ícones decorativos. No hover, o card assume o navy fixo
+   do chrome escuro (mesmo tom do header/footer/hero), não um "--ink" que
+   muda com o tema — o card escurece por cima de um fundo --cream que já
+   inverte no dark mode, então o navy fixo garante contraste nos dois temas.
+   Só :hover (CSS puro): a seção não precisa de client component pra isso.
+   ========================================================================== */
+
+.positioning-card {
+  border: 1px solid var(--line);
+  background: transparent;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.positioning-card:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  transform: translateY(-3px);
+}
+
+.positioning-card .corner-mark {
+  border-color: var(--line);
+  transition: border-color 0.3s ease;
+}
+
+.positioning-card .positioning-index,
+.positioning-card .positioning-title,
+.positioning-card .positioning-desc {
+  transition: color 0.3s ease;
+}
+
+.positioning-card:hover .corner-mark {
+  border-color: var(--on-dark);
+}
+
+.positioning-card:hover .positioning-index,
+.positioning-card:hover .positioning-title {
+  color: var(--on-dark) !important;
+}
+
+.positioning-card:hover .positioning-desc {
+  color: var(--muted-on-navy) !important;
+}
