@@ -3,7 +3,7 @@
 Dois vídeos, cada um em 16:9 e 9:16, gerados por `render.mjs` a partir de uma
 página HTML com uma função `render(t)` determinística.
 
-## Para parceiros (`level-parceiros.html`, 51s, com trilha)
+## Para parceiros (`level-parceiros.html`, 61s, com trilha)
 
 Vídeo de convencimento para quem está decidindo fechar com a Level.
 
@@ -16,22 +16,21 @@ Roteiro (texto revisado com a skill
 [no-ai-slop](https://github.com/petergyang/no-ai-slop) e com
 `COPYWRITING.md`; nenhum número, cliente ou resultado que a Level não tenha):
 
-1. **Hoje** (0–9,6s): quatro fornecedores ligados à "Sua empresa", cada um
-   com o próprio contrato e prazo. "Para lançar um produto digital, uma
-   empresa costuma contratar quatro fornecedores." / "Cada um tem o próprio
-   contrato, o próprio prazo e a própria versão do escopo." / "Quando o
-   lançamento atrasa, ninguém responde pelo projeto inteiro."
-2. **Level** (9,6–16s): os quatro cartões colapsam num ponto e viram a
-   marca. "A Level reúne as quatro áreas num time, com um contrato e um
-   responsável pelo projeto."
-3. **Time** (16–33,5s): "Quem assina o projeto", um sócio por vez, com a
-   credencial de `src/data/team.ts`.
-4. **Proposta** (33,5–43s): o documento com o escopo, cada item marcado e
-   assinado pela Level no fim. "As quatro áreas no mesmo cronograma e no
-   mesmo contrato." / "O orçamento sai depois do diagnóstico, com o escopo
-   real na mesa."
-5. **Contato** (43–51s): o quadro de Monet abre a partir do sol. "Conte o
-   que precisa mudar no seu negócio." / "Voltamos com um diagnóstico e os
+1. **Hoje** (0–13,4s): quatro fornecedores ligados à "Sua empresa", cada um
+   com o próprio contrato e prazo. "Um produto digital costuma passar
+   por quatro fornecedores." / "Cada um com contrato, prazo e escopo
+   próprios." / "Quando atrasa, ninguém responde pelo projeto inteiro."
+2. **Level** (13,4–23,2s): os quatro cartões colapsam num ponto, a marca
+   se desenha, "LeveL" entra e a assinatura segura sozinha na tela antes da
+   frase. "A Level junta as quatro áreas num time e num contrato."
+3. **Time** (23,2–37,2s): "Quem assina o projeto", um sócio por vez, com a
+   credencial de `src/data/team.ts` (2,6s cada).
+4. **Proposta** (37,2–50s): o documento com o escopo, cada item marcado e
+   assinado pela Level no fim. "Um cronograma e um contrato para as quatro
+   áreas." / "O orçamento sai depois do diagnóstico."
+5. **Contato** (50–61s): o quadro de Monet abre a partir do sol e o logo
+   completo volta. "Conte o
+   que precisa mudar." / "Voltamos com um diagnóstico e os
    próximos passos." / Fale com o time.
 
 A trilha é sintetizada em `score.mjs` (pad de acordes, impactos graves nas

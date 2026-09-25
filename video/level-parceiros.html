@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Level: vídeo para parceiros</title>
 <!--
-  Vídeo de convencimento para parceiros e clientes (51s), em 16:9 e 9:16.
+  Vídeo de convencimento para parceiros e clientes (61s), em 16:9 e 9:16.
 
   Mesmo motor de level-intro.html: render(t) determinístico, chamado quadro
   a quadro por render.mjs. window.CUES lista os momentos de impacto, usados
@@ -60,11 +60,17 @@
   #you { position: absolute; left: 0; top: 0; background: #fff; color: var(--ink); font-weight: 800; font-size: calc(var(--u) * 2); padding: calc(var(--u) * 1.3) calc(var(--u) * 2.6); border-radius: 999px; white-space: nowrap; }
   #late { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: calc(var(--u) * 0.8); font-size: calc(var(--u) * 1.3); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #fff; white-space: nowrap; background: rgba(13,16,23,0.9); border: 1px solid var(--line); padding: calc(var(--u) * 0.7) calc(var(--u) * 1.4); border-radius: 999px; }
   #late i { width: calc(var(--u) * 0.8); height: calc(var(--u) * 0.8); border-radius: 50%; background: #e8795b; }
-  .cap { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); text-align: center; font-size: calc(var(--u) * 5.4); margin: 0 auto; max-width: calc(var(--u) * 130); }
+  .cap { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); text-align: center; font-size: calc(var(--u) * 4.6); margin: 0 auto; max-width: calc(var(--u) * 110); }
 
   /* 02 Level */
-  #s2 .mark { position: absolute; width: calc(var(--u) * 17); height: calc(var(--u) * 17); overflow: visible; }
-  #s2 .cap { font-size: calc(var(--u) * 5.4); max-width: calc(var(--u) * 120); }
+  #s2-lock { position: absolute; left: 0; right: 0; top: 0; display: flex; flex-direction: column; align-items: center; }
+  #s2 .mark { width: calc(var(--u) * 17); height: calc(var(--u) * 17); overflow: visible; }
+  .wordmark { font-weight: 800; letter-spacing: -0.035em; line-height: 1; white-space: nowrap; }
+  .wordmark .m { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+  .wordmark .m > span { display: inline-block; }
+  #s2-word { font-size: calc(var(--u) * 11); margin-top: calc(var(--u) * 3); }
+  #s2-tag { margin-top: calc(var(--u) * 2.6); }
+  #s2 .cap { font-size: calc(var(--u) * 4.6); max-width: calc(var(--u) * 110); }
 
   /* 03 Time */
   #s3-head { position: absolute; left: 0; right: 0; top: 50%; text-align: center; transform: translateY(-50%); }
@@ -78,12 +84,12 @@
   .who .idx { font-size: calc(var(--u) * 1.5); letter-spacing: 0.24em; color: var(--muted); font-weight: 700; margin-bottom: calc(var(--u) * 5); font-variant-numeric: tabular-nums; }
   .who .role { margin-bottom: calc(var(--u) * 2); }
   .who .name { font-size: calc(var(--u) * 8.4); margin-bottom: calc(var(--u) * 3.4); }
-  .who .cred { font-size: calc(var(--u) * 2.8); line-height: 1.4; color: rgba(255,255,255,0.84); font-weight: 500; max-width: calc(var(--u) * 64); }
+  .who .cred { font-size: calc(var(--u) * 2.4); line-height: 1.4; color: rgba(255,255,255,0.84); font-weight: 500; max-width: calc(var(--u) * 64); }
   #s3-label { left: calc(var(--u) * 9); top: calc(var(--u) * 12); }
 
   /* 04 Proposta */
   #s4-copy { position: absolute; left: calc(var(--u) * 9); width: calc(var(--u) * 70); top: 50%; transform: translateY(-50%); }
-  #s4-copy .big { font-size: calc(var(--u) * 5.6); margin: calc(var(--u) * 2.4) 0 calc(var(--u) * 4); }
+  #s4-copy .big { font-size: calc(var(--u) * 4.8); margin: calc(var(--u) * 2.4) 0 calc(var(--u) * 4); }
   #s4-copy .small { font-size: calc(var(--u) * 2.5); line-height: 1.45; color: rgba(255,255,255,0.8); font-weight: 500; max-width: calc(var(--u) * 60); }
   #persp { position: absolute; left: 50%; right: 0; top: 0; bottom: 0; perspective: calc(var(--u) * 180); display: flex; align-items: center; justify-content: center; }
   #doc { width: calc(var(--u) * 70); background: var(--paper); color: var(--ink); border-radius: calc(var(--u) * 0.6); padding: calc(var(--u) * 4.4) calc(var(--u) * 4.6) calc(var(--u) * 4); box-shadow: 0 calc(var(--u) * 5) calc(var(--u) * 12) rgba(0,0,0,0.55); transform-style: preserve-3d; }
@@ -103,8 +109,10 @@
   #s5-paint { position: absolute; inset: 0; background: url("../public/images/hero-rich.jpg") center / cover no-repeat; }
   #s5-shade { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 55%, rgba(13,16,23,0.62), rgba(13,16,23,0.86)); }
   #s5-group { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; text-align: center; }
-  #s5-group .mark { width: calc(var(--u) * 9); height: calc(var(--u) * 9); overflow: visible; margin-bottom: calc(var(--u) * 4); }
-  #s5-group .big { font-size: calc(var(--u) * 7); max-width: calc(var(--u) * 100); }
+  #s5-lock { display: flex; align-items: center; gap: calc(var(--u) * 2); margin-bottom: calc(var(--u) * 4.4); }
+  #s5-lock .wordmark { font-size: calc(var(--u) * 5.2); }
+  #s5-group .mark { width: calc(var(--u) * 6.6); height: calc(var(--u) * 6.6); overflow: visible; }
+  #s5-group .big { font-size: calc(var(--u) * 6); max-width: calc(var(--u) * 100); }
   #s5-sub { font-size: calc(var(--u) * 2.8); color: rgba(255,255,255,0.82); font-weight: 500; margin: calc(var(--u) * 2.6) 0 calc(var(--u) * 5); }
   #s5-cta { display: inline-flex; align-items: center; gap: calc(var(--u) * 1.4); background: #fff; color: var(--ink); font-weight: 800; font-size: calc(var(--u) * 2.2); padding: calc(var(--u) * 1.8) calc(var(--u) * 3.6); border-radius: 999px; }
   #s5-cta svg { width: calc(var(--u) * 2.2); height: calc(var(--u) * 2.2); }
@@ -123,19 +131,22 @@
   .v .vendor .c { font-size: calc(var(--u) * 1.9); }
   .v #you { font-size: calc(var(--u) * 3.2); padding: calc(var(--u) * 2) calc(var(--u) * 3.8); }
   .v #late { font-size: calc(var(--u) * 2); }
-  .v .cap { left: calc(var(--u) * 7); right: calc(var(--u) * 7); font-size: calc(var(--u) * 6.6); max-width: none; }
+  .v .cap { left: calc(var(--u) * 9); right: calc(var(--u) * 9); font-size: calc(var(--u) * 5.8); max-width: none; }
   .v #s2 .mark { width: calc(var(--u) * 28); height: calc(var(--u) * 28); }
-  .v #s2 .cap { font-size: calc(var(--u) * 7); max-width: none; }
+  .v #s2-word { font-size: calc(var(--u) * 17); margin-top: calc(var(--u) * 4); }
+  .v #s2-tag { font-size: calc(var(--u) * 1.9); letter-spacing: 0.16em; margin-top: calc(var(--u) * 3.4); }
+  .v #s5-lock .wordmark { font-size: calc(var(--u) * 7); }
+  .v #s2 .cap { font-size: calc(var(--u) * 5.8); max-width: none; }
   .v #s3-head .big { font-size: calc(var(--u) * 13); }
   .v .photo { left: 0; right: 0; top: 0; bottom: 42%; }
   .v .photo .fade { background: linear-gradient(0deg, var(--navy) 0%, rgba(13,16,23,0) 38%); }
   .v .who { left: calc(var(--u) * 7); right: calc(var(--u) * 7); width: auto; top: 57%; transform: none; }
   .v .who .idx { font-size: calc(var(--u) * 2.1); margin-bottom: calc(var(--u) * 3); }
   .v .who .name { font-size: calc(var(--u) * 11); margin-bottom: calc(var(--u) * 3.4); }
-  .v .who .cred { font-size: calc(var(--u) * 4.2); max-width: none; }
+  .v .who .cred { font-size: calc(var(--u) * 3.6); max-width: none; }
   .v #s3-label { left: calc(var(--u) * 7); top: calc(var(--u) * 14); }
   .v #s4-copy { left: calc(var(--u) * 7); right: calc(var(--u) * 7); width: auto; top: calc(var(--u) * 17); transform: none; }
-  .v #s4-copy .big { font-size: calc(var(--u) * 7.6); margin: calc(var(--u) * 3) 0 0; }
+  .v #s4-copy .big { font-size: calc(var(--u) * 6.4); margin: calc(var(--u) * 3) 0 0; }
   .v #s4-copy .small { display: none; }
   .v #s4-small2 { display: block !important; position: absolute; left: calc(var(--u) * 7); right: calc(var(--u) * 7); bottom: calc(var(--u) * 15); font-size: calc(var(--u) * 3.6); line-height: 1.4; color: rgba(255,255,255,0.8); font-weight: 500; }
   .v #persp { left: 0; right: 0; top: calc(var(--u) * 50); bottom: calc(var(--u) * 30); }
@@ -147,8 +158,9 @@
   .v .item .box { width: calc(var(--u) * 3); height: calc(var(--u) * 3); }
   .v .sign .slot { font-size: calc(var(--u) * 1.6); }
   .v #s5-group { left: calc(var(--u) * 7); right: calc(var(--u) * 7); }
-  .v #s5-group .mark { width: calc(var(--u) * 16); height: calc(var(--u) * 16); margin-bottom: calc(var(--u) * 6); }
-  .v #s5-group .big { font-size: calc(var(--u) * 9); }
+  .v #s5-group .mark { width: calc(var(--u) * 10); height: calc(var(--u) * 10); }
+  .v #s5-lock { margin-bottom: calc(var(--u) * 6); gap: calc(var(--u) * 2.6); }
+  .v #s5-group .big { font-size: calc(var(--u) * 7.4); }
   .v #s5-sub { font-size: calc(var(--u) * 4.2); line-height: 1.35; margin: calc(var(--u) * 4) 0 calc(var(--u) * 7); }
   .v #s5-cta { font-size: calc(var(--u) * 3.6); padding: calc(var(--u) * 2.8) calc(var(--u) * 5.4); }
   .v #s5-cta svg { width: calc(var(--u) * 3.6); height: calc(var(--u) * 3.6); }
@@ -166,18 +178,22 @@
       <div id="vendors"></div>
       <div id="you">Sua empresa</div>
       <div id="late"><i></i>Lançamento atrasado</div>
-      <p class="cap big" id="s1-a" data-t="Para lançar um produto digital, uma empresa costuma contratar quatro fornecedores."></p>
-      <p class="cap big" id="s1-b" data-t="Cada um tem o próprio contrato, o próprio prazo e a própria versão do escopo."></p>
-      <p class="cap big" id="s1-c" data-t="Quando o lançamento atrasa, ninguém responde pelo projeto inteiro."></p>
+      <p class="cap big" id="s1-a" data-t="Um produto digital costuma passar por quatro fornecedores."></p>
+      <p class="cap big" id="s1-b" data-t="Cada um com contrato, prazo e escopo próprios."></p>
+      <p class="cap big" id="s1-c" data-t="Quando atrasa, ninguém responde pelo projeto inteiro."></p>
     </section>
 
     <!-- 02 Level -->
     <section id="s2" class="layer">
-      <svg class="mark" viewBox="0 0 32 32">
-        <circle class="ball" cx="13" cy="19" r="10" fill="#fff" />
-        <circle class="ring" cx="13" cy="19" r="10" fill="none" stroke="#fff" stroke-width="3" transform="rotate(-90 13 19)" />
-      </svg>
-      <p class="cap big" id="s2-a" data-t="A Level reúne as quatro áreas num time, com um contrato e um responsável pelo projeto."></p>
+      <div id="s2-lock">
+        <svg class="mark" viewBox="0 0 32 32">
+          <circle class="ball" cx="13" cy="19" r="10" fill="#fff" />
+          <circle class="ring" cx="13" cy="19" r="10" fill="none" stroke="#fff" stroke-width="3" transform="rotate(-90 13 19)" />
+        </svg>
+        <div id="s2-word" class="wordmark" data-letters="LeveL"></div>
+        <div id="s2-tag" class="eyebrow">Design · Engenharia · Direito · Gestão</div>
+      </div>
+      <p class="cap big" id="s2-a" data-t="A Level junta as quatro áreas num time e num contrato."></p>
     </section>
 
     <!-- 03 Time -->
@@ -195,10 +211,10 @@
     <section id="s4" class="layer">
       <div id="s4-copy">
         <div class="eyebrow">O que entra na proposta</div>
-        <div class="big" data-t="As quatro áreas no mesmo cronograma e no mesmo contrato."></div>
-        <p class="small" id="s4-small">O orçamento sai depois do diagnóstico, com o escopo real na mesa.</p>
+        <div class="big" data-t="Um cronograma e um contrato para as quatro áreas."></div>
+        <p class="small" id="s4-small">O orçamento sai depois do diagnóstico.</p>
       </div>
-      <p id="s4-small2" style="display:none">O orçamento sai depois do diagnóstico, com o escopo real na mesa.</p>
+      <p id="s4-small2" style="display:none">O orçamento sai depois do diagnóstico.</p>
       <div id="persp">
         <div id="doc">
           <div class="top">
@@ -226,11 +242,14 @@
       <div id="s5-paint"></div>
       <div id="s5-shade"></div>
       <div id="s5-group">
-        <svg class="mark" viewBox="0 0 32 32">
-          <circle class="ball" cx="13" cy="19" r="10" fill="#fff" />
-          <circle class="ring" cx="13" cy="19" r="10" fill="none" stroke="#fff" stroke-width="3" transform="rotate(-90 13 19)" />
-        </svg>
-        <div class="big" data-t="Conte o que precisa mudar no seu negócio."></div>
+        <div id="s5-lock">
+          <svg class="mark" viewBox="0 0 32 32">
+            <circle class="ball" cx="13" cy="19" r="10" fill="#fff" />
+            <circle class="ring" cx="13" cy="19" r="10" fill="none" stroke="#fff" stroke-width="3" transform="rotate(-90 13 19)" />
+          </svg>
+          <div class="wordmark" data-letters="LeveL"></div>
+        </div>
+        <div class="big" data-t="Conte o que precisa mudar."></div>
         <p id="s5-sub">Voltamos com um diagnóstico e os próximos passos.</p>
         <div id="s5-cta">Fale com o time
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -265,31 +284,34 @@ const VENDORS = [
 // Credenciais tiradas de src/data/team.ts, sem acrescentar nada.
 const TEAM = [
   ["Vitor Ribeiro", "Engenharia de software", "vitor-ribeiro",
-   "Engenheiro de software em uma das maiores empresas de tecnologia do mundo."],
+   "Engenheiro de software numa das maiores empresas de tecnologia do mundo."],
   ["João Pedro Carneiro", "Direito digital", "joao-pedro-carneiro",
-   "Advogado formado pela USP. Cuida de contratos, LGPD e propriedade intelectual antes do lançamento."],
+   "Advogado pela USP, cuida de contratos, LGPD e propriedade intelectual."],
   ["Armando Custodio", "Design engineer", "armando-custodio",
-   "Desenha interfaces, design systems e protótipos que já viraram software em produção."],
+   "Desenha interfaces que já viraram software em produção."],
   ["Diogo Siqueira", "Gestão e escala", "diogo-siqueira",
-   "Engenheiro de produção, especialista em gestão e escala de negócios."],
+   "Engenheiro de produção, especialista em gestão e escala."],
 ];
 const ITEMS = [
-  "Diagnóstico do que já existe: site, sistema, processos e riscos legais",
+  "Diagnóstico de site, sistema, processos e riscos legais",
   "Design e engenharia no mesmo cronograma",
-  "Contratos, termos de uso e LGPD revisados antes do lançamento",
-  "Acompanhamento depois que o produto vai ao ar",
+  "Contratos, termos e LGPD revisados antes do lançamento",
+  "Acompanhamento depois do lançamento",
 ];
 
 // ---------------------------------------------------------------------------
 // Linha do tempo (segundos)
 // ---------------------------------------------------------------------------
-const T = { s1: [0, 9.6], s2: [9.6, 16], s3: [16, 33.5], s4: [33.5, 43], s5: [43, 51] };
-const DURATION = 51;
-const S1 = { you: 0.5, cards: 0.9, a: [1.2, 3.9], b: [4.2, 6.6], c: [6.9, 9.6], chaos: 4.4, late: 7.3 };
-const COLLAPSE = [9.6, 10.6];
-const PEOPLE0 = 18.6, PERSON = 3.7;
-const CHECK0 = 35.6, CHECK = 0.85;
-const SIGN = [39.3, 40.7];
+// Frases ficam ~4s na tela; cada sócio, 2.6s.
+const T = { s1: [0, 13.4], s2: [13.4, 23.2], s3: [23.2, 37.2], s4: [37.2, 50], s5: [50, 61] };
+const DURATION = 61;
+const S1 = { you: 0.5, cards: 0.9, a: [1.2, 5.2], b: [5.5, 9.5], c: [9.8, 13.4], chaos: 5.7, late: 10.2 };
+const COLLAPSE = [13.4, 14.4];
+// Assinatura da marca: desenha, "LeveL" entra, segura sozinha e sobe pra frase.
+const LOGO = { mark: 14.1, word: 15.5, tag: 16.3, move: [18.4, 19.4], cap: 19.0 };
+const PEOPLE0 = 26.0, PERSON = 2.6;
+const CHECK0 = 39.6, CHECK = 1.0;
+const SIGN = [43.6, 45.0];
 const CHAPTERS = [["s1", "01 · Hoje"], ["s2", "02 · Level"], ["s3", "03 · Time"], ["s4", "04 · Proposta"], ["s5", "05 · Contato"]];
 
 // Momentos de impacto para a trilha (score.mjs).
@@ -297,23 +319,24 @@ const CUES = [
   ...VENDORS.map((_, i) => ({ t: S1.cards + i * 0.25, type: "tick" })),
   { t: COLLAPSE[0] - 1.6, end: COLLAPSE[1], type: "rise" },
   { t: COLLAPSE[1], type: "hit" },
-  { t: 11.85, type: "tick" },
-  { t: 16.0, type: "hit", soft: true },
+  { t: LOGO.mark + 0.9 * 1.75, type: "hit", soft: true },
+  { t: T.s3[0], type: "hit", soft: true },
   ...TEAM.map((_, i) => ({ t: PEOPLE0 + i * PERSON - 0.45, end: PEOPLE0 + i * PERSON, type: "swish" })),
-  { t: 33.5, type: "hit", soft: true },
+  { t: T.s4[0], type: "hit", soft: true },
   ...ITEMS.map((_, i) => ({ t: CHECK0 + i * CHECK + 0.25, type: "tick" })),
   { t: SIGN[0], end: SIGN[1], type: "scribble" },
-  { t: 43.2, type: "hit" },
-  { t: 46.6, type: "tick" },
+  { t: T.s5[0] + 0.2, type: "hit" },
+  { t: T.s5[0] + 4.2, type: "tick" },
 ];
 const CHORDS = [
-  [0, 10.6, [110, 164.81, 220, 261.63]],
-  [10.6, 16, [87.31, 130.81, 174.61, 220, 329.63]],
-  [16, 24.9, [130.81, 196, 261.63, 329.63]],
-  [24.9, 33.5, [98, 146.83, 196, 246.94, 293.66]],
-  [33.5, 38.5, [87.31, 130.81, 174.61, 220]],
-  [38.5, 43.2, [98, 146.83, 196, 246.94]],
-  [43.2, 51, [130.81, 196, 246.94, 293.66, 329.63]],
+  [0, 7.2, [110, 164.81, 220, 261.63]],
+  [7.2, 14.4, [110, 164.81, 220, 261.63, 392]],
+  [14.4, 23.2, [87.31, 130.81, 174.61, 220, 329.63]],
+  [23.2, 30.2, [130.81, 196, 261.63, 329.63]],
+  [30.2, 37.2, [98, 146.83, 196, 246.94, 293.66]],
+  [37.2, 43.6, [87.31, 130.81, 174.61, 220]],
+  [43.6, 50, [98, 146.83, 196, 246.94]],
+  [50, 61, [130.81, 196, 246.94, 293.66, 329.63]],
 ];
 
 // ---------------------------------------------------------------------------
@@ -413,6 +436,9 @@ function buildGrain() {
 
 function build() {
   $$("[data-t]").forEach(splitWords);
+  $$("[data-letters]").forEach(el => {
+    el.innerHTML = [...el.dataset.letters].map(c => `<span class="m"><span>${c}</span></span>`).join("");
+  });
 
   // Cena 1: cartões dos fornecedores e a rede.
   $("#vendors").innerHTML = VENDORS.map(([k, n, c, d]) => `
@@ -553,19 +579,32 @@ function render(t) {
   if (show($("#s2"), t, T.s2)) {
     const t0 = T.s2[0];
     const mk = $("#s2 .mark");
-    const cy = V ? H * 0.36 : H * 0.36;
-    const size = mk.getBoundingClientRect().width / push;
-    mk.style.left = W / 2 - size / 2 + "px";
-    mk.style.top = cy - size / 2 + "px";
-    drawMark(mk, t, 10.3, 0.9);
+    const lock = $("#s2-lock");
+    // A marca nasce exatamente no ponto onde os cartões colapsaram.
+    const size = U * (V ? 28 : 17);
+    lock.style.top = NET.cy - size / 2 + "px";
+    lock.style.transformOrigin = `50% ${size / 2}px`;
+    drawMark(mk, t, LOGO.mark, 0.9);
+    $$("#s2-word .m > span").forEach((l, i) => {
+      const k = outQuart(p(t, LOGO.word + i * 0.07, LOGO.word + i * 0.07 + 0.7));
+      l.style.transform = `translateY(${(1 - k) * 110}%)`;
+    });
+    fade($("#s2-tag"), t, LOGO.tag, LOGO.move[0] + 0.3, 1);
+    // Segura a assinatura sozinha, com uma aproximação lenta, depois sobe.
+    const km = inOutCubic(p(t, LOGO.move[0], LOGO.move[1]));
+    const hold = lerp(1, 1.04, p(t, LOGO.word, LOGO.move[0]));
+    const targetY = (V ? H * 0.30 : H * 0.22) - NET.cy;
+    const ko2 = inCubic(p(t, T.s2[1] - 0.6, T.s2[1]));
+    // Enquanto o nome entra, a assinatura desliza do ponto do colapso até o centro ótico.
+    const shift = (V ? H * 0.386 : H * 0.38) - NET.cy;
+    const glide = inOutCubic(p(t, LOGO.word - 0.4, LOGO.word + 0.9)) * shift;
+    lock.style.transform = `translateY(${lerp(glide, targetY, km) - ko2 * U * 3}px) scale(${lerp(hold, 0.6, km)})`;
+    lock.style.opacity = 1 - ko2;
     // Flash branco curto no impacto do colapso.
     const fl = Math.exp(-Math.max(0, t - COLLAPSE[1]) * 9) * (t >= COLLAPSE[1] ? 1 : 0);
     mk.style.filter = fl > 0.02 ? `drop-shadow(0 0 ${U * 4 * fl}px rgba(255,255,255,${0.9 * fl}))` : "none";
-    const ko = inCubic(p(t, T.s2[1] - 0.6, T.s2[1]));
-    mk.style.opacity = 1 - ko;
-    mk.style.transform = `translateY(${-ko * U * 3}px) scale(${1 - ko * 0.06})`;
-    $("#s2-a").style.top = (V ? H * 0.52 : H * 0.6) + "px";
-    words($("#s2-a"), t, 12.0, T.s2[1] - 0.1, { stagger: 0.05 });
+    $("#s2-a").style.top = (V ? H * 0.50 : H * 0.52) + "px";
+    words($("#s2-a"), t, LOGO.cap, T.s2[1] - 0.1, { stagger: 0.05 });
   }
 
   // ---- 03 Time -------------------------------------------------------------
@@ -660,15 +699,19 @@ function render(t) {
     paint.style.transformOrigin = `${sx}px ${sy}px`;
     paint.style.transform = `scale(${lerp(1.2, 1.03, outCubic(p(t, t0 + 0.2, DURATION)))})`;
     const g = $("#s5-group");
-    drawMark($(".mark", g), t, t0 + 0.6, 0.8);
-    words($(".big", g), t, t0 + 1.2, undefined, { stagger: 0.06 });
-    fade($("#s5-sub"), t, t0 + 2.0, undefined, 1.5);
-    const kc = outBack(p(t, t0 + 3.4, t0 + 3.9), 1.5);
+    drawMark($(".mark", g), t, t0 + 0.5, 0.8);
+    $$("#s5-lock .m > span").forEach((l, i) => {
+      const k = outQuart(p(t, t0 + 1.2 + i * 0.06, t0 + 1.8 + i * 0.06));
+      l.style.transform = `translateY(${(1 - k) * 110}%)`;
+    });
+    words($(".big", g), t, t0 + 1.9, undefined, { stagger: 0.06 });
+    fade($("#s5-sub"), t, t0 + 2.9, undefined, 1.5);
+    const kc = outBack(p(t, t0 + 4.2, t0 + 4.7), 1.5);
     $("#s5-cta").style.transform = `scale(${lerp(0.85, 1, clamp(kc, 0, 1.2))})`;
     $("#s5-cta").style.opacity = clamp(kc);
-    const nudge = Math.sin(clamp((t - (t0 + 4.3)) / 0.5) * Math.PI);
+    const nudge = Math.sin(clamp((t - (t0 + 5.1)) / 0.5) * Math.PI);
     $("#s5-cta svg").style.transform = `translateX(${nudge * U * 0.6}px)`;
-    fade($("#s5-url"), t, t0 + 3.8, undefined, 1);
+    fade($("#s5-url"), t, t0 + 4.6, undefined, 1);
   }
 }
 
