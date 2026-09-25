@@ -72,7 +72,7 @@ async function renderFormat(browser, port, pageName, name, { w, h }) {
     "-y", "-loglevel", "error",
     "-f", "image2pipe", "-framerate", String(FPS), "-i", "-",
     ...audio,
-    "-c:v", "libx264", "-preset", "slow", "-crf", "16",
+    "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-maxrate", "10M", "-bufsize", "20M",
     "-pix_fmt", "yuv420p", "-movflags", "+faststart",
     out,
   ], { stdio: ["pipe", "inherit", "inherit"] });
