@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Level: vídeo para parceiros</title>
+<!--
+  Vídeo de convencimento para parceiros e clientes (51s), em 16:9 e 9:16.
+
+  Mesmo motor de level-intro.html: render(t) determinístico, chamado quadro
+  a quadro por render.mjs. window.CUES lista os momentos de impacto, usados
+  por score.mjs pra sincronizar a trilha sonora com a imagem.
+
+  Roteiro (texto revisado com a skill no-ai-slop e com COPYWRITING.md: nada
+  de número, cliente ou resultado que a Level não tenha):
+    01 Hoje       quatro fornecedores, quatro contratos, ninguém responde
+                  pelo projeto inteiro
+    02 Level      os quatro cartões colapsam na marca
+    03 Time       quem assina o projeto, um por vez
+    04 Proposta   o documento que o parceiro recebe, assinado no fim
+    05 Contato    o quadro de Monet abre a partir do sol, chamada final
+-->
+<style>
+  @font-face { font-family: "Manrope"; src: url("fonts/manrope-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Manrope"; src: url("fonts/manrope-latin-ext-wght-normal.woff2") format("woff2"); font-weight: 200 800;
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+  :root { --navy: #0d1017; --navy-soft: #161b27; --line: rgba(255,255,255,0.16); --muted: #8f96aa; --paper: #f3f2ee; --ink: #14171e; --u: 10.8px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; }
+  body { background: #000; font-family: "Manrope", system-ui, sans-serif; color: #fff; overflow: hidden; -webkit-font-smoothing: antialiased; }
+  #stage { position: absolute; left: 0; top: 0; overflow: hidden; background: var(--navy); }
+  #cam { position: absolute; inset: 0; }
+  #grid { position: absolute; inset: -10%; background-image: radial-gradient(rgba(255,255,255,0.075) 1px, transparent 1.3px); background-size: calc(var(--u) * 3.2) calc(var(--u) * 3.2); }
+  .layer { position: absolute; inset: 0; }
+  .abs { position: absolute; }
+  .w { display: inline-block; will-change: transform, filter, opacity; }
+
+  .eyebrow { font-size: calc(var(--u) * 1.5); letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .big { font-weight: 800; letter-spacing: -0.04em; line-height: 1.04; text-wrap: balance; }
+
+  /* Pós: granulação, vinheta, fade de abertura e fechamento */
+  #grain { position: absolute; inset: 0; mix-blend-mode: overlay; opacity: 0.11; pointer-events: none; }
+  #vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 75% 70% at 50% 48%, transparent 55%, rgba(0,0,0,0.55) 100%); }
+  #black { position: absolute; inset: 0; background: #000; pointer-events: none; }
+
+  /* HUD */
+  .hud { font-size: calc(var(--u) * 1.2); letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  #hud-tl { left: calc(var(--u) * 5); top: calc(var(--u) * 4.2); display: flex; align-items: center; gap: calc(var(--u) * 1); }
+  #hud-tr { right: calc(var(--u) * 5); top: calc(var(--u) * 4.2); }
+  #hud-bar { left: calc(var(--u) * 5); right: calc(var(--u) * 5); bottom: calc(var(--u) * 4.2); height: 1px; background: var(--line); }
+  #hud-bar i { position: absolute; left: 0; top: -0.5px; bottom: -0.5px; background: #fff; transform-origin: left; }
+
+  /* 01 Hoje: rede de fornecedores */
+  #net { position: absolute; inset: 0; overflow: visible; }
+  .vendor { position: absolute; left: 0; top: 0; width: calc(var(--u) * 30); padding: calc(var(--u) * 1.8) calc(var(--u) * 2); border: 1px solid var(--line); background: rgba(22,27,39,0.92); border-radius: calc(var(--u) * 0.8); }
+  .vendor .k { font-size: calc(var(--u) * 1.15); letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: calc(var(--u) * 1); }
+  .vendor .n { font-size: calc(var(--u) * 2.8); font-weight: 800; letter-spacing: -0.02em; margin-bottom: calc(var(--u) * 1.4); }
+  .vendor .c { display: flex; justify-content: space-between; font-size: calc(var(--u) * 1.3); color: var(--muted); font-weight: 600; border-top: 1px solid var(--line); padding-top: calc(var(--u) * 1); }
+  #you { position: absolute; left: 0; top: 0; background: #fff; color: var(--ink); font-weight: 800; font-size: calc(var(--u) * 2); padding: calc(var(--u) * 1.3) calc(var(--u) * 2.6); border-radius: 999px; white-space: nowrap; }
+  #late { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: calc(var(--u) * 0.8); font-size: calc(var(--u) * 1.3); letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #fff; white-space: nowrap; background: rgba(13,16,23,0.9); border: 1px solid var(--line); padding: calc(var(--u) * 0.7) calc(var(--u) * 1.4); border-radius: 999px; }
+  #late i { width: calc(var(--u) * 0.8); height: calc(var(--u) * 0.8); border-radius: 50%; background: #e8795b; }
+  .cap { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); text-align: center; font-size: calc(var(--u) * 5.4); margin: 0 auto; max-width: calc(var(--u) * 130); }
+
+  /* 02 Level */
+  #s2 .mark { position: absolute; width: calc(var(--u) * 17); height: calc(var(--u) * 17); overflow: visible; }
+  #s2 .cap { font-size: calc(var(--u) * 5.4); max-width: calc(var(--u) * 120); }
+
+  /* 03 Time */
+  #s3-head { position: absolute; left: 0; right: 0; top: 50%; text-align: center; transform: translateY(-50%); }
+  #s3-head .big { font-size: calc(var(--u) * 10); }
+  #s3-head .eyebrow { margin-bottom: calc(var(--u) * 3); }
+  .photo { position: absolute; top: 0; bottom: 0; left: 50%; right: 0; overflow: hidden; }
+  .photo .img { position: absolute; inset: 0; background-size: cover; background-position: center 28%; filter: grayscale(1) contrast(1.12) brightness(0.92); }
+  .photo .fade { position: absolute; inset: 0; background: linear-gradient(90deg, var(--navy) 0%, rgba(13,16,23,0) 32%), linear-gradient(0deg, rgba(13,16,23,0.55) 0%, rgba(13,16,23,0) 30%); }
+  .photo .edge { position: absolute; top: 0; bottom: 0; width: 3px; background: #fff; box-shadow: 0 0 calc(var(--u) * 2) rgba(255,255,255,0.7); }
+  .who { position: absolute; left: calc(var(--u) * 9); width: calc(var(--u) * 76); top: 50%; transform: translateY(-50%); }
+  .who .idx { font-size: calc(var(--u) * 1.5); letter-spacing: 0.24em; color: var(--muted); font-weight: 700; margin-bottom: calc(var(--u) * 5); font-variant-numeric: tabular-nums; }
+  .who .role { margin-bottom: calc(var(--u) * 2); }
+  .who .name { font-size: calc(var(--u) * 8.4); margin-bottom: calc(var(--u) * 3.4); }
+  .who .cred { font-size: calc(var(--u) * 2.8); line-height: 1.4; color: rgba(255,255,255,0.84); font-weight: 500; max-width: calc(var(--u) * 64); }
+  #s3-label { left: calc(var(--u) * 9); top: calc(var(--u) * 12); }
+
+  /* 04 Proposta */
+  #s4-copy { position: absolute; left: calc(var(--u) * 9); width: calc(var(--u) * 70); top: 50%; transform: translateY(-50%); }
+  #s4-copy .big { font-size: calc(var(--u) * 5.6); margin: calc(var(--u) * 2.4) 0 calc(var(--u) * 4); }
+  #s4-copy .small { font-size: calc(var(--u) * 2.5); line-height: 1.45; color: rgba(255,255,255,0.8); font-weight: 500; max-width: calc(var(--u) * 60); }
+  #persp { position: absolute; left: 50%; right: 0; top: 0; bottom: 0; perspective: calc(var(--u) * 180); display: flex; align-items: center; justify-content: center; }
+  #doc { width: calc(var(--u) * 70); background: var(--paper); color: var(--ink); border-radius: calc(var(--u) * 0.6); padding: calc(var(--u) * 4.4) calc(var(--u) * 4.6) calc(var(--u) * 4); box-shadow: 0 calc(var(--u) * 5) calc(var(--u) * 12) rgba(0,0,0,0.55); transform-style: preserve-3d; }
+  #doc .top { display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: calc(var(--u) * 1.8); letter-spacing: -0.02em; padding-bottom: calc(var(--u) * 2); border-bottom: 1.5px solid var(--ink); margin-bottom: calc(var(--u) * 3); }
+  #doc .top span { font-size: calc(var(--u) * 1.2); letter-spacing: 0.22em; text-transform: uppercase; color: #6b6f7a; font-weight: 700; }
+  #doc .brand { display: flex; align-items: center; gap: calc(var(--u) * 0.8); }
+  #doc h3 { font-size: calc(var(--u) * 3.2); font-weight: 800; letter-spacing: -0.03em; margin-bottom: calc(var(--u) * 2.6); }
+  .item { display: flex; gap: calc(var(--u) * 1.6); align-items: flex-start; padding: calc(var(--u) * 1.4) 0; border-bottom: 1px solid rgba(20,23,30,0.12); font-size: calc(var(--u) * 1.75); line-height: 1.4; font-weight: 600; }
+  .item .box { flex: none; width: calc(var(--u) * 2.2); height: calc(var(--u) * 2.2); border: 1.5px solid var(--ink); border-radius: calc(var(--u) * 0.4); position: relative; margin-top: calc(var(--u) * 0.1); }
+  .item .box i { position: absolute; inset: 0; background: var(--ink); border-radius: calc(var(--u) * 0.2); }
+  .item .box svg { position: absolute; inset: 12%; }
+  .sign { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 3); margin-top: calc(var(--u) * 4.4); }
+  .sign .slot { border-top: 1.5px solid var(--ink); padding-top: calc(var(--u) * 1); font-size: calc(var(--u) * 1.2); letter-spacing: 0.2em; text-transform: uppercase; color: #6b6f7a; font-weight: 700; position: relative; }
+  .sign svg { position: absolute; left: 0; bottom: calc(100% + var(--u) * 0.2); width: 100%; height: calc(var(--u) * 6); overflow: visible; }
+
+  /* 05 Contato */
+  #s5-paint { position: absolute; inset: 0; background: url("../public/images/hero-rich.jpg") center / cover no-repeat; }
+  #s5-shade { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 55%, rgba(13,16,23,0.62), rgba(13,16,23,0.86)); }
+  #s5-group { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; text-align: center; }
+  #s5-group .mark { width: calc(var(--u) * 9); height: calc(var(--u) * 9); overflow: visible; margin-bottom: calc(var(--u) * 4); }
+  #s5-group .big { font-size: calc(var(--u) * 7); max-width: calc(var(--u) * 100); }
+  #s5-sub { font-size: calc(var(--u) * 2.8); color: rgba(255,255,255,0.82); font-weight: 500; margin: calc(var(--u) * 2.6) 0 calc(var(--u) * 5); }
+  #s5-cta { display: inline-flex; align-items: center; gap: calc(var(--u) * 1.4); background: #fff; color: var(--ink); font-weight: 800; font-size: calc(var(--u) * 2.2); padding: calc(var(--u) * 1.8) calc(var(--u) * 3.6); border-radius: 999px; }
+  #s5-cta svg { width: calc(var(--u) * 2.2); height: calc(var(--u) * 2.2); }
+  #s5-url { margin-top: calc(var(--u) * 2.6); font-size: calc(var(--u) * 1.5); letter-spacing: 0.18em; color: rgba(255,255,255,0.7); font-weight: 700; }
+
+  /* ---------- Vertical (9:16) ---------- */
+  .v .hud { font-size: calc(var(--u) * 1.8); }
+  .v #hud-tl, .v #hud-tr { top: calc(var(--u) * 8); }
+  .v #hud-tl, .v #hud-bar { left: calc(var(--u) * 7); }
+  .v #hud-tr, .v #hud-bar { right: calc(var(--u) * 7); }
+  .v #hud-bar { bottom: calc(var(--u) * 9); }
+  .v .eyebrow { font-size: calc(var(--u) * 2.1); letter-spacing: 0.2em; }
+  .v .vendor { width: calc(var(--u) * 40); padding: calc(var(--u) * 2.4) calc(var(--u) * 2.6); }
+  .v .vendor .k { font-size: calc(var(--u) * 1.7); }
+  .v .vendor .n { font-size: calc(var(--u) * 3.6); }
+  .v .vendor .c { font-size: calc(var(--u) * 1.9); }
+  .v #you { font-size: calc(var(--u) * 3.2); padding: calc(var(--u) * 2) calc(var(--u) * 3.8); }
+  .v #late { font-size: calc(var(--u) * 2); }
+  .v .cap { left: calc(var(--u) * 7); right: calc(var(--u) * 7); font-size: calc(var(--u) * 6.6); max-width: none; }
+  .v #s2 .mark { width: calc(var(--u) * 28); height: calc(var(--u) * 28); }
+  .v #s2 .cap { font-size: calc(var(--u) * 7); max-width: none; }
+  .v #s3-head .big { font-size: calc(var(--u) * 13); }
+  .v .photo { left: 0; right: 0; top: 0; bottom: 42%; }
+  .v .photo .fade { background: linear-gradient(0deg, var(--navy) 0%, rgba(13,16,23,0) 38%); }
+  .v .who { left: calc(var(--u) * 7); right: calc(var(--u) * 7); width: auto; top: 57%; transform: none; }
+  .v .who .idx { font-size: calc(var(--u) * 2.1); margin-bottom: calc(var(--u) * 3); }
+  .v .who .name { font-size: calc(var(--u) * 11); margin-bottom: calc(var(--u) * 3.4); }
+  .v .who .cred { font-size: calc(var(--u) * 4.2); max-width: none; }
+  .v #s3-label { left: calc(var(--u) * 7); top: calc(var(--u) * 14); }
+  .v #s4-copy { left: calc(var(--u) * 7); right: calc(var(--u) * 7); width: auto; top: calc(var(--u) * 17); transform: none; }
+  .v #s4-copy .big { font-size: calc(var(--u) * 7.6); margin: calc(var(--u) * 3) 0 0; }
+  .v #s4-copy .small { display: none; }
+  .v #s4-small2 { display: block !important; position: absolute; left: calc(var(--u) * 7); right: calc(var(--u) * 7); bottom: calc(var(--u) * 15); font-size: calc(var(--u) * 3.6); line-height: 1.4; color: rgba(255,255,255,0.8); font-weight: 500; }
+  .v #persp { left: 0; right: 0; top: calc(var(--u) * 50); bottom: calc(var(--u) * 30); }
+  .v #doc { width: calc(var(--u) * 84); padding: calc(var(--u) * 5) calc(var(--u) * 5.4) calc(var(--u) * 4.4); }
+  .v #doc .top { font-size: calc(var(--u) * 2.4); }
+  .v #doc .top span { font-size: calc(var(--u) * 1.6); }
+  .v #doc h3 { font-size: calc(var(--u) * 4.2); }
+  .v .item { font-size: calc(var(--u) * 2.5); }
+  .v .item .box { width: calc(var(--u) * 3); height: calc(var(--u) * 3); }
+  .v .sign .slot { font-size: calc(var(--u) * 1.6); }
+  .v #s5-group { left: calc(var(--u) * 7); right: calc(var(--u) * 7); }
+  .v #s5-group .mark { width: calc(var(--u) * 16); height: calc(var(--u) * 16); margin-bottom: calc(var(--u) * 6); }
+  .v #s5-group .big { font-size: calc(var(--u) * 9); }
+  .v #s5-sub { font-size: calc(var(--u) * 4.2); line-height: 1.35; margin: calc(var(--u) * 4) 0 calc(var(--u) * 7); }
+  .v #s5-cta { font-size: calc(var(--u) * 3.6); padding: calc(var(--u) * 2.8) calc(var(--u) * 5.4); }
+  .v #s5-cta svg { width: calc(var(--u) * 3.6); height: calc(var(--u) * 3.6); }
+  .v #s5-url { font-size: calc(var(--u) * 2.3); margin-top: calc(var(--u) * 3.6); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="cam">
+    <div id="grid"></div>
+
+    <!-- 01 Hoje -->
+    <section id="s1" class="layer">
+      <svg id="net"></svg>
+      <div id="vendors"></div>
+      <div id="you">Sua empresa</div>
+      <div id="late"><i></i>Lançamento atrasado</div>
+      <p class="cap big" id="s1-a" data-t="Para lançar um produto digital, uma empresa costuma contratar quatro fornecedores."></p>
+      <p class="cap big" id="s1-b" data-t="Cada um tem o próprio contrato, o próprio prazo e a própria versão do escopo."></p>
+      <p class="cap big" id="s1-c" data-t="Quando o lançamento atrasa, ninguém responde pelo projeto inteiro."></p>
+    </section>
+
+    <!-- 02 Level -->
+    <section id="s2" class="layer">
+      <svg class="mark" viewBox="0 0 32 32">
+        <circle class="ball" cx="13" cy="19" r="10" fill="#fff" />
+        <circle class="ring" cx="13" cy="19" r="10" fill="none" stroke="#fff" stroke-width="3" transform="rotate(-90 13 19)" />
+      </svg>
+      <p class="cap big" id="s2-a" data-t="A Level reúne as quatro áreas num time, com um contrato e um responsável pelo projeto."></p>
+    </section>
+
+    <!-- 03 Time -->
+    <section id="s3" class="layer">
+      <div id="s3-photos"></div>
+      <div id="s3-head">
+        <div class="eyebrow">Time</div>
+        <div class="big" data-t="Quem assina o projeto"></div>
+      </div>
+      <div id="s3-label" class="abs eyebrow">Quem assina o projeto</div>
+      <div id="s3-who"></div>
+    </section>
+
+    <!-- 04 Proposta -->
+    <section id="s4" class="layer">
+      <div id="s4-copy">
+        <div class="eyebrow">O que entra na proposta</div>
+        <div class="big" data-t="As quatro áreas no mesmo cronograma e no mesmo contrato."></div>
+        <p class="small" id="s4-small">O orçamento sai depois do diagnóstico, com o escopo real na mesa.</p>
+      </div>
+      <p id="s4-small2" style="display:none">O orçamento sai depois do diagnóstico, com o escopo real na mesa.</p>
+      <div id="persp">
+        <div id="doc">
+          <div class="top">
+            <div class="brand">
+              <svg width="20" height="20" viewBox="0 0 32 32"><circle cx="19" cy="13" r="10" fill="#14171e"/><circle cx="13" cy="19" r="10" fill="none" stroke="#14171e" stroke-width="3"/></svg>
+              LeveL
+            </div>
+            <span>Proposta</span>
+          </div>
+          <h3>Escopo do projeto</h3>
+          <div id="items"></div>
+          <div class="sign">
+            <div class="slot">Sua empresa</div>
+            <div class="slot">Level
+              <svg viewBox="0 0 200 60" preserveAspectRatio="none"><path id="sig" fill="none" stroke="#14171e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                d="M8 44 C 14 20, 22 8, 24 14 C 26 22, 18 40, 16 48 C 30 46, 40 44, 46 40 C 52 34, 58 30, 60 34 C 62 40, 50 44, 56 46 C 62 48, 70 36, 74 32 C 76 40, 78 46, 84 38 C 88 32, 92 30, 94 36 C 96 42, 90 46, 98 44 C 106 42, 112 20, 116 12 C 118 24, 114 40, 116 46 C 130 44, 150 36, 192 30" /></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Contato -->
+    <section id="s5" class="layer">
+      <div id="s5-paint"></div>
+      <div id="s5-shade"></div>
+      <div id="s5-group">
+        <svg class="mark" viewBox="0 0 32 32">
+          <circle class="ball" cx="13" cy="19" r="10" fill="#fff" />
+          <circle class="ring" cx="13" cy="19" r="10" fill="none" stroke="#fff" stroke-width="3" transform="rotate(-90 13 19)" />
+        </svg>
+        <div class="big" data-t="Conte o que precisa mudar no seu negócio."></div>
+        <p id="s5-sub">Voltamos com um diagnóstico e os próximos passos.</p>
+        <div id="s5-cta">Fale com o time
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+        <div id="s5-url">ganwalk.github.io/agency</div>
+      </div>
+    </section>
+  </div>
+
+  <div id="grain"></div>
+  <div id="vignette"></div>
+
+  <div id="hud-tl" class="abs hud">
+    <svg width="16" height="16" viewBox="0 0 32 32"><circle cx="19" cy="13" r="10" fill="#8f96aa"/><circle cx="13" cy="19" r="10" fill="none" stroke="#8f96aa" stroke-width="3"/></svg>
+    <span>LeveL</span>
+  </div>
+  <div id="hud-tr" class="abs hud"></div>
+  <div id="hud-bar" class="abs"><i></i></div>
+  <div id="black"></div>
+</div>
+
+<script>
+// ---------------------------------------------------------------------------
+// Conteúdo
+// ---------------------------------------------------------------------------
+const VENDORS = [
+  ["Fornecedor 01", "Agência de design", "Contrato 01", "Prazo A"],
+  ["Fornecedor 02", "Software house", "Contrato 02", "Prazo B"],
+  ["Fornecedor 03", "Escritório jurídico", "Contrato 03", "Prazo C"],
+  ["Fornecedor 04", "Consultoria de gestão", "Contrato 04", "Prazo D"],
+];
+// Credenciais tiradas de src/data/team.ts, sem acrescentar nada.
+const TEAM = [
+  ["Vitor Ribeiro", "Engenharia de software", "vitor-ribeiro",
+   "Engenheiro de software em uma das maiores empresas de tecnologia do mundo."],
+  ["João Pedro Carneiro", "Direito digital", "joao-pedro-carneiro",
+   "Advogado formado pela USP. Cuida de contratos, LGPD e propriedade intelectual antes do lançamento."],
+  ["Armando Custodio", "Design engineer", "armando-custodio",
+   "Desenha interfaces, design systems e protótipos que já viraram software em produção."],
+  ["Diogo Siqueira", "Gestão e escala", "diogo-siqueira",
+   "Engenheiro de produção, especialista em gestão e escala de negócios."],
+];
+const ITEMS = [
+  "Diagnóstico do que já existe: site, sistema, processos e riscos legais",
+  "Design e engenharia no mesmo cronograma",
+  "Contratos, termos de uso e LGPD revisados antes do lançamento",
+  "Acompanhamento depois que o produto vai ao ar",
+];
+
+// ---------------------------------------------------------------------------
+// Linha do tempo (segundos)
+// ---------------------------------------------------------------------------
+const T = { s1: [0, 9.6], s2: [9.6, 16], s3: [16, 33.5], s4: [33.5, 43], s5: [43, 51] };
+const DURATION = 51;
+const S1 = { you: 0.5, cards: 0.9, a: [1.2, 3.9], b: [4.2, 6.6], c: [6.9, 9.6], chaos: 4.4, late: 7.3 };
+const COLLAPSE = [9.6, 10.6];
+const PEOPLE0 = 18.6, PERSON = 3.7;
+const CHECK0 = 35.6, CHECK = 0.85;
+const SIGN = [39.3, 40.7];
+const CHAPTERS = [["s1", "01 · Hoje"], ["s2", "02 · Level"], ["s3", "03 · Time"], ["s4", "04 · Proposta"], ["s5", "05 · Contato"]];
+
+// Momentos de impacto para a trilha (score.mjs).
+const CUES = [
+  ...VENDORS.map((_, i) => ({ t: S1.cards + i * 0.25, type: "tick" })),
+  { t: COLLAPSE[0] - 1.6, end: COLLAPSE[1], type: "rise" },
+  { t: COLLAPSE[1], type: "hit" },
+  { t: 11.85, type: "tick" },
+  { t: 16.0, type: "hit", soft: true },
+  ...TEAM.map((_, i) => ({ t: PEOPLE0 + i * PERSON - 0.45, end: PEOPLE0 + i * PERSON, type: "swish" })),
+  { t: 33.5, type: "hit", soft: true },
+  ...ITEMS.map((_, i) => ({ t: CHECK0 + i * CHECK + 0.25, type: "tick" })),
+  { t: SIGN[0], end: SIGN[1], type: "scribble" },
+  { t: 43.2, type: "hit" },
+  { t: 46.6, type: "tick" },
+];
+const CHORDS = [
+  [0, 10.6, [110, 164.81, 220, 261.63]],
+  [10.6, 16, [87.31, 130.81, 174.61, 220, 329.63]],
+  [16, 24.9, [130.81, 196, 261.63, 329.63]],
+  [24.9, 33.5, [98, 146.83, 196, 246.94, 293.66]],
+  [33.5, 38.5, [87.31, 130.81, 174.61, 220]],
+  [38.5, 43.2, [98, 146.83, 196, 246.94]],
+  [43.2, 51, [130.81, 196, 246.94, 293.66, 329.63]],
+];
+
+// ---------------------------------------------------------------------------
+// Utilitários
+// ---------------------------------------------------------------------------
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const p = (t, a, b) => clamp((t - a) / (b - a));
+const lerp = (a, b, k) => a + (b - a) * k;
+const outCubic = k => 1 - Math.pow(1 - k, 3);
+const outQuart = k => 1 - Math.pow(1 - k, 4);
+const outExpo = k => (k >= 1 ? 1 : 1 - Math.pow(2, -10 * k));
+const inOutCubic = k => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
+const inOutQuint = k => (k < 0.5 ? 16 * k ** 5 : 1 - Math.pow(-2 * k + 2, 5) / 2);
+const inCubic = k => k * k * k;
+const outBack = (k, s = 1.6) => 1 + (s + 1) * Math.pow(k - 1, 3) + s * Math.pow(k - 1, 2);
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+let W = 1920, H = 1080, U = 10.8, V = false;
+
+// Divide o texto em palavras para a entrada cinética (sobe + desfoca).
+function splitWords(el) {
+  const text = el.dataset.t;
+  el.innerHTML = text.split(" ").map(w => `<span class="w">${w}</span>`).join(" ");
+}
+// Entrada palavra a palavra em tin, saída do bloco inteiro em tout.
+function words(el, t, tin, tout, { stagger = 0.045, dur = 0.9 } = {}) {
+  const ws = el.querySelectorAll(".w");
+  const ko = tout === undefined ? 0 : inCubic(p(t, tout - 0.5, tout));
+  ws.forEach((w, i) => {
+    const a = tin + i * stagger;
+    const k = outQuart(p(t, a, a + dur));
+    w.style.opacity = k * (1 - ko);
+    w.style.transform = `translateY(${((1 - k) * 0.45 - ko * 0.25).toFixed(4)}em)`;
+    const b = (1 - k) * 12 + ko * 8;
+    w.style.filter = b > 0.05 ? `blur(${b.toFixed(2)}px)` : "none";
+  });
+}
+function fade(el, t, tin, tout, dist = 1.5, dur = 0.8) {
+  const k = outCubic(p(t, tin, tin + dur));
+  const ko = tout === undefined ? 0 : inCubic(p(t, tout - 0.5, tout));
+  el.style.opacity = k * (1 - ko);
+  el.style.translate = `0 ${((1 - k) * dist - ko * dist * 0.6) * U}px`;
+  const b = (1 - k) * 8 + ko * 6;
+  el.style.filter = b > 0.05 ? `blur(${b.toFixed(2)}px)` : "none";
+}
+function show(el, t, [a, b]) {
+  const on = t >= a - 0.001 && t < b;
+  el.style.display = on ? "" : "none";
+  return on;
+}
+function drawMark(svg, t, t0, speed = 1) {
+  const ring = $(".ring", svg), ball = $(".ball", svg);
+  const C = 2 * Math.PI * 10;
+  const kr = outCubic(p(t, t0, t0 + 0.9 * speed));
+  ring.setAttribute("stroke-dasharray", C);
+  ring.setAttribute("stroke-dashoffset", C * (1 - kr));
+  const kb = p(t, t0 + 0.7 * speed, t0 + 1.05 * speed);
+  const km = p(t, t0 + 1.1 * speed, t0 + 1.75 * speed);
+  ball.setAttribute("r", Math.max(0, 10 * outBack(kb, 1.4)));
+  const m = outBack(km, 1.2);
+  ball.setAttribute("cx", 13 + 6 * m);
+  ball.setAttribute("cy", 19 - 6 * m);
+}
+
+// ---------------------------------------------------------------------------
+// Montagem
+// ---------------------------------------------------------------------------
+let NET = null;   // geometria da rede da cena 1
+let GRAIN = [];
+
+function layout(w, h) {
+  W = w; H = h; V = h > w;
+  U = V ? w / 100 : h / 100;
+  document.documentElement.style.setProperty("--u", U + "px");
+  document.body.classList.toggle("v", V);
+  $("#stage").style.width = W + "px";
+  $("#stage").style.height = H + "px";
+}
+
+function buildGrain() {
+  for (let n = 0; n < 8; n++) {
+    const c = document.createElement("canvas");
+    c.width = c.height = 256;
+    const g = c.getContext("2d"), img = g.createImageData(256, 256);
+    let seed = 1234 + n * 977;
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    for (let i = 0; i < img.data.length; i += 4) {
+      const v = rnd() * 255;
+      img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+      img.data[i + 3] = 255;
+    }
+    g.putImageData(img, 0, 0);
+    GRAIN.push(c.toDataURL());
+  }
+}
+
+function build() {
+  $$("[data-t]").forEach(splitWords);
+
+  // Cena 1: cartões dos fornecedores e a rede.
+  $("#vendors").innerHTML = VENDORS.map(([k, n, c, d]) => `
+    <div class="vendor"><div class="k">${k}</div><div class="n">${n}</div><div class="c"><span>${c}</span><span>${d}</span></div></div>`).join("");
+  const cx = W / 2, cy = V ? H * 0.34 : H * 0.36;
+  const dx = V ? U * 24 : U * 52, dy = V ? U * 30 : U * 17;
+  NET = { cx, cy, pts: [[cx - dx, cy - dy], [cx + dx, cy - dy], [cx - dx, cy + dy], [cx + dx, cy + dy]] };
+  const svg = $("#net");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("width", W); svg.setAttribute("height", H);
+  let html = "";
+  NET.pts.forEach((_, i) => { html += `<line class="spoke" data-i="${i}" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>`; });
+  // Conversas cruzadas entre fornecedores (o ruído que o cliente administra).
+  NET.cross = [[0, 1], [2, 3], [0, 3], [1, 2], [0, 2], [1, 3]];
+  NET.cross.forEach(([a, b], j) => { html += `<path class="cross" data-j="${j}" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1" stroke-dasharray="4 6"/>`; });
+  for (let k = 0; k < 14; k++) html += `<circle class="dot" r="${U * 0.35}" fill="#fff"/>`;
+  svg.innerHTML = html;
+
+  // Cena 3: fotos e textos por pessoa.
+  $("#s3-photos").innerHTML = TEAM.map(([, , slug]) => `
+    <div class="photo"><div class="img" style="background-image:url('../public/images/team/${slug}.jpg')"></div><div class="fade"></div><div class="edge"></div></div>`).join("");
+  $("#s3-who").innerHTML = TEAM.map(([n, r, , c], i) => `
+    <div class="who">
+      <div class="idx">0${i + 1} / 0${TEAM.length}</div>
+      <div class="role eyebrow">${r}</div>
+      <div class="name big" data-t="${n}"></div>
+      <p class="cred">${c}</p>
+    </div>`).join("");
+  $$("#s3-who [data-t]").forEach(splitWords);
+
+  // Cena 4: itens da proposta.
+  $("#items").innerHTML = ITEMS.map(tx => `
+    <div class="item"><div class="box"><i></i><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#f3f2ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div>${tx}</div></div>`).join("");
+
+  buildGrain();
+}
+
+// Ponto do sol no quadro (background cover).
+function sunPos() {
+  const iw = 2000, ih = 1600, sx = 1235, sy = 500;
+  const k = Math.max(W / iw, H / ih);
+  return [sx * k - (iw * k - W) / 2, sy * k - (ih * k - H) / 2];
+}
+
+// ---------------------------------------------------------------------------
+// render(t)
+// ---------------------------------------------------------------------------
+function render(t) {
+  // Câmera: aproximação lenta dentro de cada cena, "respira" na troca.
+  const sc = Object.values(T).find(([a, b]) => t >= a && t < b) || T.s5;
+  const kc = p(t, sc[0], sc[1]);
+  const push = lerp(1.0, 1.035, inOutCubic(kc));
+  $("#cam").style.transform = `scale(${push})`;
+  $("#grid").style.transform = `translate(${-t * U * 0.3}px, ${-t * U * 0.45}px)`;
+
+  // Pós.
+  $("#grain").style.backgroundImage = `url(${GRAIN[Math.floor(t * 24) % GRAIN.length]})`;
+  $("#grain").style.backgroundPosition = `${(Math.floor(t * 24) * 73) % 256}px ${(Math.floor(t * 24) * 131) % 256}px`;
+  $("#black").style.opacity = Math.max(1 - p(t, 0, 0.8), inCubic(p(t, DURATION - 1.2, DURATION)));
+
+  // HUD.
+  const ch = CHAPTERS.find(([id]) => t >= T[id][0] && t < T[id][1]) || CHAPTERS[4];
+  $("#hud-tr").textContent = ch[1];
+  $("#hud-bar i").style.transform = `scaleX(${clamp(t / DURATION)})`;
+
+  // ---- 01 Hoje -------------------------------------------------------------
+  if (show($("#s1"), t, [0, COLLAPSE[1] + 0.05])) {
+    const { cx, cy, pts } = NET;
+    const kCol = inOutQuint(p(t, COLLAPSE[0], COLLAPSE[1]));
+    // posição atual de cada cartão (com uma leve flutuação e o colapso)
+    const cur = pts.map(([x, y], i) => {
+      const fx = Math.sin(t * 0.6 + i * 1.7) * U * 0.6, fy = Math.cos(t * 0.5 + i * 2.1) * U * 0.5;
+      return [lerp(x + fx, cx, kCol), lerp(y + fy, cy, kCol)];
+    });
+    $$("#vendors .vendor").forEach((el, i) => {
+      const a = S1.cards + i * 0.25;
+      const k = outBack(p(t, a, a + 0.6), 1.3);
+      const [x, y] = cur[i];
+      el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${lerp(0.7, 1, clamp(k)) * lerp(1, 0.15, kCol)})`;
+      el.style.opacity = clamp(k * 1.4) * (1 - p(t, COLLAPSE[1] - 0.25, COLLAPSE[1]));
+    });
+    const ky = outBack(p(t, S1.you, S1.you + 0.6), 1.5);
+    $("#you").style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%) scale(${clamp(ky, 0, 2) * lerp(1, 0.4, kCol)})`;
+    $("#you").style.opacity = clamp(ky) * (1 - kCol);
+    const kl = outBack(p(t, S1.late, S1.late + 0.5), 1.6);
+    $("#late").style.transform = `translate(${cx}px, ${cy + U * (V ? 6.2 : 4.6)}px) translate(-50%, 0) scale(${clamp(kl, 0, 2)})`;
+    $("#late").style.opacity = clamp(kl) * (1 - kCol);
+
+    // linhas centro → fornecedores
+    $$("#net .spoke").forEach((ln, i) => {
+      const k = outExpo(p(t, S1.cards + 0.2 + i * 0.25, S1.cards + 0.9 + i * 0.25));
+      const [x, y] = cur[i];
+      ln.setAttribute("x1", cx); ln.setAttribute("y1", cy);
+      ln.setAttribute("x2", lerp(cx, x, k)); ln.setAttribute("y2", lerp(cy, y, k));
+      ln.style.opacity = 1 - kCol;
+    });
+    // conversas cruzadas: curvas entre fornecedores
+    const kx = p(t, S1.chaos, S1.chaos + 1.6);
+    const cross = $$("#net .cross");
+    cross.forEach((pth, j) => {
+      const [a, b] = NET.cross[j];
+      const [x1, y1] = cur[a], [x2, y2] = cur[b];
+      const mx = (x1 + x2) / 2 + (j % 2 ? 1 : -1) * U * 6, my = (y1 + y2) / 2 + (j % 3 - 1) * U * 5;
+      pth.setAttribute("d", `M${x1} ${y1} Q${mx} ${my} ${x2} ${y2}`);
+      const kj = outCubic(clamp(kx * NET.cross.length - j));
+      pth.style.opacity = kj * (1 - kCol);
+    });
+    // mensagens indo e vindo pelas linhas
+    $$("#net .dot").forEach((d, k) => {
+      let x, y, o;
+      if (k < 8) {
+        const i = k % 4, dir = k < 4 ? 1 : -1;
+        const ph = ((t * 0.45 + k * 0.37) % 1);
+        const s = dir > 0 ? ph : 1 - ph;
+        const [px, py] = cur[i];
+        x = lerp(cx, px, s); y = lerp(cy, py, s);
+        o = p(t, S1.cards + 1.2, S1.cards + 1.8) * Math.sin(Math.PI * ph);
+      } else {
+        const j = k - 8, pth = cross[j];
+        const len = pth.getTotalLength ? pth.getTotalLength() : 0;
+        const ph = ((t * 0.55 + j * 0.29) % 1);
+        const pt = len ? pth.getPointAtLength(ph * len) : { x: 0, y: 0 };
+        x = pt.x; y = pt.y;
+        o = outCubic(clamp(kx * NET.cross.length - j)) * Math.sin(Math.PI * ph);
+      }
+      d.setAttribute("cx", x); d.setAttribute("cy", y);
+      d.style.opacity = o * (1 - kCol);
+    });
+
+    const capY = V ? H * 0.66 : H * 0.72;
+    ["#s1-a", "#s1-b", "#s1-c"].forEach(s => { $(s).style.top = capY + "px"; });
+    words($("#s1-a"), t, S1.a[0], S1.a[1]);
+    words($("#s1-b"), t, S1.b[0], S1.b[1]);
+    words($("#s1-c"), t, S1.c[0], S1.c[1] - 0.2);
+  }
+
+  // ---- 02 Level ------------------------------------------------------------
+  if (show($("#s2"), t, T.s2)) {
+    const t0 = T.s2[0];
+    const mk = $("#s2 .mark");
+    const cy = V ? H * 0.36 : H * 0.36;
+    const size = mk.getBoundingClientRect().width / push;
+    mk.style.left = W / 2 - size / 2 + "px";
+    mk.style.top = cy - size / 2 + "px";
+    drawMark(mk, t, 10.3, 0.9);
+    // Flash branco curto no impacto do colapso.
+    const fl = Math.exp(-Math.max(0, t - COLLAPSE[1]) * 9) * (t >= COLLAPSE[1] ? 1 : 0);
+    mk.style.filter = fl > 0.02 ? `drop-shadow(0 0 ${U * 4 * fl}px rgba(255,255,255,${0.9 * fl}))` : "none";
+    const ko = inCubic(p(t, T.s2[1] - 0.6, T.s2[1]));
+    mk.style.opacity = 1 - ko;
+    mk.style.transform = `translateY(${-ko * U * 3}px) scale(${1 - ko * 0.06})`;
+    $("#s2-a").style.top = (V ? H * 0.52 : H * 0.6) + "px";
+    words($("#s2-a"), t, 12.0, T.s2[1] - 0.1, { stagger: 0.05 });
+  }
+
+  // ---- 03 Time -------------------------------------------------------------
+  if (show($("#s3"), t, T.s3)) {
+    const t0 = T.s3[0];
+    const head = $("#s3-head");
+    fade($(".eyebrow", head), t, t0 + 0.2, PEOPLE0 - 0.3, 1);
+    words($(".big", head), t, t0 + 0.35, PEOPLE0 - 0.25, { stagger: 0.07 });
+    fade($("#s3-label"), t, PEOPLE0 + 0.2, T.s3[1], 1);
+
+    const photos = $$("#s3-photos .photo"), whos = $$("#s3-who .who");
+    TEAM.forEach((_, i) => {
+      const a = PEOPLE0 + i * PERSON, b = a + PERSON;
+      const ph = photos[i];
+      // Foto: cortina da direita pra esquerda com a borda de luz na frente.
+      const kw = inOutCubic(p(t, a - 0.45, a + 0.55));
+      const visible = t >= a - 0.45 && t < (i === TEAM.length - 1 ? T.s3[1] : b + 0.6);
+      ph.style.display = visible ? "" : "none";
+      if (visible) {
+        const pw = ph.getBoundingClientRect();
+        ph.style.zIndex = i;
+        const cut = (1 - kw) * 100;
+        ph.style.clipPath = V ? `inset(0 0 0 ${cut}%)` : `inset(0 0 0 ${cut}%)`;
+        const img = $(".img", ph);
+        const kz = p(t, a - 0.45, b + 0.6);
+        img.style.transform = `scale(${lerp(1.16, 1.03, outCubic(kz))}) translateX(${(1 - kw) * 6}%)`;
+        const edge = $(".edge", ph);
+        edge.style.left = `calc(${cut}% - 1.5px)`;
+        edge.style.opacity = kw > 0 && kw < 1 ? 1 : 0;
+      }
+      const last = i === TEAM.length - 1;
+      const who = whos[i];
+      const on = t >= a - 0.1 && t < (last ? T.s3[1] : b);
+      who.style.display = on ? "" : "none";
+      if (on) {
+        const out = last ? T.s3[1] : b;
+        fade($(".idx", who), t, a + 0.05, out, 1);
+        fade($(".role", who), t, a + 0.12, out, 1);
+        words($(".name", who), t, a + 0.18, out, { stagger: 0.08, dur: 0.85 });
+        fade($(".cred", who), t, a + 0.55, out, 1.5, 0.9);
+      }
+    });
+    const ko = inCubic(p(t, T.s3[1] - 0.6, T.s3[1]));
+    $("#s3-photos").style.opacity = 1 - ko;
+  }
+
+  // ---- 04 Proposta ---------------------------------------------------------
+  if (show($("#s4"), t, T.s4)) {
+    const t0 = T.s4[0], t1 = T.s4[1];
+    const copy = $("#s4-copy");
+    fade($(".eyebrow", copy), t, t0 + 0.2, t1, 1);
+    words($(".big", copy), t, t0 + 0.35, t1, { stagger: 0.05 });
+    fade($("#s4-small"), t, SIGN[0] + 0.3, t1, 1.5);
+    fade($("#s4-small2"), t, SIGN[0] + 0.3, t1, 1.5);
+
+    // Documento: entra de longe, girado, e assenta em perspectiva.
+    const kd = outQuart(p(t, t0 + 0.5, t0 + 2.0));
+    const settle = inOutCubic(p(t, t0 + 0.5, t1));
+    const ko = inCubic(p(t, t1 - 0.6, t1));
+    const ry = V ? lerp(-26, -6, kd) + settle * 3 : lerp(-38, -14, kd) + settle * 6;
+    const rx = lerp(18, 6, kd) - settle * 2;
+    const doc = $("#doc");
+    doc.style.transform = `translateY(${(1 - kd) * U * 18 - ko * U * 4}px) translateZ(${lerp(-U * 30, 0, kd)}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${lerp(-4, 0, kd)}deg)`;
+    doc.style.opacity = clamp(kd * 1.5) * (1 - ko);
+
+    $$("#items .item").forEach((it, i) => {
+      const a = CHECK0 + i * CHECK;
+      const k = outCubic(p(t, a - 0.5, a + 0.2));
+      it.style.opacity = lerp(0.18, 1, k);
+      const kb = outBack(p(t, a + 0.1, a + 0.4), 2);
+      $(".box i", it).style.transform = `scale(${clamp(kb, 0, 1.2)})`;
+      const path = $(".box path", it);
+      path.setAttribute("stroke-dasharray", 24);
+      path.setAttribute("stroke-dashoffset", 24 * (1 - outCubic(p(t, a + 0.25, a + 0.55))));
+    });
+    const sig = $("#sig");
+    const L = sig.getTotalLength();
+    sig.setAttribute("stroke-dasharray", L);
+    sig.setAttribute("stroke-dashoffset", L * (1 - inOutCubic(p(t, SIGN[0], SIGN[1]))));
+  }
+
+  // ---- 05 Contato ----------------------------------------------------------
+  if (show($("#s5"), t, T.s5)) {
+    const t0 = T.s5[0];
+    const [sx, sy] = sunPos();
+    const R = Math.hypot(Math.max(sx, W - sx), Math.max(sy, H - sy)) * 1.02;
+    const kr = inOutCubic(p(t, t0 + 0.2, t0 + 1.8));
+    const clip = `circle(${Math.max(0.001, kr * R)}px at ${sx}px ${sy}px)`;
+    const paint = $("#s5-paint");
+    paint.style.clipPath = clip;
+    $("#s5-shade").style.clipPath = clip;
+    paint.style.transformOrigin = `${sx}px ${sy}px`;
+    paint.style.transform = `scale(${lerp(1.2, 1.03, outCubic(p(t, t0 + 0.2, DURATION)))})`;
+    const g = $("#s5-group");
+    drawMark($(".mark", g), t, t0 + 0.6, 0.8);
+    words($(".big", g), t, t0 + 1.2, undefined, { stagger: 0.06 });
+    fade($("#s5-sub"), t, t0 + 2.0, undefined, 1.5);
+    const kc = outBack(p(t, t0 + 3.4, t0 + 3.9), 1.5);
+    $("#s5-cta").style.transform = `scale(${lerp(0.85, 1, clamp(kc, 0, 1.2))})`;
+    $("#s5-cta").style.opacity = clamp(kc);
+    const nudge = Math.sin(clamp((t - (t0 + 4.3)) / 0.5) * Math.PI);
+    $("#s5-cta svg").style.transform = `translateX(${nudge * U * 0.6}px)`;
+    fade($("#s5-url"), t, t0 + 3.8, undefined, 1);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Boot
+// ---------------------------------------------------------------------------
+const q = new URLSearchParams(location.search);
+layout(+q.get("w") || 1920, +q.get("h") || 1080);
+build();
+Object.assign(window, { DURATION, CUES, CHORDS, render });
+window.ready = document.fonts.ready.then(() =>
+  Promise.all(["hero-rich", ...TEAM.map(m => "team/" + m[2])].map(n => new Promise(res => {
+    const im = new Image(); im.onload = im.onerror = res; im.src = `../public/images/${n}.jpg`;
+  })))
+);
+render(0);
+if (!q.has("frame")) {
+  window.ready.then(() => {
+    const start = performance.now();
+    const loop = now => { render(((now - start) / 1000) % DURATION); requestAnimationFrame(loop); };
+    requestAnimationFrame(loop);
+  });
+}
+</script>
+</body>
+</html>
