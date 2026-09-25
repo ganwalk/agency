@@ -3,7 +3,7 @@
 Dois vídeos, cada um em 16:9 e 9:16, gerados por `render.mjs` a partir de uma
 página HTML com uma função `render(t)` determinística.
 
-## Para parceiros (`level-parceiros.html`, 61s, com trilha)
+## Para parceiros (`level-parceiros.html`, 54s, com trilha)
 
 Vídeo de convencimento para quem está decidindo fechar com a Level.
 
@@ -23,12 +23,12 @@ Roteiro (texto revisado com a skill
 2. **Level** (13,4–23,2s): os quatro cartões colapsam num ponto, a marca
    se desenha, "LeveL" entra e a assinatura segura sozinha na tela antes da
    frase. "A Level junta as quatro áreas num time e num contrato."
-3. **Time** (23,2–37,2s): "Quem assina o projeto", um sócio por vez, com a
-   credencial de `src/data/team.ts` (2,6s cada).
-4. **Proposta** (37,2–50s): o documento com o escopo, cada item marcado e
+3. **Time** (23,2–30,6s): "Quem assina o projeto", os quatro sócios na
+   mesma tela, com a credencial de `src/data/team.ts`.
+4. **Proposta** (30,6–43,4s): o documento com o escopo, cada item marcado e
    assinado pela Level no fim. "Um cronograma e um contrato para as quatro
    áreas." / "O orçamento sai depois do diagnóstico."
-5. **Contato** (50–61s): o quadro de Monet abre a partir do sol e o logo
+5. **Contato** (43,4–54,4s): o quadro de Monet abre a partir do sol e o logo
    completo volta. "Conte o
    que precisa mudar." / "Voltamos com um diagnóstico e os
    próximos passos." / Fale com o time.

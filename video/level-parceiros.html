@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Level: vídeo para parceiros</title>
 <!--
-  Vídeo de convencimento para parceiros e clientes (61s), em 16:9 e 9:16.
+  Vídeo de convencimento para parceiros e clientes (54s), em 16:9 e 9:16.
 
   Mesmo motor de level-intro.html: render(t) determinístico, chamado quadro
   a quadro por render.mjs. window.CUES lista os momentos de impacto, usados
@@ -15,7 +15,7 @@
     01 Hoje       quatro fornecedores, quatro contratos, ninguém responde
                   pelo projeto inteiro
     02 Level      os quatro cartões colapsam na marca
-    03 Time       quem assina o projeto, um por vez
+    03 Time       quem assina o projeto, os quatro juntos
     04 Proposta   o documento que o parceiro recebe, assinado no fim
     05 Contato    o quadro de Monet abre a partir do sol, chamada final
 -->
@@ -72,20 +72,16 @@
   #s2-tag { margin-top: calc(var(--u) * 2.6); }
   #s2 .cap { font-size: calc(var(--u) * 4.6); max-width: calc(var(--u) * 110); }
 
-  /* 03 Time */
-  #s3-head { position: absolute; left: 0; right: 0; top: 50%; text-align: center; transform: translateY(-50%); }
-  #s3-head .big { font-size: calc(var(--u) * 10); }
-  #s3-head .eyebrow { margin-bottom: calc(var(--u) * 3); }
-  .photo { position: absolute; top: 0; bottom: 0; left: 50%; right: 0; overflow: hidden; }
-  .photo .img { position: absolute; inset: 0; background-size: cover; background-position: center 28%; filter: grayscale(1) contrast(1.12) brightness(0.92); }
-  .photo .fade { position: absolute; inset: 0; background: linear-gradient(90deg, var(--navy) 0%, rgba(13,16,23,0) 32%), linear-gradient(0deg, rgba(13,16,23,0.55) 0%, rgba(13,16,23,0) 30%); }
-  .photo .edge { position: absolute; top: 0; bottom: 0; width: 3px; background: #fff; box-shadow: 0 0 calc(var(--u) * 2) rgba(255,255,255,0.7); }
-  .who { position: absolute; left: calc(var(--u) * 9); width: calc(var(--u) * 76); top: 50%; transform: translateY(-50%); }
-  .who .idx { font-size: calc(var(--u) * 1.5); letter-spacing: 0.24em; color: var(--muted); font-weight: 700; margin-bottom: calc(var(--u) * 5); font-variant-numeric: tabular-nums; }
-  .who .role { margin-bottom: calc(var(--u) * 2); }
-  .who .name { font-size: calc(var(--u) * 8.4); margin-bottom: calc(var(--u) * 3.4); }
-  .who .cred { font-size: calc(var(--u) * 2.4); line-height: 1.4; color: rgba(255,255,255,0.84); font-weight: 500; max-width: calc(var(--u) * 64); }
-  #s3-label { left: calc(var(--u) * 9); top: calc(var(--u) * 12); }
+  /* 03 Time: os quatro juntos */
+  #s3-head { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); top: calc(var(--u) * 10); }
+  #s3-head .big { font-size: calc(var(--u) * 5.4); margin-top: calc(var(--u) * 1.8); }
+  #s3-grid { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); top: calc(var(--u) * 30); display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--u) * 2.6); }
+  .card .ph { position: relative; aspect-ratio: 1 / 1.02; overflow: hidden; border-radius: calc(var(--u) * 0.4); margin-bottom: calc(var(--u) * 2); background: var(--navy-soft); }
+  .card .img { position: absolute; inset: 0; background-size: cover; background-position: center 28%; filter: grayscale(1) contrast(1.12) brightness(0.92); }
+  .card .edge { position: absolute; left: 0; right: 0; height: 3px; background: #fff; box-shadow: 0 0 calc(var(--u) * 2) rgba(255,255,255,0.7); }
+  .card .role { font-size: calc(var(--u) * 1.25); margin-bottom: calc(var(--u) * 1); }
+  .card .name { font-size: calc(var(--u) * 3); margin-bottom: calc(var(--u) * 1); white-space: nowrap; }
+  .card .cred { font-size: calc(var(--u) * 1.7); line-height: 1.4; color: rgba(255,255,255,0.78); font-weight: 500; }
 
   /* 04 Proposta */
   #s4-copy { position: absolute; left: calc(var(--u) * 9); width: calc(var(--u) * 70); top: 50%; transform: translateY(-50%); }
@@ -137,14 +133,13 @@
   .v #s2-tag { font-size: calc(var(--u) * 1.9); letter-spacing: 0.16em; margin-top: calc(var(--u) * 3.4); }
   .v #s5-lock .wordmark { font-size: calc(var(--u) * 7); }
   .v #s2 .cap { font-size: calc(var(--u) * 5.8); max-width: none; }
-  .v #s3-head .big { font-size: calc(var(--u) * 13); }
-  .v .photo { left: 0; right: 0; top: 0; bottom: 42%; }
-  .v .photo .fade { background: linear-gradient(0deg, var(--navy) 0%, rgba(13,16,23,0) 38%); }
-  .v .who { left: calc(var(--u) * 7); right: calc(var(--u) * 7); width: auto; top: 57%; transform: none; }
-  .v .who .idx { font-size: calc(var(--u) * 2.1); margin-bottom: calc(var(--u) * 3); }
-  .v .who .name { font-size: calc(var(--u) * 11); margin-bottom: calc(var(--u) * 3.4); }
-  .v .who .cred { font-size: calc(var(--u) * 3.6); max-width: none; }
-  .v #s3-label { left: calc(var(--u) * 7); top: calc(var(--u) * 14); }
+  .v #s3-head { left: calc(var(--u) * 7); right: calc(var(--u) * 7); top: calc(var(--u) * 17); }
+  .v #s3-head .big { font-size: calc(var(--u) * 7.4); }
+  .v #s3-grid { left: calc(var(--u) * 7); right: calc(var(--u) * 7); top: calc(var(--u) * 37); grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 4) calc(var(--u) * 4); }
+  .v .card .ph { aspect-ratio: 1 / 0.9; margin-bottom: calc(var(--u) * 1.8); }
+  .v .card .role { font-size: calc(var(--u) * 1.6); }
+  .v .card .name { font-size: calc(var(--u) * 3.6); white-space: normal; }
+  .v .card .cred { font-size: calc(var(--u) * 2.3); }
   .v #s4-copy { left: calc(var(--u) * 7); right: calc(var(--u) * 7); width: auto; top: calc(var(--u) * 17); transform: none; }
   .v #s4-copy .big { font-size: calc(var(--u) * 6.4); margin: calc(var(--u) * 3) 0 0; }
   .v #s4-copy .small { display: none; }
@@ -198,13 +193,11 @@
 
     <!-- 03 Time -->
     <section id="s3" class="layer">
-      <div id="s3-photos"></div>
       <div id="s3-head">
         <div class="eyebrow">Time</div>
         <div class="big" data-t="Quem assina o projeto"></div>
       </div>
-      <div id="s3-label" class="abs eyebrow">Quem assina o projeto</div>
-      <div id="s3-who"></div>
+      <div id="s3-grid"></div>
     </section>
 
     <!-- 04 Proposta -->
@@ -302,16 +295,16 @@ const ITEMS = [
 // ---------------------------------------------------------------------------
 // Linha do tempo (segundos)
 // ---------------------------------------------------------------------------
-// Frases ficam ~4s na tela; cada sócio, 2.6s.
-const T = { s1: [0, 13.4], s2: [13.4, 23.2], s3: [23.2, 37.2], s4: [37.2, 50], s5: [50, 61] };
-const DURATION = 61;
+// Frases ficam ~4s na tela; os quatro sócios entram juntos.
+const T = { s1: [0, 13.4], s2: [13.4, 23.2], s3: [23.2, 30.6], s4: [30.6, 43.4], s5: [43.4, 54.4] };
+const DURATION = 54.4;
 const S1 = { you: 0.5, cards: 0.9, a: [1.2, 5.2], b: [5.5, 9.5], c: [9.8, 13.4], chaos: 5.7, late: 10.2 };
 const COLLAPSE = [13.4, 14.4];
 // Assinatura da marca: desenha, "LeveL" entra, segura sozinha e sobe pra frase.
 const LOGO = { mark: 14.1, word: 15.5, tag: 16.3, move: [18.4, 19.4], cap: 19.0 };
-const PEOPLE0 = 26.0, PERSON = 2.6;
-const CHECK0 = 39.6, CHECK = 1.0;
-const SIGN = [43.6, 45.0];
+const CARDS0 = 24.0, CARD = 0.22;
+const CHECK0 = 33.0, CHECK = 1.0;
+const SIGN = [37.0, 38.4];
 const CHAPTERS = [["s1", "01 · Hoje"], ["s2", "02 · Level"], ["s3", "03 · Time"], ["s4", "04 · Proposta"], ["s5", "05 · Contato"]];
 
 // Momentos de impacto para a trilha (score.mjs).
@@ -321,7 +314,8 @@ const CUES = [
   { t: COLLAPSE[1], type: "hit" },
   { t: LOGO.mark + 0.9 * 1.75, type: "hit", soft: true },
   { t: T.s3[0], type: "hit", soft: true },
-  ...TEAM.map((_, i) => ({ t: PEOPLE0 + i * PERSON - 0.45, end: PEOPLE0 + i * PERSON, type: "swish" })),
+  { t: CARDS0 - 0.1, end: CARDS0 + 0.9, type: "swish" },
+  ...TEAM.map((_, i) => ({ t: CARDS0 + i * CARD + 0.85, type: "tick" })),
   { t: T.s4[0], type: "hit", soft: true },
   ...ITEMS.map((_, i) => ({ t: CHECK0 + i * CHECK + 0.25, type: "tick" })),
   { t: SIGN[0], end: SIGN[1], type: "scribble" },
@@ -332,11 +326,10 @@ const CHORDS = [
   [0, 7.2, [110, 164.81, 220, 261.63]],
   [7.2, 14.4, [110, 164.81, 220, 261.63, 392]],
   [14.4, 23.2, [87.31, 130.81, 174.61, 220, 329.63]],
-  [23.2, 30.2, [130.81, 196, 261.63, 329.63]],
-  [30.2, 37.2, [98, 146.83, 196, 246.94, 293.66]],
-  [37.2, 43.6, [87.31, 130.81, 174.61, 220]],
-  [43.6, 50, [98, 146.83, 196, 246.94]],
-  [50, 61, [130.81, 196, 246.94, 293.66, 329.63]],
+  [23.2, 30.6, [130.81, 196, 261.63, 329.63]],
+  [30.6, 37, [87.31, 130.81, 174.61, 220]],
+  [37, 43.4, [98, 146.83, 196, 246.94, 293.66]],
+  [43.4, 54.4, [130.81, 196, 246.94, 293.66, 329.63]],
 ];
 
 // ---------------------------------------------------------------------------
@@ -457,17 +450,15 @@ function build() {
   for (let k = 0; k < 14; k++) html += `<circle class="dot" r="${U * 0.35}" fill="#fff"/>`;
   svg.innerHTML = html;
 
-  // Cena 3: fotos e textos por pessoa.
-  $("#s3-photos").innerHTML = TEAM.map(([, , slug]) => `
-    <div class="photo"><div class="img" style="background-image:url('../public/images/team/${slug}.jpg')"></div><div class="fade"></div><div class="edge"></div></div>`).join("");
-  $("#s3-who").innerHTML = TEAM.map(([n, r, , c], i) => `
-    <div class="who">
-      <div class="idx">0${i + 1} / 0${TEAM.length}</div>
+  // Cena 3: os quatro sócios na mesma tela.
+  $("#s3-grid").innerHTML = TEAM.map(([n, r, slug, c]) => `
+    <div class="card">
+      <div class="ph"><div class="img" style="background-image:url('../public/images/team/${slug}.jpg')"></div><div class="edge"></div></div>
       <div class="role eyebrow">${r}</div>
       <div class="name big" data-t="${n}"></div>
       <p class="cred">${c}</p>
     </div>`).join("");
-  $$("#s3-who [data-t]").forEach(splitWords);
+  $$("#s3-grid [data-t]").forEach(splitWords);
 
   // Cena 4: itens da proposta.
   $("#items").innerHTML = ITEMS.map(tx => `
@@ -610,45 +601,28 @@ function render(t) {
   // ---- 03 Time -------------------------------------------------------------
   if (show($("#s3"), t, T.s3)) {
     const t0 = T.s3[0];
+    const t1 = T.s3[1];
     const head = $("#s3-head");
-    fade($(".eyebrow", head), t, t0 + 0.2, PEOPLE0 - 0.3, 1);
-    words($(".big", head), t, t0 + 0.35, PEOPLE0 - 0.25, { stagger: 0.07 });
-    fade($("#s3-label"), t, PEOPLE0 + 0.2, T.s3[1], 1);
-
-    const photos = $$("#s3-photos .photo"), whos = $$("#s3-who .who");
-    TEAM.forEach((_, i) => {
-      const a = PEOPLE0 + i * PERSON, b = a + PERSON;
-      const ph = photos[i];
-      // Foto: cortina da direita pra esquerda com a borda de luz na frente.
-      const kw = inOutCubic(p(t, a - 0.45, a + 0.55));
-      const visible = t >= a - 0.45 && t < (i === TEAM.length - 1 ? T.s3[1] : b + 0.6);
-      ph.style.display = visible ? "" : "none";
-      if (visible) {
-        const pw = ph.getBoundingClientRect();
-        ph.style.zIndex = i;
-        const cut = (1 - kw) * 100;
-        ph.style.clipPath = V ? `inset(0 0 0 ${cut}%)` : `inset(0 0 0 ${cut}%)`;
-        const img = $(".img", ph);
-        const kz = p(t, a - 0.45, b + 0.6);
-        img.style.transform = `scale(${lerp(1.16, 1.03, outCubic(kz))}) translateX(${(1 - kw) * 6}%)`;
-        const edge = $(".edge", ph);
-        edge.style.left = `calc(${cut}% - 1.5px)`;
-        edge.style.opacity = kw > 0 && kw < 1 ? 1 : 0;
-      }
-      const last = i === TEAM.length - 1;
-      const who = whos[i];
-      const on = t >= a - 0.1 && t < (last ? T.s3[1] : b);
-      who.style.display = on ? "" : "none";
-      if (on) {
-        const out = last ? T.s3[1] : b;
-        fade($(".idx", who), t, a + 0.05, out, 1);
-        fade($(".role", who), t, a + 0.12, out, 1);
-        words($(".name", who), t, a + 0.18, out, { stagger: 0.08, dur: 0.85 });
-        fade($(".cred", who), t, a + 0.55, out, 1.5, 0.9);
-      }
+    fade($(".eyebrow", head), t, t0 + 0.2, t1, 1);
+    words($(".big", head), t, t0 + 0.3, t1, { stagger: 0.06 });
+    $$("#s3-grid .card").forEach((card, i) => {
+      const a = CARDS0 + i * CARD;
+      // Foto sobe revelada de baixo pra cima, com a borda de luz na frente.
+      const kr = inOutCubic(p(t, a, a + 0.9));
+      const cut = (1 - kr) * 100;
+      const ph = $(".ph", card);
+      ph.style.clipPath = `inset(${cut}% 0 0 0)`;
+      $(".img", card).style.transform = `scale(${lerp(1.18, 1.02, outCubic(p(t, a, t1)))})`;
+      const edge = $(".edge", card);
+      edge.style.top = `calc(${cut}% - 1.5px)`;
+      edge.style.opacity = kr > 0 && kr < 1 ? 1 : 0;
+      const ko = inCubic(p(t, t1 - 0.5, t1));
+      ph.style.opacity = 1 - ko;
+      ph.style.translate = `0 ${-ko * U * 2}px`;
+      fade($(".role", card), t, a + 0.45, t1, 1);
+      words($(".name", card), t, a + 0.5, t1, { stagger: 0.07, dur: 0.8 });
+      fade($(".cred", card), t, a + 0.8, t1, 1.2, 0.8);
     });
-    const ko = inCubic(p(t, T.s3[1] - 0.6, T.s3[1]));
-    $("#s3-photos").style.opacity = 1 - ko;
   }
 
   // ---- 04 Proposta ---------------------------------------------------------
