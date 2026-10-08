@@ -4,23 +4,22 @@
 <meta charset="utf-8" />
 <title>Ritmo.: vídeo de apresentação</title>
 <!--
-  Vídeo de apresentação da Ritmo (~72s), em 16:9 e 9:16.
+  Vídeo de apresentação da Ritmo (77s), em 16:9 e 9:16.
 
   Mesmo motor dos vídeos da Level: render(t) determinístico, chamado quadro a
   quadro por render.mjs, e window.CUES/CHORDS para a trilha de score.mjs.
 
-  Roteiro tirado do documento de identidade da Ritmo (essência, método,
-  compromisso, expressão), sem número, cliente ou resultado que a Ritmo não
-  tenha:
-    01 Contexto  ferramentas soltas em volta da empresa; pessoas, processos e
-                 tecnologia convergem num ponto, a escolha útil
-    02 Ritmo     o ponto vira a marca; "Ritmo." e a frase da essência
-    03 Método    entender, priorizar, escolher, adotar, acompanhar, com a saída
-                 de cada etapa
-    04 Escala    aproveitar, configurar, conectar, desenvolver
-    05 Time      os quatro sócios
-    06 Entrega   direção, adoção e evolução num plano assinado
-    07 Contato   o quadro de Monet abre a partir do sol, chamada final
+  Roteiro e textos tirados do documento de identidade intelectual da Ritmo,
+  na ordem das quatro páginas dele:
+    01 Essência     o diagrama da página 1: pessoas, processos e tecnologia,
+                    cada um no seu ritmo, convergem na escolha útil; o ponto
+                    vira a marca; "Tecnologia que faz sentido na prática."
+    02 Método       as cinco etapas com a saída de cada uma; a escala da
+                    intervenção
+    03 Compromisso  os seis compromissos e os papéis de cliente e Ritmo;
+                    direção, adoção e evolução num plano assinado
+    04 Expressão    "Começamos pela rotina de quem trabalha." e o fecho do
+                    documento
 -->
 <style>
 
@@ -58,8 +57,6 @@
 
   /* 01 Contexto */
   #net { position: absolute; inset: 0; overflow: visible; }
-  .tool { position: absolute; left: 0; top: 0; font-size: calc(var(--u) * 1.9); font-weight: 700; color: rgba(255,255,255,0.86); padding: calc(var(--u) * 1) calc(var(--u) * 2); border: 1px solid var(--line); background: rgba(22,27,39,0.92); border-radius: 999px; white-space: nowrap; }
-  #you { position: absolute; left: 0; top: 0; background: #fff; color: var(--ink); font-weight: 800; font-size: calc(var(--u) * 2); padding: calc(var(--u) * 1.3) calc(var(--u) * 2.6); border-radius: 999px; white-space: nowrap; }
   .lbl { position: absolute; left: 0; top: 0; font-size: calc(var(--u) * 1.5); letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.86); font-weight: 700; white-space: nowrap; }
   #out { position: absolute; left: 0; top: 0; white-space: nowrap; }
   #out b { display: block; font-size: calc(var(--u) * 1.7); letter-spacing: 0.2em; text-transform: uppercase; font-weight: 800; }
@@ -104,15 +101,22 @@
   .lvl.on .d { color: rgba(20,23,30,0.7); }
   #scale-note { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); top: calc(var(--u) * 72); font-size: calc(var(--u) * 2.4); line-height: 1.45; color: rgba(255,255,255,0.8); font-weight: 500; max-width: calc(var(--u) * 100); }
 
-  /* 05 Time */
-  #s3-grid { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); top: calc(var(--u) * 30); display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--u) * 2.6); }
-  .card .ph { position: relative; aspect-ratio: 1 / 1.02; overflow: hidden; border-radius: calc(var(--u) * 0.4); margin-bottom: calc(var(--u) * 2); background: var(--navy-soft); }
-  .card .img { position: absolute; inset: 0; background-size: cover; background-position: center 28%; filter: grayscale(1) contrast(1.12) brightness(0.92); }
-  .card .edge { position: absolute; left: 0; right: 0; height: 3px; background: #fff; box-shadow: 0 0 calc(var(--u) * 2) rgba(255,255,255,0.7); }
-  .card .role { font-size: calc(var(--u) * 1.25); margin-bottom: calc(var(--u) * 1); }
-  .card .name { font-size: calc(var(--u) * 3); margin-bottom: calc(var(--u) * 1); white-space: nowrap; }
-  .card .cred { font-size: calc(var(--u) * 1.7); line-height: 1.4; color: rgba(255,255,255,0.78); font-weight: 500; }
+  /* Essência */
+  #ess-lines { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); top: calc(var(--u) * 40); display: flex; flex-direction: column; gap: calc(var(--u) * 2.2); }
+  #ess-lines div { font-size: calc(var(--u) * 4.6); font-weight: 700; letter-spacing: -0.02em; color: rgba(255,255,255,0.88); }
+  #ess-lines div::before { content: ""; display: inline-block; width: calc(var(--u) * 1.4); height: calc(var(--u) * 1.4); border-radius: 50%; background: #fff; margin-right: calc(var(--u) * 2.4); vertical-align: middle; }
 
+  /* Compromisso */
+  #commit-grid { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); top: calc(var(--u) * 34); display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--u) * 3.4) calc(var(--u) * 4); }
+  .cm { border-top: 1px solid var(--line); padding-top: calc(var(--u) * 1.8); }
+  .cm .k { font-size: calc(var(--u) * 1.2); letter-spacing: 0.22em; color: var(--muted); font-weight: 700; }
+  .cm .n { margin-top: calc(var(--u) * 1); font-size: calc(var(--u) * 2.8); font-weight: 800; letter-spacing: -0.02em; }
+  .cm .d { margin-top: calc(var(--u) * 0.8); font-size: calc(var(--u) * 1.8); line-height: 1.4; color: rgba(255,255,255,0.78); font-weight: 500; }
+  #roles { position: absolute; left: calc(var(--u) * 9); right: calc(var(--u) * 9); bottom: calc(var(--u) * 10); display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 2.4); }
+  #roles > div { border: 1px solid var(--line); border-radius: calc(var(--u) * 0.8); padding: calc(var(--u) * 2) calc(var(--u) * 2.4); font-size: calc(var(--u) * 1.9); color: rgba(255,255,255,0.85); font-weight: 500; }
+  #roles b { display: block; font-size: calc(var(--u) * 1.2); letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: calc(var(--u) * 0.8); }
+  #roles .me { background: #fff; color: var(--ink); border-color: #fff; }
+  #roles .me b { color: #6b6f7a; }
 
   /* 06 Entrega */
   #s4-copy { position: absolute; left: calc(var(--u) * 9); width: calc(var(--u) * 70); top: 50%; transform: translateY(-50%); }
@@ -154,8 +158,6 @@
   .v #hud-tr, .v #hud-bar { right: calc(var(--u) * 7); }
   .v #hud-bar { bottom: calc(var(--u) * 9); }
   .v .eyebrow { font-size: calc(var(--u) * 2.1); letter-spacing: 0.2em; }
-  .v .tool { font-size: calc(var(--u) * 2.9); padding: calc(var(--u) * 1.4) calc(var(--u) * 2.8); }
-  .v #you { font-size: calc(var(--u) * 3.2); padding: calc(var(--u) * 2) calc(var(--u) * 3.8); }
   .v .lbl { font-size: calc(var(--u) * 2.2); letter-spacing: 0.18em; }
   .v #out b { font-size: calc(var(--u) * 2.5); }
   .v #out span { font-size: calc(var(--u) * 2.5); }
@@ -175,17 +177,23 @@
   .v .step .dd { font-size: calc(var(--u) * 3); }
   .v .step .oo { margin-top: calc(var(--u) * 1); padding-top: 0; border-top: 0; font-size: calc(var(--u) * 2.9); color: rgba(255,255,255,0.95); }
   .v .step .oo b { display: inline; font-size: calc(var(--u) * 1.8); margin-right: calc(var(--u) * 1.2); }
-  .v #scale { left: calc(var(--u) * 7); right: calc(var(--u) * 7); top: calc(var(--u) * 50); grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 3); }
+  .v #scalesc .head .big { font-size: calc(var(--u) * 6.4); }
+  .v #scale { left: calc(var(--u) * 7); right: calc(var(--u) * 7); top: calc(var(--u) * 66); grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 3); }
   .v .lvl { padding: calc(var(--u) * 3.4) calc(var(--u) * 3.2) calc(var(--u) * 4); }
   .v .lvl .k { font-size: calc(var(--u) * 1.8); }
   .v .lvl .n { font-size: calc(var(--u) * 4.4); margin-top: calc(var(--u) * 4.4); }
   .v .lvl .d { font-size: calc(var(--u) * 2.6); }
   .v #scale-note { left: calc(var(--u) * 7); right: calc(var(--u) * 7); top: auto; bottom: calc(var(--u) * 17); font-size: calc(var(--u) * 3.6); }
-  .v #s3-grid { left: calc(var(--u) * 7); right: calc(var(--u) * 7); top: calc(var(--u) * 37); grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 4) calc(var(--u) * 4); }
-  .v .card .ph { aspect-ratio: 1 / 0.9; margin-bottom: calc(var(--u) * 1.8); }
-  .v .card .role { font-size: calc(var(--u) * 1.6); }
-  .v .card .name { font-size: calc(var(--u) * 3.6); white-space: normal; }
-  .v .card .cred { font-size: calc(var(--u) * 2.3); }
+  .v #ess-lines { left: calc(var(--u) * 7); right: calc(var(--u) * 7); top: calc(var(--u) * 62); gap: calc(var(--u) * 3.4); }
+  .v #ess-lines div { font-size: calc(var(--u) * 6); }
+  .v #ess-lines div::before { width: calc(var(--u) * 2); height: calc(var(--u) * 2); margin-right: calc(var(--u) * 3); }
+  .v #commit-grid { left: calc(var(--u) * 7); right: calc(var(--u) * 7); top: calc(var(--u) * 50); grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 4.4) calc(var(--u) * 4.4); }
+  .v .cm .k { font-size: calc(var(--u) * 1.8); }
+  .v .cm .n { font-size: calc(var(--u) * 4.2); }
+  .v .cm .d { font-size: calc(var(--u) * 2.6); }
+  .v #roles { left: calc(var(--u) * 7); right: calc(var(--u) * 7); bottom: calc(var(--u) * 15); grid-template-columns: 1fr; gap: calc(var(--u) * 2.4); }
+  .v #roles > div { font-size: calc(var(--u) * 2.9); padding: calc(var(--u) * 2.6) calc(var(--u) * 3); }
+  .v #roles b { font-size: calc(var(--u) * 1.8); }
   .v #s4-copy { left: calc(var(--u) * 7); right: calc(var(--u) * 7); width: auto; top: calc(var(--u) * 17); transform: none; }
   .v #s4-copy .big { font-size: calc(var(--u) * 6.4); margin: calc(var(--u) * 3) 0 0; }
   .v #s4-copy .small { display: none; }
@@ -214,21 +222,19 @@
   <div id="cam">
     <div id="grid"></div>
 
-    <!-- 01 Contexto -->
+    <!-- 01 Essência: a convergência -->
     <section id="ctx" class="layer">
       <svg id="net"></svg>
-      <div id="tools"></div>
-      <div id="you">Sua empresa</div>
       <div class="lbl" data-i="0">Pessoas</div>
       <div class="lbl" data-i="1">Processos</div>
       <div class="lbl" data-i="2">Tecnologia</div>
       <div id="out"><b>Escolha útil</b><span>para a rotina real</span></div>
-      <p class="cap big" id="s1-a" data-t="Conhecer uma ferramenta é só o começo."></p>
-      <p class="cap big" id="s1-b" data-t="O valor dela depende de adequação, adoção e continuidade."></p>
-      <p class="cap big" id="s1-c" data-t="Entre o que a tecnologia permite e o que a empresa aproveita, existe um trabalho de tradução, escolha e adoção."></p>
+      <p class="cap big" id="s1-a" data-t="Conhecer uma ferramenta é o começo."></p>
+      <p class="cap big" id="s1-b" data-t="Seu valor depende de adequação, adoção e continuidade."></p>
+      <p class="cap big" id="s1-c" data-t="Entre o que a tecnologia permite e o que a empresa consegue aproveitar, existe um trabalho de tradução, escolha e adoção."></p>
     </section>
 
-    <!-- 02 Ritmo -->
+    <!-- 01 Essência: a marca -->
     <section id="s2" class="layer">
       <div id="s2-lock">
         <svg class="mark" viewBox="0 0 32 32">
@@ -238,10 +244,19 @@
         <div id="s2-word" class="wordmark" data-letters="Ritmo."></div>
         <div id="s2-tag" class="eyebrow">Consultoria tecnológica</div>
       </div>
-      <p class="cap big" id="s2-a" data-t="Tecnologia que faz sentido na prática."></p>
+      <p class="cap big" id="s2-a" data-t="É nesse espaço que a Ritmo atua."></p>
     </section>
 
-    <!-- 03 Método -->
+    <!-- 01 Essência: a frase -->
+    <section id="essence" class="layer">
+      <div class="head">
+        <div class="eyebrow">A essência</div>
+        <div class="big" data-t="Tecnologia que faz sentido na prática."></div>
+      </div>
+      <div id="ess-lines"><div>Entendemos a operação.</div><div>Traduzimos possibilidades.</div><div>Acompanhamos a aplicação.</div></div>
+    </section>
+
+    <!-- 02 Método -->
     <section id="method" class="layer">
       <div class="head">
         <div class="eyebrow">Método</div>
@@ -250,30 +265,34 @@
       <div id="rail"><div class="track"></div><div class="fill"></div><div id="steps"></div></div>
     </section>
 
-    <!-- 04 Escala -->
+    <!-- 02 Escala -->
     <section id="scalesc" class="layer">
       <div class="head">
         <div class="eyebrow">Escala da intervenção</div>
-        <div class="big" data-t="Na medida da necessidade."></div>
+        <div class="big" data-t="A escolha considera adequação, adoção, custo total, segurança e manutenção."></div>
       </div>
       <div id="scale"></div>
-      <p id="scale-note">Ajustar um processo ou aproveitar um sistema já contratado também pode ser a recomendação.</p>
+      <p id="scale-note">Ajustar um processo ou aproveitar um sistema contratado também pode ser a recomendação.</p>
     </section>
 
-    <!-- 05 Time -->
-    <section id="team" class="layer">
+    <!-- 03 Compromisso -->
+    <section id="commit" class="layer">
       <div class="head">
-        <div class="eyebrow">Time</div>
-        <div class="big" data-t="Quem conduz a entrega"></div>
+        <div class="eyebrow">O compromisso</div>
+        <div class="big" data-t="Critério para decidir. Cuidado para implantar."></div>
       </div>
-      <div id="s3-grid"></div>
+      <div id="commit-grid"></div>
+      <div id="roles">
+        <div><b>Cliente</b>Define prioridade, participa e incorpora a mudança.</div>
+        <div class="me"><b>Ritmo</b>Recomenda com critérios e conduz a entrega acordada.</div>
+      </div>
     </section>
 
-    <!-- 06 Entrega -->
+    <!-- 03 Entrega -->
     <section id="deal" class="layer">
       <div id="s4-copy">
-        <div class="eyebrow">Como a consultoria vira entrega</div>
-        <div class="big" data-t="Cada etapa com escopo, responsável e critério de conclusão."></div>
+        <div class="eyebrow">Como a consultoria se torna entrega</div>
+        <div class="big" data-t="Cada etapa tem escopo, responsável e critério de conclusão."></div>
         <p class="small" id="s4-small">A próxima depende da necessidade e de um novo acordo.</p>
       </div>
       <p id="s4-small2" style="display:none">A próxima depende da necessidade e de um novo acordo.</p>
@@ -286,10 +305,10 @@
             </div>
             <span>Proposta</span>
           </div>
-          <h3>Plano de trabalho</h3>
+          <h3>Direção · Adoção · Evolução</h3>
           <div id="items"></div>
           <div class="sign">
-            <div class="slot">Sua empresa</div>
+            <div class="slot">Cliente</div>
             <div class="slot">Ritmo
               <svg viewBox="0 0 200 60" preserveAspectRatio="none"><path id="sig" fill="none" stroke="#14171e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
                 d="M8 44 C 14 20, 22 8, 24 14 C 26 22, 18 40, 16 48 C 30 46, 40 44, 46 40 C 52 34, 58 30, 60 34 C 62 40, 50 44, 56 46 C 62 48, 70 36, 74 32 C 76 40, 78 46, 84 38 C 88 32, 92 30, 94 36 C 96 42, 90 46, 98 44 C 106 42, 112 20, 116 12 C 118 24, 114 40, 116 46 C 130 44, 150 36, 192 30" /></svg>
@@ -299,7 +318,7 @@
       </div>
     </section>
 
-    <!-- 07 Contato -->
+    <!-- 04 Expressão -->
     <section id="end" class="layer">
       <div id="s5-paint"></div>
       <div id="s5-shade"></div>
@@ -311,7 +330,7 @@
           </svg>
           <div class="wordmark" data-letters="Ritmo."></div>
         </div>
-        <div class="big" data-t="Vamos começar pela sua rotina."></div>
+        <div class="big" data-t="Começamos pela rotina de quem trabalha."></div>
         <p id="s5-sub">Entender a rotina. Escolher com critério. Fazer funcionar.</p>
         <div id="s5-cta">Fale com a Ritmo
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -335,9 +354,8 @@
 
 <script>
 // ---------------------------------------------------------------------------
-// Conteúdo (tudo do documento de identidade e de src/data/team.ts)
+// Conteúdo (tudo do documento de identidade intelectual da Ritmo)
 // ---------------------------------------------------------------------------
-const TOOLS = ["Planilha", "ERP", "CRM", "WhatsApp", "Drive", "E-mail", "IA", "Agenda", "Aplicativo", "Sistema novo"];
 const STEPS = [
   ["Entender", "Ouvir quem executa. Observar a rotina e as restrições.", "Problema com evidências."],
   ["Priorizar", "Escolher o que merece atenção agora.", "Objetivo, responsável e medida inicial."],
@@ -351,54 +369,58 @@ const LEVELS = [
   ["Conectar", "Ferramentas e dados"],
   ["Desenvolver", "Lacuna real"],
 ];
-const TEAM = [
-  ["Vitor Ribeiro", "Engenharia de software", "vitor-ribeiro",
-   "Engenheiro de software numa das maiores empresas de tecnologia do mundo."],
-  ["João Pedro Carneiro", "Direito digital", "joao-pedro-carneiro",
-   "Advogado pela USP, cuida de contratos, LGPD e propriedade intelectual."],
-  ["Armando Custodio", "Design engineer", "armando-custodio",
-   "Desenha interfaces que já viraram software em produção."],
-  ["Diogo Siqueira", "Gestão e escala", "diogo-siqueira",
-   "Engenheiro de produção, especialista em gestão e escala."],
+const COMMIT = [
+  ["Clareza", "Explicar opções, limites e consequências."],
+  ["Evidência", "Separar relato, hipótese e resultado observado."],
+  ["Proporção", "Adequar a intervenção à dor e à capacidade da empresa."],
+  ["Autonomia", "Documentar, orientar e facilitar a continuidade."],
+  ["Transparência", "Declarar interesses comerciais com fornecedores."],
+  ["Continuidade", "Considerar suporte, manutenção e operação desde a escolha."],
 ];
 const ITEMS = [
   "Direção: problema, alternativas e plano de ação",
   "Adoção: configuração, conexão, treinamento e aceite",
   "Evolução: uso, ajustes e prioridades do próximo ciclo",
-  "Interesses comerciais com fornecedores declarados",
 ];
 
 // ---------------------------------------------------------------------------
 // Linha do tempo (segundos)
 // ---------------------------------------------------------------------------
 const T = {
-  ctx: [0, 13.8], s2: [13.8, 23.6], method: [23.6, 34.4], scalesc: [34.4, 42.0],
-  team: [42.0, 49.4], deal: [49.4, 61.4], end: [61.4, 72.4],
+  ctx: [0, 14.6], s2: [14.6, 23.6], essence: [23.6, 30.2], method: [30.2, 40.2],
+  scalesc: [40.2, 47.4], commit: [47.4, 56.0], deal: [56.0, 67.0], end: [67.0, 77.0],
 };
-const DURATION = 72.4;
-const S1 = { you: 0.4, tools: 0.7, a: [1.2, 5.0], b: [5.3, 9.0], conv: 8.8, c: [9.4, 13.4] };
-const COLLAPSE = [13.0, 13.8];
-const LOGO = { mark: 14.4, word: 15.8, tag: 16.6, move: [18.8, 19.8], cap: 19.4 };
-const STEP0 = 25.6, STEP = 1.55;
-const LVL0 = 36.2, LVL = 0.7;
-const CARDS0 = 42.8, CARD = 0.22;
-const CHECK0 = 51.8, CHECK = 1.0;
-const SIGN = [55.8, 57.2];
-const CHAPTERS = [["ctx", "01 · Contexto"], ["s2", "02 · Ritmo"], ["method", "03 · Método"], ["scalesc", "04 · Escala"], ["team", "05 · Time"], ["deal", "06 · Entrega"], ["end", "07 · Contato"]];
+const DURATION = 77.0;
+// As entradas aparecem cada uma no seu ritmo; em conv elas convergem no ponto.
+const S1 = { lines: 0.5, a: [1.2, 5.0], b: [5.3, 9.2], conv: 9.0, c: [9.6, 14.0] };
+const COLLAPSE = [13.8, 14.6];
+const LOGO = { mark: 15.2, word: 16.6, tag: 17.4, move: [19.4, 20.4], cap: 20.0 };
+const STEP0 = 32.0, STEP = 1.5;
+const LVL0 = 41.8, LVL = 0.7;
+const CM0 = 48.8, CM = 0.3;
+const CHECK0 = 58.6, CHECK = 1.0;
+const SIGN = [61.8, 63.2];
+const CHAPTERS = [
+  ["ctx", "01 · Essência"], ["s2", "01 · Essência"], ["essence", "01 · Essência"],
+  ["method", "02 · Método"], ["scalesc", "02 · Método"],
+  ["commit", "03 · Compromisso"], ["deal", "03 · Compromisso"], ["end", "04 · Expressão"],
+];
 
 const CUES = [
-  ...TOOLS.map((_, i) => ({ t: S1.tools + i * 0.14, type: "tick" })),
-  { t: S1.conv, end: S1.conv + 1.2, type: "swish" },
+  ...[0, 1, 2].map(i => ({ t: S1.lines + 0.2 + i * 0.25, type: "tick" })),
+  { t: S1.conv, end: S1.conv + 1.4, type: "swish" },
+  { t: S1.conv + 1.5, type: "tick" },
   { t: COLLAPSE[0] - 1.2, end: COLLAPSE[1], type: "rise" },
   { t: COLLAPSE[1], type: "hit" },
   { t: LOGO.mark + 0.9 * 1.75, type: "hit", soft: true },
+  { t: T.essence[0], type: "hit", soft: true },
+  ...[0, 1, 2].map(i => ({ t: T.essence[0] + 1.6 + i * 0.8, type: "tick" })),
   { t: T.method[0], type: "hit", soft: true },
   ...STEPS.map((_, i) => ({ t: STEP0 + i * STEP, type: "tick" })),
   { t: T.scalesc[0], type: "hit", soft: true },
   ...LEVELS.map((_, i) => ({ t: LVL0 + i * LVL + 0.2, type: "tick" })),
-  { t: T.team[0], type: "hit", soft: true },
-  { t: CARDS0 - 0.1, end: CARDS0 + 0.9, type: "swish" },
-  ...TEAM.map((_, i) => ({ t: CARDS0 + i * CARD + 0.85, type: "tick" })),
+  { t: T.commit[0], type: "hit", soft: true },
+  ...COMMIT.map((_, i) => ({ t: CM0 + i * CM + 0.2, type: "tick" })),
   { t: T.deal[0], type: "hit", soft: true },
   ...ITEMS.map((_, i) => ({ t: CHECK0 + i * CHECK + 0.25, type: "tick" })),
   { t: SIGN[0], end: SIGN[1], type: "scribble" },
@@ -407,14 +429,15 @@ const CUES = [
 ];
 const CHORDS = [
   [0, 7, [110, 164.81, 220, 261.63]],
-  [7, 13.8, [110, 164.81, 220, 261.63, 392]],
-  [13.8, 23.6, [87.31, 130.81, 174.61, 220, 329.63]],
-  [23.6, 34.4, [130.81, 196, 261.63, 329.63]],
-  [34.4, 42.0, [98, 146.83, 196, 246.94]],
-  [42.0, 49.4, [130.81, 196, 261.63, 329.63]],
-  [49.4, 55.8, [87.31, 130.81, 174.61, 220]],
-  [55.8, 61.4, [98, 146.83, 196, 246.94, 293.66]],
-  [61.4, 72.4, [130.81, 196, 246.94, 293.66, 329.63]],
+  [7, 14.6, [110, 164.81, 220, 261.63, 392]],
+  [14.6, 23.6, [87.31, 130.81, 174.61, 220, 329.63]],
+  [23.6, 30.2, [130.81, 196, 261.63, 329.63]],
+  [30.2, 40.2, [98, 146.83, 196, 246.94]],
+  [40.2, 47.4, [130.81, 196, 261.63, 329.63]],
+  [47.4, 56.0, [87.31, 130.81, 174.61, 220]],
+  [56.0, 61.8, [98, 146.83, 196, 246.94]],
+  [61.8, 67.0, [98, 146.83, 196, 246.94, 293.66]],
+  [67.0, 77.0, [130.81, 196, 246.94, 293.66, 329.63]],
 ];
 
 // ---------------------------------------------------------------------------
@@ -520,34 +543,24 @@ function build() {
     el.innerHTML = [...el.dataset.letters].map(c => `<span class="m"><span>${c}</span></span>`).join("");
   });
 
-  // Cena 1: ferramentas em volta da empresa e o diagrama da convergência.
-  $("#tools").innerHTML = TOOLS.map(n => `<div class="tool">${n}</div>`).join("");
-  const cx = W / 2, cy = V ? H * 0.33 : H * 0.36;
-  const tools = TOOLS.map((_, i) => {
-    const a = -Math.PI / 2 + (i / TOOLS.length) * Math.PI * 2 + 0.2;
-    const rx = V ? U * 34 : U * 58, ry = V ? U * 30 : U * 22;
-    const wob = i % 2 ? 1 : 0.78;
-    return [cx + Math.cos(a) * rx * wob, cy + Math.sin(a) * ry * wob];
-  });
-  // Convergência: três entradas à esquerda chegando a um ponto (P), saída à direita.
+  // Cena 1: o diagrama da página 1. Três entradas à esquerda; em conv elas
+  // convergem no ponto P, a escolha útil, e a saída aponta para a direita.
+  const cy = V ? H * 0.33 : H * 0.36;
   const P = V ? [W * 0.62, cy] : [W * 0.56, cy];
-  const lx = V ? U * 7 : P[0] - U * 66, dy = V ? U * 13 : U * 11;
+  const dy = V ? U * 13 : U * 11;
   const x0 = V ? U * 7 : P[0] - U * 46;
-  const ins = [-1, 0, 1].map(k => ({ y: cy + k * dy, x0: V ? x0 : x0, lx }));
-  NET = { cx, cy, tools, P, ins };
+  const lens = V ? [U * 30, U * 40, U * 22] : [U * 24, U * 34, U * 18];
+  const ins = [-1, 0, 1].map((k, i) => ({ y: cy + k * dy, len: lens[i], speed: [0.55, 0.9, 0.35][i], off: [0.1, 0.6, 0.35][i] }));
+  NET = { cy, P, x0, ins };
   const svg = $("#net");
   svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
   svg.setAttribute("width", W); svg.setAttribute("height", H);
   let html = "";
-  TOOLS.forEach(() => { html += `<line class="spoke" stroke="rgba(255,255,255,0.28)" stroke-width="1.2" stroke-dasharray="4 6"/>`; });
-  ins.forEach(({ y }, i) => {
-    const sx = V ? x0 : x0;
-    const d = `M${sx} ${y} C ${lerp(sx, P[0], 0.55)} ${y}, ${lerp(sx, P[0], 0.62)} ${P[1]}, ${P[0]} ${P[1]}`;
-    html += `<path class="in" d="${d}" fill="none" stroke="#fff" stroke-width="${U * 0.32}" stroke-linecap="round"/>`;
-  });
+  ins.forEach(() => { html += `<path class="in" fill="none" stroke="#fff" stroke-width="${U * 0.32}" stroke-linecap="round"/>`; });
+  ins.forEach(() => { html += `<circle class="beat" r="${U * 0.7}" fill="#fff"/>`; });
   const ax0 = P[0] + U * 3.2, ax1 = P[0] + (V ? U * 14 : U * 20);
   html += `<path class="arrow" d="M${ax0} ${P[1]} H ${ax1} M ${ax1 - U * 1.4} ${P[1] - U * 1.4} L ${ax1} ${P[1]} L ${ax1 - U * 1.4} ${P[1] + U * 1.4}" fill="none" stroke="#fff" stroke-width="${U * 0.26}" stroke-linecap="round" stroke-linejoin="round"/>`;
-  html += `<circle class="pt" cx="${P[0]}" cy="${P[1]}" r="${U * 1.6}" fill="#fff"/>`;
+  html += `<circle class="pt" cx="${P[0]}" cy="${P[1]}" r="0" fill="#fff"/>`;
   svg.innerHTML = html;
   NET.ax1 = ax1;
 
@@ -561,15 +574,9 @@ function build() {
   $("#scale").innerHTML = LEVELS.map(([n, d], i) => `
     <div class="lvl"><div class="k">0${i + 1}</div><div class="n">${n}</div><div class="d">${d}</div></div>`).join("");
 
-  // Cena 5: os quatro sócios na mesma tela.
-  $("#s3-grid").innerHTML = TEAM.map(([n, r, slug, c]) => `
-    <div class="card">
-      <div class="ph"><div class="img" style="background-image:url('../public/images/team/${slug}.jpg')"></div><div class="edge"></div></div>
-      <div class="role eyebrow">${r}</div>
-      <div class="name big" data-t="${n}"></div>
-      <p class="cred">${c}</p>
-    </div>`).join("");
-  $$("#s3-grid [data-t]").forEach(splitWords);
+  // Compromissos.
+  $("#commit-grid").innerHTML = COMMIT.map(([n, d], i) => `
+    <div class="cm"><div class="k">0${i + 1}</div><div class="n">${n}</div><div class="d">${d}</div></div>`).join("");
 
   // Cena 6: itens do plano.
   $("#items").innerHTML = ITEMS.map(tx => `
@@ -604,59 +611,47 @@ function render(t) {
   $("#hud-tr").textContent = ch[1];
   $("#hud-bar i").style.transform = `scaleX(${clamp(t / DURATION)})`;
 
-  // ---- 01 Contexto ---------------------------------------------------------
+  // ---- 01 Essência: convergência --------------------------------------------
   if (show($("#ctx"), t, [0, COLLAPSE[1] + 0.05])) {
-    const { cx, cy, tools, P, ins } = NET;
-    const kOut = inOutCubic(p(t, S1.conv - 0.4, S1.conv + 0.6));   // ferramentas saem
-    const kCol = inOutQuint(p(t, COLLAPSE[0], COLLAPSE[1]));        // diagrama recolhe no ponto
-    $$("#tools .tool").forEach((el, i) => {
-      const a = S1.tools + i * 0.14;
-      const k = outBack(p(t, a, a + 0.6), 1.4);
-      const fx = Math.sin(t * 0.7 + i * 1.3) * U * 0.8, fy = Math.cos(t * 0.6 + i * 1.9) * U * 0.6;
-      const [x, y] = tools[i];
-      el.style.transform = `translate(${lerp(x + fx, cx, kOut * 0.35)}px, ${lerp(y + fy, cy, kOut * 0.35)}px) translate(-50%, -50%) scale(${lerp(0.6, 1, clamp(k)) * lerp(1, 0.6, kOut)})`;
-      el.style.opacity = clamp(k * 1.4) * (1 - kOut);
-    });
-    const ky = outBack(p(t, S1.you, S1.you + 0.6), 1.5);
-    $("#you").style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%) scale(${clamp(ky, 0, 2) * lerp(1, 0.6, kOut)})`;
-    $("#you").style.opacity = clamp(ky) * (1 - kOut);
-    $$("#net .spoke").forEach((ln, i) => {
-      const k = outExpo(p(t, S1.tools + 0.3 + i * 0.14, S1.tools + 1.0 + i * 0.14));
-      const [x, y] = tools[i];
-      ln.setAttribute("x1", cx); ln.setAttribute("y1", cy);
-      ln.setAttribute("x2", lerp(cx, x, k)); ln.setAttribute("y2", lerp(cy, y, k));
-      ln.style.opacity = 1 - kOut;
-    });
-
-    // Diagrama: as três entradas se desenham até o ponto, depois a saída.
-    $$("#net .in").forEach((pth, i) => {
+    const { P, x0, ins } = NET;
+    const kv = inOutCubic(p(t, S1.conv, S1.conv + 1.6));       // convergência
+    const kCol = inOutQuint(p(t, COLLAPSE[0], COLLAPSE[1]));   // recolhe no ponto
+    const paths = $$("#net .in"), beats = $$("#net .beat");
+    ins.forEach(({ y, len, speed, off }, i) => {
+      const ex = lerp(x0 + len, P[0], kv), ey = lerp(y, P[1], kv);
+      const d = `M${x0} ${y} C ${lerp(x0, ex, 0.55)} ${y}, ${lerp(x0, ex, 0.62)} ${ey}, ${ex} ${ey}`;
+      const pth = paths[i];
+      pth.setAttribute("d", d);
       const L = pth.getTotalLength();
-      const a = S1.conv + 0.3 + i * 0.18;
-      const k = inOutCubic(p(t, a, a + 1.3));
-      // No colapso, o traço é "puxado" para dentro do ponto.
-      const back = kCol;
-      pth.setAttribute("stroke-dasharray", `${L * (k - back) } ${L * 2}`);
-      pth.setAttribute("stroke-dashoffset", -L * back);
-      pth.style.opacity = k > 0 ? 1 : 0;
+      const r = inOutCubic(p(t, S1.lines + i * 0.25, S1.lines + 1.1 + i * 0.25));
+      pth.setAttribute("stroke-dasharray", `${Math.max(0, L * (r - kCol))} ${L * 2}`);
+      pth.setAttribute("stroke-dashoffset", -L * kCol);
+      pth.style.opacity = r > 0 ? 1 : 0;
+      // Cada entrada pulsa no seu ritmo; depois da convergência, no mesmo.
+      const own = (t * speed + off) % 1, shared = (t * 0.6) % 1;
+      const ph = kv < 0.5 ? own : shared;
+      const pt = pth.getPointAtLength(ph * L);
+      const b = beats[i];
+      b.setAttribute("cx", pt.x); b.setAttribute("cy", pt.y);
+      const swap = Math.abs(kv - 0.5) * 2;
+      b.style.opacity = p(t, S1.lines + 1.2, S1.lines + 1.6) * Math.sin(Math.PI * ph) * swap * (1 - kCol);
     });
-    const kp = outBack(p(t, S1.conv + 1.3, S1.conv + 1.8), 2);
-    const pt = $("#net .pt");
-    pt.setAttribute("r", Math.max(0, U * 1.6 * clamp(kp, 0, 1.3) * lerp(1, 1.6, kCol)));
+    const kp = outBack(p(t, S1.conv + 1.4, S1.conv + 1.9), 2);
+    $("#net .pt").setAttribute("r", Math.max(0, U * 1.6 * clamp(kp, 0, 1.3) * lerp(1, 1.6, kCol)));
     const ar = $("#net .arrow");
-    const ka = outCubic(p(t, S1.conv + 1.8, S1.conv + 2.5));
+    const ka = outCubic(p(t, S1.conv + 1.9, S1.conv + 2.6));
     ar.style.opacity = ka * (1 - kCol);
     ar.style.transform = `translateX(${(1 - ka) * -U * 3}px)`;
     $$("#ctx .lbl").forEach((el, i) => {
-      const a = S1.conv + 0.1 + i * 0.18;
-      const { y, x0 } = ins[i];
+      const { y } = ins[i];
       if (V) el.style.transform = `translate(${x0}px, ${y + (i === 2 ? U * 1.8 : -U * 4.2)}px)`;
       else el.style.transform = `translate(${x0 - U * 2}px, ${y}px) translate(-100%, -50%)`;
-      fade(el, t, a, COLLAPSE[0] + 0.3, 0.8);
+      fade(el, t, S1.lines + 0.1 + i * 0.25, COLLAPSE[0] + 0.3, 0.8);
     });
     const out = $("#out");
     if (V) out.style.transform = `translate(${P[0]}px, ${P[1] + U * 6}px) translate(-50%, 0)`;
     else out.style.transform = `translate(${NET.ax1 + U * 2.6}px, ${P[1]}px) translate(0, -50%)`;
-    fade(out, t, S1.conv + 2.2, COLLAPSE[0] + 0.3, 0.8);
+    fade(out, t, S1.conv + 2.3, COLLAPSE[0] + 0.3, 0.8);
 
     const capY = V ? H * 0.62 : H * 0.70;
     ["#s1-a", "#s1-b", "#s1-c"].forEach(s => { $(s).style.top = capY + "px"; });
@@ -695,7 +690,16 @@ function render(t) {
     words($("#s2-a"), t, LOGO.cap, T.s2[1] - 0.1, { stagger: 0.05 });
   }
 
-  // ---- 03 Método -----------------------------------------------------------
+  // ---- 01 Essência: a frase -------------------------------------------------
+  if (show($("#essence"), t, T.essence)) {
+    const [t0, t1] = T.essence;
+    const head = $("#essence .head");
+    fade($(".eyebrow", head), t, t0 + 0.2, t1, 1);
+    words($(".big", head), t, t0 + 0.3, t1, { stagger: 0.06 });
+    $$("#ess-lines div").forEach((el, i) => fade(el, t, t0 + 1.6 + i * 0.8, t1, 1.6, 0.8));
+  }
+
+  // ---- 02 Método -------------------------------------------------------------
   if (show($("#method"), t, T.method)) {
     const [t0, t1] = T.method;
     const head = $("#method .head");
@@ -740,41 +744,23 @@ function render(t) {
       const a = LVL0 + i * LVL;
       fade(el, t, a, t1, 2.2, 0.7);
       // destaque percorre os quatro níveis, como um compasso, e fica no último
-      const now = clamp(Math.floor((t - (LVL0 + 3.2)) / 0.55), -1, 3);
-      el.classList.toggle("on", t >= LVL0 + 3.2 && now === i);
+      const now = clamp(Math.floor((t - (LVL0 + 2.6)) / 0.55), -1, 3);
+      el.classList.toggle("on", t >= LVL0 + 2.6 && now === i);
     });
-    fade($("#scale-note"), t, LVL0 + 3.6, t1, 1.2);
+    fade($("#scale-note"), t, LVL0 + 3.0, t1, 1.2);
   }
 
-  // ---- 05 Time -------------------------------------------------------------
-  if (show($("#team"), t, T.team)) {
-    const t0 = T.team[0];
-    const t1 = T.team[1];
-    const head = $("#team .head");
+  // ---- 03 Compromisso --------------------------------------------------------
+  if (show($("#commit"), t, T.commit)) {
+    const [t0, t1] = T.commit;
+    const head = $("#commit .head");
     fade($(".eyebrow", head), t, t0 + 0.2, t1, 1);
     words($(".big", head), t, t0 + 0.3, t1, { stagger: 0.06 });
-    $$("#s3-grid .card").forEach((card, i) => {
-      const a = CARDS0 + i * CARD;
-      // Foto sobe revelada de baixo pra cima, com a borda de luz na frente.
-      const kr = inOutCubic(p(t, a, a + 0.9));
-      const cut = (1 - kr) * 100;
-      const ph = $(".ph", card);
-      ph.style.clipPath = `inset(${cut}% 0 0 0)`;
-      $(".img", card).style.transform = `scale(${lerp(1.18, 1.02, outCubic(p(t, a, t1)))})`;
-      const edge = $(".edge", card);
-      edge.style.top = `calc(${cut}% - 1.5px)`;
-      edge.style.opacity = kr > 0 && kr < 1 ? 1 : 0;
-      const ko = inCubic(p(t, t1 - 0.5, t1));
-      ph.style.opacity = 1 - ko;
-      ph.style.translate = `0 ${-ko * U * 2}px`;
-      fade($(".role", card), t, a + 0.45, t1, 1);
-      words($(".name", card), t, a + 0.5, t1, { stagger: 0.07, dur: 0.8 });
-      fade($(".cred", card), t, a + 0.8, t1, 1.2, 0.8);
-    });
+    $$("#commit-grid .cm").forEach((el, i) => fade(el, t, CM0 + i * CM, t1, 1.6, 0.7));
+    $$("#roles > div").forEach((el, i) => fade(el, t, CM0 + 2.6 + i * 0.5, t1, 1.4, 0.7));
   }
 
-
-  // ---- 06 Entrega ----------------------------------------------------------
+  // ---- 03 Entrega ----------------------------------------------------------
   if (show($("#deal"), t, T.deal)) {
     const t0 = T.deal[0], t1 = T.deal[1];
     const copy = $("#s4-copy");
@@ -810,7 +796,7 @@ function render(t) {
   }
 
 
-  // ---- 07 Contato ----------------------------------------------------------
+  // ---- 04 Expressão --------------------------------------------------------
   if (show($("#end"), t, T.end)) {
     const t0 = T.end[0];
     const [sx, sy] = sunPos();
@@ -848,7 +834,7 @@ layout(+q.get("w") || 1920, +q.get("h") || 1080);
 build();
 Object.assign(window, { DURATION, CUES, CHORDS, render });
 window.ready = document.fonts.ready.then(() =>
-  Promise.all(["hero-rich", ...TEAM.map(m => "team/" + m[2])].map(n => new Promise(res => {
+  Promise.all(["hero-rich"].map(n => new Promise(res => {
     const im = new Image(); im.onload = im.onerror = res; im.src = `../public/images/${n}.jpg`;
   })))
 );

@@ -3,36 +3,34 @@
 Vídeos em 16:9 e 9:16, gerados por `render.mjs` a partir de uma página HTML com
 uma função `render(t)` determinística.
 
-## Ritmo. (`ritmo-apresentacao.html`, 72,4s, com trilha)
+## Ritmo. (`ritmo-apresentacao.html`, 77s, com trilha)
 
-Apresentação da Ritmo depois da troca de nome. Mesmo motor, mesma linguagem
-visual e mesma trilha sintetizada do vídeo para parceiros da Level; o texto sai
-do documento de identidade da Ritmo, sem número, cliente ou resultado que a
-empresa não tenha.
+Apresentação da Ritmo. Mesmo motor, mesma linguagem visual e mesma trilha
+sintetizada do vídeo para parceiros da Level. O roteiro segue as quatro
+páginas do documento de identidade intelectual da Ritmo, na mesma ordem, e
+todo texto na tela é tirado dele.
 
 | Arquivo | Formato |
 | --- | --- |
 | `export/ritmo-apresentacao-16x9.mp4` | 1920x1080 |
 | `export/ritmo-apresentacao-9x16.mp4` | 1080x1920 |
 
-1. **Contexto** (0–13,8s): ferramentas soltas em volta de "Sua empresa".
-   "Conhecer uma ferramenta é só o começo." / "O valor dela depende de
-   adequação, adoção e continuidade." Depois o diagrama da página 1 do
-   documento: pessoas, processos e tecnologia convergem num ponto, a escolha
-   útil para a rotina real.
-2. **Ritmo** (13,8–23,6s): o ponto da convergência vira a marca, "Ritmo."
-   entra com "Consultoria tecnológica" e a frase "Tecnologia que faz sentido
-   na prática."
-3. **Método** (23,6–34,4s): entender, priorizar, escolher, adotar,
-   acompanhar, cada etapa com a sua saída.
-4. **Escala** (34,4–42s): aproveitar, configurar, conectar, desenvolver.
-5. **Time** (42–49,4s): os quatro sócios, com a credencial de
-   `src/data/team.ts`.
-6. **Entrega** (49,4–61,4s): o plano com direção, adoção, evolução e
-   interesses comerciais declarados, assinado pela Ritmo.
-7. **Contato** (61,4–72,4s): o quadro de Monet abre a partir do sol. "Vamos
-   começar pela sua rotina." / "Entender a rotina. Escolher com critério.
-   Fazer funcionar." / Fale com a Ritmo.
+1. **Essência** (0–30,2s): o diagrama da página 1. Pessoas, processos e
+   tecnologia, cada um pulsando no seu ritmo, convergem na escolha útil para
+   a rotina real. "Conhecer uma ferramenta é o começo." / "Seu valor depende
+   de adequação, adoção e continuidade." / "Entre o que a tecnologia permite
+   e o que a empresa consegue aproveitar, existe um trabalho de tradução,
+   escolha e adoção." O ponto vira a marca, "Ritmo." entra e "É nesse espaço
+   que a Ritmo atua." Depois, "Tecnologia que faz sentido na prática." com
+   entendemos, traduzimos, acompanhamos.
+2. **Método** (30,2–47,4s): entender, priorizar, escolher, adotar e
+   acompanhar, com a saída de cada etapa; a escala da intervenção (aproveitar,
+   configurar, conectar, desenvolver) e o que a escolha considera.
+3. **Compromisso** (47,4–67s): os seis compromissos, os papéis de cliente e
+   Ritmo, e direção, adoção e evolução num plano assinado pelos dois.
+4. **Expressão** (67–77s): o quadro de Monet abre a partir do sol.
+   "Começamos pela rotina de quem trabalha." / "Entender a rotina. Escolher
+   com critério. Fazer funcionar." / Fale com a Ritmo.
 
 Os vídeos abaixo são da Level, mantidos como referência.
 
