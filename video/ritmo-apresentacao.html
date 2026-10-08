@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Ritmo.: filme de apresentação</title>
 <!--
-  Filme de apresentação da Ritmo (87s), em 16:9 e 9:16.
+  Filme de apresentação da Ritmo (88s), em 16:9 e 9:16.
 
   Um plano contínuo conduzido pela bola sólida da marca, que faz o papel da
   batida: quica de palavra em palavra e preenche o lettering, sincroniza as
@@ -23,7 +23,7 @@
     3  Método       um percurso com as cinco etapas, cada uma com a sua saída
     4  Escala       aproveitar, configurar, conectar, desenvolver
     5  Sócios       quatro sócios, quatro frentes
-    6  Compromisso  os seis compromissos, um por batida
+    6  Compromisso  os seis compromissos, dois por batida
     7  Fecho        "Entender a rotina. Escolher com critério. Fazer
                     funcionar."; a marca sobre o quadro de Monet, que abre a
                     partir da bola; "Fale conosco" e o telefone
@@ -104,11 +104,11 @@
 
   /* 6 Compromisso */
   #s6-eyebrow { position: absolute; left: 0; right: 0; text-align: center; }
-  .cw { position: absolute; left: 0; right: 0; text-align: center; color: #fff; white-space: nowrap; }
+  .cw { position: absolute; left: 0; text-align: center; color: #fff; white-space: nowrap; }
   .cw .m { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.1em; margin-bottom: -0.1em; }
   .cw .m > span { display: inline-block; }
   .cw .dotslot { display: inline-block; width: 0.3em; }
-  .cd { position: absolute; left: calc(var(--u) * 10); right: calc(var(--u) * 10); text-align: center; color: rgba(255,255,255,0.78); font-size: calc(var(--u) * 2.4); }
+  .cd { position: absolute; text-align: center; color: rgba(255,255,255,0.78); font-size: calc(var(--u) * 2.4); }
 
   /* 7 Fecho */
   #s7-lines { position: absolute; left: 0; top: 0; }
@@ -139,7 +139,7 @@
   .v #s5-title { font-size: calc(var(--u) * 9); }
   .v .pt-lbl b { font-size: calc(var(--u) * 4.4); }
   .v .pt-lbl span { font-size: calc(var(--u) * 2.3); }
-  .v .cd { left: calc(var(--u) * 7); right: calc(var(--u) * 7); font-size: calc(var(--u) * 3.6); }
+  .v .cd { font-size: calc(var(--u) * 3.4); }
   .v #s7-lines div { font-size: calc(var(--u) * 8.2); }
   .v #s7-line { font-size: calc(var(--u) * 4.2); }
   .v #s7-cta { font-size: calc(var(--u) * 3.4); padding: calc(var(--u) * 2.6) calc(var(--u) * 5); }
@@ -248,17 +248,17 @@ const CLOSE = ["Entender a rotina", "Escolher com critério", "Fazer funcionar"]
 // ---------------------------------------------------------------------------
 // Linha do tempo (segundos)
 // ---------------------------------------------------------------------------
-const T = { s0: [0, 7], s1: [7, 16.5], s2: [16.5, 27], s3: [27, 47], s4: [47, 54.6], s5: [54.6, 62], s6: [62, 75], s7: [75, 87] };
-const DURATION = 87;
+const T = { s0: [0, 7], s1: [7, 16.5], s2: [16.5, 27], s3: [27, 47], s4: [47, 54.6], s5: [54.6, 62], s6: [62, 75], s7: [75, 87.8] };
+const DURATION = 87.8;
 const S0 = { pulse: [0.4, 1.0, 1.6], land0: 2.1, hop: 0.48, period: 4.75 };
 const S1 = { lanes: 7.2, badges: [8.6, 9.3, 10.0], a: [8.0, 11.8], b: [12.0, 16.2], hl: [13.5, 14.0, 14.5] };
-const S2 = { sweep: [16.6, 18.2], conv: [18.2, 19.6], center: [19.8, 20.6], mark: 20.4, word: 21.0, dot: 21.7, up: [22.4, 23.0], a: 23.0, hl: [23.2, 23.7, 24.2], b: 24.0, iris: [26.3, 27] };
+const S2 = { sweep: [16.6, 18.2], conv: [18.2, 19.6], center: [19.8, 20.6], mark: 20.4, word: 21.0, dot: 21.7, up: [22.4, 23.0], a: 22.9, hl: [23.1, 23.5, 23.9], b: 23.4, iris: [26.3, 27] };
 const ST0 = 30.0, STD = 3.2, TRAVEL = 1.15;      // método: chegada em cada etapa
 const S3 = { title: [27.3, 29.6], zoom: [45.0, 46.4] };
-const S4 = { title: 47.4, bars: 48.0, hop0: 49.3, hop: 0.55, note: 51.2, wipe: [53.9, 54.6] };
+const S4 = { title: 47.4, bars: 48.0, hop0: 49.3, hop: 0.55, note: 50.6, wipe: [53.9, 54.6] };
 const S5 = { a: 55.0, b: 55.5, p0: 56.2, p: 0.55, merge: [61.4, 62.0] };
-const S6 = { w0: 62.4, w: 2.0 };
-const S7 = { l0: 75.4, l: 0.9, out: [78.6, 79.2], mark: 79.3, paint: [79.6, 81.2], word: 80.3, dot: 80.9, tag: 81.3, line: 81.7, cta: 82.3, url: 82.7 };
+const S6 = { w0: 62.3, w: 4.2 };     // compromissos em pares: 3 batidas de 4,2s
+const S7 = { l0: 75.4, l: 0.9, out: [79.4, 80.0], mark: 80.1, paint: [80.4, 82.0], word: 81.1, dot: 81.7, tag: 82.1, line: 82.5, cta: 83.1, url: 83.5 };
 
 // Notas da trilha: pentatônica, sobe conforme a bola avança.
 const NOTES = [196, 220, 261.63, 293.66, 329.63, 392, 440];
@@ -283,7 +283,7 @@ const CUES = [
   { t: S4.wipe[0], end: S4.wipe[1] + 0.3, type: "swell" },
   { t: S4.wipe[1] - 0.1, type: "thump", g: 0.8 },
   ...TEAM.map((_, i) => pl(S5.p0 + i * S5.p, i, 0.8)),
-  ...COMMIT.map((_, i) => pl(S6.w0 + i * S6.w + 0.35, (i % 2 ? 2 : 4), 0.9)),
+  ...COMMIT.map((_, i) => pl(S6.w0 + Math.floor(i / 2) * S6.w + (i % 2 ? 1.0 : 0.35), (i % 2 ? 4 : 2), 0.9)),
   ...CLOSE.map((_, i) => pl(S7.l0 + i * S7.l + 0.2, 2 + i)),
   { t: S7.mark + 0.9, type: "thump" },
   pl(S7.dot, 5, 1.1),
@@ -299,7 +299,7 @@ const CHORDS = [
   [54.6, 62, [130.81, 196, 261.63, 329.63]],
   [62, 68.5, [98, 146.83, 196, 246.94, 293.66]],
   [68.5, 75, [87.31, 130.81, 174.61, 220, 261.63]],
-  [75, 87, [130.81, 196, 246.94, 293.66, 329.63]],
+  [75, 87.8, [130.81, 196, 246.94, 293.66, 329.63]],
 ];
 
 // ---------------------------------------------------------------------------
@@ -444,8 +444,10 @@ function geometry() {
   G.pc = V ? [[W * 0.29, H * 0.43], [W * 0.71, H * 0.43], [W * 0.29, H * 0.72], [W * 0.71, H * 0.72]]
            : [0.2, 0.4, 0.6, 0.8].map(x => [W * x, H * 0.55]);
   // 6 Compromisso
-  G.cwFs = V ? U * 11 : U * 12;
-  G.cwY = V ? H * 0.42 : H * 0.4;
+  G.cwFs = V ? U * 10.5 : U * 8.6;
+  // posição de cada compromisso no par: colunas no 16:9, linhas no 9:16
+  G.cwBox = j => V ? { left: U * 6, width: W - U * 12, y: j === 0 ? H * 0.3 : H * 0.58 } : { left: j === 0 ? U * 6 : W / 2, width: W / 2 - U * 6, y: H * 0.42 };
+  G.cwY = V ? H * 0.42 : H * 0.42;
 }
 
 function build() {
@@ -506,18 +508,22 @@ function buildIllustrations() {
   // 4 Adotar: duas peças se encaixam e viram uma só
   svgs[3].innerHTML = `<g class="pa"><path d="M0 4 H9 V9 A2.4 2.4 0 0 1 9 15 V20 H0 Z" fill="#f3f2ee" ${S.replace('fill="none" ', '')}/></g>` +
     `<g class="pb"><path d="M0 4 H11 V20 H0 V15 A2.4 2.4 0 0 0 0 9 Z" fill="#f3f2ee" ${S.replace('fill="none" ', '')}/></g>`;
-  // 5 Acompanhar: medir (gráfico com pontos) e ajustar, em ciclo
-  const cx = 33, cy = 9, r = 5.2, a0 = -2.27, a1 = a0 + 5.06;
+  // 5 Acompanhar: um painel com o uso medido (barras), a tendência e o selo
+  // de ciclo, que é a bola sólida da marca com a seta de ajuste dentro.
+  const bx = [8, 13.5, 19, 24.5], bh = [5, 8.5, 6.5, 11];
+  const cx = 32.5, cy = 4.5, r = 2.3, a0 = -2.4, a1 = a0 + 4.9;
   const P0 = [cx + r * Math.cos(a0), cy + r * Math.sin(a0)], P1 = [cx + r * Math.cos(a1), cy + r * Math.sin(a1)];
   const dir = [-Math.sin(a1), Math.cos(a1)], nrm = [Math.cos(a1), Math.sin(a1)];
-  const tip = [P1[0] + dir[0] * 1.7, P1[1] + dir[1] * 1.7];
-  const b1 = [P1[0] + nrm[0] * 1.3, P1[1] + nrm[1] * 1.3], b2 = [P1[0] - nrm[0] * 1.3, P1[1] - nrm[1] * 1.3];
-  const pts = [[5, 19], [11, 15], [17, 16.5], [23, 11]];
-  svgs[4].innerHTML = `<path d="M3 22 H27" ${S} stroke-width="0.7"/>` +
-    `<path class="chart" d="M${pts.map(q => q.join(" ")).join(" L ")}" ${S}/>` +
-    pts.map(([x, y]) => `<circle class="cp" cx="${x}" cy="${y}" r="1.3" fill="#14171e"/>`).join("") +
-    `<path class="loop" d="M${P0[0].toFixed(2)} ${P0[1].toFixed(2)} A ${r} ${r} 0 1 1 ${P1[0].toFixed(2)} ${P1[1].toFixed(2)}" ${S}/>` +
-    `<path class="loopa" d="M${b1.map(v => v.toFixed(2)).join(" ")} L ${tip.map(v => v.toFixed(2)).join(" ")} L ${b2.map(v => v.toFixed(2)).join(" ")} Z" fill="#14171e"/>`;
+  const tip = [P1[0] + dir[0] * 1.2, P1[1] + dir[1] * 1.2];
+  const b1 = [P1[0] + nrm[0] * 0.9, P1[1] + nrm[1] * 0.9], b2 = [P1[0] - nrm[0] * 0.9, P1[1] - nrm[1] * 0.9];
+  const f = v => v.toFixed(2);
+  svgs[4].innerHTML = `<rect x="3" y="2" width="28" height="21" rx="2.4" ${S}/>` +
+    `<path d="M6.5 19.5 H 27.5" ${S} stroke-width="0.6"/>` +
+    bx.map((x, j) => `<rect class="ubar" x="${x - 1.6}" y="${19.5 - bh[j]}" width="3.2" height="${bh[j]}" rx="0.6" fill="#14171e"/>`).join("") +
+    `<path class="trend" d="M${bx.map((x, j) => `${x} ${19.5 - bh[j] - 2.2}`).join(" L ")}" ${S} stroke-width="0.9"/>` +
+    `<g class="badge"><circle cx="${cx}" cy="${cy}" r="4.6" fill="#14171e"/>` +
+    `<path d="M${f(P0[0])} ${f(P0[1])} A ${r} ${r} 0 1 1 ${f(P1[0])} ${f(P1[1])}" fill="none" stroke="#f3f2ee" stroke-width="0.9" stroke-linecap="round"/>` +
+    `<path d="M${f(b1[0])} ${f(b1[1])} L ${f(tip[0])} ${f(tip[1])} L ${f(b2[0])} ${f(b2[1])} Z" fill="#f3f2ee"/></g>`;
 }
 
 // Medidas que dependem das fontes.
@@ -539,8 +545,9 @@ function measure() {
   lock.style.left = W / 2 + "px"; lock.style.top = "0px"; lock.style.translate = "-50% 0";
   M.lockH = rectOf(lock).h;
   // 6: ponto de cada compromisso
-  M.cw = $$("#commit .cw").map(el => {
-    el.style.top = G.cwY + "px";
+  M.cw = $$("#commit .cw").map((el, i) => {
+    const bx = G.cwBox(i % 2);
+    el.style.left = bx.left + "px"; el.style.width = bx.width + "px"; el.style.top = bx.y + "px";
     const s = rectOf($(".dotslot", el));
     return [s.x + G.cwFs * 0.12, s.y];
   });
@@ -772,13 +779,13 @@ function r2(t) {
   // frases
   $("#s2-a").style.top = (V ? H * 0.44 : H * 0.45) + "px";
   $("#s2-b").style.top = (V ? H * 0.6 : H * 0.62) + "px";
-  words($("#s2-a"), t, S2.a, S2.iris[0] + 0.1, { stagger: 0.05 });
+  words($("#s2-a"), t, S2.a, S2.iris[1], { stagger: 0.05 });
   $$("#s2-a .hl").forEach((h, i) => {
     const k = outCubic(p(t, S2.hl[i], S2.hl[i] + 0.35));
     $("b", h).style.transform = `scaleX(${k})`;
     h.style.color = k > 0.5 ? "var(--ink)" : "";
   });
-  words($("#s2-b"), t, S2.b, S2.iris[0] + 0.1, { stagger: 0.04 });
+  words($("#s2-b"), t, S2.b, S2.iris[1], { stagger: 0.03, dur: 0.6 });
 }
 
 // ---- 3 Método ---------------------------------------------------------------
@@ -852,6 +859,16 @@ function r3(t) {
     const tin = arrive[i] - 1.2;
     const kin = outCubic(p(t, tin, tin + 0.6));
     el.style.opacity = kin;
+    // some antes de encostar na borda do quadro; no recuo final, volta ao entrar.
+    // Extensão da etapa em tela, calculada pela câmera (ilustração + palavra + saída).
+    {
+      const X = sx * sc + camX, Y = sy * sc + camY;
+      const a = V ? Y - U * 26 * sc : X - U * 5 * sc;                       // borda de entrada
+      const z = V ? Y + U * 14 * sc : X + U * 52 * sc;                      // borda de saída
+      const lim = V ? H : W, m = U * 1.5;
+      const keep = clamp((a - m) / (U * 3)) * clamp((lim - m - z) / (U * 3) + 1);
+      el.style.opacity = kin * keep;
+    }
     const kf = outCubic(p(t, arrive[i] - 0.02, arrive[i] + 0.35));
     outline($(".word", el), kf, "20,23,30", 0.02);
     $(".word", el).style.transform = `translateY(${Math.sin(Math.PI * p(t, arrive[i], arrive[i] + 0.3)) * 0.05}em)`;
@@ -920,14 +937,21 @@ function animIll(i, svg, lt) {
     const kf = clamp((lt - 0.45) / 0.3);
     $(".pb path", svg).setAttribute("fill", kf > 0.5 ? "#14171e" : "#f3f2ee");
   } else {
-    const ch = $(".chart", svg);
-    ch.setAttribute("stroke-dasharray", 30);
-    ch.setAttribute("stroke-dashoffset", 30 * (1 - inOutCubic(clamp((lt + 0.5) / 0.9))));
-    $$(".cp", svg).forEach((c, j) => c.setAttribute("r", 1.3 * outBack(clamp((lt + 0.4 - j * 0.22) / 0.3), 2)));
-    const lp = $(".loop", svg), la = $(".loopa", svg);
-    const kl = inOutCubic(clamp((lt - 0.3) / 0.7));
-    lp.setAttribute("stroke-dasharray", 28); lp.setAttribute("stroke-dashoffset", 28 * (1 - kl));
-    la.style.opacity = clamp((kl - 0.85) / 0.15);
+    // barras crescem uma a uma (uso), a tendência se desenha, a terceira barra
+    // é ajustada para cima, e o selo de ciclo aparece no canto do painel
+    const H0 = [5, 8.5, 6.5, 11];
+    $$(".ubar", svg).forEach((b, j) => {
+      const k = outBack(clamp((lt + 0.5 - j * 0.15) / 0.45), 1.4);
+      const adj = j === 2 ? 2.5 * inOutCubic(clamp((lt - 0.55) / 0.35)) : 0;
+      const h = Math.max(0, (H0[j] + adj) * k);
+      b.setAttribute("height", h); b.setAttribute("y", 19.5 - h);
+    });
+    const tr = $(".trend", svg);
+    tr.setAttribute("stroke-dasharray", 30);
+    tr.setAttribute("stroke-dashoffset", 30 * (1 - inOutCubic(clamp((lt - 0.05) / 0.5))));
+    const kb = outBack(clamp((lt - 0.75) / 0.4), 1.8);
+    const g = $(".badge", svg);
+    g.setAttribute("transform", `translate(32.5 4.5) scale(${clamp(kb, 0, 1.2)}) rotate(${(1 - clamp(kb)) * -120}) translate(-32.5 -4.5)`);
   }
 }
 
@@ -956,7 +980,7 @@ function r4(t) {
     fade(l, t, S4.bars + 0.3 + i * 0.18, S4.wipe[0], 1);
   });
   $("#s4-note").style.top = (V ? H * 0.8 : H * 0.88) + "px";
-  fade($("#s4-note"), t, S4.note, S4.wipe[0], 1.2);
+  fade($("#s4-note"), t, S4.note, S4.wipe[1], 1.2);
   // bola sobe os degraus
   const R = U * 1.4;
   const lands = LEVELS.map((_, i) => S4.hop0 + i * S4.hop);
@@ -1022,26 +1046,30 @@ function r6(t) {
   fade(eb, t, T.s6[0] + 0.2, T.s6[1] - 0.1, 0.6);
   const cws = $$("#commit .cw"), cds = $$("#commit .cd");
   const R = G.cwFs * 0.085;
-  const lands = COMMIT.map((_, i) => S6.w0 + i * S6.w + 0.35);
+  // dois compromissos por batida; a bola pousa no ponto do primeiro e depois do segundo
+  const lands = COMMIT.map((_, i) => S6.w0 + Math.floor(i / 2) * S6.w + (i % 2 ? 1.0 : 0.35));
   cws.forEach((el, i) => {
-    const tin = S6.w0 + i * S6.w, tout = i < COMMIT.length - 1 ? S6.w0 + (i + 1) * S6.w - 0.05 : T.s6[1];
-    el.style.top = G.cwY + "px";
+    const slot = Math.floor(i / 2);
+    const tin = S6.w0 + slot * S6.w + (i % 2 ? 0.3 : 0), tout = slot < 2 ? S6.w0 + (slot + 1) * S6.w - 0.05 : T.s6[1];
+    const bx = G.cwBox(i % 2);
+    el.style.left = bx.left + "px"; el.style.width = bx.width + "px"; el.style.top = bx.y + "px";
     el.style.display = t >= tin - 0.1 && t < tout + 0.4 ? "" : "none";
-    rise(el, t, tin, tout, 0.025);
+    rise(el, t, tin, tout, 0.02);
     const d = cds[i];
-    d.style.top = G.cwY + G.cwFs * 1.35 + "px";
-    fade(d, t, tin + 0.35, tout + 0.05, 0.8, 0.5);
+    d.style.left = bx.left + U * 2 + "px"; d.style.width = bx.width - U * 4 + "px";
+    d.style.top = bx.y + G.cwFs * 1.3 + "px";
+    fade(d, t, tin + 0.3, tout + 0.05, 0.8, 0.5);
   });
-  // a bola pula de ponto final em ponto final
   const pts = M.cw.map(([x, y]) => [x, y - R * 1.05]);
   const start = [W / 2, G.cwY - U * 8];
   let pos, sy = 1;
   if (t < lands[0]) pos = hop(start, pts[0], inOutCubic(p(t, T.s6[0], lands[0])), U * 4);
   else {
-    const i = Math.min(COMMIT.length - 1, Math.floor((t - lands[0]) / S6.w));
-    const nx = Math.min(COMMIT.length - 1, i + 1);
-    const tj = lands[i] + S6.w - 0.45;
-    pos = i === nx || t < tj ? pts[i] : hop(pts[i], pts[nx], inOutCubic(p(t, tj, lands[nx])), U * 9);
+    let i = 0;
+    while (i < lands.length - 1 && t >= lands[i + 1]) i++;
+    const nx = Math.min(lands.length - 1, i + 1);
+    const tj = i % 2 === 0 ? lands[i] + 0.15 : lands[nx] - 0.55;
+    pos = i === nx || t < tj ? pts[i] : hop(pts[i], pts[nx], inOutCubic(p(t, tj, lands[nx])), U * (i % 2 ? 9 : 5));
     sy = squash(t, lands[i]);
   }
   // fim da cena: a bola vai para o primeiro ponto do fecho
