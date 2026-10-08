@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Ritmo.: filme de apresentação</title>
 <!--
-  Filme de apresentação da Ritmo (75s), em 16:9 e 9:16.
+  Filme de apresentação da Ritmo (87s), em 16:9 e 9:16.
 
   Um plano contínuo conduzido pela bola sólida da marca, que faz o papel da
   batida: quica de palavra em palavra e preenche o lettering, sincroniza as
@@ -25,7 +25,8 @@
     5  Sócios       quatro sócios, quatro frentes
     6  Compromisso  os seis compromissos, um por batida
     7  Fecho        "Entender a rotina. Escolher com critério. Fazer
-                    funcionar." e a marca
+                    funcionar."; a marca sobre o quadro de Monet, que abre a
+                    partir da bola; "Fale conosco" e o telefone
 
   Motor igual ao dos vídeos da Level: render(t) determinístico, chamado quadro
   a quadro por render.mjs; window.CUES e CHORDS alimentam score.mjs.
@@ -80,8 +81,8 @@
   .st { position: absolute; left: 0; top: 0; }
   .st .num { font-size: calc(var(--u) * 1.4); letter-spacing: 0.26em; font-weight: 700; color: var(--muted-ink); }
   .st .word { font-size: calc(var(--u) * 7.4); font-weight: 800; letter-spacing: -0.045em; line-height: 1; margin-top: calc(var(--u) * 0.8); white-space: nowrap; }
-  .st .out { margin-top: calc(var(--u) * 1.8); font-size: calc(var(--u) * 1.9); font-weight: 600; color: var(--ink); white-space: nowrap; }
-  .st .out b { display: block; font-size: calc(var(--u) * 1.2); letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted-ink); margin-bottom: calc(var(--u) * 0.5); }
+  .st .out { margin-top: calc(var(--u) * 1.8); font-size: calc(var(--u) * 2.4); font-weight: 700; color: var(--ink); white-space: nowrap; }
+  .st .out b { display: block; font-size: calc(var(--u) * 1.4); letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted-ink); margin-bottom: calc(var(--u) * 0.5); }
   #s3-title { position: absolute; left: 0; right: 0; text-align: center; font-size: calc(var(--u) * 8); color: var(--ink); }
 
   /* 4 Escala (fundo papel) */
@@ -96,7 +97,7 @@
   /* 5 Sócios */
   #s5-title { position: absolute; left: 0; right: 0; text-align: center; font-size: calc(var(--u) * 6.6); color: #fff; }
   .pt { position: absolute; left: 0; top: 0; border-radius: 50%; overflow: hidden; background: #1b2030; }
-  .pt div { position: absolute; inset: 0; background-size: cover; background-position: center 26%; filter: grayscale(1) contrast(1.1) brightness(0.95); }
+  .pt div { position: absolute; inset: 0; background-size: cover; background-position: center 26%; filter: saturate(1.05); }
   .pt-lbl { position: absolute; left: 0; top: 0; text-align: center; white-space: nowrap; }
   .pt-lbl b { display: block; font-size: calc(var(--u) * 3.2); font-weight: 800; letter-spacing: -0.03em; }
   .pt-lbl span { display: block; margin-top: calc(var(--u) * 0.6); font-size: calc(var(--u) * 1.6); color: var(--muted); font-weight: 600; }
@@ -118,15 +119,17 @@
   #s7-line { margin-top: calc(var(--u) * 3.6); font-size: calc(var(--u) * 3); font-weight: 700; letter-spacing: -0.02em; }
   #s7-cta { margin-top: calc(var(--u) * 3.6); display: inline-flex; align-items: center; gap: calc(var(--u) * 1.2); background: #fff; color: var(--ink); font-weight: 800; font-size: calc(var(--u) * 2.1); padding: calc(var(--u) * 1.7) calc(var(--u) * 3.4); border-radius: 999px; }
   #s7-cta svg { width: calc(var(--u) * 2.1); height: calc(var(--u) * 2.1); }
-  #s7-url { margin-top: calc(var(--u) * 2.2); font-size: calc(var(--u) * 1.4); letter-spacing: 0.18em; color: rgba(255,255,255,0.65); font-weight: 700; }
+  #s7-url { margin-top: calc(var(--u) * 2.4); font-size: calc(var(--u) * 2.4); letter-spacing: 0.04em; color: #fff; font-weight: 700; }
+  #s7-paint { position: absolute; inset: 0; background: url("../public/images/hero-rich.jpg") center / cover no-repeat; }
+  #s7-shade { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(13,16,23,0.6), rgba(13,16,23,0.86)); }
 
   /* Vertical */
   .v .eyebrow { font-size: calc(var(--u) * 2); letter-spacing: 0.2em; }
   .v .lane-lbl { font-size: calc(var(--u) * 2); }
   .v .badge { font-size: calc(var(--u) * 2.4); padding: calc(var(--u) * 1.1) calc(var(--u) * 2); }
   .v .st .num { font-size: calc(var(--u) * 1.9); }
-  .v .st .word { font-size: calc(var(--u) * 9.6); }
-  .v .st .out { font-size: calc(var(--u) * 2.8); }
+  .v .st .word { font-size: calc(var(--u) * 8.6); }
+  .v .st .out { font-size: calc(var(--u) * 3.2); white-space: normal; width: calc(var(--u) * 72); }
   .v .st .out b { font-size: calc(var(--u) * 1.8); }
   .v #s3-title { font-size: calc(var(--u) * 10); }
   .v #s4-title { font-size: calc(var(--u) * 8.4); }
@@ -141,7 +144,7 @@
   .v #s7-line { font-size: calc(var(--u) * 4.2); }
   .v #s7-cta { font-size: calc(var(--u) * 3.4); padding: calc(var(--u) * 2.6) calc(var(--u) * 5); }
   .v #s7-cta svg { width: calc(var(--u) * 3.4); height: calc(var(--u) * 3.4); }
-  .v #s7-url { font-size: calc(var(--u) * 2.2); }
+  .v #s7-url { font-size: calc(var(--u) * 3.8); }
 </style>
 </head>
 <body>
@@ -191,6 +194,7 @@
   </section>
 
   <section id="s7" class="scene">
+    <div id="s7-paint"></div><div id="s7-shade"></div>
     <div id="s7-lines" class="lt"></div>
     <div id="s7-lock">
       <svg class="mark" viewBox="0 0 32 32" style="overflow:visible">
@@ -199,10 +203,10 @@
       <div id="s7-word" class="wordmark" data-letters="Ritmo"></div>
       <div id="s7-tag" class="eyebrow">Consultoria tecnológica</div>
       <div id="s7-line">Tecnologia que faz sentido na prática.</div>
-      <div id="s7-cta">Fale com a Ritmo
+      <div id="s7-cta">Fale conosco
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </div>
-      <div id="s7-url">ganwalk.github.io/agency</div>
+      <div id="s7-url">+55 62 9850-6450</div>
     </div>
   </section>
 
@@ -244,21 +248,21 @@ const CLOSE = ["Entender a rotina", "Escolher com critério", "Fazer funcionar"]
 // ---------------------------------------------------------------------------
 // Linha do tempo (segundos)
 // ---------------------------------------------------------------------------
-const T = { s0: [0, 7], s1: [7, 16.5], s2: [16.5, 25.6], s3: [25.6, 43.6], s4: [43.6, 50.6], s5: [50.6, 57.6], s6: [57.6, 65.2], s7: [65.2, 75] };
-const DURATION = 75;
+const T = { s0: [0, 7], s1: [7, 16.5], s2: [16.5, 27], s3: [27, 47], s4: [47, 54.6], s5: [54.6, 62], s6: [62, 75], s7: [75, 87] };
+const DURATION = 87;
 const S0 = { pulse: [0.4, 1.0, 1.6], land0: 2.1, hop: 0.48, period: 4.75 };
 const S1 = { lanes: 7.2, badges: [8.6, 9.3, 10.0], a: [8.0, 11.8], b: [12.0, 16.2], hl: [13.5, 14.0, 14.5] };
-const S2 = { sweep: [16.6, 18.2], conv: [18.2, 19.6], center: [19.8, 20.6], mark: 20.4, word: 21.0, dot: 21.7, up: [22.4, 23.0], a: 23.0, hl: [23.2, 23.7, 24.2], b: 24.2, iris: [24.9, 25.6] };
-const ST0 = 28.6, STD = 2.75, TRAVEL = 1.05;      // método: chegada em cada etapa
-const S3 = { title: [25.9, 28.0], zoom: [42.0, 43.2] };
-const S4 = { title: 44.0, bars: 44.6, hop0: 45.9, hop: 0.55, note: 48.2, wipe: [49.9, 50.6] };
-const S5 = { a: 51.0, b: 51.5, p0: 52.2, p: 0.5, merge: [57.0, 57.6] };
-const S6 = { w0: 58.0, w: 1.15 };
-const S7 = { l0: 65.6, l: 0.8, out: [68.3, 68.9], mark: 69.0, word: 70.0, dot: 70.6, tag: 71.0, line: 71.4, cta: 72.0, url: 72.4 };
+const S2 = { sweep: [16.6, 18.2], conv: [18.2, 19.6], center: [19.8, 20.6], mark: 20.4, word: 21.0, dot: 21.7, up: [22.4, 23.0], a: 23.0, hl: [23.2, 23.7, 24.2], b: 24.0, iris: [26.3, 27] };
+const ST0 = 30.0, STD = 3.2, TRAVEL = 1.15;      // método: chegada em cada etapa
+const S3 = { title: [27.3, 29.6], zoom: [45.0, 46.4] };
+const S4 = { title: 47.4, bars: 48.0, hop0: 49.3, hop: 0.55, note: 51.2, wipe: [53.9, 54.6] };
+const S5 = { a: 55.0, b: 55.5, p0: 56.2, p: 0.55, merge: [61.4, 62.0] };
+const S6 = { w0: 62.4, w: 2.0 };
+const S7 = { l0: 75.4, l: 0.9, out: [78.6, 79.2], mark: 79.3, paint: [79.6, 81.2], word: 80.3, dot: 80.9, tag: 81.3, line: 81.7, cta: 82.3, url: 82.7 };
 
 // Notas da trilha: pentatônica, sobe conforme a bola avança.
-const NOTES = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66];
-const pl = (t, i, g = 1) => ({ t, type: "pluck", f: NOTES[i % NOTES.length], g });
+const NOTES = [196, 220, 261.63, 293.66, 329.63, 392, 440];
+const pl = (t, i, g = 1) => ({ t, type: "pluck", soft: true, f: NOTES[i % NOTES.length], g });
 const CUES = [
   ...S0.pulse.map(t => pl(t, 0, 0.7)),
   ...[0, 1, 2, 3, 4].map(i => pl(S0.land0 + i * S0.hop, i)),
@@ -288,13 +292,14 @@ const CUES = [
 const CHORDS = [
   [0, 9, [110, 164.81, 220, 261.63, 329.63]],
   [9, 16.5, [87.31, 130.81, 174.61, 220, 261.63]],
-  [16.5, 25.6, [130.81, 196, 261.63, 329.63, 392]],
-  [25.6, 34.6, [98, 146.83, 196, 246.94, 293.66]],
-  [34.6, 43.6, [110, 164.81, 220, 261.63, 329.63]],
-  [43.6, 50.6, [87.31, 130.81, 174.61, 220, 261.63]],
-  [50.6, 57.6, [130.81, 196, 261.63, 329.63]],
-  [57.6, 65.2, [98, 146.83, 196, 246.94, 293.66]],
-  [65.2, 75, [130.81, 196, 246.94, 293.66, 329.63]],
+  [16.5, 27, [130.81, 196, 261.63, 329.63, 392]],
+  [27, 37, [98, 146.83, 196, 246.94, 293.66]],
+  [37, 47, [110, 164.81, 220, 261.63, 329.63]],
+  [47, 54.6, [87.31, 130.81, 174.61, 220, 261.63]],
+  [54.6, 62, [130.81, 196, 261.63, 329.63]],
+  [62, 68.5, [98, 146.83, 196, 246.94, 293.66]],
+  [68.5, 75, [87.31, 130.81, 174.61, 220, 261.63]],
+  [75, 87, [130.81, 196, 246.94, 293.66, 329.63]],
 ];
 
 // ---------------------------------------------------------------------------
@@ -429,7 +434,7 @@ function geometry() {
   G.mark = V ? U * 30 : U * 17;
   G.wordFs = V ? U * 15 : U * 10;
   // 3 Método: estações no mundo
-  G.stations = STEPS.map((_, i) => V ? [U * 16 + (i % 2 ? U * 6 : 0), i * U * 62] : [i * U * 70, (i % 2 ? -1 : 1) * U * 4]);
+  G.stations = STEPS.map((_, i) => V ? [U * 9 + (i % 2 ? U * 4 : 0), i * U * 62] : [i * U * 70, (i % 2 ? -1 : 1) * U * 4]);
   // 4 Escala
   G.bw = V ? U * 19 : U * 20; G.bgap = V ? U * 3 : U * 3.4;
   G.bh = V ? [U * 12, U * 22, U * 32, U * 42] : [U * 9, U * 16, U * 23, U * 30];
@@ -451,7 +456,7 @@ function build() {
   // 1
   $$("[data-t]").forEach(splitWords);
   $$(".cap").forEach(el => (el.style.fontSize = G.capFs + "px"));
-  $("#s2-b").style.fontSize = (V ? U * 3.8 : U * 2.8) + "px";
+  $("#s2-b").style.fontSize = (V ? U * 4.6 : U * 3.4) + "px";
   const svg = $("#s1-svg");
   svg.setAttribute("width", W); svg.setAttribute("height", H);
   let html = "";
@@ -494,16 +499,25 @@ function buildIllustrations() {
   // 1 Entender: rotina (fila de pontos) e uma lupa que encontra o problema
   svgs[0].innerHTML = [...Array(7)].map((_, i) => `<circle class="d" cx="${4 + i * 5.3}" cy="16" r="1.2" fill="#14171e"/>`).join("") +
     `<g class="lens"><circle cx="0" cy="0" r="4.2" ${S}/><path d="M3 3 L6.5 6.5" ${S} stroke-width="1.4"/></g>`;
-  // 2 Priorizar: pontos soltos se organizam; um é escolhido
-  svgs[1].innerHTML = [...Array(6)].map((_, i) => `<circle class="d" r="${[1, 2.2, 1.4, 3, 1.8, 1.2][i]}" fill="#14171e"/>`).join("") +
-    `<circle class="sel" r="4.6" ${S}/>`;
+  // 2 Priorizar: uma lista; o item que importa sobe para o topo e é marcado
+  svgs[1].innerHTML = [0, 1, 2].map(i => `<g class="row"><circle cx="5" cy="0" r="1.9" ${S}/><path d="M10 0 H ${[22, 34, 16][i]}" ${S} stroke-width="1.6"/></g>`).join("");
   // 3 Escolher: três opções, a do meio vem para a frente e ganha o check
   svgs[2].innerHTML = [0, 1, 2].map(i => `<g class="card"><rect x="-5" y="-7" width="10" height="14" rx="1.4" fill="#f3f2ee" ${S.replace('fill="none" ', '')}/><path d="M-2.4 0.2 L-0.6 2 L2.6 -1.6" ${S} stroke-width="1.2" class="chk"/></g>`).join("");
-  // 4 Adotar: peças se conectam
-  svgs[3].innerHTML = `<path class="ln" d="M8 18 L20 6 L32 18 Z" ${S}/>` + [[8, 18], [20, 6], [32, 18]].map(([x, y]) => `<circle class="n" cx="${x}" cy="${y}" r="2.6" fill="#f3f2ee" ${S.replace('fill="none" ', '')}/>`).join("");
-  // 5 Acompanhar: medir e ajustar, em ciclo
-  svgs[4].innerHTML = `<path d="M4 21 H36" ${S} stroke-width="0.6"/><path class="chart" d="M5 19 L12 16 L18 17 L25 11 L32 7" ${S}/>` +
-    `<path class="loop" d="M30 4 A 5 5 0 1 1 25.6 9.6" ${S}/><path class="loopa" d="M25.6 6.6 L25.6 9.8 L28.8 9.8" ${S}/>`;
+  // 4 Adotar: duas peças se encaixam e viram uma só
+  svgs[3].innerHTML = `<g class="pa"><path d="M0 4 H9 V9 A2.4 2.4 0 0 1 9 15 V20 H0 Z" fill="#f3f2ee" ${S.replace('fill="none" ', '')}/></g>` +
+    `<g class="pb"><path d="M0 4 H11 V20 H0 V15 A2.4 2.4 0 0 0 0 9 Z" fill="#f3f2ee" ${S.replace('fill="none" ', '')}/></g>`;
+  // 5 Acompanhar: medir (gráfico com pontos) e ajustar, em ciclo
+  const cx = 33, cy = 9, r = 5.2, a0 = -2.27, a1 = a0 + 5.06;
+  const P0 = [cx + r * Math.cos(a0), cy + r * Math.sin(a0)], P1 = [cx + r * Math.cos(a1), cy + r * Math.sin(a1)];
+  const dir = [-Math.sin(a1), Math.cos(a1)], nrm = [Math.cos(a1), Math.sin(a1)];
+  const tip = [P1[0] + dir[0] * 1.7, P1[1] + dir[1] * 1.7];
+  const b1 = [P1[0] + nrm[0] * 1.3, P1[1] + nrm[1] * 1.3], b2 = [P1[0] - nrm[0] * 1.3, P1[1] - nrm[1] * 1.3];
+  const pts = [[5, 19], [11, 15], [17, 16.5], [23, 11]];
+  svgs[4].innerHTML = `<path d="M3 22 H27" ${S} stroke-width="0.7"/>` +
+    `<path class="chart" d="M${pts.map(q => q.join(" ")).join(" L ")}" ${S}/>` +
+    pts.map(([x, y]) => `<circle class="cp" cx="${x}" cy="${y}" r="1.3" fill="#14171e"/>`).join("") +
+    `<path class="loop" d="M${P0[0].toFixed(2)} ${P0[1].toFixed(2)} A ${r} ${r} 0 1 1 ${P1[0].toFixed(2)} ${P1[1].toFixed(2)}" ${S}/>` +
+    `<path class="loopa" d="M${b1.map(v => v.toFixed(2)).join(" ")} L ${tip.map(v => v.toFixed(2)).join(" ")} L ${b2.map(v => v.toFixed(2)).join(" ")} Z" fill="#14171e"/>`;
 }
 
 // Medidas que dependem das fontes.
@@ -810,13 +824,13 @@ function r3(t) {
   }
   const bp = PATH.getPointAtLength(Math.max(0, s));
   // câmera segue a bola; no fim, recua e mostra o percurso inteiro
-  const anchor = V ? [W * 0.5, H * 0.34] : [W * 0.36, H * 0.4];
+  const anchor = V ? [U * 16, H * 0.34] : [W * 0.36, H * 0.4];
   const xs = G.stations.map(q => q[0]), ys = G.stations.map(q => q[1]);
   const span = V ? Math.max(...ys) - Math.min(...ys) + U * 70 : Math.max(...xs) - Math.min(...xs) + U * 60;
   const fit = V ? H / (span + U * 30) : W / (span + U * 20);
   const kz = inOutCubic(p(t, S3.zoom[0], S3.zoom[1]));
   const sc = lerp(1, fit, kz);
-  const mid = V ? [W * 0.5 - U * 6, (Math.min(...ys) + Math.max(...ys)) / 2 + U * 8] : [(Math.min(...xs) + Math.max(...xs)) / 2 + U * 10, U * 4];
+  const mid = V ? [U * 40, (Math.min(...ys) + Math.max(...ys)) / 2 + U * 8] : [(Math.min(...xs) + Math.max(...xs)) / 2 + U * 10, U * 4];
   const camX = lerp(anchor[0] - bp.x, W / 2 - mid[0] * sc, kz);
   const camY = lerp(anchor[1] - bp.y, H / 2 - mid[1] * sc, kz);
   const world = $("#world");
@@ -833,7 +847,7 @@ function r3(t) {
   // estações: palavra em contorno que preenche quando a bola pousa
   $$("#stations .st").forEach((el, i) => {
     const [sx, sy] = G.stations[i];
-    if (V) el.style.transform = `translate(${sx + U * 6}px, ${sy - U * 4}px)`;
+    if (V) el.style.transform = `translate(${sx + U * 5}px, ${sy - U * 4}px)`;
     else el.style.transform = `translate(${sx - U * 4}px, ${sy + U * 5}px)`;
     const tin = arrive[i] - 1.2;
     const kin = outCubic(p(t, tin, tin + 0.6));
@@ -855,7 +869,7 @@ function r3(t) {
   // a bola, no espaço do mundo
   const sx0 = bp.x * sc + camX, sy0 = bp.y * sc + camY;
   const landIdx = arrive.findIndex(a => Math.abs(t - a) < 0.3);
-  setBall(sx0, sy0 - U * 1.3 * sc, U * 1.3 * sc, landIdx >= 0 ? squash(t, arrive[landIdx]) : 1, "#14171e");
+  setBall(sx0, sy0, U * 1.3 * sc, 1, "#14171e");
   // título de abertura
   const ttl = $("#s3-title");
   ttl.style.top = (V ? H * 0.62 : H * 0.6) + "px";
@@ -874,21 +888,17 @@ function animIll(i, svg, lt) {
       d.setAttribute("stroke", "#14171e"); d.setAttribute("stroke-width", j === 4 ? 0.8 : 0);
     });
   } else if (i === 1) {
-    const k = inOutCubic(clamp((lt + 0.4) / 1.0));
-    const rs = [1, 2.2, 1.4, 3, 1.8, 1.2];
-    const order = [3, 1, 4, 2, 5, 0]; // do maior para o menor
-    const scat = [[6, 6], [30, 18], [14, 20], [24, 4], [36, 10], [18, 10]];
-    $$(".d", svg).forEach((d, j) => {
-      const slot = order.indexOf(j);
-      const tx = 6 + slot * 6, ty = 14;
-      const wob = Math.sin(lt * 3 + j) * (1 - k) * 0.8;
-      d.setAttribute("cx", lerp(scat[j][0], tx, k));
-      d.setAttribute("cy", lerp(scat[j][1], ty, k) + wob);
+    // a linha mais longa (índice 1) troca de lugar com a primeira e é marcada
+    const k = inOutCubic(clamp((lt + 0.5) / 0.9));
+    const ys = [[4, 4 + k * 7], [11, 11 - k * 7], [18, 18]];
+    $$(".row", svg).forEach((g, j) => {
+      g.setAttribute("transform", `translate(0 ${ys[j][1]})`);
+      const c = $("circle", g);
+      const kf = j === 1 ? outBack(clamp((lt - 0.4) / 0.35), 2) : 0;
+      c.setAttribute("fill", kf > 0.4 ? "#14171e" : "none");
+      c.setAttribute("r", 1.9 * (1 + 0.35 * Math.sin(Math.PI * clamp(kf))));
+      g.style.opacity = j === 1 ? 1 : lerp(1, 0.45, clamp((lt - 0.4) / 0.4));
     });
-    const ks = outBack(clamp((lt - 0.6) / 0.4), 2);
-    const sel = $(".sel", svg);
-    sel.setAttribute("cx", 6); sel.setAttribute("cy", 14);
-    sel.setAttribute("r", 4.6 * clamp(ks, 0, 1.2));
   } else if (i === 2) {
     const k = outBack(clamp((lt - 0.1) / 0.6), 1.4);
     $$(".card", svg).forEach((g, j) => {
@@ -903,22 +913,21 @@ function animIll(i, svg, lt) {
     // a carta do meio fica na frente
     svg.appendChild($$(".card", svg)[1]);
   } else if (i === 3) {
-    const ln = $(".ln", svg);
-    ln.setAttribute("stroke-dasharray", 60);
-    ln.setAttribute("stroke-dashoffset", 60 * (1 - inOutCubic(clamp((lt + 0.3) / 0.9))));
-    $$(".n", svg).forEach((n, j) => {
-      const kn = outBack(clamp((lt - 0.4 - j * 0.15) / 0.3), 2);
-      n.setAttribute("fill", kn > 0.5 ? "#14171e" : "#f3f2ee");
-      n.setAttribute("r", 2.6 * (1 + 0.3 * Math.sin(Math.PI * clamp(kn))));
-    });
+    // as peças vêm das laterais, encaixam e preenchem
+    const k = outBack(clamp((lt + 0.4) / 0.8), 1.2);
+    $(".pa", svg).setAttribute("transform", `translate(${lerp(2, 9, clamp(k, 0, 1.05))} 0)`);
+    $(".pb", svg).setAttribute("transform", `translate(${lerp(28, 18, clamp(k, 0, 1.05))} 0)`);
+    const kf = clamp((lt - 0.45) / 0.3);
+    $(".pb path", svg).setAttribute("fill", kf > 0.5 ? "#14171e" : "#f3f2ee");
   } else {
     const ch = $(".chart", svg);
-    ch.setAttribute("stroke-dasharray", 40);
-    ch.setAttribute("stroke-dashoffset", 40 * (1 - inOutCubic(clamp((lt + 0.4) / 0.9))));
+    ch.setAttribute("stroke-dasharray", 30);
+    ch.setAttribute("stroke-dashoffset", 30 * (1 - inOutCubic(clamp((lt + 0.5) / 0.9))));
+    $$(".cp", svg).forEach((c, j) => c.setAttribute("r", 1.3 * outBack(clamp((lt + 0.4 - j * 0.22) / 0.3), 2)));
     const lp = $(".loop", svg), la = $(".loopa", svg);
-    const kl = inOutCubic(clamp((lt - 0.4) / 0.7));
-    lp.setAttribute("stroke-dasharray", 30); lp.setAttribute("stroke-dashoffset", 30 * (1 - kl));
-    la.style.opacity = kl > 0.95 ? 1 : 0;
+    const kl = inOutCubic(clamp((lt - 0.3) / 0.7));
+    lp.setAttribute("stroke-dasharray", 28); lp.setAttribute("stroke-dashoffset", 28 * (1 - kl));
+    la.style.opacity = clamp((kl - 0.85) / 0.15);
   }
 }
 
@@ -1021,7 +1030,7 @@ function r6(t) {
     rise(el, t, tin, tout, 0.025);
     const d = cds[i];
     d.style.top = G.cwY + G.cwFs * 1.35 + "px";
-    fade(d, t, tin + 0.3, tout + 0.1, 0.8, 0.5);
+    fade(d, t, tin + 0.35, tout + 0.05, 0.8, 0.5);
   });
   // a bola pula de ponto final em ponto final
   const pts = M.cw.map(([x, y]) => [x, y - R * 1.05]);
@@ -1076,6 +1085,11 @@ function r7(t) {
   pos = [lerp(pos[0], markPos[0], kc), lerp(pos[1], markPos[1], kc)];
   r = lerp(r, 10 * s, outCubic(p(t, S7.mark - 0.1, S7.mark + 0.7)));
   setBall(pos[0], pos[1], r, kc > 0 ? 1 : sy);
+  const kpaint = inOutCubic(p(t, S7.paint[0], S7.paint[1]));
+  const Rp = Math.hypot(Math.max(markPos[0], W - markPos[0]), Math.max(markPos[1], H - markPos[1])) * 1.05;
+  const clip = `circle(${Math.max(0.001, kpaint * Rp)}px at ${markPos[0]}px ${markPos[1]}px)`;
+  $("#s7-paint").style.clipPath = clip; $("#s7-shade").style.clipPath = clip;
+  $("#s7-paint").style.transform = `scale(${lerp(1.18, 1.03, outCubic(p(t, S7.paint[0], DURATION)))})`;
   rise($("#s7-word"), t, S7.word, undefined, 0.07);
   dropDot($("#s7-word"), t, S7.dot, 1);
   fade($("#s7-tag"), t, S7.tag, undefined, 0.8);
@@ -1098,7 +1112,7 @@ layout(+q.get("w") || 1920, +q.get("h") || 1080);
 build();
 Object.assign(window, { DURATION, CUES, CHORDS, render });
 window.ready = document.fonts.ready.then(() =>
-  Promise.all(TEAM.map(m => "team/" + m[2]).map(n => new Promise(res => {
+  Promise.all(["hero-rich", ...TEAM.map(m => "team/" + m[2])].map(n => new Promise(res => {
     const im = new Image(); im.onload = im.onerror = res; im.src = `../public/images/${n}.jpg`;
   })))
 ).then(() => { measure(); render(0); });

@@ -6,7 +6,8 @@
 // antes do colapso e um risco de caneta na assinatura. Gera WAV 48kHz 16 bit.
 //
 // Para uma trilha mais discreta há "pluck" (nota macia, com frequência em f),
-// "thump" (grave de ataque lento) e "swell" (ar filtrado), todos com ganho g.
+// "thump" (grave de ataque lento) e "swell" (ar filtrado), todos com ganho g;
+// "pluck" com soft: true fica mais grave no timbre, com ataque lento e mais baixo.
 import { writeFile } from "node:fs/promises";
 
 const SR = 48000;
@@ -87,10 +88,11 @@ export async function writeScore(file, { duration, cues, chords }) {
       });
     } else if (c.type === "pluck") {
       // Nota curta e macia, entre marimba e sino: substitui os ticks.
-      const f = c.f || 659.25, g = (c.g ?? 1) * 0.045, pan = 0.5 + 0.35 * Math.sin(f);
+      const f = c.f || 329.63, g = (c.g ?? 1) * (c.soft ? 0.028 : 0.045), pan = 0.5 + 0.35 * Math.sin(f);
+      const atk = c.soft ? 45 : 140, h2 = c.soft ? 0.08 : 0.22, h3 = c.soft ? 0 : 0.06;
       add(c.t, 1.6, t => {
-        const env = (1 - Math.exp(-t * 140)) * Math.exp(-t * 4.2);
-        const v = (Math.sin(TAU * f * t) + 0.22 * Math.sin(TAU * f * 2 * t) * Math.exp(-t * 6) + 0.06 * Math.sin(TAU * f * 3.01 * t) * Math.exp(-t * 9)) * env * g;
+        const env = (1 - Math.exp(-t * atk)) * Math.exp(-t * 4.2);
+        const v = (Math.sin(TAU * f * t) + h2 * Math.sin(TAU * f * 2 * t) * Math.exp(-t * 6) + h3 * Math.sin(TAU * f * 3.01 * t) * Math.exp(-t * 9)) * env * g;
         return [v * (1.2 - pan), v * (0.2 + pan)];
       });
     } else if (c.type === "thump") {
