@@ -85,6 +85,44 @@ export const metronomo = [
   },
 ];
 
+// Família da convergência: variações da opção Convergência, que sai do
+// diagrama da página 1 do documento (pessoas, processos e tecnologia
+// chegando a uma escolha útil). Traços em 3, o ponto de chegada sólido.
+export const convergencia = [
+  {
+    id: "convergencia",
+    name: "Convergência",
+    body:
+      line("M3 7 C 11 7, 14 16, 21 16") + line("M3 16 H 21") + line("M3 25 C 11 25, 14 16, 21 16") + solid(24.5, 16, 6),
+  },
+  {
+    id: "espaco",
+    name: "Espaço",
+    body:
+      line("M3 7 C 9 7, 11 16, 14 16") + line("M3 16 H 14") + line("M3 25 C 9 25, 11 16, 14 16") + solid(24.5, 16, 6),
+  },
+  {
+    id: "saida",
+    name: "Saída",
+    body:
+      line("M2.5 7 C 7.5 7, 9 16, 12.5 16") + line("M2.5 16 H 12.5") + line("M2.5 25 C 7.5 25, 9 16, 12.5 16") +
+      solid(16.5, 16, 4.5) + line("M23.5 16 H 30"),
+  },
+  {
+    id: "feixe",
+    name: "Feixe",
+    body: line("M3 5.5 L 19 16") + line("M3 16 H 19") + line("M3 26.5 L 19 16") + solid(24.5, 16, 6),
+  },
+  {
+    id: "origens",
+    name: "Origens",
+    body:
+      ring(4.5, 7, 2.5) + ring(4.5, 16, 2.5) + ring(4.5, 25, 2.5) +
+      line("M8.5 7.5 C 13 8.5, 15 16, 19 16") + line("M8.5 16 H 19") + line("M8.5 24.5 C 13 23.5, 15 16, 19 16") +
+      solid(24.5, 16, 6),
+  },
+];
+
 const here = dirname(fileURLToPath(import.meta.url));
 for (const m of marks) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" style="color:#11141c">${m.body}</svg>\n`;
@@ -95,5 +133,10 @@ mkdirSync(join(here, "metronomo"), { recursive: true });
 for (const m of metronomo) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" style="color:#11141c">${m.body}</svg>\n`;
   writeFileSync(join(here, "metronomo", `${m.id}.svg`), svg);
+}
+mkdirSync(join(here, "convergencia"), { recursive: true });
+for (const m of convergencia) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" style="color:#11141c">${m.body}</svg>\n`;
+  writeFileSync(join(here, "convergencia", `${m.id}.svg`), svg);
 }
 console.log(marks.map((m) => m.id).join(" "));
