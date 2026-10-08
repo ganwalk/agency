@@ -23,28 +23,22 @@ export const en: Dictionary = {
     sub: "We understand the operation. We translate possibilities. We follow the rollout.",
     cta: "Talk to Ritmo",
     card: {
-      title: "The four partners",
-      body: "Four partners who start from the routine of the people doing the work and answer for the agreed delivery.",
+      title: "How we introduce ourselves",
+      body: "Ritmo is a technology consultancy that understands how your company operates, identifies the right solutions and supports their adoption.",
     },
   },
   positioning: {
-    title: "The intervention sized to the need",
+    eyebrow: "The essence",
+    title:
+      "Between what technology allows and what a company can actually use, there is work to translate, choose and adopt. That is the space where Ritmo works.",
     items: [
+      { title: "Purpose", description: "Make technology work for the people who make the company happen." },
+      { title: "Mission", description: "Understand the challenges of each operation, select the right solutions and guide their adoption." },
+      { title: "Vision", description: "Be the partner companies trust to decide, adopt and evolve their technology." },
       {
-        title: "Make the most of it",
-        description: "Get more out of what the company already has and what already works.",
-      },
-      {
-        title: "Configure",
-        description: "Adjust an existing solution to the way the team works.",
-      },
-      {
-        title: "Connect",
-        description: "Link tools and data that don't talk to each other today.",
-      },
-      {
-        title: "Build",
-        description: "Build something custom when there is a real gap.",
+        title: "Why Ritmo",
+        description:
+          "Ritmo means rhythm. Every company has its own cadence. The name stands for coordination between people, processes and tools, with changes the team can absorb.",
       },
     ],
   },
@@ -52,15 +46,14 @@ export const en: Dictionary = {
     eyebrow: "Who we are",
     title: "The people behind Ritmo",
     intro:
-      "We are four partners from different fields: design, engineering, law and management. That lets us look at the same operation from more than one angle before recommending any tool.",
+      "The partners who recommend with clear criteria and lead the agreed delivery.",
     linkedinLabel: "LinkedIn",
   },
   services: {
     eyebrow: "Delivery",
     title: "How consulting becomes delivery",
-    intro:
-      "Between what technology allows and what a company can actually use, there is work to translate, choose and adopt. That is the space where Ritmo works.",
-    note: "Each stage has a scope, an owner and a completion criterion. The next one depends on the need and on a new agreement.",
+    intro: "Each stage has a scope, an owner and a completion criterion. The next one depends on the need and on a new agreement.",
+    note: "Follow-up needs defined capacity; new features need a decision and a budget.",
   },
   process: {
     eyebrow: "Method",
@@ -94,7 +87,17 @@ export const en: Dictionary = {
         output: "A decision to keep, fix or expand.",
       },
     ],
-    note: "We measure before and after: an indicator agreed with the team and real usage. For example, the time it takes to find a document. The target comes from the observed routine.",
+    note: "Measure before and after: agree on an indicator and check real usage. Example: the time it takes to find a document. The target comes from the observed routine.",
+    scale: {
+      title: "Scale of intervention",
+      items: [
+        { title: "Make the most of it", description: "What already works" },
+        { title: "Configure", description: "An existing solution" },
+        { title: "Connect", description: "Tools and data" },
+        { title: "Build", description: "A real gap" },
+      ],
+      note: "The choice weighs fit, adoption, total cost, security and maintenance. Adjusting a process or using a system you already pay for can also be the recommendation.",
+    },
   },
   principles: {
     eyebrow: "Commitment",
@@ -115,29 +118,27 @@ export const en: Dictionary = {
   },
   contact: {
     eyebrow: "Contact",
-    title: "Let's start with your routine",
+    title: "We start from the routine of the people doing the work",
     intro:
-      "Tell us where your team spends effort, loses information or struggles to decide. We look at what the company already uses and come back with next steps.",
+      "We understand where there is effort, lost information or difficulty deciding. We look at what the company already uses and what it could adopt. From there, we guide and implement what is needed.",
     form: {
       name: "Name",
       email: "Email",
       company: "Company",
       projectType: "Where to start",
       projectTypeOptions: [
-        "Understand an operational problem",
-        "Choose a tool or system",
-        "Implement or configure a solution",
-        "Connect tools and data",
-        "Build something custom",
-        "Other",
+        "Direction: diagnosis and choice",
+        "Adoption: rollout and use",
+        "Evolution: follow-up",
+        "Not sure yet",
       ],
       message: "Message",
-      messagePlaceholder: "Tell us how the routine works today and what is hard.",
+      messagePlaceholder: "Tell us about the routine today: where there is effort, lost information or difficulty deciding.",
       submit: "Send message",
       sending: "Sending...",
       success: "Message sent. We'll get back to you soon.",
       error: "We couldn't send it right now. Try again or reach us on WhatsApp.",
-      budgetNote: "Each stage is quoted after we understand the operation.",
+      budgetNote: "The choice of solution comes after understanding the operation.",
     },
     direct: {
       title: "Prefer to reach out directly?",

@@ -8,7 +8,7 @@ export const pt = {
   },
   nav: {
     team: "Time",
-    services: "Entregas",
+    services: "Entrega",
     process: "Método",
     contact: "Contato",
     cta: "Fale com a Ritmo",
@@ -23,28 +23,31 @@ export const pt = {
     sub: "Entendemos a operação. Traduzimos possibilidades. Acompanhamos a aplicação.",
     cta: "Fale com a Ritmo",
     card: {
-      title: "Os quatro sócios",
-      body: "Quatro sócios que começam pela rotina de quem trabalha e respondem pela entrega combinada.",
+      title: "Como nos apresentamos",
+      body: "A Ritmo é uma consultoria tecnológica que entende a operação da sua empresa, identifica soluções adequadas e acompanha sua adoção.",
     },
   },
   positioning: {
-    title: "A intervenção na medida da necessidade",
+    eyebrow: "A essência",
+    title:
+      "Entre o que a tecnologia permite e o que a empresa consegue aproveitar, existe um trabalho de tradução, escolha e adoção. É nesse espaço que a Ritmo atua.",
     items: [
       {
-        title: "Aproveitar",
-        description: "Usar melhor o que a empresa já tem e já funciona.",
+        title: "Propósito",
+        description: "Fazer a tecnologia trabalhar a favor de quem faz a empresa acontecer.",
       },
       {
-        title: "Configurar",
-        description: "Ajustar uma solução existente ao jeito que a equipe trabalha.",
+        title: "Missão",
+        description: "Entender os desafios de cada operação, selecionar soluções adequadas e orientar sua adoção.",
       },
       {
-        title: "Conectar",
-        description: "Ligar ferramentas e dados que hoje não conversam.",
+        title: "Visão",
+        description: "Ser a parceira de confiança das empresas para decidir, adotar e evoluir sua tecnologia.",
       },
       {
-        title: "Desenvolver",
-        description: "Construir sob medida quando existe uma lacuna real.",
+        title: "Por que Ritmo",
+        description:
+          "Cada empresa tem uma cadência. O nome expressa coordenação entre pessoas, processos e ferramentas, com mudanças que a equipe consegue absorver.",
       },
     ],
   },
@@ -52,20 +55,19 @@ export const pt = {
     eyebrow: "Quem somos",
     title: "Quem está por trás da Ritmo",
     intro:
-      "Somos quatro sócios de áreas diferentes: design, engenharia, direito e gestão. Isso ajuda a olhar a mesma operação por mais de um ângulo antes de recomendar qualquer ferramenta.",
+      "Os sócios que recomendam com critérios e conduzem a entrega acordada.",
     linkedinLabel: "LinkedIn",
   },
   services: {
-    eyebrow: "Entregas",
-    title: "Como a consultoria vira entrega",
-    intro:
-      "Entre o que a tecnologia permite e o que a empresa consegue aproveitar, existe um trabalho de tradução, escolha e adoção. É nesse espaço que a Ritmo atua.",
-    note: "Cada etapa tem escopo, responsável e critério de conclusão. A próxima depende da necessidade e de um novo acordo.",
+    eyebrow: "Entrega",
+    title: "Como a consultoria se torna entrega",
+    intro: "Cada etapa tem escopo, responsável e critério de conclusão. A próxima depende da necessidade e de um novo acordo.",
+    note: "Acompanhamento exige capacidade definida; novas funções exigem decisão e orçamento.",
   },
   process: {
     eyebrow: "Método",
     title: "Da rotina à escolha certa",
-    intro: "Conhecer uma ferramenta é o começo. O valor dela depende de adequação, adoção e continuidade.",
+    intro: "Conhecer uma ferramenta é o começo. Seu valor depende de adequação, adoção e continuidade.",
     outputLabel: "Saída",
     steps: [
       {
@@ -94,7 +96,17 @@ export const pt = {
         output: "Decisão de manter, corrigir ou ampliar.",
       },
     ],
-    note: "Medimos antes e depois: um indicador combinado com a equipe e o uso real. Por exemplo, o tempo para encontrar um material. A meta vem da rotina observada.",
+    note: "Medir antes e depois: combinar um indicador e verificar uso real. Exemplo: tempo para encontrar um material. A meta vem da rotina observada.",
+    scale: {
+      title: "Escala da intervenção",
+      items: [
+        { title: "Aproveitar", description: "O que já funciona" },
+        { title: "Configurar", description: "Solução existente" },
+        { title: "Conectar", description: "Ferramentas e dados" },
+        { title: "Desenvolver", description: "Lacuna real" },
+      ],
+      note: "A escolha considera adequação, adoção, custo total, segurança e manutenção. Ajustar um processo ou aproveitar um sistema contratado também pode ser a recomendação.",
+    },
   },
   principles: {
     eyebrow: "Compromisso",
@@ -109,35 +121,33 @@ export const pt = {
       { title: "Continuidade", description: "Considerar suporte, manutenção e operação desde a escolha." },
     ],
     roles: [
-      { who: "Cliente", what: "Define a prioridade, participa e incorpora a mudança." },
-      { who: "Ritmo", what: "Recomenda com critério e conduz a entrega combinada." },
+      { who: "Cliente", what: "Define prioridade, participa e incorpora a mudança." },
+      { who: "Ritmo", what: "Recomenda com critérios e conduz a entrega acordada." },
     ],
   },
   contact: {
     eyebrow: "Contato",
-    title: "Vamos começar pela sua rotina",
+    title: "Começamos pela rotina de quem trabalha",
     intro:
-      "Conte onde a equipe gasta esforço, perde informação ou tem dificuldade para decidir. Avaliamos o que a empresa já usa e voltamos com os próximos passos.",
+      "Entendemos onde há esforço, perda de informação ou dificuldade de decisão. Avaliamos o que a empresa já utiliza e o que pode adotar. A partir daí, orientamos e implantamos o necessário.",
     form: {
       name: "Nome",
       email: "Email",
       company: "Empresa",
       projectType: "Por onde começar",
       projectTypeOptions: [
-        "Entender um problema da operação",
-        "Escolher uma ferramenta ou sistema",
-        "Implantar ou configurar uma solução",
-        "Conectar ferramentas e dados",
-        "Desenvolver algo sob medida",
-        "Outro",
+        "Direção: diagnóstico e escolha",
+        "Adoção: implantação e uso",
+        "Evolução: acompanhamento",
+        "Ainda não sei",
       ],
       message: "Mensagem",
-      messagePlaceholder: "Conte como a rotina funciona hoje e o que está difícil.",
+      messagePlaceholder: "Conte como é a rotina hoje: onde há esforço, perda de informação ou dificuldade de decisão.",
       submit: "Enviar mensagem",
       sending: "Enviando...",
       success: "Mensagem enviada. Voltamos em breve.",
       error: "Não deu para enviar agora. Tenta de novo ou fala com a gente pelo WhatsApp.",
-      budgetNote: "Cada etapa é orçada depois de entendermos a operação.",
+      budgetNote: "A escolha da solução vem depois de entender a operação.",
     },
     direct: {
       title: "Prefere direto?",

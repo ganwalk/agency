@@ -8,7 +8,7 @@ export const es: Dictionary = {
   },
   nav: {
     team: "Equipo",
-    services: "Entregas",
+    services: "Entrega",
     process: "Método",
     contact: "Contacto",
     cta: "Habla con Ritmo",
@@ -23,28 +23,22 @@ export const es: Dictionary = {
     sub: "Entendemos la operación. Traducimos posibilidades. Acompañamos la aplicación.",
     cta: "Habla con Ritmo",
     card: {
-      title: "Los cuatro socios",
-      body: "Cuatro socios que empiezan por la rutina de quien trabaja y responden por la entrega acordada.",
+      title: "Cómo nos presentamos",
+      body: "Ritmo es una consultoría tecnológica que entiende la operación de tu empresa, identifica soluciones adecuadas y acompaña su adopción.",
     },
   },
   positioning: {
-    title: "La intervención a la medida de la necesidad",
+    eyebrow: "La esencia",
+    title:
+      "Entre lo que la tecnología permite y lo que la empresa logra aprovechar, hay un trabajo de traducción, elección y adopción. Es en ese espacio donde actúa Ritmo.",
     items: [
+      { title: "Propósito", description: "Hacer que la tecnología trabaje a favor de quienes hacen que la empresa funcione." },
+      { title: "Misión", description: "Entender los desafíos de cada operación, seleccionar soluciones adecuadas y orientar su adopción." },
+      { title: "Visión", description: "Ser el socio de confianza de las empresas para decidir, adoptar y evolucionar su tecnología." },
       {
-        title: "Aprovechar",
-        description: "Usar mejor lo que la empresa ya tiene y ya funciona.",
-      },
-      {
-        title: "Configurar",
-        description: "Ajustar una solución existente a la forma en que trabaja el equipo.",
-      },
-      {
-        title: "Conectar",
-        description: "Unir herramientas y datos que hoy no se comunican.",
-      },
-      {
-        title: "Desarrollar",
-        description: "Construir a medida cuando existe una brecha real.",
+        title: "Por qué Ritmo",
+        description:
+          "Cada empresa tiene una cadencia. El nombre expresa coordinación entre personas, procesos y herramientas, con cambios que el equipo puede absorber.",
       },
     ],
   },
@@ -52,15 +46,14 @@ export const es: Dictionary = {
     eyebrow: "Quiénes somos",
     title: "Quién está detrás de Ritmo",
     intro:
-      "Somos cuatro socios de áreas distintas: diseño, ingeniería, derecho y gestión. Eso nos ayuda a mirar la misma operación desde más de un ángulo antes de recomendar cualquier herramienta.",
+      "Los socios que recomiendan con criterios y conducen la entrega acordada.",
     linkedinLabel: "LinkedIn",
   },
   services: {
     eyebrow: "Entregas",
     title: "Cómo la consultoría se convierte en entrega",
-    intro:
-      "Entre lo que la tecnología permite y lo que la empresa logra aprovechar, hay un trabajo de traducción, elección y adopción. Es en ese espacio donde actúa Ritmo.",
-    note: "Cada etapa tiene alcance, responsable y criterio de cierre. La siguiente depende de la necesidad y de un nuevo acuerdo.",
+    intro: "Cada etapa tiene alcance, responsable y criterio de cierre. La siguiente depende de la necesidad y de un nuevo acuerdo.",
+    note: "El acompañamiento exige capacidad definida; las nuevas funciones exigen decisión y presupuesto.",
   },
   process: {
     eyebrow: "Método",
@@ -94,7 +87,17 @@ export const es: Dictionary = {
         output: "Decisión de mantener, corregir o ampliar.",
       },
     ],
-    note: "Medimos antes y después: un indicador acordado con el equipo y el uso real. Por ejemplo, el tiempo para encontrar un material. La meta sale de la rutina observada.",
+    note: "Medir antes y después: acordar un indicador y verificar el uso real. Ejemplo: tiempo para encontrar un material. La meta sale de la rutina observada.",
+    scale: {
+      title: "Escala de la intervención",
+      items: [
+        { title: "Aprovechar", description: "Lo que ya funciona" },
+        { title: "Configurar", description: "Solución existente" },
+        { title: "Conectar", description: "Herramientas y datos" },
+        { title: "Desarrollar", description: "Brecha real" },
+      ],
+      note: "La elección considera adecuación, adopción, costo total, seguridad y mantenimiento. Ajustar un proceso o aprovechar un sistema contratado también puede ser la recomendación.",
+    },
   },
   principles: {
     eyebrow: "Compromiso",
@@ -109,35 +112,33 @@ export const es: Dictionary = {
       { title: "Continuidad", description: "Considerar soporte, mantenimiento y operación desde la elección." },
     ],
     roles: [
-      { who: "Cliente", what: "Define la prioridad, participa e incorpora el cambio." },
-      { who: "Ritmo", what: "Recomienda con criterio y conduce la entrega acordada." },
+      { who: "Cliente", what: "Define prioridad, participa e incorpora el cambio." },
+      { who: "Ritmo", what: "Recomienda con criterios y conduce la entrega acordada." },
     ],
   },
   contact: {
     eyebrow: "Contacto",
-    title: "Empecemos por tu rutina",
+    title: "Empezamos por la rutina de quien trabaja",
     intro:
-      "Cuéntanos dónde el equipo gasta esfuerzo, pierde información o tiene dificultad para decidir. Evaluamos lo que la empresa ya usa y volvemos con los próximos pasos.",
+      "Entendemos dónde hay esfuerzo, pérdida de información o dificultad para decidir. Evaluamos lo que la empresa ya utiliza y lo que puede adoptar. A partir de ahí, orientamos e implementamos lo necesario.",
     form: {
       name: "Nombre",
       email: "Email",
       company: "Empresa",
       projectType: "Por dónde empezar",
       projectTypeOptions: [
-        "Entender un problema de la operación",
-        "Elegir una herramienta o sistema",
-        "Implementar o configurar una solución",
-        "Conectar herramientas y datos",
-        "Desarrollar algo a medida",
-        "Otro",
+        "Dirección: diagnóstico y elección",
+        "Adopción: implementación y uso",
+        "Evolución: acompañamiento",
+        "Todavía no lo sé",
       ],
       message: "Mensaje",
-      messagePlaceholder: "Cuéntanos cómo funciona la rutina hoy y qué está difícil.",
+      messagePlaceholder: "Cuéntanos cómo es la rutina hoy: dónde hay esfuerzo, pérdida de información o dificultad para decidir.",
       submit: "Enviar mensaje",
       sending: "Enviando...",
       success: "Mensaje enviado. Te respondemos pronto.",
       error: "No se pudo enviar ahora. Inténtalo de nuevo o escríbenos por WhatsApp.",
-      budgetNote: "Cada etapa se presupuesta después de entender la operación.",
+      budgetNote: "La elección de la solución viene después de entender la operación.",
     },
     direct: {
       title: "¿Prefieres hablar directo?",
