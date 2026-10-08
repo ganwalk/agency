@@ -46,7 +46,7 @@ export const en: Dictionary = {
     eyebrow: "Who we are",
     title: "The people behind Ritmo",
     intro:
-      "The partners who recommend with clear criteria and lead the agreed delivery.",
+      "Four partners, four fronts: design, engineering, law and management. They are the ones who recommend with clear criteria and lead the agreed delivery.",
     linkedinLabel: "LinkedIn",
   },
   services: {

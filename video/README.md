@@ -3,12 +3,13 @@
 Vídeos em 16:9 e 9:16, gerados por `render.mjs` a partir de uma página HTML com
 uma função `render(t)` determinística.
 
-## Ritmo. (`ritmo-apresentacao.html`, 77s, com trilha)
+## Ritmo. (`ritmo-apresentacao.html`, 84,4s, com trilha)
 
 Apresentação da Ritmo. Mesmo motor, mesma linguagem visual e mesma trilha
 sintetizada do vídeo para parceiros da Level. O roteiro segue as quatro
 páginas do documento de identidade intelectual da Ritmo, na mesma ordem, e
-todo texto na tela é tirado dele.
+todo texto na tela é tirado dele, exceto a cena dos sócios, que vem de
+`src/data/team.ts`.
 
 | Arquivo | Formato |
 | --- | --- |
@@ -26,9 +27,11 @@ todo texto na tela é tirado dele.
 2. **Método** (30,2–47,4s): entender, priorizar, escolher, adotar e
    acompanhar, com a saída de cada etapa; a escala da intervenção (aproveitar,
    configurar, conectar, desenvolver) e o que a escolha considera.
-3. **Compromisso** (47,4–67s): os seis compromissos, os papéis de cliente e
-   Ritmo, e direção, adoção e evolução num plano assinado pelos dois.
-4. **Expressão** (67–77s): o quadro de Monet abre a partir do sol.
+3. **Compromisso** (47,4–74,4s): os seis compromissos e os papéis de cliente
+   e Ritmo; "Quatro sócios, quatro frentes.", com design, engenharia, direito e
+   gestão e a credencial de `src/data/team.ts`; e direção, adoção e evolução
+   num plano assinado pelos dois.
+4. **Expressão** (74,4–84,4s): o quadro de Monet abre a partir do sol.
    "Começamos pela rotina de quem trabalha." / "Entender a rotina. Escolher
    com critério. Fazer funcionar." / Fale com a Ritmo.
 

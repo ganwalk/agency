@@ -55,7 +55,7 @@ export const pt = {
     eyebrow: "Quem somos",
     title: "Quem está por trás da Ritmo",
     intro:
-      "Os sócios que recomendam com critérios e conduzem a entrega acordada.",
+      "Quatro sócios, quatro frentes: design, engenharia, direito e gestão. São eles que recomendam com critérios e conduzem a entrega acordada.",
     linkedinLabel: "LinkedIn",
   },
   services: {

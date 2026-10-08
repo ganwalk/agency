@@ -39,7 +39,7 @@ export const zh: Dictionary = {
   about: {
     eyebrow: "关于我们",
     title: "Ritmo 背后的团队",
-    intro: "依据标准提出建议、并主导约定交付的合伙人。",
+    intro: "四位合伙人，四个领域：设计、工程、法律与管理。由他们依据标准提出建议，并主导约定的交付。",
     linkedinLabel: "LinkedIn",
   },
   services: {

@@ -46,7 +46,7 @@ export const es: Dictionary = {
     eyebrow: "Quiénes somos",
     title: "Quién está detrás de Ritmo",
     intro:
-      "Los socios que recomiendan con criterios y conducen la entrega acordada.",
+      "Cuatro socios, cuatro frentes: diseño, ingeniería, derecho y gestión. Son ellos quienes recomiendan con criterios y conducen la entrega acordada.",
     linkedinLabel: "LinkedIn",
   },
   services: {
