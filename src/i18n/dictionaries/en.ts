@@ -2,7 +2,7 @@ import type { Dictionary } from "./pt";
 
 export const en: Dictionary = {
   meta: {
-    title: "Ritmo. Technology consulting: technology that makes sense in practice",
+    title: "Ritmo. Technology consulting · Technology that makes sense in practice",
     description:
       "Ritmo is a technology consultancy that understands how your company operates, identifies the right solutions and supports their adoption.",
   },
@@ -46,7 +46,7 @@ export const en: Dictionary = {
     eyebrow: "Who we are",
     title: "The people behind Ritmo",
     intro:
-      "Four partners, four fronts: design, engineering, law and management. They are the ones who recommend with clear criteria and lead the agreed delivery.",
+      "Four partners, four fronts: design, engineering, law and management. They recommend with clear criteria and lead the agreed delivery.",
     linkedinLabel: "LinkedIn",
   },
   services: {

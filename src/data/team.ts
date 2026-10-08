@@ -29,10 +29,10 @@ export const team: TeamMember[] = [
       zh: "设计工程师",
     },
     bio: {
-      pt: "Passa da tela pro produto real: interfaces, design systems e protótipos de alta fidelidade que já viraram software em produção. O design engineer da Ritmo.",
-      en: "From screen to shipped product: interfaces, design systems and high fidelity prototypes now running in real software. Ritmo's design engineer.",
-      es: "De la pantalla al producto real: interfaces, sistemas de diseño y prototipos de alta fidelidad que ya funcionan en software en producción. El design engineer de Ritmo.",
-      zh: "从屏幕原型走到真实产品：界面、设计系统与高保真原型，均已在实际软件中运行。Ritmo 的设计工程师。",
+      pt: "É o design engineer da Ritmo. Leva interfaces, design systems e protótipos de alta fidelidade da tela até o software em produção.",
+      en: "Ritmo's design engineer. He takes interfaces, design systems and high fidelity prototypes from the screen to software in production.",
+      es: "Es el design engineer de Ritmo. Lleva interfaces, sistemas de diseño y prototipos de alta fidelidad de la pantalla al software en producción.",
+      zh: "他是 Ritmo 的设计工程师，把界面、设计系统与高保真原型从屏幕带到正在运行的软件中。",
     },
     linkedin: "https://br.linkedin.com/in/armando-custodio-00080320a",
   },
@@ -47,7 +47,7 @@ export const team: TeamMember[] = [
       zh: "运营与增长",
     },
     bio: {
-      pt: "Engenheiro de produção especialista em gestão e escalação de negócios. Estrutura processos e estratégia para o crescimento acontecer sem travar a operação.",
+      pt: "Engenheiro de produção especialista em gestão e em escalar negócios. Estrutura processos e estratégia para o crescimento acontecer sem travar a operação.",
       en: "Production engineer specialized in business management and scaling. Structures process and strategy so growth happens without stalling operations.",
       es: "Ingeniero de producción especialista en gestión y escalamiento de negocios. Estructura procesos y estrategia para que el crecimiento ocurra sin trabar la operación.",
       zh: "生产工程师，专精企业管理与规模化。搭建流程与战略，让增长发生而不拖累运营。",
@@ -81,10 +81,10 @@ export const team: TeamMember[] = [
       zh: "软件工程",
     },
     bio: {
-      pt: "É engenheiro de software em uma das maiores empresas de tecnologia do mundo, e aplica o mesmo padrão em cada linha de código que entrega na Ritmo.",
-      en: "Software engineer at one of the world's largest technology companies, and brings that same standard to every line of code he ships at Ritmo.",
-      es: "Es ingeniero de software en una de las mayores empresas de tecnología del mundo, y aplica el mismo estándar en cada línea de código que entrega en Ritmo.",
-      zh: "任职于全球最大科技公司之一的软件工程师，把同样的标准带入他在 Ritmo 交付的每一行代码。",
+      pt: "É engenheiro de software em uma das maiores empresas de tecnologia do mundo e aplica o mesmo padrão no código que entrega na Ritmo.",
+      en: "Software engineer at one of the world's largest technology companies. He applies the same standard to the code he delivers at Ritmo.",
+      es: "Es ingeniero de software en una de las mayores empresas de tecnología del mundo y aplica el mismo estándar al código que entrega en Ritmo.",
+      zh: "任职于全球最大科技公司之一的软件工程师，并把同样的标准用在他为 Ritmo 交付的代码上。",
     },
   },
 ];

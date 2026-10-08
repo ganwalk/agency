@@ -2,7 +2,7 @@ import type { Dictionary } from "./pt";
 
 export const zh: Dictionary = {
   meta: {
-    title: "Ritmo. 技术咨询：在实践中真正有意义的技术",
+    title: "Ritmo. 技术咨询 · 在实践中真正有意义的技术",
     description: "Ritmo 是一家技术咨询公司：理解您企业的运营，找出合适的解决方案，并陪伴落地使用。",
   },
   nav: {

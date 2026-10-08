@@ -1,50 +1,58 @@
 # Guia de copy
 
-Checklist pra quem for escrever ou revisar texto deste site (`src/i18n/dictionaries/`,
-`src/data/team.ts`, `src/data/services.ts`). Existe porque texto gerado por IA
-tem tiques reconhecíveis, e um site que vende trabalho de verdade não pode
-soar como um LLM tentando vender a si mesmo.
+Vale para todo texto da Ritmo que alguém de fora vai ler: o site
+(`src/i18n/dictionaries/`, `src/data/`), os vídeos (`video/*.html`), o mídia
+kit (`brand-assets/ritmo/midia-kit/`) e qualquer peça nova.
 
-## Os vícios mais comuns (e por que evitar)
+## De onde vem o texto
 
-- **Travessão em excesso.** Um humano usa travessão uma vez a cada várias
-  centenas de palavras; modelos de linguagem usam a cada poucas frases. Troque
-  por ponto, vírgula ou reestruture a frase.
-- **"Não é só X, é Y."** Contraste artificial que cria uma expectativa que
-  ninguém tinha, só pra "corrigi-la" depois. Se a frase original já é clara,
-  a segunda metade é só enchimento.
-- **Regra de três forçada.** Nem toda lista tem exatamente três itens. Duas
-  opções, quatro, sete: o número certo é o que existe de verdade, não o que
-  soa "redondo".
-- **Jargão vazio.** "Robusto", "seamless", "state-of-the-art", "elevar",
-  "desbloquear", "sinergia", "abrangente". Palavras que substituem
-  informação por tom. Se der pra cortar sem perder sentido, corta.
-- **Hedging uniforme.** IA tende a suavizar tudo igual ("pode ajudar a...",
-  "em geral..."). Gente de verdade varia a confiança frase a frase, afirma
-  quando sabe e é direta quando o dado é concreto.
-- **Cadência de metrônomo.** Todo parágrafo do mesmo tamanho, toda frase
-  entre 15 e 20 palavras. Varie o ritmo: uma frase curta depois de duas
-  longas quebra o padrão e soa como alguém falando, não um gerador de texto.
-- **O mesmo molde repetido.** Se quatro bios, quatro cards ou quatro seções
-  seguem exatamente a mesma estrutura de frase (sujeito, verbo, propósito),
-  troque a ordem, o tamanho, a pontuação. Repetição de fórmula é tão
-  reconhecível quanto repetição de palavra.
-- **Início em gerúndio.** "Trazendo uma nova abordagem para...", "Oferecendo
-  uma solução completa..." — comece pela informação, não pelo enfeite.
-- **Frases de abertura genéricas.** "No mundo acelerado de hoje...", "É
-  importante notar que...", "Em suma...". Não dizem nada; corte direto.
+O documento de identidade intelectual da Ritmo é a fonte:
+[`docs/identidade/ritmo-identidade-intelectual.md`](./docs/identidade/ritmo-identidade-intelectual.md)
+(transcrição do PDF ao lado). Use as frases dele sempre que existirem. Não
+invente número, cliente, resultado ou credencial; se faltar informação, pergunte.
 
-## Como testamos este site
+As frases do documento são a voz aprovada dos sócios. Algumas usam um recurso
+que a revisão abaixo aponta (frases curtas em sequência, como "Entender a
+rotina. Escolher com critério. Fazer funcionar."). Elas ficam como estão; quem
+muda essas frases são os sócios.
 
-Antes de publicar uma leva de texto, passe pelo checklist acima procurando
-por esses padrões. Na revisão que resultou neste arquivo, também variamos a
-repetição da mesma frase-chave ("num time só" / "numa equipe só") em vários
-lugares da página: mantém a ideia central (uma equipe, quatro frentes), mas
-cada seção diz isso de um jeito diferente, em vez de reciclar a mesma
-construção.
+O caso da Arena descrito no documento está em andamento e não vai para material
+público sem autorização.
 
-## Fontes
+## Revisão obrigatória: skill no-ai-slop
 
-- [Signs of AI Writing: 27 Red Flags You Keep Missing](https://vrid.ai/blog/signs-of-ai-writing)
-- [12 Red Flags of AI Writing (And How to Fix Them)](https://tahigichigi.substack.com/p/12-red-flags-of-ai-writing-and-how)
-- [Top Worst AI Writing Clichés (And How to Fix Them)](https://stackedo.com/ai-writing-cliches-to-avoid/)
+Todo texto novo ou alterado passa pela skill
+[no-ai-slop](https://github.com/petergyang/no-ai-slop), instalada no projeto em
+[`.claude/skills/no-ai-slop/`](./.claude/skills/no-ai-slop/) (MIT, de Peter
+Yang). No Claude Code ela aparece como `/no-ai-slop` em qualquer sessão aberta
+neste repositório.
+
+1. Rode em modo detect: cada padrão encontrado, com a linha citada e a correção.
+2. Corrija o que for texto nosso com a menor edição que resolve, preservando a
+   voz do documento.
+3. Confira o resultado contra `.claude/skills/no-ai-slop/eval.md`.
+4. Aplique a mesma correção nos quatro idiomas (`pt` é a fonte; `en`, `es`, `zh`
+   acompanham).
+
+O que mais aparece por aqui, para revisar de olho mesmo sem a skill:
+
+- **Travessão.** Em texto curto, nenhum. Troque por ponto, vírgula ou dois-pontos.
+- **"Não é só X, é Y."** Diga Y.
+- **Fragmento solto no fim** ("O design engineer da Ritmo."). Faça uma frase.
+- **Dois-pontos com revelação** ("O melhor: funciona."). Use dois-pontos para
+  lista e rótulo, com maiúscula depois quando vier frase.
+- **Afirmação genérica.** Se a frase serviria para qualquer consultoria, corte
+  ou troque por um fato do documento.
+- **Palavras vazias.** Robusto, elevar, alavancar, potencializar, de ponta,
+  transformador, sinergia, desbloquear.
+- **Sem fonte.** "Uma das maiores empresas", "especialistas dizem": nomeie a
+  fonte ou deixe claro que é afirmação da pessoa. A bio do Vitor ("uma das
+  maiores empresas de tecnologia do mundo") é um caso assim: se puder, nomeie a
+  empresa.
+
+## Texto em vídeo
+
+Além da revisão acima, todo texto precisa dar tempo de ler: pelo menos 1,5s
+totalmente visível e nítido, ou 0,3s por palavra quando isso der mais, sempre
+inteiro dentro do quadro. `node video/auditar-textos.mjs <página>` confere isso
+nos dois formatos e sai com erro se algum texto falhar. Rode antes de renderizar.

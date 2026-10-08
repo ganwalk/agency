@@ -45,7 +45,8 @@ hero, agora sob controle de quem visita.
 | Cores, fontes                  | `src/app/globals.css`                                   |
 | Imagens de fundo                | `public/images/` (placeholders do Unsplash)              |
 | Ícones                          | [Hugeicons](https://hugeicons.com), via `@hugeicons/react` + `@hugeicons/core-free-icons` |
-| Como escrever/revisar texto do site | [`COPYWRITING.md`](./COPYWRITING.md) |
+| Como escrever e revisar texto (skill no-ai-slop) | [`COPYWRITING.md`](./COPYWRITING.md) |
+| Conteúdo de origem (documento de identidade) | [`docs/identidade/`](./docs/identidade/) |
 
 ## Formulário de contato
 

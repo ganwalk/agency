@@ -1141,7 +1141,9 @@ function r7(t) {
 const q = new URLSearchParams(location.search);
 layout(+q.get("w") || 1920, +q.get("h") || 1080);
 build();
-Object.assign(window, { DURATION, CUES, CHORDS, render });
+// Elementos de texto, para a auditoria de legibilidade (video/auditar-textos.mjs).
+const TEXT_SELECTOR = "#s0-text, .lane-lbl, .badge, .cap, #s2-word, #s3-title, .st .num, .st .word, .st .out, #s4-title, .bar-lbl, #s4-note, #s5-title > span, .pt-lbl, #s6-eyebrow, .cw, .cd, #s7-lines > div, #s7-word, #s7-tag, #s7-line, #s7-cta, #s7-url";
+Object.assign(window, { DURATION, CUES, CHORDS, TEXT_SELECTOR, render });
 window.ready = document.fonts.ready.then(() =>
   Promise.all(["hero-rich", ...TEAM.map(m => "team/" + m[2])].map(n => new Promise(res => {
     const im = new Image(); im.onload = im.onerror = res; im.src = `../public/images/${n}.jpg`;

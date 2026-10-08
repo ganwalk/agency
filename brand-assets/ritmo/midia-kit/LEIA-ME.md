@@ -1,8 +1,8 @@
-# Ritmo. — mídia kit para redes sociais
+# Mídia kit da Ritmo. para redes sociais
 
 Peças prontas em `pecas/`, geradas de `kit.html` por `build.mjs`
-(`node brand-assets/ritmo/midia-kit/build.mjs`). Mesmo símbolo de dois
-círculos, Manrope e a bola sólida como ponto final. O diagrama da
+(`node brand-assets/ritmo/midia-kit/build.mjs`). As peças usam o símbolo de
+dois círculos, a Manrope e a bola sólida como ponto final. O diagrama da
 convergência do documento aparece em uma peça só, o post de apresentação.
 
 ## Fotos de perfil (1080 x 1080)

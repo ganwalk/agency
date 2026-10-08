@@ -2,7 +2,7 @@
 // sozinho qualquer chave que falte nos outros três idiomas.
 export const pt = {
   meta: {
-    title: "Ritmo. Consultoria tecnológica: tecnologia que faz sentido na prática",
+    title: "Ritmo. Consultoria tecnológica · Tecnologia que faz sentido na prática",
     description:
       "A Ritmo é uma consultoria tecnológica que entende a operação da sua empresa, identifica soluções adequadas e acompanha sua adoção.",
   },
@@ -55,7 +55,7 @@ export const pt = {
     eyebrow: "Quem somos",
     title: "Quem está por trás da Ritmo",
     intro:
-      "Quatro sócios, quatro frentes: design, engenharia, direito e gestão. São eles que recomendam com critérios e conduzem a entrega acordada.",
+      "Quatro sócios, quatro frentes: design, engenharia, direito e gestão. Eles recomendam com critérios e conduzem a entrega acordada.",
     linkedinLabel: "LinkedIn",
   },
   services: {

@@ -2,7 +2,7 @@ import type { Dictionary } from "./pt";
 
 export const es: Dictionary = {
   meta: {
-    title: "Ritmo. Consultoría tecnológica: tecnología que tiene sentido en la práctica",
+    title: "Ritmo. Consultoría tecnológica · Tecnología que tiene sentido en la práctica",
     description:
       "Ritmo es una consultoría tecnológica que entiende la operación de tu empresa, identifica soluciones adecuadas y acompaña su adopción.",
   },
@@ -46,7 +46,7 @@ export const es: Dictionary = {
     eyebrow: "Quiénes somos",
     title: "Quién está detrás de Ritmo",
     intro:
-      "Cuatro socios, cuatro frentes: diseño, ingeniería, derecho y gestión. Son ellos quienes recomiendan con criterios y conducen la entrega acordada.",
+      "Cuatro socios, cuatro frentes: diseño, ingeniería, derecho y gestión. Ellos recomiendan con criterios y conducen la entrega acordada.",
     linkedinLabel: "LinkedIn",
   },
   services: {
