@@ -7,6 +7,8 @@
 // Se a página expõe window.CUES e window.CHORDS, a trilha de score.mjs é
 // gerada e entra no MP4 (AAC).
 //
+// OUT muda a pasta de saída (padrão: video/export).
+//
 // Precisa de Playwright (Chromium) e de um ffmpeg com libx264. O caminho do
 // ffmpeg vem de FFMPEG, ou do PATH. Cada quadro chama render(t) na página,
 // então o resultado é determinístico: nenhum quadro é perdido, independente
@@ -31,7 +33,7 @@ function loadPlaywright() {
 const { chromium } = loadPlaywright();
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const OUT = path.join(ROOT, "video", "export");
+const OUT = process.env.OUT ? path.resolve(process.env.OUT) : path.join(ROOT, "video", "export");
 const FPS = 30;
 const FFMPEG = process.env.FFMPEG || "ffmpeg";
 
