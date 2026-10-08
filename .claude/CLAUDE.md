@@ -23,8 +23,11 @@ Stack e onde mexer no site: `README.md`.
   peça por conjunto, não em todas.
 - **Vídeos** (`video/`, ver `video/README.md`). Linguagem de animação conduzida
   pela bola sólida, sem cara de slides. Trilha: pad sóbrio de fundo e sons de
-  elemento discretos (`pluck` com `soft: true`, `thump`, `swell`); nada de
-  impacto grave ou tique agudo. Antes de renderizar, rode
+  elemento discretos em região média (`pluck` com `soft: true`, notas de D4 a
+  E5), transições tonais (`bloom`, acorde que cresce e se apaga) e `thump`
+  baixo; nada de impacto grave, tique agudo ou woosh de ruído. Se só a trilha
+  mudar, troque o áudio dos MP4 com `node video/trilha.mjs <página> <mp4...>`,
+  sem renderizar a imagem de novo. Antes de renderizar, rode
   `node video/auditar-textos.mjs <página>`: todo texto precisa de pelo menos
   1,5s (ou 0,3s por palavra) visível, nítido e inteiro no quadro. Renderize em
   segundo plano com `OUT=<pasta temporária>` e só copie os MP4 prontos para

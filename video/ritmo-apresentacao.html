@@ -262,26 +262,26 @@ const S6 = { w0: 62.3, w: 4.2 };     // compromissos em pares: 3 batidas de 4,2s
 const S7 = { l0: 75.4, l: 0.9, out: [79.4, 80.0], mark: 80.1, paint: [80.4, 82.0], word: 81.1, dot: 81.7, tag: 82.1, line: 82.5, cta: 83.1, url: 83.5 };
 
 // Notas da trilha: pentatônica, sobe conforme a bola avança.
-const NOTES = [196, 220, 261.63, 293.66, 329.63, 392, 440];
+const NOTES = [293.66, 329.63, 392, 440, 523.25, 587.33, 659.25];
 const pl = (t, i, g = 1) => ({ t, type: "pluck", soft: true, f: NOTES[i % NOTES.length], g });
 const CUES = [
   ...S0.pulse.map(t => pl(t, 0, 0.7)),
   ...[0, 1, 2, 3, 4].map(i => pl(S0.land0 + i * S0.hop, i)),
   pl(S0.period, 5, 1.1),
-  { t: T.s1[0] - 0.3, end: T.s1[0] + 1.4, type: "swell" },
+  { t: T.s1[0] - 0.3, type: "bloom", f: 392 },
   ...S1.badges.map(t => pl(t, 1, 0.6)),
   ...S1.hl.map((t, i) => pl(t, 2 + i, 0.8)),
-  { t: S2.sweep[0], end: S2.sweep[1] + 0.3, type: "swell", g: 1.2 },
-  { t: S2.conv[0], end: S2.conv[1] + 0.4, type: "swell" },
+  { t: S2.sweep[0], type: "bloom", f: 523.25 },
+  { t: S2.conv[0], type: "bloom", f: 440 },
   { t: S2.mark + 0.9, type: "thump" },
   pl(S2.dot, 5, 1.1),
   ...S2.hl.map((t, i) => pl(t, 2 + i, 0.8)),
-  { t: S2.iris[0], end: S2.iris[1] + 0.4, type: "swell" },
+  { t: S2.iris[0], type: "bloom", f: 587.33 },
   { t: S2.iris[1] - 0.1, type: "thump", g: 0.8 },
   ...STEPS.map((_, i) => pl(ST0 + i * STD, i)),
-  { t: S3.zoom[0], end: S3.zoom[1] + 0.3, type: "swell" },
+  { t: S3.zoom[0], type: "bloom", f: 392 },
   ...LEVELS.map((_, i) => pl(S4.hop0 + i * S4.hop, i + 1)),
-  { t: S4.wipe[0], end: S4.wipe[1] + 0.3, type: "swell" },
+  { t: S4.wipe[0], type: "bloom", f: 523.25 },
   { t: S4.wipe[1] - 0.1, type: "thump", g: 0.8 },
   ...TEAM.map((_, i) => pl(S5.p0 + i * S5.p, i, 0.8)),
   ...COMMIT.map((_, i) => pl(S6.w0 + Math.floor(i / 2) * S6.w + (i % 2 ? 1.0 : 0.35), (i % 2 ? 4 : 2), 0.9)),

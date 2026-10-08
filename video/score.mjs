@@ -7,7 +7,9 @@
 //
 // Para uma trilha mais discreta há "pluck" (nota macia, com frequência em f),
 // "thump" (grave de ataque lento) e "swell" (ar filtrado), todos com ganho g;
-// "pluck" com soft: true fica mais grave no timbre, com ataque lento e mais baixo.
+// "pluck" com soft: true fica mais grave no timbre, com ataque lento e mais baixo;
+// "bloom" é uma transição tonal (acorde aberto que cresce e se apaga), no lugar
+// do ruído do "swell".
 import { writeFile } from "node:fs/promises";
 
 const SR = 48000;
@@ -117,6 +119,24 @@ export async function writeScore(file, { duration, cues, chords }) {
         b += co * (noise() - b);
         const env = Math.sin(Math.PI * k) ** 2 * g;
         return [a * env, b * env];
+      });
+    } else if (c.type === "bloom") {
+      // Transição tonal: um acorde aberto (fundamental, quinta e oitava) que
+      // cresce devagar, sobe de leve na afinação e se apaga. Substitui o woosh.
+      const f = c.f || 523.25, g = (c.g ?? 1) * 0.026, len = c.len || 2.4;
+      const parts = [[1, 1], [1.5, 0.55], [2, 0.35]];
+      add(c.t, len, t => {
+        const k = t / len;
+        const env = Math.min(1, t / 0.45) ** 2 * Math.exp(-Math.max(0, t - 0.45) * 2.2);
+        const glide = 1 + 0.004 * Math.min(1, t / 0.45);
+        let l = 0, r = 0;
+        parts.forEach(([m, a], n) => {
+          const ph = TAU * f * m * glide * t;
+          l += Math.sin(ph * 0.999 + n) * a;
+          r += Math.sin(ph * 1.001 + n * 1.7) * a;
+        });
+        const v = env * g * (1 - k * 0.2);
+        return [l * v, r * v];
       });
     } else if (c.type === "scribble") {
       const len = c.end - c.t;

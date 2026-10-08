@@ -38,8 +38,10 @@ a cena dos sócios usa `src/data/team.ts`.
    funcionar." A bola desenha a marca e "Ritmo." volta com o ponto.
 
 Trilha: o pad de acordes de fundo continua; os sons dos elementos são notas
-curtas e macias ("pluck"), com graves e ar discretos nas viradas ("thump" e
-"swell"), sem impactos nem ticks.
+curtas e macias em região média ("pluck"), e as transições são um acorde aberto
+que cresce e se apaga ("bloom"), com um grave discreto nas viradas de fundo
+("thump"). Para mudar só a trilha de um vídeo já renderizado:
+`node video/trilha.mjs ritmo-apresentacao video/export/ritmo-apresentacao-16x9.mp4 video/export/ritmo-apresentacao-9x16.mp4`.
 
 Os vídeos abaixo são da Level, mantidos como referência.
 
