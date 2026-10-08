@@ -4,6 +4,9 @@
 // desafinadas (estéreo largo), impactos graves nas viradas de cena, ticks
 // curtos nos detalhes (cartões, check da proposta), ruído filtrado subindo
 // antes do colapso e um risco de caneta na assinatura. Gera WAV 48kHz 16 bit.
+//
+// Para uma trilha mais discreta há "pluck" (nota macia, com frequência em f),
+// "thump" (grave de ataque lento) e "swell" (ar filtrado), todos com ganho g.
 import { writeFile } from "node:fs/promises";
 
 const SR = 48000;
@@ -81,6 +84,37 @@ export async function writeScore(file, { duration, cues, chords }) {
         b += co * (noise() - b);
         const env = big ? k * k * 0.22 : Math.sin(Math.PI * k) ** 2 * 0.07;
         return [a * env * (big ? 1 : 1 - k * 0.6), b * env * (big ? 1 : 0.4 + k * 0.6)];
+      });
+    } else if (c.type === "pluck") {
+      // Nota curta e macia, entre marimba e sino: substitui os ticks.
+      const f = c.f || 659.25, g = (c.g ?? 1) * 0.045, pan = 0.5 + 0.35 * Math.sin(f);
+      add(c.t, 1.6, t => {
+        const env = (1 - Math.exp(-t * 140)) * Math.exp(-t * 4.2);
+        const v = (Math.sin(TAU * f * t) + 0.22 * Math.sin(TAU * f * 2 * t) * Math.exp(-t * 6) + 0.06 * Math.sin(TAU * f * 3.01 * t) * Math.exp(-t * 9)) * env * g;
+        return [v * (1.2 - pan), v * (0.2 + pan)];
+      });
+    } else if (c.type === "thump") {
+      // Grave discreto, com ataque lento: marca virada de cena sem impacto.
+      const g = (c.g ?? 1) * 0.11;
+      let lp = 0;
+      add(c.t, 2.2, t => {
+        lp += 0.03 * (noise() - lp);
+        const env = Math.min(1, t / 0.06) * Math.exp(-t * 2.6);
+        const v = (Math.sin(TAU * 55 * t) * 0.8 + lp * 0.5) * env * g;
+        return [v, v];
+      });
+    } else if (c.type === "swell") {
+      // Ar filtrado que sobe e desce: acompanha transições e movimentos.
+      const len = c.end - c.t, g = (c.g ?? 1) * 0.035;
+      let a = 0, b = 0;
+      add(c.t, len, t => {
+        const k = t / len;
+        const fc = 300 + 1600 * Math.sin(Math.PI * k);
+        const co = 1 - Math.exp(-TAU * fc / SR);
+        a += co * (noise() - a);
+        b += co * (noise() - b);
+        const env = Math.sin(Math.PI * k) ** 2 * g;
+        return [a * env, b * env];
       });
     } else if (c.type === "scribble") {
       const len = c.end - c.t;

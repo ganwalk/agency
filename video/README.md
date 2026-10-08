@@ -3,37 +3,43 @@
 Vídeos em 16:9 e 9:16, gerados por `render.mjs` a partir de uma página HTML com
 uma função `render(t)` determinística.
 
-## Ritmo. (`ritmo-apresentacao.html`, 84,4s, com trilha)
+## Ritmo. (`ritmo-apresentacao.html`, 75s, com trilha)
 
-Apresentação da Ritmo. Mesmo motor, mesma linguagem visual e mesma trilha
-sintetizada do vídeo para parceiros da Level. O roteiro segue as quatro
-páginas do documento de identidade intelectual da Ritmo, na mesma ordem, e
-todo texto na tela é tirado dele, exceto a cena dos sócios, que vem de
-`src/data/team.ts`.
+Filme de apresentação da Ritmo, num plano contínuo conduzido pela bola sólida
+da marca, que faz o papel da batida: quica de palavra em palavra e preenche o
+lettering, sincroniza as pistas, vira a marca, percorre o método e fecha cada
+frase como ponto final. Textos do documento de identidade intelectual da Ritmo;
+a cena dos sócios usa `src/data/team.ts`.
 
 | Arquivo | Formato |
 | --- | --- |
 | `export/ritmo-apresentacao-16x9.mp4` | 1920x1080 |
 | `export/ritmo-apresentacao-9x16.mp4` | 1080x1920 |
 
-1. **Essência** (0–30,2s): o diagrama da página 1. Pessoas, processos e
-   tecnologia, cada um pulsando no seu ritmo, convergem na escolha útil para
-   a rotina real. "Conhecer uma ferramenta é o começo." / "Seu valor depende
-   de adequação, adoção e continuidade." / "Entre o que a tecnologia permite
-   e o que a empresa consegue aproveitar, existe um trabalho de tradução,
-   escolha e adoção." O ponto vira a marca, "Ritmo." entra e "É nesse espaço
-   que a Ritmo atua." Depois, "Tecnologia que faz sentido na prática." com
-   entendemos, traduzimos, acompanhamos.
-2. **Método** (30,2–47,4s): entender, priorizar, escolher, adotar e
-   acompanhar, com a saída de cada etapa; a escala da intervenção (aproveitar,
-   configurar, conectar, desenvolver) e o que a escolha considera.
-3. **Compromisso** (47,4–74,4s): os seis compromissos e os papéis de cliente
-   e Ritmo; "Quatro sócios, quatro frentes.", com design, engenharia, direito e
-   gestão e a credencial de `src/data/team.ts`; e direção, adoção e evolução
-   num plano assinado pelos dois.
-4. **Expressão** (74,4–84,4s): o quadro de Monet abre a partir do sol.
-   "Começamos pela rotina de quem trabalha." / "Entender a rotina. Escolher
-   com critério. Fazer funcionar." / Fale com a Ritmo.
+1. **Abertura** (0–7s): "Cada empresa tem uma cadência.", palavra a palavra,
+   em contorno que preenche quando a bola pousa; a bola vira o ponto final.
+2. **Pistas** (7–16,5s): pessoas, processos e tecnologia, cada uma num tempo,
+   com os atritos do documento (esforço, perda de informação, dificuldade de
+   decisão). "Conhecer uma ferramenta é o começo." / "Seu valor depende de
+   adequação, adoção e continuidade."
+3. **Sincronia** (16,5–25,6s): uma agulha passa, as batidas entram no mesmo
+   tempo, os atritos estouram e as pistas convergem num ponto, que vira a
+   marca. "Tradução, escolha e adoção." / "É nesse espaço que a Ritmo atua."
+   A bola cresce e abre a cena em papel.
+4. **Método** (25,6–43,6s): a câmera acompanha a bola num percurso pelas cinco
+   etapas; em cada uma, uma ilustração (lupa, prioridade, escolha, conexão,
+   acompanhamento) e a saída. No fim, o percurso inteiro.
+5. **Escala** (43,6–50,6s): quatro degraus que a bola sobe, de aproveitar a
+   desenvolver; o último degrau cresce e fecha a tela no escuro.
+6. **Sócios** (50,6–57,6s): quatro sócios, quatro frentes, um por batida.
+7. **Compromisso** (57,6–65,2s): os seis compromissos, um por batida, com a
+   bola como ponto final de cada um.
+8. **Fecho** (65,2–75s): "Entender a rotina. Escolher com critério. Fazer
+   funcionar." A bola desenha a marca e "Ritmo." volta com o ponto.
+
+Trilha: o pad de acordes de fundo continua; os sons dos elementos são notas
+curtas e macias ("pluck"), com graves e ar discretos nas viradas ("thump" e
+"swell"), sem impactos nem ticks.
 
 Os vídeos abaixo são da Level, mantidos como referência.
 
