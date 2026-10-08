@@ -123,6 +123,26 @@ export const convergencia = [
   },
 ];
 
+// Símbolo da Level com um ponto vazado no centro do círculo sólido. O vazado
+// é uma máscara (não uma cor), então segue monocromático e funciona em
+// qualquer fundo; a máscara corta também o arco do contorno que passa ali.
+const LEVEL = solid(19, 13, 10) + ring(13, 19, 10);
+const vazado = (id, holes, extra = "") =>
+  `<defs><mask id="m-${id}" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">` +
+  `<rect width="32" height="32" fill="#fff"/>${holes}</mask></defs><g mask="url(#m-${id})">${LEVEL}</g>${extra}`;
+const furo = (cx, cy, r) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#000"/>`;
+
+export const ponto = [
+  { id: "ponto-traco", name: "Ponto fino", body: vazado("ponto-traco", furo(19, 13, 1.75)) },
+  { id: "ponto-nome", name: "Ponto do nome", body: vazado("ponto-nome", furo(19, 13, 2.9)) },
+  { id: "ponto-largo", name: "Ponto largo", body: vazado("ponto-largo", furo(19, 13, 4.5)) },
+  {
+    id: "ponto-alvo",
+    name: "Alvo",
+    body: vazado("ponto-alvo", furo(19, 13, 5)) + solid(19, 13, 2.75),
+  },
+];
+
 const here = dirname(fileURLToPath(import.meta.url));
 for (const m of marks) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" style="color:#11141c">${m.body}</svg>\n`;
@@ -138,5 +158,10 @@ mkdirSync(join(here, "convergencia"), { recursive: true });
 for (const m of convergencia) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" style="color:#11141c">${m.body}</svg>\n`;
   writeFileSync(join(here, "convergencia", `${m.id}.svg`), svg);
+}
+mkdirSync(join(here, "ponto"), { recursive: true });
+for (const m of ponto) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" style="color:#11141c">${m.body}</svg>\n`;
+  writeFileSync(join(here, "ponto", `${m.id}.svg`), svg);
 }
 console.log(marks.map((m) => m.id).join(" "));
