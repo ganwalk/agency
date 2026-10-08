@@ -19,8 +19,8 @@ type Props = {
 
 export function MobileMenu({ open, onClose, locale, dict }: Props) {
   const links = [
-    { href: `/${locale}/#services`, label: dict.nav.services },
     { href: `/${locale}/#process`, label: dict.nav.process },
+    { href: `/${locale}/#services`, label: dict.nav.services },
     { href: `/${locale}/#team`, label: dict.nav.team },
     { href: `/${locale}/#contact`, label: dict.nav.contact },
   ];
@@ -40,7 +40,7 @@ export function MobileMenu({ open, onClose, locale, dict }: Props) {
         >
           <div className="container-level flex items-center justify-between py-5">
             <span className="type-display text-xl" style={{ color: "var(--on-dark)" }}>
-              LeveL
+              Ritmo.
             </span>
             <button
               type="button"

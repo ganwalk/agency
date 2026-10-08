@@ -5,6 +5,7 @@ import { Positioning } from "@/components/sections/Positioning";
 import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
+import { Principles } from "@/components/sections/Principles";
 import { Contact } from "@/components/sections/Contact";
 
 export default async function Home({
@@ -20,8 +21,9 @@ export default async function Home({
     <>
       <Hero locale={locale} dict={dict} />
       <Positioning dict={dict} />
-      <Services locale={locale} dict={dict} />
       <Process dict={dict} />
+      <Services locale={locale} dict={dict} />
+      <Principles dict={dict} />
       <About locale={locale} dict={dict} />
       <Contact dict={dict} />
     </>

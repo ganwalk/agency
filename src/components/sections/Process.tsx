@@ -22,8 +22,17 @@ export function Process({ dict }: { dict: Dictionary }) {
         </div>
 
         <div className="mt-14 lg:mt-16">
-          <ProcessSteps steps={dict.process.steps} />
+          <ProcessSteps steps={dict.process.steps} outputLabel={dict.process.outputLabel} />
         </div>
+
+        <Reveal delay={0.2}>
+          <p
+            className="mt-14 pt-6 text-sm leading-relaxed max-w-2xl"
+            style={{ color: "var(--muted)", borderTop: "1px solid var(--line)" }}
+          >
+            {dict.process.note}
+          </p>
+        </Reveal>
       </div>
     </section>
   );

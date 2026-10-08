@@ -44,7 +44,7 @@ export async function generateMetadata({
       title: dict.meta.title,
       description: dict.meta.description,
       url: path,
-      siteName: "Level",
+      siteName: "Ritmo",
       locale: ogLocale[locale],
       type: "website",
     },

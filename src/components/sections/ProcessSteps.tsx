@@ -5,7 +5,7 @@ import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer
 import { Reveal } from "@/components/ui/Reveal";
 import { noOrphan } from "@/lib/text";
 
-type Step = { readonly title: string; readonly description: string };
+type Step = { readonly title: string; readonly description: string; readonly output: string };
 
 // Trilho vertical no mobile/tablet, horizontal a partir do desktop — a
 // mesma posição de rolagem decide o preenchimento do trilho e qual etapa
@@ -13,7 +13,7 @@ type Step = { readonly title: string; readonly description: string };
 // separado por layout. Os nós ficam centralizados em colunas de largura
 // igual (sem gap, com padding em cada item) pra régua bater exatamente no
 // centro do primeiro ao último nó via um simples inset em porcentagem.
-export function ProcessSteps({ steps }: { steps: readonly Step[] }) {
+export function ProcessSteps({ steps, outputLabel }: { steps: readonly Step[]; outputLabel: string }) {
   const [active, setActive] = useState(0);
   const railRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
@@ -94,6 +94,15 @@ export function ProcessSteps({ steps }: { steps: readonly Step[] }) {
                     </h3>
                     <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
                       {step.description}
+                    </p>
+                    <p className="mt-3 text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
+                      <span
+                        className="block font-mono uppercase tracking-[0.1em] mb-0.5 transition-colors duration-300"
+                        style={{ color: isActive ? "var(--ink)" : "var(--muted)" }}
+                      >
+                        {outputLabel}
+                      </span>
+                      {step.output}
                     </p>
                   </div>
                 </li>

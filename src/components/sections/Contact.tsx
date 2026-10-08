@@ -28,7 +28,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
     const form = event.currentTarget;
     const data = new FormData(form);
     data.append("access_key", web3FormsAccessKey);
-    data.append("subject", `Novo contato pelo site, Level (${data.get("project_type")})`);
+    data.append("subject", `Novo contato pelo site, Ritmo (${data.get("project_type")})`);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {

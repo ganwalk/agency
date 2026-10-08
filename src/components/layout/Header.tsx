@@ -45,8 +45,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }, []);
 
   const links = [
-    { href: `/${locale}/#services`, label: dict.nav.services },
     { href: `/${locale}/#process`, label: dict.nav.process },
+    { href: `/${locale}/#services`, label: dict.nav.services },
     { href: `/${locale}/#team`, label: dict.nav.team },
   ];
 

@@ -11,7 +11,7 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : defaultLocale;
   const dict = getDictionary(locale);
-  return { title: `${dict.legal.privacy.title}, Level` };
+  return { title: `${dict.legal.privacy.title}, Ritmo` };
 }
 
 export default async function PrivacyPage({

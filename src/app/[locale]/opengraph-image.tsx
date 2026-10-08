@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { locales } from "@/i18n/config";
 
-export const alt = "Level";
+export const alt = "Ritmo";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const dynamic = "force-static";
@@ -51,9 +51,9 @@ export default async function Image() {
             }}
           />
         </div>
-        <div style={{ display: "flex", fontSize: 96, fontWeight: 700, letterSpacing: -2 }}>LeveL</div>
+        <div style={{ display: "flex", fontSize: 96, fontWeight: 700, letterSpacing: -2 }}>Ritmo.</div>
         <div style={{ display: "flex", fontSize: 32, color: "#9aa0b4", marginTop: 20, maxWidth: 820 }}>
-          Product design, engineering, law and business management, in one team
+          Technology consulting. Technology that makes sense in practice.
         </div>
       </div>
     ),

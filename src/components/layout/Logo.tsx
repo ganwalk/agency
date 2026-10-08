@@ -1,9 +1,10 @@
 import Link from "next/link";
 import type { Locale } from "@/i18n/config";
 
-// Marca da Level: duas bolas do mesmo tamanho, na diagonal. A de cima
-// (superior direita) é sólida, a de baixo só o contorno — o nível
-// alcançado subindo à direita. Desenhada em currentColor para herdar a
+// Marca da Ritmo (herdada da Level): duas bolas do mesmo tamanho, na
+// diagonal. O contorno é a rotina como está, a sólida (superior direita) é a
+// mudança já adotada, um tempo à frente. A bola sólida e o ponto de
+// "Ritmo." são o mesmo elemento. Desenhada em currentColor para herdar a
 // cor do contexto (chrome escuro fixo ou conteúdo que segue o tema).
 export function Mark({ size = 22 }: { size?: number }) {
   return (
@@ -21,13 +22,13 @@ export function Logo({ locale, dark = false }: { locale: Locale; dark?: boolean 
     <Link
       href={`/${locale}/`}
       className="flex items-center gap-2.5 shrink-0"
-      aria-label="Level"
+      aria-label="Ritmo"
     >
       <span style={{ color }}>
         <Mark size={20} />
       </span>
       <span className="type-display text-xl tracking-tight" style={{ color }}>
-        LeveL
+        Ritmo.
       </span>
     </Link>
   );

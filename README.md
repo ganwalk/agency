@@ -1,7 +1,9 @@
-# Level
+# Ritmo.
 
-Site institucional da Level: agência formada por design de produto, engenharia
-de software, direito digital e gestão de negócios, numa equipe só.
+Site institucional da Ritmo, consultoria tecnológica que entende a operação da
+empresa, identifica soluções adequadas e acompanha sua adoção. O conteúdo segue
+o documento de identidade da Ritmo (essência, método, compromisso e expressão);
+símbolo e alternativas exploradas em `brand-assets/ritmo/`.
 
 ## Stack
 
@@ -38,7 +40,7 @@ hero, agora sob controle de quem visita.
 | ------------------------------ | ------------------------------------------------------ |
 | Textos do site                 | `src/i18n/dictionaries/pt.ts` (e en, es, zh)            |
 | Equipe (nome, cargo, bio)      | `src/data/team.ts`                                      |
-| Serviços                       | `src/data/services.ts`                                  |
+| Entregas (direção, adoção, evolução) | `src/data/services.ts`                       |
 | Contato (email, WhatsApp)      | `src/data/site.ts`                                       |
 | Cores, fontes                  | `src/app/globals.css`                                   |
 | Imagens de fundo                | `public/images/` (placeholders do Unsplash)              |
@@ -59,7 +61,7 @@ formulário não entrega nenhum email.
   ar (as fotos já são reais, ver `amigos/`).
 - Chave real do Web3Forms.
 - Email de contato (`src/data/site.ts`) usa um domínio fictício
-  (`levelagencia.com.br`): trocar assim que a Level tiver domínio e email
+  (`ritmoconsultoria.com.br`): trocar assim que a Ritmo tiver domínio e email
   próprios.
 - Revisão das páginas `/legal/privacy` e `/legal/terms` por um advogado
   (conteúdo hoje é um rascunho padrão, ainda sem revisão jurídica real).

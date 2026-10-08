@@ -2,118 +2,142 @@
 // sozinho qualquer chave que falte nos outros três idiomas.
 export const pt = {
   meta: {
-    title: "Level: design, engenharia, direito e gestão em uma equipe só",
+    title: "Ritmo. Consultoria tecnológica: tecnologia que faz sentido na prática",
     description:
-      "Redesenhamos sites, plataformas e fluxos desatualizados com design, engenharia, direito e gestão numa equipe só. Alto padrão, do briefing ao contrato assinado.",
+      "A Ritmo é uma consultoria tecnológica que entende a operação da sua empresa, identifica soluções adequadas e acompanha sua adoção.",
   },
   nav: {
     team: "Time",
-    services: "Serviços",
-    process: "Como trabalhamos",
+    services: "Entregas",
+    process: "Método",
     contact: "Contato",
-    cta: "Fale com o time",
+    cta: "Fale com a Ritmo",
     menuOpen: "Abrir menu",
     menuClose: "Fechar menu",
   },
   hero: {
-    eyebrow: "Design · Engenharia · Direito · Gestão",
-    headlinePre: "O próximo ",
-    headlineHighlight: "nível",
-    headlinePost: " do seu negócio digital",
-    sub: "Level é um time completo que cria e redesenha sites, plataformas e fluxos, do design ao contrato assinado, para empresas que não têm tempo a perder.",
-    cta: "Fale com o time",
+    eyebrow: "Consultoria tecnológica",
+    headlinePre: "Tecnologia que faz sentido ",
+    headlineHighlight: "na prática",
+    headlinePost: ".",
+    sub: "Entendemos a operação. Traduzimos possibilidades. Acompanhamos a aplicação.",
+    cta: "Fale com a Ritmo",
     card: {
-      title: "Quem faz acontecer",
-      body: "Quatro especialistas, um único ponto de contato: do primeiro rascunho ao contrato assinado.",
+      title: "Os quatro sócios",
+      body: "Quatro sócios que começam pela rotina de quem trabalha e respondem pela entrega combinada.",
     },
   },
   positioning: {
-    title: "As quatro frentes que sua empresa precisa, sem multiplicar fornecedores",
+    title: "A intervenção na medida da necessidade",
     items: [
       {
-        title: "Design de Produto",
-        description: "Interfaces bonitas e fáceis de usar, pensadas para conversão.",
+        title: "Aproveitar",
+        description: "Usar melhor o que a empresa já tem e já funciona.",
       },
       {
-        title: "Engenharia de Software",
-        description: "Código testado e escalável, com padrão de big tech.",
+        title: "Configurar",
+        description: "Ajustar uma solução existente ao jeito que a equipe trabalha.",
       },
       {
-        title: "Direito & Compliance",
-        description: "Contratos, LGPD e propriedade intelectual resolvidos.",
+        title: "Conectar",
+        description: "Ligar ferramentas e dados que hoje não conversam.",
       },
       {
-        title: "Gestão & Escala",
-        description: "Processos e estratégia para o negócio crescer sem travar.",
+        title: "Desenvolver",
+        description: "Construir sob medida quando existe uma lacuna real.",
       },
     ],
   },
   about: {
     eyebrow: "Quem somos",
-    title: "Quem está por trás da Level",
+    title: "Quem está por trás da Ritmo",
     intro:
-      "Somos quatro especialistas, cada um referência na própria área, trabalhando juntos num projeto só: entregar o que uma big tech, um escritório de advocacia e uma consultoria de gestão fariam separadamente, e caro.",
+      "Somos quatro sócios de áreas diferentes: design, engenharia, direito e gestão. Isso ajuda a olhar a mesma operação por mais de um ângulo antes de recomendar qualquer ferramenta.",
     linkedinLabel: "LinkedIn",
   },
   services: {
-    eyebrow: "Serviços",
-    title: "O que fazemos",
+    eyebrow: "Entregas",
+    title: "Como a consultoria vira entrega",
     intro:
-      "Cada projeto passa pelas quatro frentes da Level: design, engenharia, direito e gestão, com um único time responsável do início ao fim.",
-    note: "Todo projeto é orçado sob consulta, depois de entendermos o escopo real do seu negócio.",
+      "Entre o que a tecnologia permite e o que a empresa consegue aproveitar, existe um trabalho de tradução, escolha e adoção. É nesse espaço que a Ritmo atua.",
+    note: "Cada etapa tem escopo, responsável e critério de conclusão. A próxima depende da necessidade e de um novo acordo.",
   },
   process: {
-    eyebrow: "Como trabalhamos",
-    title: "Do diagnóstico ao lançamento",
-    intro: "Um processo só, com as quatro áreas envolvidas desde o primeiro dia.",
+    eyebrow: "Método",
+    title: "Da rotina à escolha certa",
+    intro: "Conhecer uma ferramenta é o começo. O valor dela depende de adequação, adoção e continuidade.",
+    outputLabel: "Saída",
     steps: [
       {
-        title: "Diagnóstico",
-        description: "Mapeamos o que já existe: site, sistema, processos e riscos legais.",
+        title: "Entender",
+        description: "Ouvir quem executa. Observar a rotina e as restrições.",
+        output: "Problema com evidências.",
       },
       {
-        title: "Design",
-        description: "Desenhamos a experiência e a interface, com foco em conversão e uso real.",
+        title: "Priorizar",
+        description: "Escolher o que merece atenção agora.",
+        output: "Objetivo, responsável e medida inicial.",
       },
       {
-        title: "Engenharia",
-        description: "Construímos com tecnologia atual, testada e escalável.",
+        title: "Escolher",
+        description: "Comparar alternativas pelo contexto da empresa.",
+        output: "Recomendação, custos e limites.",
       },
       {
-        title: "Compliance",
-        description: "Revisamos contratos, termos e LGPD antes do lançamento.",
+        title: "Adotar",
+        description: "Configurar, conectar ou construir o necessário.",
+        output: "Entrega testada e pessoas orientadas.",
       },
       {
-        title: "Lançamento & Escala",
-        description: "Publicamos e acompanhamos o crescimento, ajustando o que for preciso.",
+        title: "Acompanhar",
+        description: "Observar uso, medir e ajustar.",
+        output: "Decisão de manter, corrigir ou ampliar.",
       },
+    ],
+    note: "Medimos antes e depois: um indicador combinado com a equipe e o uso real. Por exemplo, o tempo para encontrar um material. A meta vem da rotina observada.",
+  },
+  principles: {
+    eyebrow: "Compromisso",
+    title: "Critério para decidir. Cuidado para implantar.",
+    intro: "A recomendação precisa caber no contexto do cliente e na capacidade de entrega da Ritmo.",
+    items: [
+      { title: "Clareza", description: "Explicar opções, limites e consequências." },
+      { title: "Evidência", description: "Separar relato, hipótese e resultado observado." },
+      { title: "Proporção", description: "Adequar a intervenção à dor e à capacidade da empresa." },
+      { title: "Autonomia", description: "Documentar, orientar e facilitar a continuidade." },
+      { title: "Transparência", description: "Declarar interesses comerciais com fornecedores." },
+      { title: "Continuidade", description: "Considerar suporte, manutenção e operação desde a escolha." },
+    ],
+    roles: [
+      { who: "Cliente", what: "Define a prioridade, participa e incorpora a mudança." },
+      { who: "Ritmo", what: "Recomenda com critério e conduz a entrega combinada." },
     ],
   },
   contact: {
     eyebrow: "Contato",
-    title: "Vamos conversar sobre o seu projeto",
+    title: "Vamos começar pela sua rotina",
     intro:
-      "Conte um pouco sobre o seu negócio e o que precisa mudar. Voltamos com um diagnóstico inicial e os próximos passos.",
+      "Conte onde a equipe gasta esforço, perde informação ou tem dificuldade para decidir. Avaliamos o que a empresa já usa e voltamos com os próximos passos.",
     form: {
       name: "Nome",
       email: "Email",
       company: "Empresa",
-      projectType: "Tipo de projeto",
+      projectType: "Por onde começar",
       projectTypeOptions: [
-        "Redesign de site ou plataforma",
-        "Produto digital novo",
-        "E-commerce ou aplicativo",
-        "Direito digital e compliance",
-        "Gestão e consultoria de crescimento",
+        "Entender um problema da operação",
+        "Escolher uma ferramenta ou sistema",
+        "Implantar ou configurar uma solução",
+        "Conectar ferramentas e dados",
+        "Desenvolver algo sob medida",
         "Outro",
       ],
       message: "Mensagem",
-      messagePlaceholder: "Conte um pouco sobre o seu negócio e o que precisa mudar.",
+      messagePlaceholder: "Conte como a rotina funciona hoje e o que está difícil.",
       submit: "Enviar mensagem",
       sending: "Enviando...",
       success: "Mensagem enviada. Voltamos em breve.",
       error: "Não deu para enviar agora. Tenta de novo ou fala com a gente pelo WhatsApp.",
-      budgetNote: "Todo projeto é orçado sob consulta, sem tabela fechada.",
+      budgetNote: "Cada etapa é orçada depois de entendermos a operação.",
     },
     direct: {
       title: "Prefere direto?",
@@ -122,7 +146,7 @@ export const pt = {
     },
   },
   footer: {
-    tagline: "Design, engenharia, direito e gestão, num time só.",
+    tagline: "Entender a rotina. Escolher com critério. Fazer funcionar.",
     rights: "Todos os direitos reservados.",
     legal: {
       privacy: "Privacidade",
@@ -134,7 +158,7 @@ export const pt = {
       title: "Política de Privacidade",
       updated: "Última atualização",
       intro:
-        "Esta política explica como a Level coleta, usa e protege os dados de quem visita este site ou entra em contato com a gente. Ela segue os princípios da Lei Geral de Proteção de Dados (LGPD).",
+        "Esta política explica como a Ritmo coleta, usa e protege os dados de quem visita este site ou entra em contato com a gente. Ela segue os princípios da Lei Geral de Proteção de Dados (LGPD).",
       sections: [
         {
           heading: "Quais dados coletamos",
@@ -142,7 +166,7 @@ export const pt = {
         },
         {
           heading: "Como usamos os dados",
-          body: "Usamos esses dados exclusivamente para responder o seu contato, entender o escopo do seu projeto e, quando aplicável, elaborar uma proposta comercial. Não vendemos nem compartilhamos seus dados com terceiros para fins de marketing.",
+          body: "Usamos esses dados exclusivamente para responder o seu contato, entender a sua necessidade e, quando aplicável, elaborar uma proposta comercial. Não vendemos nem compartilhamos seus dados com terceiros para fins de marketing.",
         },
         {
           heading: "Seus direitos",
@@ -150,7 +174,7 @@ export const pt = {
         },
         {
           heading: "Contato do encarregado",
-          body: "Dúvidas sobre esta política podem ser enviadas para o email de contato da Level, indicado na seção de contato deste site.",
+          body: "Dúvidas sobre esta política podem ser enviadas para o email de contato da Ritmo, indicado na seção de contato deste site.",
         },
       ],
     },
@@ -161,7 +185,7 @@ export const pt = {
       sections: [
         {
           heading: "Objeto",
-          body: "Este site apresenta os serviços da Level, agência formada por especialistas em design de produto, engenharia de software, direito digital e gestão de negócios.",
+          body: "Este site apresenta os serviços da Ritmo, consultoria tecnológica que entende a operação de empresas, identifica soluções adequadas e acompanha sua adoção.",
         },
         {
           heading: "Uso do site",
@@ -169,11 +193,11 @@ export const pt = {
         },
         {
           heading: "Propriedade intelectual",
-          body: "Marca, identidade visual e conteúdo original deste site pertencem à Level e não podem ser reproduzidos sem autorização.",
+          body: "Marca, identidade visual e conteúdo original deste site pertencem à Ritmo e não podem ser reproduzidos sem autorização.",
         },
         {
           heading: "Limitação de responsabilidade",
-          body: "A Level não se responsabiliza por decisões tomadas exclusivamente com base no conteúdo informativo deste site, sem um contrato de prestação de serviço formalizado.",
+          body: "A Ritmo não se responsabiliza por decisões tomadas exclusivamente com base no conteúdo informativo deste site, sem um contrato de prestação de serviço formalizado.",
         },
       ],
     },
