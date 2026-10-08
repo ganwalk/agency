@@ -1,0 +1,177 @@
+<title>Símbolo Ritmo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: folha de especificação, como o documento de identidade. Cabeçalho fino, regras da marca, uma ficha por alternativa. */
+:root {
+  --bg: #ffffff; --panel: #f3f3f2; --ink: #111317; --muted: #62646b; --line: rgba(17,19,23,.12); --grid: rgba(17,19,23,.08); --axis: rgba(17,19,23,.18);
+  --inv-bg: #111317; --inv-fg: #ffffff;
+  --f-sans: "Manrope", "Helvetica Neue", Arial, sans-serif; --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0e0f12; --panel: #17181c; --ink: #f4f4f2; --muted: #9b9da4; --line: rgba(255,255,255,.12); --grid: rgba(255,255,255,.07); --axis: rgba(255,255,255,.16);
+  --inv-bg: #f4f4f2; --inv-fg: #0e0f12; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0e0f12; --panel: #17181c; --ink: #f4f4f2; --muted: #9b9da4; --line: rgba(255,255,255,.12); --grid: rgba(255,255,255,.07); --axis: rgba(255,255,255,.16);
+  --inv-bg: #f4f4f2; --inv-fg: #0e0f12; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font: 400 15px/1.55 var(--f-sans); padding-inline: 20px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 28px 64px; display: grid; gap: 48px; }
+.top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+.top .wm { font-weight: 800; font-size: 22px; letter-spacing: -.02em; }
+.top .lbl, .eyebrow, figcaption, .rule b, .foot { font: 500 11px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.top .date { margin-left: auto; }
+h1 { font-weight: 800; font-size: clamp(34px, 6vw, 56px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 14px; text-wrap: balance; }
+h2 { font-weight: 700; font-size: 20px; margin: 0 0 16px; letter-spacing: -.01em; }
+h3 { font-weight: 700; font-size: 22px; margin: 0; letter-spacing: -.015em; }
+p { margin: 0; max-width: 62ch; }
+.intro p { color: var(--muted); font-size: 17px; }
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.rule { background: var(--bg); padding: 18px; display: grid; gap: 6px; align-content: start; }
+.rule b { color: var(--ink); }
+.rule p { font-size: 14px; color: var(--muted); }
+.before { display: flex; align-items: center; gap: 14px; margin-top: 18px; color: var(--muted); font-size: 14px; }
+.before svg { color: var(--ink); }
+.opts { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.opt { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 32px; padding-block: 32px; border-bottom: 1px solid var(--line); }
+.stage { position: relative; aspect-ratio: 1; max-width: 100%; background: var(--panel); color: var(--ink); }
+.stage svg { position: absolute; inset: 12%; width: 76%; height: 76%; }
+.grid line { stroke: var(--grid); stroke-width: .06; }
+.grid .axis { stroke: var(--axis); }
+.info { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.eyebrow { display: flex; align-items: center; gap: 10px; color: var(--ink); }
+.num { color: var(--muted); }
+.tag { border: 1px solid var(--ink); padding: 2px 7px; color: var(--ink); }
+.rec .stage { outline: 2px solid var(--ink); outline-offset: -2px; }
+.risk { color: var(--muted); font-size: 14px; }
+.risk b { color: var(--ink); font-weight: 700; margin-right: 4px; }
+.tests { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.tests figure { margin: 0; display: grid; gap: 6px; }
+.t { height: 56px; min-width: 56px; padding-inline: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line); color: var(--ink); }
+.t.inv { background: var(--inv-bg); color: var(--inv-fg); border-color: var(--inv-bg); }
+.lockup { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 24px; letter-spacing: -.02em; line-height: 1; }
+.verdict { background: var(--panel); padding: 24px; display: grid; gap: 10px; }
+.verdict p { font-size: 15px; }
+.foot { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+@media (max-width: 680px) { .opt { grid-template-columns: minmax(0, 1fr); gap: 20px; } .stage { max-width: 320px; } .top .date { margin-left: 0; } }
+</style>
+
+<main class="wrap">
+  <header class="top"><span class="wm">ritmo</span><span class="lbl">Consultoria tecnológica</span><span class="lbl date">Símbolo · alternativas · 08 out 2026</span></header>
+
+  <section class="intro">
+    <h1>Seis símbolos para a Ritmo.</h1>
+    <p>Mesma diretriz do símbolo da Level, aplicada ao que o novo documento diz sobre a empresa: coordenar pessoas, processos e tecnologia numa cadência que a equipe consegue absorver.</p>
+    <div class="before"><svg viewBox="0 0 32 32" width="28" height="28" class="" aria-hidden="true"><circle cx="19" cy="13" r="10" fill="currentColor"/><circle cx="13" cy="19" r="10" fill="none" stroke="currentColor" stroke-width="3"/></svg><span>Símbolo atual da Level, ponto de partida da diretriz.</span></div>
+  </section>
+
+  <section>
+    <h2>A diretriz mantida</h2>
+    <div class="rules">
+      <div class="rule"><b>Grade 32 × 32</b><p>Tudo nasce no mesmo quadro do favicon. O símbolo tem que funcionar a 16 px.</p></div>
+      <div class="rule"><b>Uma cor</b><p>Sem degradê nem segunda cor. Desenhado em currentColor: herda preto no claro e branco no escuro.</p></div>
+      <div class="rule"><b>Sólido e traço</b><p>Um elemento sólido marca o ponto de chegada; o resto é contorno com traço 3.</p></div>
+      <div class="rule"><b>Significado no nome</b><p>Na Level, o círculo cheio subia à direita. Aqui o desenho parte de ritmo, cadência e do método.</p></div>
+    </div>
+  </section>
+
+  <section class="opts">
+<article class="opt" id="compasso">
+  <div class="stage"><svg viewBox="0 0 32 32" class="grid" aria-hidden="true"><rect x="0" y="0" width="32" height="32" fill="none"/><line x1="4" y1="0" x2="4" y2="32"/><line x1="0" y1="4" x2="32" y2="4"/><line x1="8" y1="0" x2="8" y2="32"/><line x1="0" y1="8" x2="32" y2="8"/><line x1="12" y1="0" x2="12" y2="32"/><line x1="0" y1="12" x2="32" y2="12"/><line x1="16" y1="0" x2="16" y2="32"/><line x1="0" y1="16" x2="32" y2="16"/><line x1="20" y1="0" x2="20" y2="32"/><line x1="0" y1="20" x2="32" y2="20"/><line x1="24" y1="0" x2="24" y2="32"/><line x1="0" y1="24" x2="32" y2="24"/><line x1="28" y1="0" x2="28" y2="32"/><line x1="0" y1="28" x2="32" y2="28"/><line x1="16" y1="0" x2="16" y2="32" class="axis"/><line x1="0" y1="16" x2="32" y2="16" class="axis"/></svg><svg viewBox="0 0 32 32" width="32" height="32" class="big" aria-hidden="true"><circle cx="9.5" cy="16" r="7.5" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22.5" cy="16" r="7.5" fill="currentColor"/></svg></div>
+  <div class="info">
+    <p class="eyebrow"><span class="num">01</span>Compasso</p>
+    <h3>Dois tempos.</h3>
+    <p>O par de círculos da Level, agora lado a lado: contorno é escuta, sólido é entrega. Quem já conhece a marca anterior reconhece a família.</p>
+    <p class="risk"><b>Atenção</b> De longe pode ler como “oo” ou infinito, e fica perto demais da Level para marcar uma mudança de nome.</p>
+    <div class="tests">
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="16" height="16" class="" aria-hidden="true"><circle cx="9.5" cy="16" r="7.5" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22.5" cy="16" r="7.5" fill="currentColor"/></svg></div><figcaption>16 px</figcaption></figure>
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><circle cx="9.5" cy="16" r="7.5" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22.5" cy="16" r="7.5" fill="currentColor"/></svg></div><figcaption>24 px</figcaption></figure>
+      <figure><div class="t inv"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><circle cx="9.5" cy="16" r="7.5" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22.5" cy="16" r="7.5" fill="currentColor"/></svg></div><figcaption>invertido</figcaption></figure>
+      <figure class="lock"><div class="t"><span class="lockup"><svg viewBox="0 0 32 32" width="22" height="22" class="" aria-hidden="true"><circle cx="9.5" cy="16" r="7.5" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22.5" cy="16" r="7.5" fill="currentColor"/></svg><span>ritmo</span></span></div><figcaption>com o nome</figcaption></figure>
+    </div>
+  </div>
+</article>
+<article class="opt" id="tempo-forte">
+  <div class="stage"><svg viewBox="0 0 32 32" class="grid" aria-hidden="true"><rect x="0" y="0" width="32" height="32" fill="none"/><line x1="4" y1="0" x2="4" y2="32"/><line x1="0" y1="4" x2="32" y2="4"/><line x1="8" y1="0" x2="8" y2="32"/><line x1="0" y1="8" x2="32" y2="8"/><line x1="12" y1="0" x2="12" y2="32"/><line x1="0" y1="12" x2="32" y2="12"/><line x1="16" y1="0" x2="16" y2="32"/><line x1="0" y1="16" x2="32" y2="16"/><line x1="20" y1="0" x2="20" y2="32"/><line x1="0" y1="20" x2="32" y2="20"/><line x1="24" y1="0" x2="24" y2="32"/><line x1="0" y1="24" x2="32" y2="24"/><line x1="28" y1="0" x2="28" y2="32"/><line x1="0" y1="28" x2="32" y2="28"/><line x1="16" y1="0" x2="16" y2="32" class="axis"/><line x1="0" y1="16" x2="32" y2="16" class="axis"/></svg><svg viewBox="0 0 32 32" width="32" height="32" class="big" aria-hidden="true"><circle cx="5.5" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="26.5" cy="16" r="5.5" fill="currentColor"/></svg></div>
+  <div class="info">
+    <p class="eyebrow"><span class="num">02</span>Tempo forte</p>
+    <h3>Três tempos, um acento.</h3>
+    <p>Pessoas, processos e tecnologia em sequência. O terceiro é o tempo forte: a escolha útil para a rotina real.</p>
+    <p class="risk"><b>Atenção</b> Lembra indicador de carregamento ou de paginação de carrossel.</p>
+    <div class="tests">
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="16" height="16" class="" aria-hidden="true"><circle cx="5.5" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="26.5" cy="16" r="5.5" fill="currentColor"/></svg></div><figcaption>16 px</figcaption></figure>
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><circle cx="5.5" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="26.5" cy="16" r="5.5" fill="currentColor"/></svg></div><figcaption>24 px</figcaption></figure>
+      <figure><div class="t inv"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><circle cx="5.5" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="26.5" cy="16" r="5.5" fill="currentColor"/></svg></div><figcaption>invertido</figcaption></figure>
+      <figure class="lock"><div class="t"><span class="lockup"><svg viewBox="0 0 32 32" width="22" height="22" class="" aria-hidden="true"><circle cx="5.5" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="26.5" cy="16" r="5.5" fill="currentColor"/></svg><span>ritmo</span></span></div><figcaption>com o nome</figcaption></figure>
+    </div>
+  </div>
+</article>
+<article class="opt rec" id="convergencia">
+  <div class="stage"><svg viewBox="0 0 32 32" class="grid" aria-hidden="true"><rect x="0" y="0" width="32" height="32" fill="none"/><line x1="4" y1="0" x2="4" y2="32"/><line x1="0" y1="4" x2="32" y2="4"/><line x1="8" y1="0" x2="8" y2="32"/><line x1="0" y1="8" x2="32" y2="8"/><line x1="12" y1="0" x2="12" y2="32"/><line x1="0" y1="12" x2="32" y2="12"/><line x1="16" y1="0" x2="16" y2="32"/><line x1="0" y1="16" x2="32" y2="16"/><line x1="20" y1="0" x2="20" y2="32"/><line x1="0" y1="20" x2="32" y2="20"/><line x1="24" y1="0" x2="24" y2="32"/><line x1="0" y1="24" x2="32" y2="24"/><line x1="28" y1="0" x2="28" y2="32"/><line x1="0" y1="28" x2="32" y2="28"/><line x1="16" y1="0" x2="16" y2="32" class="axis"/><line x1="0" y1="16" x2="32" y2="16" class="axis"/></svg><svg viewBox="0 0 32 32" width="32" height="32" class="big" aria-hidden="true"><path d="M3 7 C 11 7, 14 16, 21 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16 H 21" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 25 C 11 25, 14 16, 21 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="16" r="6" fill="currentColor"/></svg></div>
+  <div class="info">
+    <p class="eyebrow"><span class="num">03</span>Convergência<span class="tag">Recomendado</span></p>
+    <h3>O ponto de encontro.</h3>
+    <p>Sai direto do diagrama da página 1: pessoas, processos e tecnologia chegam ao mesmo ponto. É o espaço onde a Ritmo atua, desenhado.</p>
+    <p class="risk"><b>Atenção</b> Três traços em 16 px ficam justos. No teste abaixo seguram, mas vale ver impresso pequeno.</p>
+    <div class="tests">
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="16" height="16" class="" aria-hidden="true"><path d="M3 7 C 11 7, 14 16, 21 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16 H 21" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 25 C 11 25, 14 16, 21 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="16" r="6" fill="currentColor"/></svg></div><figcaption>16 px</figcaption></figure>
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><path d="M3 7 C 11 7, 14 16, 21 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16 H 21" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 25 C 11 25, 14 16, 21 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="16" r="6" fill="currentColor"/></svg></div><figcaption>24 px</figcaption></figure>
+      <figure><div class="t inv"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><path d="M3 7 C 11 7, 14 16, 21 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16 H 21" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 25 C 11 25, 14 16, 21 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="16" r="6" fill="currentColor"/></svg></div><figcaption>invertido</figcaption></figure>
+      <figure class="lock"><div class="t"><span class="lockup"><svg viewBox="0 0 32 32" width="22" height="22" class="" aria-hidden="true"><path d="M3 7 C 11 7, 14 16, 21 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 16 H 21" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 25 C 11 25, 14 16, 21 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24.5" cy="16" r="6" fill="currentColor"/></svg><span>ritmo</span></span></div><figcaption>com o nome</figcaption></figure>
+    </div>
+  </div>
+</article>
+<article class="opt" id="pendulo">
+  <div class="stage"><svg viewBox="0 0 32 32" class="grid" aria-hidden="true"><rect x="0" y="0" width="32" height="32" fill="none"/><line x1="4" y1="0" x2="4" y2="32"/><line x1="0" y1="4" x2="32" y2="4"/><line x1="8" y1="0" x2="8" y2="32"/><line x1="0" y1="8" x2="32" y2="8"/><line x1="12" y1="0" x2="12" y2="32"/><line x1="0" y1="12" x2="32" y2="12"/><line x1="16" y1="0" x2="16" y2="32"/><line x1="0" y1="16" x2="32" y2="16"/><line x1="20" y1="0" x2="20" y2="32"/><line x1="0" y1="20" x2="32" y2="20"/><line x1="24" y1="0" x2="24" y2="32"/><line x1="0" y1="24" x2="32" y2="24"/><line x1="28" y1="0" x2="28" y2="32"/><line x1="0" y1="28" x2="32" y2="28"/><line x1="16" y1="0" x2="16" y2="32" class="axis"/><line x1="0" y1="16" x2="32" y2="16" class="axis"/></svg><svg viewBox="0 0 32 32" width="32" height="32" class="big" aria-hidden="true"><circle cx="8" cy="9" r="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M16 28.5 L 21.6 13.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23.5" cy="9" r="6.5" fill="currentColor"/></svg></div>
+  <div class="info">
+    <p class="eyebrow"><span class="num">04</span>Pêndulo</p>
+    <h3>O metrônomo.</h3>
+    <p>A haste marca o tempo, o contorno é a posição anterior. Mudança em uma cadência que a equipe consegue absorver.</p>
+    <p class="risk"><b>Atenção</b> É o mais figurativo: dependendo do contexto, vira alfinete ou nota musical.</p>
+    <div class="tests">
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="16" height="16" class="" aria-hidden="true"><circle cx="8" cy="9" r="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M16 28.5 L 21.6 13.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23.5" cy="9" r="6.5" fill="currentColor"/></svg></div><figcaption>16 px</figcaption></figure>
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><circle cx="8" cy="9" r="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M16 28.5 L 21.6 13.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23.5" cy="9" r="6.5" fill="currentColor"/></svg></div><figcaption>24 px</figcaption></figure>
+      <figure><div class="t inv"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><circle cx="8" cy="9" r="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M16 28.5 L 21.6 13.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23.5" cy="9" r="6.5" fill="currentColor"/></svg></div><figcaption>invertido</figcaption></figure>
+      <figure class="lock"><div class="t"><span class="lockup"><svg viewBox="0 0 32 32" width="22" height="22" class="" aria-hidden="true"><circle cx="8" cy="9" r="5" fill="none" stroke="currentColor" stroke-width="3"/><path d="M16 28.5 L 21.6 13.6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23.5" cy="9" r="6.5" fill="currentColor"/></svg><span>ritmo</span></span></div><figcaption>com o nome</figcaption></figure>
+    </div>
+  </div>
+</article>
+<article class="opt" id="ciclo">
+  <div class="stage"><svg viewBox="0 0 32 32" class="grid" aria-hidden="true"><rect x="0" y="0" width="32" height="32" fill="none"/><line x1="4" y1="0" x2="4" y2="32"/><line x1="0" y1="4" x2="32" y2="4"/><line x1="8" y1="0" x2="8" y2="32"/><line x1="0" y1="8" x2="32" y2="8"/><line x1="12" y1="0" x2="12" y2="32"/><line x1="0" y1="12" x2="32" y2="12"/><line x1="16" y1="0" x2="16" y2="32"/><line x1="0" y1="16" x2="32" y2="16"/><line x1="20" y1="0" x2="20" y2="32"/><line x1="0" y1="20" x2="32" y2="20"/><line x1="24" y1="0" x2="24" y2="32"/><line x1="0" y1="24" x2="32" y2="24"/><line x1="28" y1="0" x2="28" y2="32"/><line x1="0" y1="28" x2="32" y2="28"/><line x1="16" y1="0" x2="16" y2="32" class="axis"/><line x1="0" y1="16" x2="32" y2="16" class="axis"/></svg><svg viewBox="0 0 32 32" width="32" height="32" class="big" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="23.8" cy="8.2" r="6" fill="currentColor"/></svg></div>
+  <div class="info">
+    <p class="eyebrow"><span class="num">05</span>Ciclo</p>
+    <h3>O ciclo seguinte.</h3>
+    <p>O ponto percorre o anel: direção, adoção, evolução e de novo. Acompanhar faz parte da entrega.</p>
+    <p class="risk"><b>Atenção</b> Ícones de atualizar e de carregamento usam a mesma forma.</p>
+    <div class="tests">
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="16" height="16" class="" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="23.8" cy="8.2" r="6" fill="currentColor"/></svg></div><figcaption>16 px</figcaption></figure>
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="23.8" cy="8.2" r="6" fill="currentColor"/></svg></div><figcaption>24 px</figcaption></figure>
+      <figure><div class="t inv"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="23.8" cy="8.2" r="6" fill="currentColor"/></svg></div><figcaption>invertido</figcaption></figure>
+      <figure class="lock"><div class="t"><span class="lockup"><svg viewBox="0 0 32 32" width="22" height="22" class="" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="23.8" cy="8.2" r="6" fill="currentColor"/></svg><span>ritmo</span></span></div><figcaption>com o nome</figcaption></figure>
+    </div>
+  </div>
+</article>
+<article class="opt" id="monograma">
+  <div class="stage"><svg viewBox="0 0 32 32" class="grid" aria-hidden="true"><rect x="0" y="0" width="32" height="32" fill="none"/><line x1="4" y1="0" x2="4" y2="32"/><line x1="0" y1="4" x2="32" y2="4"/><line x1="8" y1="0" x2="8" y2="32"/><line x1="0" y1="8" x2="32" y2="8"/><line x1="12" y1="0" x2="12" y2="32"/><line x1="0" y1="12" x2="32" y2="12"/><line x1="16" y1="0" x2="16" y2="32"/><line x1="0" y1="16" x2="32" y2="16"/><line x1="20" y1="0" x2="20" y2="32"/><line x1="0" y1="20" x2="32" y2="20"/><line x1="24" y1="0" x2="24" y2="32"/><line x1="0" y1="24" x2="32" y2="24"/><line x1="28" y1="0" x2="28" y2="32"/><line x1="0" y1="28" x2="32" y2="28"/><line x1="16" y1="0" x2="16" y2="32" class="axis"/><line x1="0" y1="16" x2="32" y2="16" class="axis"/></svg><svg viewBox="0 0 32 32" width="32" height="32" class="big" aria-hidden="true"><path d="M8.5 6.5 V 27.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 15 C 8.5 9.5, 12 6.5, 16 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22.5" cy="9" r="6" fill="currentColor"/></svg></div>
+  <div class="info">
+    <p class="eyebrow"><span class="num">06</span>Monograma r</p>
+    <h3>A letra.</h3>
+    <p>O r minúsculo da palavra, com o ponto sólido no ombro. Lê “r” em qualquer tamanho e combina com o logotipo em caixa baixa.</p>
+    <p class="risk"><b>Atenção</b> Fala do nome, não do método. É o mais seguro e o menos conceitual.</p>
+    <div class="tests">
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="16" height="16" class="" aria-hidden="true"><path d="M8.5 6.5 V 27.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 15 C 8.5 9.5, 12 6.5, 16 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22.5" cy="9" r="6" fill="currentColor"/></svg></div><figcaption>16 px</figcaption></figure>
+      <figure><div class="t"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><path d="M8.5 6.5 V 27.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 15 C 8.5 9.5, 12 6.5, 16 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22.5" cy="9" r="6" fill="currentColor"/></svg></div><figcaption>24 px</figcaption></figure>
+      <figure><div class="t inv"><svg viewBox="0 0 32 32" width="24" height="24" class="" aria-hidden="true"><path d="M8.5 6.5 V 27.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 15 C 8.5 9.5, 12 6.5, 16 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22.5" cy="9" r="6" fill="currentColor"/></svg></div><figcaption>invertido</figcaption></figure>
+      <figure class="lock"><div class="t"><span class="lockup"><svg viewBox="0 0 32 32" width="22" height="22" class="" aria-hidden="true"><path d="M8.5 6.5 V 27.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 15 C 8.5 9.5, 12 6.5, 16 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22.5" cy="9" r="6" fill="currentColor"/></svg><span>ritmo</span></span></div><figcaption>com o nome</figcaption></figure>
+    </div>
+  </div>
+</article>
+  </section>
+
+  <section class="verdict">
+    <p class="eyebrow">Recomendação</p>
+    <h3>Convergência como símbolo principal.</h3>
+    <p>É a única alternativa que desenha o que a Ritmo faz: três entradas chegando a uma escolha. O mesmo gesto já está no documento de identidade, então símbolo e material falam a mesma língua. Se nos testes impressos os três traços não segurarem em tamanho pequeno, o Monograma r é a segunda opção, mais seguro para avatar e favicon.</p>
+  </section>
+
+  <footer class="foot"><span>Base de identidade · proposta para alinhamento dos sócios</span><span>SVGs em brand-assets/ritmo</span></footer>
+</main>
