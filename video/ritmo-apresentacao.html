@@ -79,6 +79,7 @@
   #s3 { color: var(--ink); }
   #world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
   .st { position: absolute; left: 0; top: 0; }
+  .st .ill { position: absolute; left: 0; }
   .st .num { font-size: calc(var(--u) * 1.4); letter-spacing: 0.26em; font-weight: 700; color: var(--muted-ink); }
   .st .word { font-size: calc(var(--u) * 7.4); font-weight: 800; letter-spacing: -0.045em; line-height: 1; margin-top: calc(var(--u) * 0.8); white-space: nowrap; }
   .st .out { margin-top: calc(var(--u) * 1.8); font-size: calc(var(--u) * 2.4); font-weight: 700; color: var(--ink); white-space: nowrap; }
@@ -863,11 +864,13 @@ function r3(t) {
     // Extensão da etapa em tela, calculada pela câmera (ilustração + palavra + saída).
     {
       const X = sx * sc + camX, Y = sy * sc + camY;
-      const a = V ? Y - U * 26 * sc : X - U * 5 * sc;                       // borda de entrada
-      const z = V ? Y + U * 14 * sc : X + U * 52 * sc;                      // borda de saída
-      const lim = V ? H : W, m = U * 1.5;
-      const keep = clamp((a - m) / (U * 3)) * clamp((lim - m - z) / (U * 3) + 1);
+      // extensão real do bloco (offsetWidth/Height ignoram transformações)
+      const a = V ? Y - U * 29 * sc : X - U * 4 * sc;
+      const z = V ? Y + (el.offsetHeight - U * 4) * sc : X + (el.offsetWidth - U * 4) * sc;
+      const lim = V ? H : W, m = U * 0.5;
+      const keep = clamp((a - m) / (U * 2)) * clamp((lim - m - z) / (U * 2));
       el.style.opacity = kin * keep;
+
     }
     const kf = outCubic(p(t, arrive[i] - 0.02, arrive[i] + 0.35));
     outline($(".word", el), kf, "20,23,30", 0.02);
