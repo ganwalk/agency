@@ -2,7 +2,8 @@
 
 Peças prontas em `pecas/`, geradas de `kit.html` por `build.mjs`
 (`node brand-assets/ritmo/midia-kit/build.mjs`). Mesmo símbolo de dois
-círculos, Manrope e o diagrama da convergência do documento de identidade.
+círculos, Manrope e a bola sólida como ponto final. O diagrama da
+convergência do documento aparece em uma peça só, o post de apresentação.
 
 ## Fotos de perfil (1080 x 1080)
 
@@ -20,7 +21,7 @@ de todas as redes.
 
 | Arquivo | Tamanho | Observação |
 | --- | --- | --- |
-| `ritmo-capa-linkedin.png` | 1584 x 396 | conteúdo à direita, livre do avatar no canto inferior esquerdo |
+| `ritmo-capa-linkedin.png` | 1584 x 396 | frase à direita, livre do avatar; o símbolo grande fica atrás dele |
 | `ritmo-capa-x.png` | 1500 x 500 | idem |
 | `ritmo-capa-facebook.png` | 1640 x 624 | conteúdo na área central, que o celular não corta |
 | `ritmo-capa-youtube.png` | 2560 x 1440 | conteúdo dentro da área segura de 1546 x 423 |

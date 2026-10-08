@@ -7,7 +7,8 @@
   Fonte única das peças do mídia kit. Cada peça é aberta com ?peca=<id> e
   fotografada por build.mjs no tamanho exato da rede. Mesma linguagem do site
   e do filme: fundo navy com grade de pontos (ou papel), marca de dois
-  círculos, Manrope, e o diagrama da convergência do documento de identidade.
+  círculos, Manrope e a bola sólida como ponto final. O diagrama da
+  convergência do documento aparece em uma peça só, o post de apresentação.
 -->
 <style>
   @font-face { font-family: "Manrope"; src: url("../../../video/fonts/manrope-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800;
@@ -41,26 +42,35 @@ const MARK = (fg) => `<svg viewBox="0 0 32 32" width="100%" height="100%" style=
 const mark = (size, fg) => `<div style="width:${size}px;height:${size}px">${MARK(fg)}</div>`;
 const lock = (h, fg, gap = 0.28) => `<div class="row" style="gap:${h * gap}px">${mark(h * 1.05, fg)}<div class="wm" style="font-size:${h * 1.08}px">Ritmo.</div></div>`;
 
-// O diagrama da convergência (página 1 do documento): três entradas, o ponto, a saída.
-function diagram(w, h, fg, { labels = true, out = true, fs = 14 } = {}) {
-  const px = w * (out ? 0.62 : 0.86), py = h / 2, x0 = labels ? w * 0.26 : w * 0.04, dy = h * 0.33;
-  const sw = Math.max(2, h * 0.012);
-  const line = y => `<path d="M${x0} ${y} C ${x0 + (px - x0) * 0.55} ${y}, ${x0 + (px - x0) * 0.62} ${py}, ${px} ${py}" fill="none" stroke="${fg}" stroke-width="${sw}" stroke-linecap="round"/>`;
-  const r = h * 0.07;
-  let svg = `<svg width="${w}" height="${h}" style="overflow:visible;position:absolute;left:0;top:0">` + [-1, 0, 1].map(k => line(py + k * dy)).join("") +
-    `<circle cx="${px}" cy="${py}" r="${r}" fill="${fg}"/>`;
-  if (out) {
-    const a0 = px + r * 2, a1 = w * 0.86, hd = h * 0.06;
-    svg += `<path d="M${a0} ${py} H ${a1} M ${a1 - hd} ${py - hd} L ${a1} ${py} L ${a1 - hd} ${py + hd}" fill="none" stroke="${fg}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round"/>`;
-  }
+// Frase com a bola sólida da marca no lugar do ponto final.
+const sentence = (text, fs, fg) => `<span>${text}</span><span style="display:inline-block;width:${fs * 0.2}px;height:${fs * 0.2}px;border-radius:50%;background:${fg};margin-left:${fs * 0.05}px;vertical-align:baseline"></span>`;
+// O símbolo em escala grande, como grafismo (anel em traço, bola sólida).
+function bigMark(size, x, y, fg, ringAlpha = 0.22, ballAlpha = 1) {
+  return `<svg width="${size}" height="${size}" viewBox="0 0 32 32" style="position:absolute;left:${x}px;top:${y}px;overflow:visible">
+    <circle cx="13" cy="19" r="10" fill="none" stroke="${fg}" stroke-opacity="${ringAlpha}" stroke-width="1.4"/>
+    <circle cx="19" cy="13" r="10" fill="${fg}" fill-opacity="${ballAlpha}"/></svg>`;
+}
+// O diagrama da convergência (página 1 do documento), usado só no post:
+// três entradas com batidas no mesmo tempo, convergindo na própria marca.
+function convergence(w, h, fg) {
+  const lx = w * 0.24, mx = w * 0.7, my = h / 2, dy = h * 0.34, ms = h * 0.34;
+  const sw = Math.max(2.5, h * 0.011);
+  const path = y => `M${lx} ${y} C ${lx + (mx - lx) * 0.5} ${y}, ${lx + (mx - lx) * 0.6} ${my}, ${mx - ms * 0.42} ${my}`;
+  let svg = `<svg width="${w}" height="${h}" style="position:absolute;left:0;top:0;overflow:visible">`;
+  [-1, 0, 1].forEach(k => {
+    const y = my + k * dy;
+    svg += `<path id="cv${k + 1}" d="${path(y)}" fill="none" stroke="${fg}" stroke-opacity="0.85" stroke-width="${sw}" stroke-linecap="round"/>`;
+  });
   svg += `</svg>`;
   let html = `<div style="position:relative;width:${w}px;height:${h}px">${svg}`;
-  if (labels) ["Pessoas", "Processos", "Tecnologia"].forEach((t, i) => {
-    html += `<div class="lbl" style="font-size:${fs}px;right:${w - x0 + fs}px;top:${py + (i - 1) * dy}px;transform:translateY(-50%);color:${fg}">${t}</div>`;
+  ["Pessoas", "Processos", "Tecnologia"].forEach((t, i) => {
+    html += `<div class="lbl" style="font-size:${h * 0.075}px;left:0;top:${my + (i - 1) * dy}px;transform:translateY(-50%);color:${fg}">${t}</div>`;
   });
-  if (out) html += `<div class="lbl" style="font-size:${fs}px;left:${w * 0.89}px;top:${py}px;transform:translateY(-50%);color:${fg}">Escolha útil</div>`;
+  html += `<div style="position:absolute;left:${mx - ms * 0.5}px;top:${my - ms * 0.5}px;width:${ms}px;height:${ms}px">${MARK(fg)}</div>`;
+  html += `<div style="position:absolute;left:${mx + ms * 0.62}px;top:${my}px;transform:translateY(-50%)"><div class="lbl" style="position:static;font-size:${h * 0.075}px;color:${fg}">Escolha útil</div><div style="margin-top:${h * 0.03}px;font-size:${h * 0.085}px;font-weight:600;color:${fg};opacity:0.7;white-space:nowrap">para a rotina real</div></div>`;
   return html + `</div>`;
 }
+function beats(svgId) { return svgId; }
 
 const PIECES = {
   // Fotos de perfil: conteúdo dentro do círculo inscrito.
@@ -71,37 +81,37 @@ const PIECES = {
 
   // Capas. LinkedIn e X: o avatar cobre o canto inferior esquerdo, então o
   // conteúdo fica à direita e no alto.
-  "capa-linkedin": [1584, 396, "dark", (W, H) => cover(W, H, { left: W * 0.3, right: W * 0.05, top: H * 0.16, bottom: H * 0.16, fs: H * 0.135 })],
-  "capa-x": [1500, 500, "dark", (W, H) => cover(W, H, { left: W * 0.28, right: W * 0.05, top: H * 0.16, bottom: H * 0.22, fs: H * 0.11 })],
+  "capa-linkedin": [1584, 396, "dark", (W, H) => cover(W, H, { side: "right", box: [W * 0.36, H * 0.16, W * 0.06, H * 0.16], fs: H * 0.15, mark: [H * 1.7, -H * 0.38, -H * 0.42] })],
+  "capa-x": [1500, 500, "dark", (W, H) => cover(W, H, { side: "right", box: [W * 0.34, H * 0.16, W * 0.06, H * 0.2], fs: H * 0.125, mark: [H * 1.6, -H * 0.35, -H * 0.35] })],
   // Facebook: área segura no centro (o celular corta as laterais).
-  "capa-facebook": [1640, 624, "dark", (W, H) => cover(W, H, { left: W * 0.12, right: W * 0.12, top: H * 0.2, bottom: H * 0.2, fs: H * 0.1 })],
+  "capa-facebook": [1640, 624, "dark", (W, H) => cover(W, H, { side: "left", box: [W * 0.14, H * 0.2, W * 0.4, H * 0.2], fs: H * 0.11, mark: [H * 1.25, W - H * 0.95, H * 0.02] })],
   // YouTube: tudo dentro da área segura de 1546x423 no centro.
-  "capa-youtube": [2560, 1440, "dark", (W, H) => cover(W, H, { left: (W - 1546) / 2 + 30, right: (W - 1546) / 2 + 30, top: (H - 423) / 2 + 10, bottom: (H - 423) / 2 + 10, fs: 72 })],
+  "capa-youtube": [2560, 1440, "dark", (W, H) => cover(W, H, { side: "left", box: [(W - 1546) / 2 + 20, (H - 423) / 2, (W - 1546) / 2 + 560, (H - 423) / 2], fs: 84, mark: [H * 0.62, (W + 1546) / 2 - H * 0.5, (H - H * 0.62) / 2] })],
 
   // Instagram
   "instagram-post": [1080, 1350, "dark", (W, H) => `
     <div style="position:absolute;left:${W * 0.09}px;top:${H * 0.09}px" class="eb" >${"Consultoria tecnológica"}</div>
-    <div class="lt" style="position:absolute;left:${W * 0.09}px;right:${W * 0.09}px;top:${H * 0.2}px;font-size:${W * 0.125}px">Cada empresa tem uma cadência.</div>
-    <div style="position:absolute;left:${W * 0.09}px;top:${H * 0.62}px">${diagram(W * 0.66, H * 0.2, "#fff", { fs: 22 })}</div>
+    <div class="lt" style="position:absolute;left:${W * 0.09}px;right:${W * 0.09}px;top:${H * 0.17}px;font-size:${W * 0.125}px">${sentence("Cada empresa tem uma cadência", W * 0.125, "#fff")}</div>
+    <div style="position:absolute;left:${W * 0.09}px;top:${H * 0.58}px">${convergence(W * 0.82, H * 0.24, "#fff")}</div>
     <div style="position:absolute;left:${W * 0.09}px;bottom:${H * 0.08}px">${lock(W * 0.06, "#fff")}</div>`],
   "instagram-story": [1080, 1920, "dark", (W, H) => `
     <div class="c" style="left:0;right:0;top:${H * 0.2}px;gap:${W * 0.05}px">${mark(W * 0.28, "#fff")}<div class="wm" style="font-size:${W * 0.17}px">Ritmo.</div><div class="eb" style="font-size:${W * 0.026}px">Consultoria tecnológica</div></div>
-    <div class="lt" style="position:absolute;left:${W * 0.1}px;right:${W * 0.1}px;top:${H * 0.56}px;text-align:center;font-size:${W * 0.075}px">Tecnologia que faz sentido na prática.</div>
+    <div class="lt" style="position:absolute;left:${W * 0.1}px;right:${W * 0.1}px;top:${H * 0.56}px;text-align:center;font-size:${W * 0.075}px">${sentence("Tecnologia que faz sentido na prática", W * 0.075, "#fff")}</div>
     <div class="c" style="left:0;right:0;bottom:${H * 0.12}px;gap:${W * 0.03}px"><div class="pill" style="font-size:${W * 0.042}px;padding:${W * 0.03}px ${W * 0.07}px">Fale conosco</div><div style="font-size:${W * 0.045}px;font-weight:700">+55 62 9850-6450</div></div>`],
   "destaque-ritmo": [1080, 1920, "dark", (W, H) => `<div class="c" style="inset:0">${mark(W * 0.36, "#fff")}</div>`],
   "destaque-metodo": [1080, 1920, "dark", (W, H) => `<div class="c" style="inset:0">${iconMetodo(W * 0.5)}</div>`],
   "destaque-contato": [1080, 1920, "dark", (W, H) => `<div class="c" style="inset:0">${iconContato(W * 0.42)}</div>`],
 };
 
-function cover(W, H, { left, right, top, bottom, fs }) {
-  const iw = W - left - right, ih = H - top - bottom;
-  const dw = iw * 0.46, dh = ih * 0.62;
-  return `<div style="position:absolute;left:${left}px;top:${top}px;width:${iw}px;height:${ih}px;display:flex;align-items:center;justify-content:space-between;gap:${iw * 0.04}px">
-      <div style="display:flex;flex-direction:column;gap:${fs * 0.55}px">
-        ${lock(fs * 0.62, "#fff")}
-        <div class="lt" style="font-size:${fs}px;max-width:${iw * 0.5}px">Tecnologia que faz sentido na prática.</div>
-      </div>
-      <div style="flex:none">${diagram(dw, dh, "#fff", { fs: Math.max(12, fs * 0.2) })}</div>
+// Capa: frase com a bola como ponto final, a assinatura pequena acima e o
+// símbolo grande sangrando da peça do lado oposto ao texto.
+function cover(W, H, { side, box: [l, t, r, b], fs, mark: [ms, mx, my] }) {
+  const iw = W - l - r, ih = H - t - b;
+  const align = side === "right" ? "flex-end" : "flex-start";
+  return bigMark(ms, mx, my, "#fff", 0.16, 0.06) + `
+    <div style="position:absolute;left:${l}px;top:${t}px;width:${iw}px;height:${ih}px;display:flex;flex-direction:column;justify-content:center;align-items:${align};text-align:${side};gap:${fs * 0.5}px">
+      <div class="row" style="gap:${fs * 0.35}px"><div class="wm" style="font-size:${fs * 0.42}px">Ritmo.</div><div class="eb" style="font-size:${fs * 0.15}px">Consultoria tecnológica</div></div>
+      <div class="lt" style="font-size:${fs}px;max-width:${iw}px">${sentence("Tecnologia que faz<br>sentido na prática", fs, "#fff")}</div>
     </div>`;
 }
 function iconMetodo(s) {
