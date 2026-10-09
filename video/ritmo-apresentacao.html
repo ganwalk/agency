@@ -329,6 +329,7 @@ function words(el, t, tin, tout, { stagger = 0.05, dur = 0.85 } = {}) {
   let n = 0;
   ws.forEach((w, i) => {
     w.style.opacity = 1; w.style.filter = "none"; w.style.transform = "none";
+    let wo = 0;
     w.querySelectorAll(":scope > .l").forEach((l, j) => {
       const a = tin + i * stagger + j * 0.022;
       const k = p(t, a, a + dur * 0.75), kb = outBack(k, 1.9);
@@ -339,8 +340,12 @@ function words(el, t, tin, tout, { stagger = 0.05, dur = 0.85 } = {}) {
       l.style.transform = k >= 1 && ko <= 0 ? "none" :
         `translateY(${((1 - kb) * 0.7 + ko * 0.4).toFixed(3)}em) rotate(${((1 - kb) * 14 * sg + ko * 10 * sg).toFixed(2)}deg) scale(${(0.6 + 0.4 * kb).toFixed(3)})`;
       l.dataset.ok = k >= 1 && ko <= 0 ? "1" : "0";
+      wo = Math.max(wo, +l.style.opacity);
       n++;
     });
+    // a tarja de destaque (palavras .hl) acompanha a visibilidade das letras
+    const box = w.querySelector(":scope > b");
+    if (box) box.style.opacity = wo;
   });
 }
 // Quando a bola pousa numa palavra, as letras fazem uma onda a partir do centro.
