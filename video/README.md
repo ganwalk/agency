@@ -3,7 +3,7 @@
 Vídeos em 16:9 e 9:16, gerados por `render.mjs` a partir de uma página HTML com
 uma função `render(t)` determinística.
 
-## Ritmo. (`ritmo-apresentacao.html`, 75s, com trilha)
+## Ritmo. (`ritmo-apresentacao.html`, 84s, com trilha)
 
 Filme de apresentação da Ritmo, num plano contínuo conduzido pela bola sólida
 da marca, que faz o papel da batida: quica de palavra em palavra e preenche o
@@ -26,15 +26,17 @@ a cena dos sócios usa `src/data/team.ts`.
    tempo, os atritos estouram e as pistas convergem num ponto, que vira a
    marca. "Tradução, escolha e adoção." / "É nesse espaço que a Ritmo atua."
    A bola cresce e abre a cena em papel.
-4. **Método** (25,6–43,6s): a câmera acompanha a bola num percurso pelas cinco
+4. **Método** (27–47s): a câmera acompanha a bola num percurso pelas cinco
    etapas; em cada uma, uma ilustração (lupa, prioridade, escolha, conexão,
    acompanhamento) e a saída. No fim, o percurso inteiro.
 5. **Escala** (43,6–50,6s): quatro degraus que a bola sobe, de aproveitar a
    desenvolver; o último degrau cresce e fecha a tela no escuro.
 6. **Sócios** (50,6–57,6s): quatro sócios, quatro frentes, um por batida.
-7. **Compromisso** (57,6–65,2s): os seis compromissos, um por batida, com a
-   bola como ponto final de cada um.
-8. **Fecho** (65,2–75s): "Entender a rotina. Escolher com critério. Fazer
+7. **Compromisso** (62–71,6s): "Critério para decidir. Cuidado para
+   implantar." e os seis compromissos numa frase só ("Clareza, evidência,
+   proporção, autonomia, transparência e continuidade."), em contorno, que a
+   bola preenche palavra a palavra até virar o ponto final.
+8. **Fecho** (71,6–84,4s): "Entender a rotina. Escolher com critério. Fazer
    funcionar." A bola desenha a marca e "Ritmo." volta com o ponto.
 
 Trilha: o pad de acordes de fundo continua; os sons dos elementos são notas
