@@ -52,6 +52,8 @@ for (const [fmt, [w, h]] of Object.entries(FORMATS)) {
       if (!shown(el)) return { v: 0, cut: false };
       let op = effOp(el), bl = blur(el);
       el.querySelectorAll(".w").forEach(x => { op = Math.min(op, effOp(x)); bl = Math.max(bl, blur(x)); });
+      // letras animadas (lettering vivo): cada uma precisa estar assentada
+      el.querySelectorAll(".l").forEach(x => { op = Math.min(op, +getComputedStyle(x).opacity); if (x.dataset.ok === "0") bl = 99; });
       let aligned = true;
       el.querySelectorAll(".m").forEach(m => {
         const i = m.firstElementChild; if (!i) return;

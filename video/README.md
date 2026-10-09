@@ -8,7 +8,14 @@ uma função `render(t)` determinística.
 Filme de apresentação da Ritmo, num plano contínuo conduzido pela bola sólida
 da marca, que faz o papel da batida: quica de palavra em palavra e preenche o
 lettering, sincroniza as pistas, vira a marca, percorre o método e fecha cada
-frase como ponto final. Textos do documento de identidade intelectual da Ritmo;
+frase como ponto final.
+
+Tudo nasce da bola: ela se divide em três para desenhar as pistas, vira a marca,
+rola para o centro e se abre nos quatro degraus da escala, e vira quatro bolas
+que crescem até os retratos dos sócios. A bola tem vida própria (estica na
+direção do movimento, deixa rastro, achata ao pousar, respira parada), as
+palavras amassam e fazem uma onda quando ela pousa, e o lettering entra letra a
+letra, com um pequeno salto. Textos do documento de identidade intelectual da Ritmo;
 a cena dos sócios usa `src/data/team.ts`.
 
 | Arquivo | Formato |
