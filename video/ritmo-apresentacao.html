@@ -81,10 +81,10 @@
   #s3 { color: var(--ink); }
   #world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
   .st { position: absolute; left: 0; top: 0; }
-  .st .ill { position: absolute; left: 0; }
-  .st .word { font-size: calc(var(--u) * 7.4); font-weight: 800; letter-spacing: -0.045em; line-height: 1; margin-top: calc(var(--u) * 0.8); white-space: nowrap; }
+  .st .ill { position: absolute; left: 0; top: 0; }
+  .st .lbl { position: absolute; left: 0; top: 0; transform: translateX(-50%); text-align: center; background: var(--paper); padding: calc(var(--u) * 0.6) calc(var(--u) * 1.4); border-radius: calc(var(--u) * 1); }
+  .st .word { font-size: calc(var(--u) * 7.4); font-weight: 800; letter-spacing: -0.045em; line-height: 1; white-space: nowrap; color: var(--ink); }
   .st .out { margin-top: calc(var(--u) * 1.4); font-size: calc(var(--u) * 2.6); font-weight: 500; color: #4a4e58; white-space: nowrap; }
-  .st .out b { display: block; font-size: calc(var(--u) * 1.4); letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted-ink); margin-bottom: calc(var(--u) * 0.5); }
   #s3-title { position: absolute; left: 0; right: 0; text-align: center; font-size: calc(var(--u) * 8); color: var(--ink); }
 
   /* 4 Escala (fundo papel) */
@@ -126,8 +126,7 @@
   .v .lane-lbl { font-size: calc(var(--u) * 2.8); }
   .v .badge { font-size: calc(var(--u) * 2.4); padding: calc(var(--u) * 1.1) calc(var(--u) * 2); }
   .v .st .word { font-size: calc(var(--u) * 8.6); }
-  .v .st .out { font-size: calc(var(--u) * 3.4); white-space: normal; width: calc(var(--u) * 72); }
-  .v .st .out b { font-size: calc(var(--u) * 1.8); }
+  .v .st .out { font-size: calc(var(--u) * 3.4); white-space: normal; width: calc(var(--u) * 72); margin-left: auto; margin-right: auto; }
   .v #s3-title { font-size: calc(var(--u) * 10); }
   .v #s4-title { font-size: calc(var(--u) * 8.4); }
   .v .bar-lbl b { font-size: calc(var(--u) * 2.9); }
@@ -273,7 +272,9 @@ const CUES = [
   { t: S3.zoom[0], type: "bloom", f: 392 },
   ...LEVELS.map((_, i) => pl(S4.hop0 + i * S4.hop, i + 1)),
   { t: S4.wipe[0], type: "bloom", f: 523.25 },
+  pl(S4.wipe[0] - 0.05, 0, 0.7),
   { t: S4.wipe[1] - 0.1, type: "thump", g: 0.8 },
+  pl(T.s5[0] + 0.1, 3, 0.8),
   ...TEAM.map((_, i) => pl(S5.p0 + i * S5.p, i, 0.8)),
   ...[0, 1, 2, 3, 4, 5].map(i => pl(S6.land0 + i * S6.hop, i)),
   pl(S6.land0 + 6 * S6.hop + 0.1, 5, 1.1),
@@ -451,7 +452,8 @@ function geometry() {
   G.mark = V ? U * 30 : U * 17;
   G.wordFs = V ? U * 15 : U * 10;
   // 3 Método: estações no mundo
-  G.stations = STEPS.map((_, i) => V ? [U * 9 + (i % 2 ? U * 4 : 0), i * U * 62] : [i * U * 70, (i % 2 ? -1 : 1) * U * 4]);
+  G.RS = V ? U * 15 : U * 12;     // raio do círculo de cada etapa
+  G.stations = STEPS.map((_, i) => V ? [(i % 2 ? 1 : -1) * U * 4, i * U * 70] : [i * U * 74, (i % 2 ? -1 : 1) * U * 3]);
   // 4 Escala
   G.bw = V ? U * 19 : U * 20; G.bgap = V ? U * 3 : U * 3.4;
   G.bh = V ? [U * 12, U * 22, U * 32, U * 42] : [U * 9, U * 16, U * 23, U * 30];
@@ -492,7 +494,7 @@ function build() {
   // 3
   $("#stations").innerHTML = STEPS.map(([n, o], i) => `
     <div class="st"><svg class="ill" viewBox="0 0 40 24" style="overflow:visible"></svg>
-      <div class="word">${wrapLetters(n)}</div><div class="out">${o}</div></div>`).join("");
+      <div class="lbl"><div class="word">${wrapLetters(n)}</div><div class="out">${o}</div></div></div>`).join("");
   buildIllustrations();
   // 4
   $("#bars").innerHTML = LEVELS.map(([n, d]) => `<div class="bar"></div><div class="bar-lbl"><b>${n}</b></div>`).join("");
@@ -843,7 +845,7 @@ function r2(t) {
 // ---- 3 Método ---------------------------------------------------------------
 function pathD() {
   const pts = G.stations;
-  const pre = V ? [pts[0][0], -U * 40] : [-U * 40, pts[0][1]];
+  const pre = V ? [pts[0][0], -U * 44] : [-U * 44, pts[0][1]];
   const all = [pre, ...pts];
   let d = `M${all[0][0]} ${all[0][1]}`;
   for (let i = 1; i < all.length; i++) {
@@ -854,17 +856,19 @@ function pathD() {
   return d;
 }
 let PATH = null, PLEN = [];
+// Método: a bola percorre a rota; em cada etapa pousa e se abre num círculo (a
+// "janela" da etapa) com a ilustração dentro, e a palavra entra letra a letra
+// embaixo. A câmera aproxima quando a bola para e recua quando ela viaja.
 function r3(t) {
   if (!show($("#s3"), [T.s3[0] - 0.01, T.s3[1]])) return;
-  const svg = $("#path-svg");
+  const svg = $("#path-svg"), RS = G.RS;
   if (!PATH) {
     svg.setAttribute("width", 10); svg.setAttribute("height", 10);
     svg.innerHTML = `<path id="route" d="${pathD()}" fill="none" stroke="#14171e" stroke-width="${U * 0.26}" stroke-linecap="round" stroke-dasharray="${U * 0.1} ${U * 1.2}" opacity="0.5"/>
       <path id="trail" d="${pathD()}" fill="none" stroke="#14171e" stroke-width="${U * 0.3}" stroke-linecap="round"/>` +
-      G.stations.map(() => `<circle class="stn" r="${U * 1.3}" fill="#f3f2ee" stroke="#14171e" stroke-width="${U * 0.26}"/>`).join("");
+      G.stations.map(() => `<circle class="stage" fill="#f3f2ee" stroke="#14171e" stroke-width="${U * 0.26}"/>`).join("");
     PATH = $("#route");
     const L = PATH.getTotalLength();
-    // comprimento até cada estação (busca simples)
     PLEN = G.stations.map(([sx, sy]) => {
       let best = 0, bd = 1e9;
       for (let s = 0; s <= L; s += L / 2000) { const q = PATH.getPointAtLength(s); const d = Math.hypot(q.x - sx, q.y - sy); if (d < bd) { bd = d; best = s; } }
@@ -872,84 +876,80 @@ function r3(t) {
     });
     PLEN.L = L;
   }
-  // progresso da bola ao longo do caminho
   const arrive = STEPS.map((_, i) => ST0 + i * STD);
-  let s;
-  if (t < arrive[0]) s = lerp(PLEN[0] - U * 30, PLEN[0], inOutCubic(p(t, arrive[0] - TRAVEL - 0.6, arrive[0])));
+  const depart = arrive.map((a, i) => (i < arrive.length - 1 ? arrive[i + 1] - TRAVEL : 1e6));
+  // posição da bola na rota
+  let s, cur = -1;
+  if (t < arrive[0]) s = lerp(PLEN[0] - U * 34, PLEN[0], inOutCubic(p(t, arrive[0] - TRAVEL - 0.6, arrive[0])));
   else {
-    const i = Math.min(arrive.length - 1, Math.floor((t - arrive[0]) / STD));
-    const nxt = Math.min(arrive.length - 1, i + 1);
-    s = i === nxt ? PLEN[i] : lerp(PLEN[i], PLEN[nxt], inOutCubic(p(t, arrive[nxt] - TRAVEL, arrive[nxt])));
+    cur = Math.min(arrive.length - 1, Math.floor((t - arrive[0]) / STD));
+    const nxt = Math.min(arrive.length - 1, cur + 1);
+    s = cur === nxt ? PLEN[cur] : lerp(PLEN[cur], PLEN[nxt], inOutCubic(p(t, arrive[nxt] - TRAVEL, arrive[nxt])));
   }
   const bp = PATH.getPointAtLength(Math.max(0, s));
-  // câmera segue a bola; no fim, recua e mostra o percurso inteiro
-  const anchor = V ? [U * 16, H * 0.34] : [W * 0.36, H * 0.4];
+  // câmera: segue a bola, aproxima quando ela para; no fim, recua e mostra tudo
+  let park = 0;
+  if (cur >= 0) park = inOutCubic(p(t, arrive[cur], arrive[cur] + 0.9)) * (1 - inOutCubic(p(t, depart[cur] - 0.35, depart[cur] + 0.25)));
+  const anchor = V ? [W / 2, H * 0.36] : [W / 2, H * 0.38];
   const xs = G.stations.map(q => q[0]), ys = G.stations.map(q => q[1]);
-  const span = V ? Math.max(...ys) - Math.min(...ys) + U * 70 : Math.max(...xs) - Math.min(...xs) + U * 60;
-  const fit = V ? H / (span + U * 30) : W / (span + U * 20);
+  const fit = V ? H / (Math.max(...ys) - Math.min(...ys) + RS * 2 + U * 40) : W / (Math.max(...xs) - Math.min(...xs) + U * 66);
+  const mid = V ? [0, (Math.min(...ys) + Math.max(...ys)) / 2 + U * 9] : [(Math.min(...xs) + Math.max(...xs)) / 2, U * 6];
   const kz = inOutCubic(p(t, S3.zoom[0], S3.zoom[1]));
-  const sc = lerp(1, fit, kz);
-  const mid = V ? [U * 40, (Math.min(...ys) + Math.max(...ys)) / 2 + U * 8] : [(Math.min(...xs) + Math.max(...xs)) / 2 + U * 10, U * 4];
-  const camX = lerp(anchor[0] - bp.x, W / 2 - mid[0] * sc, kz);
-  const camY = lerp(anchor[1] - bp.y, H / 2 - mid[1] * sc, kz);
+  const sc = lerp(1 + 0.12 * park, fit, kz);
+  const camX = lerp(anchor[0] - bp.x * sc, W / 2 - mid[0] * sc, kz);
+  const camY = lerp(anchor[1] - bp.y * sc, H / 2 - mid[1] * sc, kz);
   const world = $("#world");
   world.style.transform = `translate(${camX}px, ${camY}px) scale(${sc})`;
-  // rota pontilhada e rastro desenhado atrás da bola
-  const trail = $("#trail");
-  trail.setAttribute("stroke-dasharray", `${Math.max(0, s)} ${PLEN.L * 2}`);
-  $$("#path-svg .stn").forEach((c, i) => {
+  $("#trail").setAttribute("stroke-dasharray", `${Math.max(0, s)} ${PLEN.L * 2}`);
+  // círculos das etapas: ponto vazio antes; a bola pousa e ele se abre
+  $$("#path-svg .stage").forEach((c, i) => {
     c.setAttribute("cx", G.stations[i][0]); c.setAttribute("cy", G.stations[i][1]);
-    const k = outBack(p(t, arrive[i] - 0.05, arrive[i] + 0.3), 2);
-    c.setAttribute("fill", t >= arrive[i] ? "#14171e" : "#f3f2ee");
-    c.setAttribute("r", U * 1.3 * (1 + 0.4 * Math.sin(Math.PI * clamp(k))));
+    const ko = outBack(p(t, arrive[i] + 0.05, arrive[i] + 0.6), 1.4);
+    c.setAttribute("r", lerp(U * 1.3, RS, clamp(ko, 0, 1.12)));
   });
-  // estações: palavra em contorno que preenche quando a bola pousa
   $$("#stations .st").forEach((el, i) => {
     const [sx, sy] = G.stations[i];
-    if (V) el.style.transform = `translate(${sx + U * 5}px, ${sy - U * 4}px)`;
-    else el.style.transform = `translate(${sx - U * 4}px, ${sy + U * 5}px)`;
-    const tin = arrive[i] - 1.2;
-    const kin = outCubic(p(t, tin, tin + 0.6));
-    el.style.opacity = kin;
-    // some antes de encostar na borda do quadro; no recuo final, volta ao entrar.
-    // Extensão da etapa em tela, calculada pela câmera (ilustração + palavra + saída).
-    {
-      const X = sx * sc + camX, Y = sy * sc + camY;
-      // extensão real do bloco (offsetWidth/Height ignoram transformações)
-      const a = V ? Y - U * 29 * sc : X - U * 4 * sc;
-      const z = V ? Y + (el.offsetHeight - U * 4) * sc : X + (el.offsetWidth - U * 4) * sc;
-      const lim = V ? H : W, m = U * 0.5;
-      const keep = clamp((a - m) / (U * 2)) * clamp((lim - m - z) / (U * 2));
-      el.style.opacity = kin * keep;
-
-    }
-    const kf = outCubic(p(t, arrive[i] - 0.02, arrive[i] + 0.35));
-    outline($(".word", el), kf, "20,23,30", 0.02);
-    const sqw = press(t, arrive[i]);
-    $(".word", el).style.transformOrigin = "0 85%";
-    $(".word", el).style.transform = `scale(${(1 + 0.04 * sqw).toFixed(3)}, ${(1 - 0.08 * sqw).toFixed(3)})`;
-    ripple($(".word", el), t, arrive[i] + 0.05, 0.12);
-    fade($(".out", el), t, arrive[i] + 0.35, undefined, 1);
-    const ill = $(".ill", el);
-    const iw = V ? U * 36 : U * 30;
-    ill.setAttribute("width", iw); ill.setAttribute("height", iw * 0.6);
-    ill.style.position = "absolute";
-    ill.style.left = V ? "0px" : "0px";
-    ill.style.top = V ? `${-U * 25}px` : `${-U * 30}px`;
-    ill.style.opacity = outCubic(p(t, arrive[i] - 0.8, arrive[i] - 0.2));
-    animIll(i, ill, t - arrive[i]);
+    el.style.transform = `translate(${sx}px, ${sy}px)`;
+    // ilustração dentro do círculo
+    const ill = $(".ill", el), iw = RS * 1.5, ih = iw * 0.6;
+    ill.setAttribute("width", iw); ill.setAttribute("height", ih);
+    ill.style.left = `${-iw / 2}px`; ill.style.top = `${-ih / 2}px`;
+    ill.style.opacity = outCubic(p(t, arrive[i] + 0.25, arrive[i] + 0.55));
+    animIll(i, ill, t - arrive[i] - 0.45);
+    // palavra letra a letra e a saída, embaixo do círculo
+    const lbl = $(".lbl", el);
+    lbl.style.top = `${RS + U * 2.6}px`;
+    const word = $(".word", el);
+    $$(".l", word).forEach((l, j) => {
+      const a = arrive[i] + 0.3 + j * 0.03, k = p(t, a, a + 0.45), kb = outBack(k, 1.9), sg = j % 2 ? 1 : -1;
+      l.style.opacity = clamp(k * 2.2);
+      l.style.transform = k >= 1 ? "none" : `translateY(${((1 - kb) * 0.6).toFixed(3)}em) rotate(${((1 - kb) * 12 * sg).toFixed(2)}deg) scale(${(0.6 + 0.4 * kb).toFixed(3)})`;
+      l.dataset.ok = k >= 1 ? "1" : "0";
+    });
+    fade($(".out", el), t, arrive[i] + 0.5, undefined, 1, 0.6);
+    // o texto some antes de encostar na borda do quadro e volta no recuo final
+    const X = sx * sc + camX, Y = sy * sc + camY, hw = lbl.offsetWidth / 2;
+    const a = V ? Y - RS * sc : X - hw * sc;
+    const z = V ? Y + (RS + U * 2.6 + lbl.offsetHeight) * sc : X + hw * sc;
+    const lim = V ? H : W, m = U * 0.5;
+    el.style.opacity = clamp((a - m) / (U * 2)) * clamp((lim - m - z) / (U * 2));
   });
-  // a bola, no espaço do mundo
+  // a bola: entra no círculo ao pousar, sai dele ao partir
+  let br = U * 1.3;
+  if (cur >= 0) {
+    const kin = p(t, arrive[cur], arrive[cur] + 0.3), kout = p(t, depart[cur] - 0.05, depart[cur] + 0.2);
+    br = U * 1.3 * (1 - inCubic(kin) * (1 - outBack(kout, 2)));
+  }
   const sx0 = bp.x * sc + camX, sy0 = bp.y * sc + camY;
   // no fim, o percurso some e a bola vai para o centro do chão da escala
   const kx = inOutCubic(p(t, S3.zoom[1], T.s3[1]));
   world.style.opacity = 1 - p(t, S3.zoom[1], S3.zoom[1] + 0.45);
   const floor = [W / 2, G.base - U * 1.4];
+  const back = outBack(p(t, S3.zoom[1] - 0.3, S3.zoom[1]), 2);
   const pos3 = hop([sx0, sy0], floor, kx, U * 10);
-  setBall(pos3[0], pos3[1], lerp(U * 1.3 * sc, U * 1.4, kx), kx >= 1 ? squash(t, T.s3[1]) : 1, "#14171e");
-  // título de abertura
+  setBall(pos3[0], pos3[1], kx > 0 || t > S3.zoom[1] - 0.3 ? U * 1.4 * clamp(back, 0, 1.2) : br * sc, kx >= 1 ? squash(t, T.s3[1]) : 1, "#14171e");
   const ttl = $("#s3-title");
-  ttl.style.top = (V ? H * 0.62 : H * 0.6) + "px";
+  ttl.style.top = (V ? H * 0.68 : H * 0.7) + "px";
   words(ttl, t, S3.title[0], S3.title[1] + 0.9, { stagger: 0.06 });
 }
 // Ilustração de cada etapa; lt = tempo desde a chegada da bola.
@@ -1064,7 +1064,15 @@ function r4(t) {
     pos = hop(pts[i], pts[i + 1], p(t, lands[i], lands[i + 1]), U * 6);
     sy = squash(t, lands[i]);
   } else { pos = pts[n - 1]; sy = squash(t, lands[n - 1]); }
-  const kin = p(t, T.s4[0], T.s4[0] + 0.5);
+  // mergulho: a bola entra no último degrau, que vira a tela escura
+  const dive = [S4.wipe[0] - 0.6, S4.wipe[0] - 0.05];
+  const kd = p(t, dive[0], dive[1]);
+  let rr4 = R * clamp(vis, 0, 1.3);
+  if (kd > 0) {
+    const bxc = left + (n - 1) * (G.bw + G.bgap) + G.bw / 2;
+    pos = hop(pts[n - 1], [bxc, G.base - G.bh[n - 1] * 0.45], inOutCubic(kd), U * 5);
+    rr4 = R * (1 - inCubic(kd));
+  }
   // a última barra cresce até cobrir a tela (volta ao escuro)
   const kw = inOutCubic(p(t, S4.wipe[0], S4.wipe[1]));
   if (kw > 0) {
@@ -1075,7 +1083,7 @@ function r4(t) {
     const l = lerp(bx, 0, kw), tp = lerp(by, 0, kw), rr = lerp(W - bx - G.bw, 0, kw), bb = lerp(H - G.base, 0, kw);
     wipe.style.clipPath = `inset(${tp}px ${rr}px ${bb}px ${l}px round ${lerp(U * 0.8, 0, kw)}px)`;
   }
-  setBall(pos[0], pos[1], R * clamp(vis, 0, 1.3), sy, kw > 0.2 ? "#fff" : "#14171e");
+  if (kd < 1) setBall(pos[0], pos[1], rr4, sy, "#14171e");
 }
 
 // ---- 5 Sócios ---------------------------------------------------------------
@@ -1111,7 +1119,7 @@ function r5(t) {
     fade(l, t, tp + 0.35, S5.merge[0] + 0.1, 1);
   });
   // a bola chega do escuro, espera no centro e se divide em quatro
-  if (t < S5.p0 - 0.6) setBall(home[0], home[1], R0 * outBack(p(t, T.s5[0], T.s5[0] + 0.5), 2));
+  if (t < S5.p0 - 0.6) setBall(home[0], home[1], R0 * outBack(p(t, T.s5[0] + 0.05, T.s5[0] + 0.55), 2));
   if (km > 0.85) setBall(center[0], center[1], U * 1.3, 1);
 }
 

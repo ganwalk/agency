@@ -33,11 +33,14 @@ a cena dos sócios usa `src/data/team.ts`.
    tempo, os atritos estouram e as pistas convergem num ponto, que vira a
    marca. "Tradução, escolha e adoção." / "É nesse espaço que a Ritmo atua."
    A bola cresce e abre a cena em papel.
-4. **Método** (27–47s): a câmera acompanha a bola num percurso pelas cinco
-   etapas; em cada uma, uma ilustração (lupa, prioridade, escolha, conexão,
-   acompanhamento) e a saída. No fim, o percurso inteiro.
-5. **Escala** (43,6–50,6s): quatro degraus que a bola sobe, de aproveitar a
-   desenvolver; o último degrau cresce e fecha a tela no escuro.
+4. **Método** (27–47s): a bola percorre a rota; em cada etapa pousa e se abre
+   num círculo com a ilustração animada dentro (lupa, prioridade, escolha,
+   encaixe, painel com ciclo), e a palavra entra letra a letra com a saída
+   embaixo. A câmera aproxima quando a bola para e recua quando ela viaja; no
+   fim, os cinco círculos lado a lado.
+5. **Escala** (47–54,6s): a bola se abre em quatro degraus e sobe por eles,
+   de aproveitar a desenvolver; no fim, mergulha no último degrau, que cresce e
+   vira a tela escura, e ressurge no centro.
 6. **Sócios** (50,6–57,6s): quatro sócios, quatro frentes, um por batida.
 7. **Compromisso** (62–71,6s): "Critério para decidir. Cuidado para
    implantar." e os seis compromissos numa frase só ("Clareza, evidência,
